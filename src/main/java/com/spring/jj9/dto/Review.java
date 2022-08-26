@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class Review {
 
-    Integer review_id;
-    String member_id;
-    Integer talent_id;
-    Integer review_grade;
-    String review_content;
-    Date review_date;
+    private Integer review_id;
+    private String member_id;
+    private Integer talent_id;
+    private Integer review_grade;
+    private String review_content;
+    private Date review_date;
 
 }

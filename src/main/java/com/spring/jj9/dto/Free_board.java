@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class Free_board {
 
-    Integer fboard_id;
-    String member_id;
-    String fboard_title;
-    String fboard_content;
-    Date fboard_date;
+	private Integer fboard_id;
+	private String member_id;
+	private String fboard_title;
+	private String fboard_content;
+	private Date fboard_date;
 
 }
