@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
+
 public class Talent_list {
     private    Integer    talent_id;
     private Integer cate_id;
