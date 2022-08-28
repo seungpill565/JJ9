@@ -31,6 +31,6 @@ public class AdminController {
 	}
 	@GetMapping("/addCateForm")
 	public String addCateForm() {
-		return "admin/addCateForm";
+		return "admin/addCateForm"; 
 	}
 }
