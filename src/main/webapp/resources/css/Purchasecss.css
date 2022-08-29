@@ -1,0 +1,44 @@
+@charset "EUC-KR";
+#main_img{
+	position: absolute;
+	top: 4%;
+	left: 11%;
+}
+#purchase_img{
+    border: solid black 1px;
+    padding : 5px;
+    margin: 3px;
+}
+#gradeAvg{
+	position: absolute;
+	left: 35%;
+}
+#title{
+	position: absolute;
+	top :8%;
+	right: 20%;
+	
+}
+#title-name{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+#order-button{
+	background-color: red;
+	font-weight: bold;
+	font_size : 30px;
+	padding-left : 30px;
+	padding-right : 30px;
+    margin: 15px;
+}
+
+#explanation{
+	position: absolute;
+	top :90%;
+	left: 11%;
+	
+	
+}
+
+	

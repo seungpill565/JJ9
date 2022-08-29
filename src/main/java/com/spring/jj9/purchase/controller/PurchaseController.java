@@ -6,18 +6,15 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.jj9.dto.TalentAll;
 import com.spring.jj9.purchase.service.PurchaseService;
 
-import lombok.extern.log4j.Log4j2;
-
-@Log4j2
-@RestController
+@Controller
 public class PurchaseController {
 	
 	@Autowired
@@ -26,11 +23,17 @@ public class PurchaseController {
 	@Autowired
 	PurchaseService service;
 	
-	@GetMapping(value = "/Purchase/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/Purchase/{id}")
 	public String getidpizza(@PathVariable("id") int id, Model model) {
-		TalentAll talentAll = service.getList(id);
+		List<TalentAll> talentAll = service.getList(id);//재능 리스트
+		List<TalentAll> talentReivew = service.getReviewList(id);// 리뷰리스트
+		Double gradeAvg = service.getSumReviewGrade(id); // 별점평균
+		int countGrade = service.getCountGrade(id);
 		
 		model.addAttribute("Purchase",talentAll);
+		model.addAttribute("Reivew",talentReivew);
+		model.addAttribute("RradeAvg",gradeAvg);
+		model.addAttribute("CountGrade",countGrade);
 		 
 		return "Purchase";
 	}

@@ -31,6 +31,14 @@ public class TalentAll {
 	    private String member_phoneNum;
 	    private Date member_birthday;
 	    private Integer member_point;
+	    
+	    
+	    //Review 
+	    
+	    private Integer review_id;
+	    private Integer review_grade;
+	    private String review_content;
+	    private Date review_date;
 
 	
 }
