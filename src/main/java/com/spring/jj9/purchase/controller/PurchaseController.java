@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,10 +27,12 @@ public class PurchaseController {
 	PurchaseService service;
 	
 	@GetMapping(value = "/Purchase/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<TalentAll> getidpizza(@PathVariable("id") int id) {
-		List<TalentAll> talentAll = service.getList(id);
+	public String getidpizza(@PathVariable("id") int id, Model model) {
+		TalentAll talentAll = service.getList(id);
+		
+		model.addAttribute("Purchase",talentAll);
 		 
-		return talentAll;
+		return "Purchase";
 	}
 
 }
