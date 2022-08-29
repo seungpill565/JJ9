@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Member {
     private String member_id;
-    private    String member_password;
+    private String member_password;
     private String member_eamil;
     private String member_phoneNum;
     private Date member_birthday;

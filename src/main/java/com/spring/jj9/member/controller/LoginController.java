@@ -1,4 +1,4 @@
-package com.spring.jj9.lsf.controller;
+package com.spring.jj9.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
