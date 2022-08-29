@@ -12,8 +12,9 @@ public class MainPageController {
 
 	
 	@GetMapping(value="/mainpage")
-	public void mainpage() { //mainpage.jsp로 가는 메서드
+	public String mainpage() { //mainpage.jsp로 가는 메서드
 		
+		return "mainpage/mainpage";
 	}
 	
 }
