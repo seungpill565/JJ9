@@ -23,5 +23,6 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="com.spring.jj9.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.category.mapper"/>
 		
 </beans>

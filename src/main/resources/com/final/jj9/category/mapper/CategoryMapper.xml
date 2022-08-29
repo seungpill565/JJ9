@@ -7,4 +7,8 @@
     	select * from Category;
   </select>
   
+  <select id="readTalentByID" resultType="com.final.jj9.dto.TalentAll">
+  		select * from talent
+  </select>
+  
 </mapper>

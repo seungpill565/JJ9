@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.jj9.category.mapper.CategoryMapper;
 import com.spring.jj9.dto.Category;
+import com.spring.jj9.dto.TalentAll;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -18,5 +19,11 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> readCategory() {
 
 		return mapper.readAll();
+	}
+
+	@Override
+	public List<TalentAll> readTalentById(int id) {
+		
+		return mapper.readTalentByID(id);
 	}
 }

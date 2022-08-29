@@ -1,11 +1,16 @@
 package com.spring.jj9.category.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.TalentAll;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -15,12 +20,18 @@ import lombok.extern.log4j.Log4j2;
 public class CategoryController {
 	
 	@Autowired
-	CategoryService service;
-
-	@GetMapping("/")
-	public String category1() {
+	private CategoryService service;
+	
+	@GetMapping("/category")
+	public void gocate() {
 		
-		return "";
+	}
+
+	@GetMapping("/{id}")
+	public String category1(@PathVariable("id") int id, Model model ) {
+		List<TalentAll> talent = service.readTalentById(id);
+		
+		return "category/category";
 	}
 	
 	@GetMapping("/2")
