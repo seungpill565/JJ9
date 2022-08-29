@@ -13,7 +13,7 @@
 
 	<div>
 		카테고리 링크 테스트 용 <br />
-		<a href="">카테고리 1</a> <br />
+		<a href="/category/category">카테고리 이동</a> <br />
 		<a href="">카테고리 2</a> <br />
 		<a href="">카테고리 3</a> <br />
 		<a href="">카테고리 4</a> <br />

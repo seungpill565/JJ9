@@ -6,9 +6,13 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>category</title>
 </head>
 <body>
+
+	<h3>category</h3>
+	
+	a
 
 </body>
 </html>

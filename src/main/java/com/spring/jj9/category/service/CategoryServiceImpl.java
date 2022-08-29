@@ -19,6 +19,4 @@ public class CategoryServiceImpl implements CategoryService{
 
 		return mapper.readAll();
 	}
-
-		
 }
