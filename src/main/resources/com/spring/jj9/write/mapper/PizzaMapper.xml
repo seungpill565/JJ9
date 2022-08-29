@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.write.mapper.PizzaMapper">
+	<select id="getList" resultType="com.spring.jj9.dto.Pizza">
+		SELECT * FROM pizza
+	</select>
+	<select id="getPizza" resultType="com.spring.jj9.dto.Pizza">
+		SELECT * FROM pizza WHERE id = #{pk}
+	</select>
+	<update id="updateView">
+		UPDATE pizza SET calories = calories + 1 WHERE id = #{pk}
+	</update>
+	<insert id="createPizza"> 
+        INSERT INTO pizza VALUES (pz_id_seq.nextval, #{name}, #{price}, #{calories}) 
+    </insert>
+	<delete id="deletePizza">
+		DELETE FROM pizza WHERE id = #{id}
+	</delete>
+	<update id="updatePizza">
+    UPDATE pizza
+		SET name = #{name}, price = #{price}, calories = #{calories} 
+		WHERE id = #{id}
+  </update>
+</mapper>
