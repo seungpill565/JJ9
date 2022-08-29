@@ -1,4 +1,4 @@
-package com.spring.jj9.admin.mapper;
+package com.spring.jj9.mapper;
 
 import com.spring.jj9.dto.Member;
 

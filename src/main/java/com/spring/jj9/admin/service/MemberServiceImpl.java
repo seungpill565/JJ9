@@ -3,8 +3,8 @@ package com.spring.jj9.admin.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.jj9.admin.mapper.MemberMapper;
 import com.spring.jj9.dto.Member;
+import com.spring.jj9.mapper.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService{

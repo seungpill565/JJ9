@@ -16,8 +16,7 @@
 <%= session.getAttribute("currUser") %>
  
 <hr />
-<a href=" <c:url value="/addCateForm"/>">카테고리 등록</a> <br />
-<a href="<c:url value="/deleteCateForm"/>">카테고리 삭제</a> <br />
+<a href=" <c:url value="/addCateForm"/>">카테고리 관리</a> <br />
 <a href="<c:url value="/memberManagement"/>">회원 관리</a> <br />
 <a href="">상품등록 요청 관리</a><br />
 
