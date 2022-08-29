@@ -1,9 +1,11 @@
 package com.spring.jj9.purchase.mapper;
 
 
-import com.spring.jj9.dto.Talent_list;
+import java.util.List;
+
+import com.spring.jj9.dto.TalentAll;
 
 public interface PurchaseMapper {
 	
-	public Talent_list get(int pk);
+	public List<TalentAll> get(int pk);	
 }
