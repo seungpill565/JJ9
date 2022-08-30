@@ -51,18 +51,21 @@ public class RegisterController {
 				member_password == null || member_password.equals("") ||
 				member_rePassword == null || member_rePassword.equals("")
 		) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디/비밀번호/비밀번호 재확인은 공백일 수 없습니다.\n 다시 시도해주세요'); </script>");
+			out.flush();
 			return "redirect:/register";
 		} else if (!member_password.equals(member_rePassword)) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('비밀번호가 재확인 비밀번호와 틀립니다. 다시 입력해주세요'); </script>");
+			out.println("<script>alert('비밀번호가 재확인 비밀번호와 틀립니다. \n 다시 입력해주세요'); </script>");
 			out.flush();
-			member_id = null;
 			return "register"; 
 			// 여기서 redirect 걸면 alert 기능 추가 때문인지 화면이 안넘어가지고, forward로 넘겨야 넘어가짐
+		} else {
+			return "redirect:/list";			
 		}
-		
-		return "redirect:/list";
 	}
 	
 }
