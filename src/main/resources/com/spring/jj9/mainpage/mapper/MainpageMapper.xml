@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.jj9.mainpage.mapper.MainpageMapper">
   <select id="readMainCate" resultType="com.spring.jj9.dto.Category">
-    	select distinct cate_main from category
+    	 select * from category where <![CDATA[cate_id < 10]]>   <!-- 따로 넣어준 메인카테고리랑 id 값 읽기 / 부등호라 CDATA 사용 -->
+    	<!-- select cate_id, cate_main from category where cate_id &lt; 10 -->
   </select>
   
 

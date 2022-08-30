@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">
   <select id="readAll" resultType="com.spring.jj9.dto.Category">
-    	select * from Category;
+    	select * from category
   </select>
   
   <select id="readTalentByID" resultType="com.spring.jj9.dto.TalentAll">
@@ -12,7 +12,7 @@
   		talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id) 
-  		inner join review using(talent_id) 
+  		<!-- inner join review using(talent_id)  review는 안만들어서 일단 주석-->
   		where cate_id = #{id} 
   </select>
   

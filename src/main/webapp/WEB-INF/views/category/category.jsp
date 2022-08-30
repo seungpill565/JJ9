@@ -10,15 +10,24 @@
 </head>
 <body>
 
-	<h3>category test</h3>
-	
-	<a href="">카테1-1</a>
-	
-	
+	<h3>category </h3>
+
 	<div>
-		<a href="./purchase/1"> 재능 1</a>
-		
+		<ul>
+			<c:forEach items="${categorys }" var="category">
+				<li><a href="${category.cate_id }">${category.cate_id } / ${category.cate_main } / ${category.cate_sub } </a></li>
+			</c:forEach>
+		</ul>
 	</div>
 
+<!-- 
+	<div>
+		<c:forEach items="">
+			<a href="./purchase/1"> 재능 1</a>
+		</c:forEach>
+		
+	</div>
+ -->
+	<script src="/jj9/resources/js/category.js"></script>
 </body>
 </html>

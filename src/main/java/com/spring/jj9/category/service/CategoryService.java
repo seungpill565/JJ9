@@ -7,7 +7,7 @@ import com.spring.jj9.dto.TalentAll;
 
 public interface CategoryService {
 
-	public List<Category> readCategory();
+	public List<Category> readCategory(int id);
 	
 	public List<TalentAll> readTalentById(int id);
 }

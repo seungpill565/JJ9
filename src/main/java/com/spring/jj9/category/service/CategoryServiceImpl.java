@@ -1,5 +1,6 @@
 package com.spring.jj9.category.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,13 @@ public class CategoryServiceImpl implements CategoryService{
 	CategoryMapper mapper;
 		
 	@Override
-	public List<Category> readCategory() {
+	public List<Category> readCategory(int id) {
+		List<Category> list = new ArrayList<>();
+		list = mapper.readAll();
+		
+//		if(id==1) {
+//			return 
+//		}
 
 		return mapper.readAll();
 	}

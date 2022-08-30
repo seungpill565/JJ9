@@ -12,9 +12,9 @@
 	<h3>jj9 메인 페이지</h3>
 
 	<div>카테고리 테스트용 <br />
-		<ul>
+		<ul> 전체 카테고리  <br />
 			<c:forEach items="${categorys }" var="category">
-				<li><a href="category/category">${category.cate_main }</a></li>
+				<li><a href="category/${category.cate_id }">${category.cate_main }</a></li>
 			</c:forEach>
 		</ul>
 	</div>

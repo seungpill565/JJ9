@@ -17,4 +17,6 @@ public class Talent_list {
     private    Integer    talent_price;
     private    String    talent_service_exp;
     private    String    talent_curriculum;
+    private    Integer   talent_workday;
+    private    String    talent_summary;
 }
