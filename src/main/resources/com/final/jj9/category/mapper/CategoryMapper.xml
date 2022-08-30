@@ -8,7 +8,12 @@
   </select>
   
   <select id="readTalentByID" resultType="com.final.jj9.dto.TalentAll">
-  		select * from talent
+  		select * from 
+  		talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		inner join review using(talent_id) 
+  		where cate_id = #{id} 
   </select>
   
 </mapper>

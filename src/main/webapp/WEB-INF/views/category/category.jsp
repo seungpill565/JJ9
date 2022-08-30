@@ -10,9 +10,15 @@
 </head>
 <body>
 
-	<h3>category</h3>
+	<h3>category test</h3>
 	
-	a
+	<a href="">카테1-1</a>
+	
+	
+	<div>
+		<a href="./purchase/1"> 재능 1</a>
+		
+	</div>
 
 </body>
 </html>
