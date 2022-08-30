@@ -6,5 +6,5 @@ import com.spring.jj9.dto.Category;
 
 public interface MainpageMapper {
 
-	public List<Category> readMaincategory();
+	public List<Category> readMainCate();
 }

@@ -21,7 +21,7 @@ public class MainpageController {
 	@GetMapping(value="/mainpage")
 	public String mainpage(Model model) { //mainpage.jsp로 가는 메서드
 		
-		model.addAttribute("categorys", service.readMainCategory());
+		model.addAttribute("categorys", service.readMainCategory()); 
 		
 		return "mainpage/mainpage";
 	}

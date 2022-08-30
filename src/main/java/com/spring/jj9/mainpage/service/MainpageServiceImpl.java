@@ -17,7 +17,7 @@ public class MainpageServiceImpl implements MainpageService{
 	@Override
 	public List<Category> readMainCategory() {
 
-		return mapper.readMaincategory();
+		return mapper.readMainCate();
 	}
 
 }
