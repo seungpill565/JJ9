@@ -8,4 +8,6 @@ public interface RegisterService {
 	
 	public List<Member> getMemberList();
 	
+	public Integer insertMember(Member member);
+	
 }

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.member.mapper.MemberMapper;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class RegisterServiceImpl implements RegisterService {
 
@@ -22,6 +25,14 @@ public class RegisterServiceImpl implements RegisterService {
 	@Override
 	public List<Member> getMemberList() {
 		return memberMapper.getList();
+	}
+
+	@Override
+	public Integer insertMember(Member member) {
+		
+		int row = memberMapper.insert(member);
+		
+		return row;
 	}
 
 
