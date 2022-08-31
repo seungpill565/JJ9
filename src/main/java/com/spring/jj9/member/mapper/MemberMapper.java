@@ -8,4 +8,7 @@ public interface MemberMapper {
 	
 	public List<Member> getList();
 	
+	public Integer insert(Member member);
+
+	public Integer getId(String member_id);
 }

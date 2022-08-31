@@ -6,4 +6,21 @@
 	<select id="getList" resultType="com.spring.jj9.dto.Member">
   		SELECT * FROM Member
   	</select>
+  	<!--  -->
+  	<insert id="insert">
+		INSERT INTO member 
+		(member_id, member_password, member_email, 
+		member_phoneNum, member_birthday, 
+		member_name, member_nickName, member_comments) 
+		VALUES 
+		(#{member_id}, #{member_password}, #{member_email}, 
+		#{member_phoneNum}, #{member_birthday}, 
+		#{member_name}, #{member_nickName}, #{member_comments})
+	</insert>
+	<!-- insert문 실행하고 확인용 getId -->
+	<!-- 
+  	<select id="getId" resultType="int">
+  		SELECT member_id FROM Member where member_id = #{member_id}
+  	</select>	
+	 -->
 </mapper>
