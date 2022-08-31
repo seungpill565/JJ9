@@ -9,5 +9,11 @@ public interface CategoryService {
 
 	public List<Category> readCategory(int id);
 	
+	public List<Category> readMainCategory(int id);
+	
+	public List<TalentAll> readTalentAllByCate_main(int id);
+	
+	public List<TalentAll> readTalentAllByCate_id(int id);
+	
 	public List<TalentAll> readTalentById(int id);
 }

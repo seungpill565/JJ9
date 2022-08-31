@@ -20,7 +20,7 @@ public class MainpageController {
 	
 	@GetMapping(value="/mainpage")
 	public String mainpage(Model model) { //mainpage.jsp로 가는 메서드
-		log.info(service.readMainCategory());
+		//log.info(service.readMainCategory());
 		
 		model.addAttribute("categorys", service.readMainCategory());  // 메인카테고리만 실어준다
 		

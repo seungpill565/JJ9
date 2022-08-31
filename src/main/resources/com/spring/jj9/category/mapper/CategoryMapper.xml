@@ -2,10 +2,31 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">
+<mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
   <select id="readAll" resultType="com.spring.jj9.dto.Category">
     	select * from category
   </select>
+  
+  <select  id="readMainCategoryById" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_id = #{id} <!-- 특정 아이디의 카테고리 -->
+  </select>
+  
+  <select  id="readAllMainCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is null <!-- 메인카테고리들만 뽑기 -->
+  </select>
+  
+  <select id="readCategoryByCate_main" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_main = #{cate_main} and cate_sub is not null <!-- 메인카테고리 별 서브카테고리들  -->
+  </select>
+  
+  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll">
+  		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_main = #{cate_main}
+  </select>
+  
+  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll">
+  		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_id = #{cate_id}
+  </select>
+  
   
   <select id="readTalentByID" resultType="com.spring.jj9.dto.TalentAll">
   		select * from 

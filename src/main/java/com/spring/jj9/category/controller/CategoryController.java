@@ -29,12 +29,15 @@ public class CategoryController {
 
 	@GetMapping("/{id}")
 	public String category1(@PathVariable("id") int id, Model model) {
-		log.info(service.readCategory(id));
-		model.addAttribute("categorys", service.readCategory(id));
+		//log.info(service.readCategory(id));
+		model.addAttribute("categorys", service.readMainCategory(id));
+		model.addAttribute("purchases", service.readTalentAllByCate_main(id));
+		log.info("1로그 : ",service.readMainCategory(id));
+		log.info("2로그 : ",service.readTalentAllByCate_main(id));
 		
 		
 		//log.info(service.readTalentById(id));
-		List<TalentAll> talent = service.readTalentById(id); // 카테id로 모든 정보 불러야된다
+		//List<TalentAll> talent = service.readTalentById(id); // 카테id로 모든 정보 불러야된다
 		
 		
 		return "category/category"; // 해당 카테고리 클릭 시 페이지 이동
