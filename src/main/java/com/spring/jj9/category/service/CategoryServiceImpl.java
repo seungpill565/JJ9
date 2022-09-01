@@ -18,6 +18,8 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Autowired
 	CategoryMapper mapper;
+	
+	private Integer checkCate=0; // id가 메인일때 0 / id가 서브일때 1
 		
 	@Override
 	public List<Category> readCategory(int id) {
@@ -48,11 +50,12 @@ public class CategoryServiceImpl implements CategoryService{
 		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main(); // 접속한 id로 뽑아낸 메인카테고리
 		
 		
-//		if(id<10) {
-//			return mapper.readCategoryByCate_main(cate_main);		
-//		}else
-//			return mapper.readTalentAllByCate_id(id);
-//		
+		if(id<10) { // 메인 클릭시 id가 10 이하이므로 
+			checkCate=0;
+		}else{		// 서브 클릭시 id가 10 이상
+			checkCate=1;
+		}
+		
 		
 //		System.out.println("카테 메인 "+cate_main+" 타입 : "+cate_main.getClass().getName());
 		return mapper.readCategoryByCate_main(cate_main);
@@ -66,8 +69,11 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main(); // 접속한 id의 메인카테고리
 		
-		
-		return mapper.readTalentAllByCate_main(cate_main); // 접속한 id의 메인 카테고리에 적은 모든 재능 관련 정보
+		if(checkCate==0) {
+			return mapper.readTalentAllByCate_main(cate_main); // 접속한 id의 메인 카테고리에 적은 모든 재능 관련 정보
+		}else {
+			return mapper.readTalentAllByCate_id(id); // 서브 카테고리의 재능 리턴
+		}
 	}
 
 
@@ -79,7 +85,4 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return null;
 	}
-	
-	
-	
 }
