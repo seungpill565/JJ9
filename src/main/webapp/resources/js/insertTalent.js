@@ -9,10 +9,7 @@ xhttp1.addEventListener('readystatechange', (e) => {
 	
 	if (readyState == 4) {
 		
-		console.log(responseText);
 		const categories = JSON.parse(responseText);
-		
-		console.log(categories);
 		
 		// select_sub_cate 내부의 첫번째 옵션을 제외하고 모두 지움.
 		select_sub_cate.options.length = 1;
@@ -23,9 +20,8 @@ xhttp1.addEventListener('readystatechange', (e) => {
 			const subCateOption = document.createElement('option');
 			
 			subCateOption.innerText = `${categories[i].cate_sub}`;
-			console.log(categories[i].cate_sub);
 			
-			console.log(subCateOption);
+			subCateOption.value = `${categories[i].cate_sub}`;
 			
 			select_sub_cate.appendChild(subCateOption);
 		};
@@ -33,9 +29,10 @@ xhttp1.addEventListener('readystatechange', (e) => {
 	}
 });
 
-
+// 메인카테 select를 변경했을시 이벤트 발동
 select_main_cate.addEventListener('change', (e) => {
 	console.log('value :', e.target.value);
 	xhttp1.open('GET', '/jj9/insertTalent/' + e.target.value);
 	xhttp1.send();
 });
+

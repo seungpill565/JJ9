@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
+import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.write.mapper.InsertMapper;
 
 @Service
@@ -24,6 +25,18 @@ public class CateServiceImpl implements CateService {
 	public List<Category> getCateByMain(String cate_main) {
 		
 		return insertMapper.getCateByMain(cate_main);
+	}
+	
+	@Override
+	public Integer getCateIdBySub(String cate_sub) {
+		
+		return insertMapper.getCateIdBySub(cate_sub).getCate_id();
+	}
+	
+	@Override
+	public Integer insertTalent(Talent_list talent_list) {
+		
+		return insertMapper.insertTalent(talent_list);
 	}
 
 }

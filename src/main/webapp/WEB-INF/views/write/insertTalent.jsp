@@ -1,32 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	Ä«Å×°í¸® <select id="select-cate-main" name="cate-main">
-			<option value="null">Ä«Å×°í¸® ¼±ÅÃ</option>
+	<h3>ìž¬ëŠ¥ ë“±ë¡</h3>
+	<form action="./insert" method="POST" enctype="multipart/form-data">
+	ì¹´í…Œê³ ë¦¬ <select id="select-cate-main" name="cate-main">
+			<option value="null">ì¹´í…Œê³ ë¦¬ ì„ íƒ</option>
 			<c:forEach items="${mainCates }" var="cate">
 				<option value="${cate.cate_main }">${cate.cate_main }</option>
 			</c:forEach>
-		</select> <br>
+		</select>
 
 		<select id="select-cate-sub" name="cate-sub">
-			<option value="null">¼¼ºÎ Ä«Å×°í¸® ¼±ÅÃ</option>
+			<option value="null">ì„¸ë¶€ ì¹´í…Œê³ ë¦¬ ì„ íƒ</option>
 		</select> <br>
 		
-		
-	Á¦¸ñ <input type="text" /> <br>
-	°¡°Ý <input type="text" /> <br>
-	ÀÛ¾÷ÀÏ <input type="text" /> <br>
-	¿É¼Ç <input type="text" /> <br>
-	ÀÌ¹ÌÁö <input type="text" /> <br>
-	»ó¼¼³»¿ë <input type="text" /> <br>
-	±¸¸ÅÀÚ Áö½Ã»çÇ× <input type="text" /> <br>
+
+	ì œëª© <input type="text" name="talent_title"/> <br>
+	ê°€ê²© <input type="text" name="talent_price"/> <br>
+	ìž‘ì—…ê¸°ê°„ <input type="text"/> <br>	
+	ì´ë¯¸ì§€ <input type="file" name="image_file"/> ìµœëŒ€ 15MB<br>
+	ìƒì„¸ë‚´ìš© <input type="text" name="talent_service_exp"/> <br>
+	ì»¤ë¦¬í˜ëŸ¼ <input type="text" name="talent_curriculum"/> <br>
+	<input type="hidden" value="1" name="member_id"/>
+	<input type="submit" value="ì˜¬ë¦¬ê¸°"/>
+	</form>
+	
 	
 	<script src="/jj9/resources/js/insertTalent.js"></script>
 </body>
