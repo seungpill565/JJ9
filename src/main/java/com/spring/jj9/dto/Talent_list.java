@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 
 public class Talent_list {
     private    Integer    talent_id;
-    private Integer cate_id;
+    private    Integer cate_id;
     private    String    member_id;
     private    String    talent_title;
+    private    Integer    talent_workday;
+    private    String    talent_summary;
     private    String    talent_image;
     private    Date    talent_date;
     private    Integer    talent_price;

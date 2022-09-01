@@ -24,13 +24,13 @@ public class PurchaseController {
 	PurchaseService service;
 	
 	@GetMapping(value = "/Purchase/{id}")
-	public String getidpizza(@PathVariable("id") int id, Model model) {
-		List<TalentAll> talentAll = service.getList(id);//재능 리스트
-		List<TalentAll> talentReivew = service.getReviewList(id);// 리뷰리스트
-		Double gradeAvg = service.getSumReviewGrade(id); // 별점평균
+	public String PurchaseView(@PathVariable("id") int id, Model model) {
+		List<TalentAll> talentAll = service.getList(id);
+		List<TalentAll> talentReivew = service.getReviewList(id);
+		Double gradeAvg = service.getSumReviewGrade(id); 
 		int countGrade = service.getCountGrade(id);
 		
-		model.addAttribute("Purchase",talentAll);
+		model.addAttribute("purchase",talentAll);
 		model.addAttribute("Reivew",talentReivew);
 		model.addAttribute("RradeAvg",gradeAvg);
 		model.addAttribute("CountGrade",countGrade);

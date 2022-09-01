@@ -1,6 +1,7 @@
 package com.spring.jj9.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,8 @@ public class TalentAll {
 	    private    String    member_id;
 	    private    String    talent_title;
 	    private    String    talent_image;
+	    private    Integer    talent_workday;
+	    private    String    talent_summary;
 	    private    Date    talent_date;
 	    private    Integer    talent_price;
 	    private    String    talent_service_exp;
@@ -27,10 +30,11 @@ public class TalentAll {
 	    //Member
 	    
 	    private String member_password;
-	    private String member_eamil;
+	    private String member_name;
+	    private String member_email;
 	    private String member_phoneNum;
-	    private Date member_birthday;
-	    private Integer member_point;
+	    private String  member_nickName;
+	    private String member_comments;
 	    
 	    
 	    //Review 
@@ -39,6 +43,14 @@ public class TalentAll {
 	    private Integer review_grade;
 	    private String review_content;
 	    private Date review_date;
+	    
+	    //message
+	    private Integer message_id;
+		private String message_name;
+		private String message_content;
+		private String sender_id;
+		private String resiver;
+		private Timestamp message_date;
 
 	
 }
