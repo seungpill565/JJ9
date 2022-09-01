@@ -11,7 +11,7 @@ public interface CategoryMapper {
 	
 	public List<Category> readMainCategoryById(int id); // id로 해당 카테고리 불러오기
 	
-	public List<Category> readAllMainCategory(); // 메인카테고리들만 불러오기
+	public List<Category> readAllMainCategorys(); // 메인카테고리들만 불러오기
 	
 	public List<Category> readCategoryByCate_main(String cate_main); // 메인카테고리 별 서브카테고리들 불러오기
 	

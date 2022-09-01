@@ -15,7 +15,7 @@ public class MainpageServiceImpl implements MainpageService{
 	MainpageMapper mapper;
 	
 	@Override
-	public List<Category> readMainCategory() {
+	public List<Category> readMainCategory() { // 메인에 표시할 메인카테고리만 read
 
 		return mapper.readMainCate();
 	}

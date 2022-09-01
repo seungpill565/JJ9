@@ -15,5 +15,7 @@ public interface CategoryService {
 	
 	public List<TalentAll> readTalentAllByCate_id(int id);
 	
+	public List<Category> readAllAminCategory();
+	
 	public List<TalentAll> readTalentById(int id);
 }

@@ -30,7 +30,8 @@ public class CategoryController {
 	@GetMapping("/{id}")
 	public String category1(@PathVariable("id") int id, Model model) {
 		//log.info(service.readCategory(id));
-		model.addAttribute("categorys", service.readMainCategory(id));
+		model.addAttribute("subcategorys", service.readMainCategory(id));
+		model.addAttribute("maincategorys", service.readAllAminCategory());
 		model.addAttribute("purchases", service.readTalentAllByCate_main(id));
 		log.info("1로그 : ",service.readMainCategory(id));
 		log.info("2로그 : ",service.readTalentAllByCate_main(id));

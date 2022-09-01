@@ -19,14 +19,14 @@
   		select * from category where cate_main = #{cate_main} and cate_sub is not null <!-- 메인카테고리 별 서브카테고리들  -->
   </select>
   
-  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll">
+  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll"> <!-- 메인만 눌렀을때 표시할 재능들 -->
   		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_main = #{cate_main}
   </select>
   
-  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll">
+  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll"> <!-- 서브 눌렀을때 표시할 재능들 -->
   		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_id = #{cate_id}
   </select>
-  
+ 
   
   <select id="readTalentByID" resultType="com.spring.jj9.dto.TalentAll">
   		select * from 

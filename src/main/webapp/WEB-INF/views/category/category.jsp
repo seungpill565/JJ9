@@ -15,7 +15,7 @@
 	
 	<div>
 		<ul>
-			<c:forEach items="${categorys }" var="category">
+			<c:forEach items="${maincategorys }" var="category">
 				<li><a href="${category.cate_id }" id="${category.cate_id }">${category.cate_id } / ${category.cate_main } / ${category.cate_sub } </a></li>
 			</c:forEach>
 		</ul>
@@ -24,7 +24,7 @@
 
 	<div>
 		<ul>
-			<c:forEach items="${categorys }" var="category">
+			<c:forEach items="${subcategorys }" var="category">
 				<li><a href="${category.cate_id }" id="${category.cate_id }">${category.cate_id } / ${category.cate_main } / ${category.cate_sub } </a></li>
 			</c:forEach>
 		</ul>

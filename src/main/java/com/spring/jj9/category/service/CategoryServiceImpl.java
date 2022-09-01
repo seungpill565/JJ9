@@ -41,13 +41,7 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<Category> readMainCategory(int id) {
-		//List<Category> list = new ArrayList<>();// 특정 id의 메인 카테고리
-		//List<Category> mainLists = new ArrayList<>(); // 메인 값만 있는 데이터들
-		
-		//mainLists = mapper.readAllMainCategory(); 
-		//System.out.println(mainLists.size());
-
-		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main(); // 접속한 id로 뽑아낸 메인카테고리
+		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main(); // 접속한 id로 뽑아낸 메인카테고리 / 서브카테고리 표시하려고 쓰는 변수
 		
 		
 		if(id<10) { // 메인 클릭시 id가 10 이하이므로 
@@ -84,5 +78,13 @@ public class CategoryServiceImpl implements CategoryService{
 		//String cate_sub = 
 		
 		return null;
+	}
+
+
+
+	@Override
+	public List<Category> readAllAminCategory() {
+
+		return mapper.readAllMainCategorys();
 	}
 }
