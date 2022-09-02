@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-public class InsertController {
+public class InsertTalentRestController {
 	
 	@Autowired
 	CateService cateService;
@@ -23,7 +23,7 @@ public class InsertController {
 	@GetMapping(value = "/insertTalent/{mainCate}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Category> getCategories(@PathVariable("mainCate") String mainCate) {
 		
-		log.info("메인카테고리 : " + mainCate);
+		log.info("메인메인: " + mainCate);
 		
 		return cateService.getCateByMain(mainCate);
 	}

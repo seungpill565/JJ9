@@ -10,5 +10,11 @@
 	<select id="getCateByMain" resultType="com.spring.jj9.dto.Category">
 		SELECT * FROM category WHERE cate_main = #{cate_main}
 	</select>
-	
+	<select id="getCateIdBySub" resultType="com.spring.jj9.dto.Category">
+		SELECT cate_id FROM category WHERE cate_sub = #{cate_sub}
+	</select>
+	<insert id="insertTalent" parameterType="com.spring.jj9.dto.Talent_list">
+		INSERT INTO talent_list VALUES(#{cate_id}, #{member_id}, #{talent_title}, #{talent_image},
+										#{talent_date}, #{talent_price}, #{talent_service_exp}, #{talent_curriculum}, talent_id_seq.nextval)
+	</insert>
 </mapper>
