@@ -11,4 +11,8 @@ public interface MemberMapper {
 	public Integer insert(Member member);
 
 	public Integer getId(String member_id);
+	
+	public Integer idChecker(String ID);
+	
+//	public String login(Member member);
 }

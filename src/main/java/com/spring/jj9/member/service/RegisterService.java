@@ -10,4 +10,5 @@ public interface RegisterService {
 	
 	public Integer insertMember(Member member);
 	
+	public Integer idCheck(String chk_id);
 }

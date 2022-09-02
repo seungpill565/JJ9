@@ -11,6 +11,30 @@
 	resize: none;
 }
 </style>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+	$("#overlappedID").click(function() {
+		id = $("#ID").val(); // 태그에 입력한 value
+		param={"ID" : id};
+		$.ajax({
+			type: "post",
+			url: "idCheck",
+			data: param,
+			success: function(result) { //login_result.jsp 에 출력된 내용 (responseText)
+				console.log(result);
+				let resultText = null;
+				if (result == 0) {
+					resultText = "사용 가능한 아이디입니다.";
+				} else {
+					resultText = "아이디가 중복되었습니다. 다시 시도해주세요"
+				}
+				$("#result").html(resultText); //innerHtml 
+			}
+		});		
+	})
+});
+</script>
 </head>
 <body>
 
@@ -24,10 +48,10 @@
 		<input id="nickName" name="member_nickName" type="text" placeholder="사이트 내에서 사용할 별명을 입력하세요" /><br>
 	
 		<label for="ID">아이디</label><br>
-		<input id="ID" name="member_id" type="text" placeholder="사용할 아이디를 입력하세요" /> 
+		<input id="ID" name="member_id" type="text" placeholder="사용할 아이디를 입력하세요"/> 
 		<button id="overlappedID" type="button">중복확인</button> </br>
 		<!-- type을 button으로, submit이 아래 회원가입 submit 버튼과 혼재되지 않게 함, ajax 처리 -->
-		
+		<div id="result"></div>
 		<label for="pw">비밀번호</label><br>
 		<input id="pw" name="member_password" type="password" placeholder="비밀번호를 입력하세요" /> </br>
 		
@@ -56,8 +80,33 @@
 		
 		<input id="submit_btn" type="submit" value="회원가입">
 	</form>
+	<!-- 
 	
-	<script src="/jj9/resources/js/overlapChk.js"></script>
+	<script>
+		const overlappedID = document.getElementById('overlappedID');
+		
+		overlappedID.addEventListener('click', (e) => {
+			const member_id = document.getElementById('ID').value.trim();
+			console.log(member_id);
+			
+			const Member = {
+				member_id : member_id
+			}
+			
+			const uid = JSON.stringify(Member);
+			
+			xhttp_id.open('POST', '/jj9/idCheck');
+			xhttp_id.setRequestHeader('content-type', 'application/json;charset=UTF-8');
+			console.log('xhttp_id json string: ', uid);
+			xhttp_id.send(uid);
+		});
+		
+		const xhttp_id = new XMLHttpRequest();
+		xhttp_id.addEventListener('readystatechange', (e) => {
+			
+		});
+	</script>
+	 -->
 	
 </body>
 </html>

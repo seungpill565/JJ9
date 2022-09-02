@@ -1,15 +1,18 @@
 package com.spring.jj9.member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.member.service.RegisterService;
@@ -79,6 +82,29 @@ public class RegisterController {
 			request.setAttribute("url", "/jj9/list");
 			return "registerAlert";		
 		}
+		
 	}
+	
+	// ID 중복 확인
+	@ResponseBody
+	@PostMapping(value="/idCheck", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String idCheck(Member member, @RequestParam String ID, Model model) {
+		
+		
+		log.info(ID);
+		
+		member.setCheck_id(ID);
+		String chk_id = member.getCheck_id();
+		log.info(chk_id);
+		
+		Integer row = service.idCheck(ID);
+		
+		if (row == 0) {
+			return "0";
+		} else {
+			return "-1";
+		}
+		
+	} 
 	
 }

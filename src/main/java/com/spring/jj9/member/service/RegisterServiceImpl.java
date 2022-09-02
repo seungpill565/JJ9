@@ -35,5 +35,15 @@ public class RegisterServiceImpl implements RegisterService {
 		return row;
 	}
 
+	@Override
+	public Integer idCheck(String chk_id) {
+		
+		Integer cnt = memberMapper.idChecker(chk_id);
+		log.info("cnt: " + cnt);
+		
+		return cnt;			
+		
+	}
+
 
 }

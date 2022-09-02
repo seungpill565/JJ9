@@ -23,4 +23,8 @@
   		SELECT member_id FROM Member where member_id = #{member_id}
   	</select>	
 	 -->
+	 <select id="idChecker" resultType="int" parameterType="String">
+	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}
+	 </select>
+	 
 </mapper>
