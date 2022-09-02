@@ -8,7 +8,7 @@
 <title>Member-List</title>
 </head>
 <body>
-	
+<%@ include file="./include/menu.jsp" %>	
 	<h1>member-list</h1>
 	
 	<ul>

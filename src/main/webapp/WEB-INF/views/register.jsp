@@ -37,7 +37,7 @@ $(function() {
 </script>
 </head>
 <body>
-
+<%@ include file="./include/menu.jsp" %>
 	<h1> 회원가입 페이지 </h1>
 	<!-- 이름, 별명, 아이디, 비번, 재입력, 이메일, 전화번호, 생년월일, 자기소개 -->
 	<form id="register-form" action="register" method="POST">
@@ -80,33 +80,6 @@ $(function() {
 		
 		<input id="submit_btn" type="submit" value="회원가입">
 	</form>
-	<!-- 
-	
-	<script>
-		const overlappedID = document.getElementById('overlappedID');
-		
-		overlappedID.addEventListener('click', (e) => {
-			const member_id = document.getElementById('ID').value.trim();
-			console.log(member_id);
-			
-			const Member = {
-				member_id : member_id
-			}
-			
-			const uid = JSON.stringify(Member);
-			
-			xhttp_id.open('POST', '/jj9/idCheck');
-			xhttp_id.setRequestHeader('content-type', 'application/json;charset=UTF-8');
-			console.log('xhttp_id json string: ', uid);
-			xhttp_id.send(uid);
-		});
-		
-		const xhttp_id = new XMLHttpRequest();
-		xhttp_id.addEventListener('readystatechange', (e) => {
-			
-		});
-	</script>
-	 -->
 	
 </body>
 </html>
