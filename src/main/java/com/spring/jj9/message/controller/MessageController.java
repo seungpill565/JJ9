@@ -61,7 +61,7 @@ public class MessageController {
 			req.setAttribute("url", "/jj9/message/"+talentid);
 			return "Messagealert";
 		}else {
-			req.setAttribute("msg", id+"님에게 쪽지를 보내셨습니다."); 
+			req.setAttribute("msg",  "쪽지를 보내셨습니다."); 
 			message.setMessage_date(date);
 			service.insertMessage(message);
 			req.setAttribute("url", "jj9/info/"+id); //내정보로 이동할때 id 값 보내기

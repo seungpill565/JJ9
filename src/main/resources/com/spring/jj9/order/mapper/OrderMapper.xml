@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.order.mapper.OrderMapper">
+  <select id="get" resultType="com.spring.jj9.dto.TalentAll">
+  SELECT * from talent_list inner join category using(cate_id) inner join member  Using(member_id)
+  where talent_id = #{id}
+  </select>
+  
+  <select id="getCoupon" resultType="com.spring.jj9.dto.Coupon">
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  </select>
+  
+  <select id="getdiscount" resultType="com.spring.jj9.dto.Coupon">
+  	SELECT * from coupon where coupon_id = #{id}
+  </select>
+  
+</mapper>

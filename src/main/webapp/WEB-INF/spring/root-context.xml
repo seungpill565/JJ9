@@ -24,5 +24,6 @@
 	
 	<mybatis-spring:scan base-package="com.spring.jj9.purchase.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.jj9.message.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.order.mapper"/>
 		
 </beans>

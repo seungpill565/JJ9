@@ -44,13 +44,7 @@ public class TalentAll {
 	    private String review_content;
 	    private Date review_date;
 	    
-	    //message
-	    private Integer message_id;
-		private String message_name;
-		private String message_content;
-		private String sender_id;
-		private String resiver;
-		private Timestamp message_date;
+	  
 
 	
 }

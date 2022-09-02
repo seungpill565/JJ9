@@ -17,4 +17,9 @@
    <select id="getgardelist" resultType="com.spring.jj9.dto.TalentAll">
 	SELECT review_grade from review where talent_id = #{id}
   </select>
+  
+  <select id="getCouponList" resultType="com.spring.jj9.dto.Coupon">
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  </select>
+  
 </mapper>

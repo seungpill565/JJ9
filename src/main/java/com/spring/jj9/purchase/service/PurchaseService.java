@@ -11,5 +11,6 @@ public interface PurchaseService {
 	public List<TalentAll> getReviewList(int id);
 	public double getSumReviewGrade(int id);
 	public int getCountGrade(int id);
+	
 
 }
