@@ -1,15 +1,28 @@
 package com.spring.jj9.member.service;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
-import com.spring.jj9.dto.Member;
+import com.spring.jj9.member.mapper.MemberMapper;
 
 @Service
 public class LoginServiceImpl implements LoginService {
 
+	MemberMapper mapper;
+
+	@Override
+	public String login(String id, String password) {
+		
+		return null;
+	}
+	
 	
 
+//	@Inject
+//	SqlSession sqlSession;
+	
+//	@Override
+//	public String login(Member member) {
+//		return sqlSession.selectOne("member.login", member);
+//	}
+	
 }

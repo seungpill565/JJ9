@@ -4,4 +4,5 @@ import com.spring.jj9.dto.Member;
 
 public interface LoginService {
 	
+	public String login(String id, String password);
 }
