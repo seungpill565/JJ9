@@ -1,5 +1,6 @@
 package com.spring.jj9.member.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.member.mapper.MemberMapper;
@@ -7,12 +8,13 @@ import com.spring.jj9.member.mapper.MemberMapper;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+	@Autowired
 	MemberMapper mapper;
 
 	@Override
-	public String login(String id, String password) {
+	public Integer login(String id, String password) {
 		
-		return null;
+		return mapper.login(id, password);
 	}
 	
 	

@@ -29,7 +29,9 @@ public class LoginController {
 		
 		log.info("ID: " + id + " PW: " + password);
 		
-		String row = service.login(id, password);
+		Integer row = service.login(id, password);
+		
+		log.info(row);
 		
 		HttpSession session = request.getSession();
 		// 관리자 로그인
