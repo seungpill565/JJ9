@@ -4,18 +4,18 @@ import java.util.List;
 
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.util.Criteria;
 
 public interface CategoryService {
-
-	public List<Category> readCategory(int id);
 	
 	public List<Category> readMainCategory(int id);
 	
 	public List<TalentAll> readTalentAllByCate_main(int id);
 	
-	public List<TalentAll> readTalentAllByCate_id(int id);
+	public List<Category> readAllMainCategory();
 	
-	public List<Category> readAllAminCategory();
+	public List<TalentAll> readTalentAllByRownum(Criteria cri); // 페이징
 	
-	public List<TalentAll> readTalentById(int id);
+	public Integer readTotalTalent();
+	
 }

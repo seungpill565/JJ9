@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.jj9.category.mapper.CategoryMapper;
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.util.Criteria;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -20,24 +21,7 @@ public class CategoryServiceImpl implements CategoryService{
 	CategoryMapper mapper;
 	
 	private Integer checkCate=0; // id가 메인일때 0 / id가 서브일때 1
-		
-	@Override
-	public List<Category> readCategory(int id) {
-		List<Category> list = new ArrayList<>();
-		list = mapper.readAll();
-		
-		return mapper.readAll();
-	}
-	
-	
-
-	@Override
-	public List<TalentAll> readTalentById(int id) {
-		
-		return mapper.readTalentByID(id);
-	}
-
-
+			
 
 	@Override
 	public List<Category> readMainCategory(int id) {
@@ -57,7 +41,6 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 
-
 	@Override
 	public List<TalentAll> readTalentAllByCate_main(int id) {
 		
@@ -71,20 +54,23 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 
-
 	@Override
-	public List<TalentAll> readTalentAllByCate_id(int id) {
-		
-		//String cate_sub = 
-		
-		return null;
+	public List<Category> readAllMainCategory() {
+
+		return mapper.readAllMainCategorys();
 	}
 
 
+	@Override
+	public List<TalentAll> readTalentAllByRownum(Criteria cri) { // 페이징 
+
+		return mapper.readTalentAllByRownum(cri);
+	}
+
 
 	@Override
-	public List<Category> readAllAminCategory() {
+	public Integer readTotalTalent() {
 
-		return mapper.readAllMainCategorys();
+		return mapper.readTotalTalent();
 	}
 }

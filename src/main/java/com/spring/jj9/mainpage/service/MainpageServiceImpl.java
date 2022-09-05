@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
+import com.spring.jj9.dto.TalentAll;
 import com.spring.jj9.mainpage.mapper.MainpageMapper;
 
 @Service
@@ -18,6 +19,17 @@ public class MainpageServiceImpl implements MainpageService{
 	public List<Category> readMainCategory() { // 메인에 표시할 메인카테고리만 read
 
 		return mapper.readMainCate();
+	}
+
+	@Override
+	public List<TalentAll> readBestPurchase() {
+	
+		return mapper.readBestPurchase();
+	}
+
+	@Override
+	public List<TalentAll> readNewPurchase() {
+		return mapper.readNewPurchase();
 	}
 
 }

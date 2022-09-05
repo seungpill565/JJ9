@@ -3,10 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
-  <select id="readAll" resultType="com.spring.jj9.dto.Category">
-    	select * from category
-  </select>
-  
+
   <select  id="readMainCategoryById" resultType="com.spring.jj9.dto.Category">
   		select * from category where cate_id = #{id} <!-- 특정 아이디의 카테고리 -->
   </select>
@@ -26,15 +23,27 @@
   <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll"> <!-- 서브 눌렀을때 표시할 재능들 -->
   		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_id = #{cate_id}
   </select>
- 
   
-  <select id="readTalentByID" resultType="com.spring.jj9.dto.TalentAll">
+  <!-- 첫번째 페이징 쿼리문
+  <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">  talent_id 순으로 10개씩 잘라서 불러오기 
+  		<![CDATA[
   		select * from 
-  		talent_list 
-  		inner join category using(cate_id) 
-  		inner join member using(member_id) 
-  		<!-- inner join review using(talent_id)  review는 안만들어서 일단 주석-->
-  		where cate_id = #{id} 
+  		(select rownum, a.* from
+  		(select * from talent_list order by talent_id desc) a) 
+  		where rownum > (#{pageNum}-1) * #{amount} 
+  		and rownum <= #{pageNum} * #{amount}]]>
+  </select>
+   -->
+   
+   <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">   
+  		select * from 
+  		(select rownum, a.* from
+  		(select * from talent_list order by talent_id desc) a) 
+  		where rownum between #{rowStart} and #{rowEnd}
   </select>
   
+  <select id="readTotalTalent" resultType="int"> <!-- 등록된 재능의 총 개수 -->
+  		select count(talent_id) as total from Talent_list
+  </select>
+ 
 </mapper>

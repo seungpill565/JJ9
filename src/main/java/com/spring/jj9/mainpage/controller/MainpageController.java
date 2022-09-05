@@ -23,6 +23,8 @@ public class MainpageController {
 		//log.info(service.readMainCategory());
 		
 		model.addAttribute("categorys", service.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", service.readBestPurchase());
+		model.addAttribute("newpurchases", service.readNewPurchase());
 		
 		return "mainpage/mainpage";
 	}
