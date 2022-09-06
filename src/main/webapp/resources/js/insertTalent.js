@@ -9,6 +9,7 @@ xhttp1.addEventListener('readystatechange', (e) => {
 	
 	if (readyState == 4) {
 		
+		console.log(responseText);
 		const categories = JSON.parse(responseText);
 		
 		// select_sub_cate 내부의 첫번째 옵션을 제외하고 모두 지움.

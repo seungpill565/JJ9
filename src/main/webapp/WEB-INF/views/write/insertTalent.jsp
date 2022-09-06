@@ -9,8 +9,10 @@
 </head>
 <body>
 	<h3>재능 등록</h3>
+	
 	<form action="./insert" method="POST" enctype="multipart/form-data">
-	카테고리 <select id="select-cate-main" name="cate-main">
+		카테고리 
+		<select id="select-cate-main" name="cate-main">
 			<option value="null">카테고리 선택</option>
 			<c:forEach items="${mainCates }" var="cate">
 				<option value="${cate.cate_main }">${cate.cate_main }</option>
