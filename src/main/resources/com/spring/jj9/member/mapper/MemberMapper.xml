@@ -26,8 +26,8 @@
 	 <select id="idChecker" resultType="int" parameterType="String">
 	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}
 	 </select>
-	 <select id="login" resultType="int" parameterType="String">
-	 	SELECT COUNT(member_id, member_password) FROM member 
-	 	WHERE member_id = #{member_id} AND member_password = #{member_password}
+	 <select id="login" resultType="String" parameterType="String">
+	 	select member_name from member
+	 	where member_id = #{member_id} and member_password = #{member_password}
 	 </select>
 </mapper>

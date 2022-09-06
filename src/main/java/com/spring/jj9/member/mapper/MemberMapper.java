@@ -14,5 +14,5 @@ public interface MemberMapper {
 	
 	public Integer idChecker(String ID);
 	
-	public Integer login(String member_id, String member_password);
+	public String login(Member member);
 }

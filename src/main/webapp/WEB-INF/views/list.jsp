@@ -9,6 +9,9 @@
 </head>
 <body>
 <%@ include file="./include/menu.jsp" %>	
+<c:if test="${sessionScope.member_name != null }">
+	<h2>${sessionScope.member_name }(${sessionScope.member_id })님 환영합니다.</h2>
+</c:if>
 	<h1>member-list</h1>
 	
 	<ul>

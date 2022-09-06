@@ -1,6 +1,8 @@
 package com.spring.jj9.member.service;
 
+import com.spring.jj9.dto.Member;
+
 public interface LoginService {
 	
-	public Integer login(String id, String password);
+	public String login(Member member);
 }
