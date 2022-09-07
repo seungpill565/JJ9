@@ -24,14 +24,14 @@
 		</select> <br>
 		
 
-	제목 <input type="text" name="talent_title"/> <br>
-	가격 <input type="number" name="talent_price"/> <br>
-	작업기간 <input type="text"/> <br>	
-	이미지 <input type="file" name="image_file"/> 최대 15MB<br>
-	상세내용 <input type="text" name="talent_service_exp"/> <br>
-	커리큘럼 <input type="text" name="talent_curriculum"/> <br>
-	<input type="hidden" value="1" name="member_id"/>
-	<input type="submit" value="올리기"/>
+		제목 <input type="text" name="talent_title"/> <br>
+		가격 <input type="number" name="talent_price"/> <br>
+		작업기간 <input type="text"/> <br>	
+		이미지 <input type="file" name="image_file"/> 최대 15MB<br>
+		상세내용 <input type="text" name="talent_service_exp"/> <br>
+		커리큘럼 <input type="text" name="talent_curriculum"/> <br>
+		<input type="hidden" value="1" name="member_id"/>
+		<input type="submit" value="올리기"/>
 	</form>
 	
 	

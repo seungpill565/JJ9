@@ -13,4 +13,9 @@
 	<select id="getRequestList" resultType="com.spring.jj9.dto.Talent_request">
 		SELECT * FROM talent_request
 	</select>
+	<insert id="insertRequest" parameterType="com.spring.jj9.dto.Talent_request">
+		INSERT INTO talent_request VALUES(request_id_seq.nextval, #{member_id}, #{trequest_title}, #{trequest_content},
+									 #{trequest_date}, #{trequest_deadline}, #{trequest_budget}, #{cate_id})
+	
+	</insert>
 </mapper>

@@ -52,13 +52,16 @@ public class InsertTalentController {
 			String fileName = multi.getFilesystemName("image_file");
 			
 			if (
-					multi.getParameter("talent_price") == null || multi.getParameter("talent_price").equals("") ||
 					multi.getParameter("cate-sub") == null || multi.getParameter("cate-sub").equals("null") ||
 					multi.getParameter("cate-sub").equals("")
 					) {
-				
 			    ScriptAlertUtils.alertAndBackPage(response, "카테고리를 선택해주세요!");
+			} else if (
+					multi.getParameter("talent_price") == null || multi.getParameter("talent_price").equals("")
+					) {
+				ScriptAlertUtils.alertAndBackPage(response, "가격을 입력해주세요!");
 			}
+			
 			
 			Integer	cate_id = cateService.getCateIdBySub(multi.getParameter("cate-sub"));
 			String	member_id = multi.getParameter("member_id");
@@ -68,7 +71,12 @@ public class InsertTalentController {
 		    String	talent_service_exp = multi.getParameter("talent_service_exp");
 		    String	talent_curriculum = multi.getParameter("talent_curriculum");
 			
-			
+		
+		    if (talent_price <= 0) {
+		    	ScriptAlertUtils.alertAndBackPage(response, "올바르지 않은 가격입니다!");
+		    }
+		    
+		    
 		    if(
 		    		cate_id == null || cate_id.equals("") ||
 		    		member_id == null || member_id.equals("") ||
@@ -77,7 +85,6 @@ public class InsertTalentController {
 		    		talent_service_exp == null || talent_service_exp.equals("") ||
 		    		talent_curriculum == null || talent_curriculum.equals("")
 		    		) {
-		    	
 		    	ScriptAlertUtils.alertAndBackPage(response, "내용을 채워주세요!");
 		    }
 			

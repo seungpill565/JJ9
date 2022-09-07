@@ -12,4 +12,6 @@ public interface RequestMapper {
 	public List<Category> getSubCateByMain(String cate_main);
 	
 	public List<Talent_request> getRequestList();
+	
+	public Integer insertRequest(Talent_request tr);
 }

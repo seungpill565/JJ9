@@ -14,6 +14,9 @@ public class Talent_request {
 	private String trequest_title;
 	private String trequest_content;
 	private Date trequest_date;
+	private Date trequest_deadline;
+	private Integer trequest_budget;
+	private Integer cate_id;
 	 
 
 }

@@ -36,3 +36,5 @@ select_main_cate.addEventListener('change', (e) => {
 	xhttp1.open('GET', '/jj9/insertRequest/' + e.target.value);
 	xhttp1.send();
 });
+
+

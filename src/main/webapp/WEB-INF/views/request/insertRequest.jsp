@@ -11,7 +11,7 @@
 
 	<h3>재능 의뢰 등록</h3>
 	
-	<form action="" method="POST" enctype="multipart/form-data">
+	<form action="./insertRequest" method="POST">
 		카테고리
 		<select id="select-cate-main" name="cate-main">
 			<option value="null">카테고리 선택</option>
@@ -23,14 +23,21 @@
 		<select name="cate-sub" id="select-cate-sub">
 			<option value="null">세부 카테고리 선택</option>
 		</select>
-	
+		<br>
+		
+		제목 <input type="text" name="trequest_title"/> <br>
+		예산 <input type="number" name="trequest_budget"/> <br>
+		마감일 <input type="date" name="trequest_deadline" id="request-deadline"> <br>	
+		상세내용 <input type="text" name="trequest_content"/> <br>
+		<input type="hidden" value="1" name="member_id"/>
+		<input type="submit" value="올리기"/>
 	
 	</form>
 	
-	
-	
-
-
 	<script src="/jj9/resources/js/insertRequest.js"></script>
+	
+	<script>
+	document.getElementById('request-deadline').value = new Date().toISOString().substring(0, 10);
+	</script>
 </body>
 </html>
