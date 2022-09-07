@@ -60,8 +60,7 @@ $(function() {
 				</td>
 			</tr>
 		</table>
-		<a href="idsearch">아이디 찾기</a>
-		<a href="pwsearch">비밀번호 찾기</a><br>
+		<a href="find/user">아이디/비밀번호 찾기</a> <br>
 		<a href="register">아이디가 없으신가요? 회원가입</a>
 	</form>
 	
