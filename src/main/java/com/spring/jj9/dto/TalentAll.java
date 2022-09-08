@@ -23,7 +23,7 @@ public class TalentAll {
         private    Integer   talent_paycount;
         
         // 페이징 시 필요한 컬럼 테이블에는 속해있지 않다
-        private    Integer   rownum;
+        private    Integer   rn; //rownum
 
         // category
 

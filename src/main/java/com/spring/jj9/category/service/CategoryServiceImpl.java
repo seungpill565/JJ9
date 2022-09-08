@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService{
 
 
 	@Override
-	public List<TalentAll> readTalentAllByCate_main(int id) {
+	public List<TalentAll> readTalentAllByMainOrSub(int id) {
 		
 		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main(); // 접속한 id의 메인카테고리
 		
@@ -62,9 +62,9 @@ public class CategoryServiceImpl implements CategoryService{
 
 
 	@Override
-	public List<TalentAll> readTalentAllByRownum(Criteria cri) { // 페이징 
+	public List<TalentAll> readTalentAllForPaging(Criteria cri) { // 페이징 
 
-		return mapper.readTalentAllByRownum(cri);
+		return mapper.readTalentAllForPaging(cri);
 	}
 
 
@@ -73,4 +73,18 @@ public class CategoryServiceImpl implements CategoryService{
 
 		return mapper.readTotalTalent();
 	}
+
+
+	@Override
+	public Integer readTalentAllByMainOrSubCount(int id) { // 메인카테고리 눌렀을때 나오는 재능들의 총 개수
+
+		String cate_main = mapper.readMainCategoryById(id).get(0).getCate_main();
+		
+		if(checkCate==0) {
+			return mapper.readTalentAllByCate_mainCount(cate_main); // 메인 카테고리 클릭 시 메인카테고리의 재능 총 개수 리턴
+		}else { 
+			return mapper.readTalentAllByCate_idCount(id); // 서브 카테고리 클릭 시 서브카테고리의 재능 총 개수 리턴
+		}
+	}
+
 }

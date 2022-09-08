@@ -18,7 +18,11 @@ public interface CategoryMapper {
 	
 	public List<TalentAll> readTalentAllByCate_id(int id); // 서브 카테고리 클릭 시 보여지는 재능 리턴
 	
-	public List<TalentAll> readTalentAllByRownum(Criteria cri); // 페이징
+	public List<TalentAll> readTalentAllForPaging(Criteria cri); // 페이징
+	
+	public Integer readTalentAllByCate_mainCount(String cate_main); // 메인 카테고리 클릭 시 보여지는 재능들의 총 개수
+	
+	public Integer readTalentAllByCate_idCount(int id); // 서브 카테고리 클릭 시 보여지는 재능들의 총 개수
 	
 	public Integer readTotalTalent();
 	

@@ -17,12 +17,51 @@
   </select>
   
   <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll"> <!-- 메인만 눌렀을때 표시할 재능들 -->
-  		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_main = #{cate_main}
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
+  		order by talent_id desc
+  </select>
+  
+    <select  id="readTalentAllByCate_mainCount" resultType="int"> <!-- 메인만 눌렀을때 표시할 재능들의 총 개수 -->
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
   </select>
   
   <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll"> <!-- 서브 눌렀을때 표시할 재능들 -->
-  		select * from talent_list inner join category using(cate_id) inner join member using(member_id) where cate_id = #{cate_id}
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  		order by talent_id desc
   </select>
+  
+  <select id="readTalentAllByCate_idCount" resultType="int"> <!-- 서브 눌렀을때 표시할 재능들의 총 개수 -->
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  </select>
+  
+  <select id="readTalentAllForPaging" resultType="com.spring.jj9.dto.TalentAll">
+    <![CDATA[
+        
+       select * from(        
+                select rownum rn, tal.*
+                from (select * from talent_list order by talent_id desc) tal where rownum <= #{pageNum} * #{amount})
+        where rn > (#{pageNum} - 1) * #{amount}
+    
+    ]]>
+    
+    </select>
+
+	<select id="readTotalTalent" resultType="int"> <!-- 등록된 재능의 총 개수 -->
+		select count(talent_id) as total from Talent_list where member_id is
+		not null
+	</select>
   
   <!-- 첫번째 페이징 쿼리문
   <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">  talent_id 순으로 10개씩 잘라서 불러오기 
@@ -35,15 +74,14 @@
   </select>
    -->
    
+   <!-- 두번째 페이징 쿼리문 
    <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">   
   		select * from 
   		(select rownum, a.* from
   		(select * from talent_list order by talent_id desc) a) 
   		where rownum between #{rowStart} and #{rowEnd}
   </select>
-  
-  <select id="readTotalTalent" resultType="int"> <!-- 등록된 재능의 총 개수 -->
-  		select count(talent_id) as total from Talent_list
-  </select>
+   -->
+
  
 </mapper>
