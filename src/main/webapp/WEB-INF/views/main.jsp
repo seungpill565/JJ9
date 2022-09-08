@@ -8,6 +8,7 @@
 <title>jj9 재능 구조대 메인</title>
 </head>
 <body>
-
+<%@ include file="./include/menu.jsp" %>
+<h1>메인 페이지</h1>
 </body>
 </html>
