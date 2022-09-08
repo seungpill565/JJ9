@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jj9 회원가입 페이지</title>
+<title>jj9 - 재능구조대</title>
 </head>
 <body>
 	
