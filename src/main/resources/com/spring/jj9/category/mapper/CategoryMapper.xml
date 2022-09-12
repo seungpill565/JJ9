@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
 
-  <select  id="readMainCategoryById" resultType="com.spring.jj9.dto.Category">
+  <select  id="readCategoryById" resultType="com.spring.jj9.dto.Category">
   		select * from category where cate_id = #{id} <!-- 특정 아이디의 카테고리 -->
   </select>
   
@@ -16,72 +16,56 @@
   		select * from category where cate_main = #{cate_main} and cate_sub is not null <!-- 메인카테고리 별 서브카테고리들  -->
   </select>
   
-  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll"> <!-- 메인만 눌렀을때 표시할 재능들 -->
-  		select * from talent_list 
-  		inner join category using(cate_id) 
-  		inner join member using(member_id)  
-  		where cate_main = #{cate_main} and member_id is not null
-  		order by talent_id desc
-  </select>
-  
-    <select  id="readTalentAllByCate_mainCount" resultType="int"> <!-- 메인만 눌렀을때 표시할 재능들의 총 개수 -->
+  <select  id="readTalentCountByMainCate" resultType="int"> <!-- 메인만 눌렀을때 표시할 재능들의 총 개수 -->
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id)  
   		where cate_main = #{cate_main} and member_id is not null
   </select>
   
-  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll"> <!-- 서브 눌렀을때 표시할 재능들 -->
-  		select * from talent_list 
-  		inner join category using(cate_id) 
-  		inner join member using(member_id) 
-  		where cate_id = #{cate_id} and member_id is not null
-  		order by talent_id desc
-  </select>
-  
-  <select id="readTalentAllByCate_idCount" resultType="int"> <!-- 서브 눌렀을때 표시할 재능들의 총 개수 -->
+  <select id="readTalentCountBySubCate" resultType="int"> <!-- 서브 눌렀을때 표시할 재능들의 총 개수 -->
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id) 
   		where cate_id = #{cate_id} and member_id is not null
   </select>
-  
-  <select id="readTalentAllForPaging" resultType="com.spring.jj9.dto.TalentAll">
+
+	<select id="readTalentAllForPagingByMainCate" resultType="com.spring.jj9.dto.TalentAll"> <!-- 메인 카테고리를 눌렀을때 불러오는 메인 재능들 / 페이징 시 필요 -->
     <![CDATA[
-        
-       select * from(        
-                select rownum rn, tal.*
-                from (select * from talent_list order by talent_id desc) tal where rownum <= #{pageNum} * #{amount})
-        where rn > (#{pageNum} - 1) * #{amount}
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list inner join category using(cate_id) where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
     ]]>
-    
-    </select>
-
-	<select id="readTotalTalent" resultType="int"> <!-- 등록된 재능의 총 개수 -->
-		select count(talent_id) as total from Talent_list where member_id is
-		not null
 	</select>
+    
+      <select id="readTalentAllForPagingBySubCate" resultType="com.spring.jj9.dto.TalentAll"> <!-- 서브 카테고리를 눌렀을때 불러오는 서브 재능들 / 페이징 시 필요-->
+    <![CDATA[
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list inner join category using(cate_id) where cate_id = #{cate_id} and member_id is not null order by talent_id desc) tal 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+    </select>
+ <!-- 
+  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll">  메인만 눌렀을때 표시할 재능들 
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
+  		order by talent_id desc
+  </select>
   
-  <!-- 첫번째 페이징 쿼리문
-  <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">  talent_id 순으로 10개씩 잘라서 불러오기 
-  		<![CDATA[
-  		select * from 
-  		(select rownum, a.* from
-  		(select * from talent_list order by talent_id desc) a) 
-  		where rownum > (#{pageNum}-1) * #{amount} 
-  		and rownum <= #{pageNum} * #{amount}]]>
+  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll">  서브 눌렀을때 표시할 재능들 
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  		order by talent_id desc
   </select>
    -->
-   
-   <!-- 두번째 페이징 쿼리문 
-   <select id="readTalentAllByRownum" resultType="com.spring.jj9.dto.TalentAll">   
-  		select * from 
-  		(select rownum, a.* from
-  		(select * from talent_list order by talent_id desc) a) 
-  		where rownum between #{rowStart} and #{rowEnd}
-  </select>
-   -->
-
- 
 </mapper>

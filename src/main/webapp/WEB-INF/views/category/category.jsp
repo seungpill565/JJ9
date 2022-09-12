@@ -96,8 +96,8 @@ a:hover {
 	</div>
 	
 	<br />
-
-	<div>재능 목록 <br /> <!-- 페이징 없이 카테고리별 재능 표시 -->
+<!-- 
+	<div>재능 목록 <br />  페이징 없이 카테고리별 재능 표시 
 		<c:forEach items="${purchases }" var="purchase">
 			<div>
 				<span>
@@ -113,7 +113,7 @@ a:hover {
 		</c:forEach>
 		
 	</div>
-	 
+	  -->
 	
 	<br /><br />
 	
@@ -192,5 +192,6 @@ a:hover {
 	
 
 	<script src="/jj9/resources/js/category.js"></script>
+
 </body>
 </html>

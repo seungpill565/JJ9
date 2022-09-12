@@ -1,5 +1,6 @@
 package com.spring.jj9.category.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,28 +24,15 @@ public class CategoryController {
 	
 	@GetMapping(value={"/{id}"})
 	public String category1(@PathVariable("id") int id, Model model, Criteria cri) {
-		//log.info(service.readCategory(id));
-		model.addAttribute("subcategorys", service.readMainCategory(id)); // 서브카테고리 
+
+		model.addAttribute("subcategorys", service.readCategory(id)); // 서브카테고리 
 		model.addAttribute("maincategorys", service.readAllMainCategory()); // 메인카테고리
-		model.addAttribute("purchases", service.readTalentAllByMainOrSub(id)); // 카테고리별 재능들
-//		log.info("1로그 : ",service.readMainCategory(id));
-//		log.info("2로그 : ",service.readTalentAllByCate_main(id));
+		//model.addAttribute("purchases", service.readTalentAllByMainOrSub(id)); // 카테고리별 재능들
+
+		model.addAttribute("purchases", service.readTalentAllForPaging(cri, id));
 		
-		// 첫번째 페이징 코드
-//		Criteria cri = new Criteria();
-//		CategoryPageVO pageVO = new CategoryPageVO(cri, service.readTotalCategory());
-//		model.addAttribute("pagevo", pageVO);
-//		model.addAttribute("pages", service.readTalentAllByRownum(cri));
-		//////////////////////////////////////////////////////////////////////////////
-		
-		//cri.setPageNum(id);
-		model.addAttribute("lists", service.readTalentAllForPaging(cri)); // 페이징 할 재능 10개
-//		CategoryPageVO pageVO = new CategoryPageVO();
-//		pageVO.setCri(cri);
-//		pageVO.setTotalCount(service.readTotalTalent());
-		
-		//int total = service.readTotalTalent(); // 해당 카테고리에 등록되어있는 재능의 총합
 		int cateTotal = service.readTalentAllByMainOrSubCount(id); // 카테고리별 재능의 총 개수 
+		System.out.println("id : " + id + "cri pagenum: " + cri.getPageNum() + " cri amout : " + cri.getAmount());
 		
 		PageMake page = new PageMake(cri, cateTotal);
 		
