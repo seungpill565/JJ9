@@ -1,6 +1,7 @@
 package com.spring.jj9.member.controller;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +36,10 @@ public class RegisterController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
+	// 이메일 인증번호
+	private int authNumber;
+	
+	@RequestMapping(value = "/sendMailTest", method = RequestMethod.GET)
     public String sendMailTest() throws Exception{
         
         String subject = "test 메일";
@@ -105,6 +109,8 @@ public class RegisterController {
 		String phone2 = member.getPhone2();
 		String phone3 = member.getPhone3();
 		
+		String member_email = member.getMember_email();
+		
 		log.info("적은 아이디가 오는지 확인 " + member_id);
 		log.info("비밀번호와 비밀번호 재확인 " + member_password);
 		log.info("재확인 " + member_rePassword);
@@ -160,10 +166,10 @@ public class RegisterController {
 		
 	} 
 	
-	// 이메일 인증
+	// 이메일 본인인증
 	@ResponseBody
 	@PostMapping(value="/emailCheck", produces = MediaType.TEXT_PLAIN_VALUE)
-	public String emailCheck(Member member, @RequestParam String email, Model model) {
+	public String emailCheck(@RequestParam String email) throws Exception {
 		log.info("RegisterController email 발송 여부 " + email);
 		
 		// 1. 이메일 정규표현식
@@ -174,7 +180,35 @@ public class RegisterController {
 		}
 		
 		// 2. mailSender 로 보내서 인증
-		
+			// subject - 메일 제목, content - 메일 내용, from - 보내는 사람, to - 받는 사람
+		String subject = "jj9 재능구조대 회원가입 인증번호입니다.";
+        String from = "jj9 - <testjj9mail@naver.com>";
+        String to = "kevinj0695@naver.com";
+        
+        getRandomNum();
+        
+        String content = "jj9 재능구조대 홈페이지를 방문해주셔서 감사합니다."
+        		+ "<br><br>"
+        		+ "인증번호는 [" + authNumber + "] 입니다."
+        		+ "<br>" 
+        		+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+        
+        try {
+            MimeMessage mail = mailSender.createMimeMessage();
+            MimeMessageHelper mailHelper = new MimeMessageHelper(mail, true, "UTF-8");
+            
+            mailHelper.setFrom(from);
+            mailHelper.setTo(to);
+            mailHelper.setSubject(subject);
+            mailHelper.setText(content, true);
+            
+            mailSender.send(mail);
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        
 		return "0";
 	}
 	
@@ -195,5 +229,16 @@ public class RegisterController {
 		 }
 		 
 		 return err;
+	 }
+	 
+	 /**
+	  * Comment : 난수 번호 생성 (이메일 인증번호가 될 번호)
+	  */
+	 public void getRandomNum() {
+		// 난수의 범위 111111 ~ 999999 (6자리 난수)
+			Random r = new Random();
+			int checkNum = r.nextInt(888888) + 111111;
+			System.out.println("인증번호 : " + checkNum);
+			authNumber = checkNum;
 	 }
 }

@@ -176,7 +176,7 @@ $(function() {
 					console.log(result);
 					let resultText = null;
 					if (result == 0) {
-						resultText = "본인 인증에 성공하였습니다.";
+						resultText = "인증 번호를 전송했습니다. 입력한 이메일에서 확인해주세요";
 					} else if (result == -1) {
 						resultText = "올바른 이메일 형식이 아닙니다. 다시 시도해주세요"
 					}

@@ -22,6 +22,7 @@ public class Member {
     private String member_name;
     private String member_nickName;
     private String member_comments;
+    private String member_level;
     
     //비밀번호 재확인이 필요
     private String member_rePassword;
