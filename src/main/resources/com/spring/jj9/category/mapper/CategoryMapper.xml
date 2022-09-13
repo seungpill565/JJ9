@@ -34,7 +34,10 @@
     <![CDATA[
        select * from
        (select rownum rn, tal.* from 
-       (select * from talent_list inner join category using(cate_id) where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
+       (select * from talent_list 
+       inner join member using(member_id) 
+       inner join category using(cate_id) 
+       where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
        where rownum <= #{cri.pageNum} * #{cri.amount})
        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
@@ -45,27 +48,28 @@
     <![CDATA[
        select * from
        (select rownum rn, tal.* from 
-       (select * from talent_list inner join category using(cate_id) where cate_id = #{cate_id} and member_id is not null order by talent_id desc) tal 
+       (select * from talent_list
+        inner join member using(member_id) 
+        inner join category using(cate_id) 
+        where cate_id = #{cate_id} and member_id is not null order by talent_id desc) tal 
        where rownum <= #{cri.pageNum} * #{cri.amount})
        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
     ]]>
     </select>
- <!-- 
-  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll">  메인만 눌렀을때 표시할 재능들 
-  		select * from talent_list 
-  		inner join category using(cate_id) 
-  		inner join member using(member_id)  
-  		where cate_main = #{cate_main} and member_id is not null
-  		order by talent_id desc
-  </select>
-  
-  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll">  서브 눌렀을때 표시할 재능들 
-  		select * from talent_list 
-  		inner join category using(cate_id) 
-  		inner join member using(member_id) 
-  		where cate_id = #{cate_id} and member_id is not null
-  		order by talent_id desc
-  </select>
-   -->
+    
+    	<select id="readTalentAllBySearch" resultType="com.spring.jj9.dto.TalentAll"> <!-- 메인 카테고리를 눌렀을때 불러오는 메인 재능들 / 페이징 시 필요 -->
+   
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list 
+       inner join member using(member_id) 
+       inner join category using(cate_id) 
+       where talent_title = '%#{cri.keyword}%' and member_id is not null  order by talent_id desc) tal
+        <![CDATA[ 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+	</select>
 </mapper>

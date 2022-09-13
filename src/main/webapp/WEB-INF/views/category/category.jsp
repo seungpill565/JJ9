@@ -147,12 +147,12 @@ a:hover {
 					<!-- 이전페이지 버튼 -->
 					<c:if test="${page.prev}">
 						<li class="pageInfo_btn previous">
-							<a href="${page.startPage-1}">이전</a>
+							<a href="${page.startPage-1}">이전</a> <!-- 11~20 페이지를 보고있다면 이전 버튼 클릭 시 11-1 페이지로 이동 -->
 						</li>
 					</c:if>
 					<!-- 각 번호 페이지 버튼 -->
 					<c:forEach var="num" begin="${page.startPage}" end="${page.endPage}">
-                    <li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }">
+                    <li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }"> <!-- 내가 클릭한 페이지 번호에 음영 넣기 -->
                              		<a href="${num }">${num}</a></li>
 
                 </c:forEach>
@@ -160,7 +160,7 @@ a:hover {
 					<!-- 다음페이지 버튼 -->
 					<c:if test="${page.next}">
 						<li class="pageInfo_btn next">
-							<a href="${page.endPage + 1 }">다음</a>
+							<a href="${page.endPage + 1 }">다음</a> <!--  11~20 페이지를 보고있다면 다음 버튼 클릭 시 20+1 페이지로 이동 -->
 						</li>
 					</c:if>
 

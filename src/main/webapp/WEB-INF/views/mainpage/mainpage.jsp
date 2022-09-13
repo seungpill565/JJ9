@@ -6,6 +6,19 @@
 <head>
 <meta charset="EUC-KR">
 <title>jj9</title>
+<style>
+.bestNew {
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.bestNew > * {
+    
+    padding: 30px;
+}
+
+</style>
 </head>
 <body>
 
@@ -55,8 +68,10 @@
 	
 	<br />
 	
-	<h3>BEST 재능</h3>
-	<div>
+	<div class="bestNew">
+	
+	
+	<div><h3>BEST 재능</h3>
 		<c:forEach items="${bestpurchases }" var="bestpurchase">
 			<span>
 					<a href="purchase/${bestpurchase.talent_id }">
@@ -77,8 +92,8 @@
 	
 	<br />
 	
-	<h3>NEW 재능</h3>
-	<div>
+	
+	<div><h3>NEW 재능</h3>
 		<c:forEach items="${newpurchases }" var="newpurchase">
 			<span>
 					<a href="purchase/${newpurchase.talent_id }">
@@ -95,6 +110,8 @@
 				<br />
 		</c:forEach>
 		
+	</div>
+	
 	</div>
 	
 	<br />

@@ -23,9 +23,4 @@ public interface CategoryMapper {
 	public List<TalentAll> readTalentAllForPagingByMainCate(@Param("cri")Criteria cri, @Param("cate_main")String cate_main); // 메인 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
 	
 	public List<TalentAll> readTalentAllForPagingBySubCate(@Param("cri")Criteria cri, @Param("cate_id")int cate_id); // 서브 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
-	
-
-//	public List<TalentAll> readTalentAllByCate_main(String cate_main); // 메인 카테고리 클릭 시 보여지는 재능
-//	
-//	public List<TalentAll> readTalentAllByCate_id(int id); // 서브 카테고리 클릭 시 보여지는 재능 리턴
 }

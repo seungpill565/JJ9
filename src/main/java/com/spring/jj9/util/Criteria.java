@@ -8,6 +8,7 @@ public class Criteria {
 	
 	private int pageNum; // 페이지 번호
 	private int amount; // 1페이지 당 목록 표시 개수
+	private String keyword; // 검색 시 파라미터로 받을 검색어
 
 	public Criteria() { // 매개변수로 아무것도 들어오지않으면 1페이지이므로 1, 10으로 초기화
 		this(1, 12);

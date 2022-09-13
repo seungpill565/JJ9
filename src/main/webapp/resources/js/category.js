@@ -1,32 +1,26 @@
-//<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-//const cate_id = document.getElementById('');
-
-
-
-//<c:forEach items="${categorys}" var="category">
-	//alert("${category.cate_id}");	// �쐞�뿉 list�굹 蹂��닔瑜� �꽑�뼵�븯怨� alert �옄由ъ뿉 �떞�쑝硫� 李⑤�����濡� 媛믪쓣 諛쏅뒗�떎.
-
-//</c:forEach>
+// view에서 JQuery 적용해야됨@@@@@@@@@@@@@@@
 
 let moveForm = $("#moveForm");
 
-var para = document.location.href.split("category/");
-console.log(para)
+var para = document.location.href.split("category/"); // url에서 category/ 기준으로 자른 문자열을 배열로 반환
+console.log(para) // prar[0], [1] 출력
 
-const link = window.location.pathname;
+const link = window.location.pathname; 
 console.log(link);
 
-console.log('para[1]  : ' + para[1]);
-console.log("test");
-console.log('test1');
+console.log('para[1]  : ' + para[1]); // 필요한건 cate_id 이므로 para[1] 확인 
+
 
 $(".pageInfo a").on("click", function(e){
- 
-	e.preventDefault();
-	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/jj9/category/"+para[1]);
+
+	// .find() : 해당하는 요소를 선택
+	// .val()  : 해당 변수의 value를 다시 설정
+ 	// .attr(a) : 선택된 요소 집합에서 첫번째 요소의 attributeName에 해당하는 속성값을 반환한다.
+ 	// $(this) : 1 ~ 10까지 페이징 번호 중 내가 누른 번호에 해당하는 것만 선택한다.
+ 	
+	e.preventDefault(); // a링크의 동작을 멈춘다 / 멈춰야 hidden form 으로 페이지 번호와 표시개수를 보낼 수 있고 페이지네이션이 작동한다
+	moveForm.find("input[name='pageNum']").val($(this).attr("href")); // input 요소 중 name이 pageNum 인 것을 선택 > 해당 value를 내가 선택한 페이지의 a 링크 경로로 설정 ( ${num}이다)
+	moveForm.attr("action", "/jj9/category/"+para[1]); // moveform 요소에 action 속성을 추가하고 속성의 값은 uri다
 	moveForm.submit();
         
 });
