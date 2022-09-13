@@ -32,4 +32,10 @@ public class RequestServiceImpl implements RequestService {
 		
 		return mapper.insertRequest(tr);
 	}
+	
+	@Override
+	public List<Talent_request> getRequestList() {
+		
+		return mapper.getRequestList();
+	}
 }

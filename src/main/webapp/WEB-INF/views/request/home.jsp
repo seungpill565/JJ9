@@ -9,19 +9,26 @@
 </head>
 <body>
 	
-	<button>재능 의뢰하기</button>
+	<a href="./insertRequest">재능 의뢰하기</a>
 	
 	<h4>카테고리</h4>
 	
 	<c:forEach items="${mainCates }" var="main" varStatus="status">
 		<ul>
-		${main.cate_main }
+		<a href="./request/${main.cate_main }">${main.cate_main }</a>
 		<c:set var="sub" value="sub${status.count}" />
 		<c:forEach items="${requestScope[sub] }" var="sub">
 			<li>${sub.cate_sub }</li>
 		</c:forEach>
 		</ul>
 	</c:forEach>
+	
+	<c:forEach items="${requests }" var="request">
+		<button value="${request.trequest_id }">${request.trequest_title }</button> <br>
+		
+	</c:forEach>
+	
+	
 	
 </body>
 </html>

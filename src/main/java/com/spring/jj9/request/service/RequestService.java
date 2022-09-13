@@ -12,4 +12,6 @@ public interface RequestService {
 	public List<Category> getSubCateByMain(String cate_main);
 	
 	public Integer insertRequest(Talent_request tr);
+	
+	public List<Talent_request> getRequestList();
 }
