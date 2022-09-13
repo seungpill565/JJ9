@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Coupon;
+import com.spring.jj9.dto.Member;
+import com.spring.jj9.dto.Pay;
 import com.spring.jj9.dto.TalentAll;
 import com.spring.jj9.order.mapper.OrderMapper;
 
@@ -28,6 +30,36 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Coupon getdiscount(int id) {
 		return mapper.getdiscount(id);
+	}
+
+	@Override
+	public int insertPay(Pay pay) {
+		return mapper.insertPay(pay);
+	}
+
+	@Override
+	public Pay getPay(String id) {
+		return mapper.getPay(id);
+	}
+
+	@Override
+	public int getPoint(String id) {
+		return mapper.getPoint(id);
+	}
+
+	@Override
+	public int updatePoint(Member member) {
+		return mapper.updatePoint(member);
+	}
+
+	@Override
+	public String getTalentId(int id) {
+		return mapper.getTalentId(id);
+	}
+
+	@Override
+	public int updateCoupon(Coupon coupon) {
+		return mapper.updateCoupon(coupon);
 	}
 
 }

@@ -10,11 +10,36 @@
   </select>
   
   <select id="getCoupon" resultType="com.spring.jj9.dto.Coupon">
-  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate and coupon_unused = '사용전'
+  	or member_id='abc'
   </select>
   
   <select id="getdiscount" resultType="com.spring.jj9.dto.Coupon">
   	SELECT * from coupon where coupon_id = #{id}
   </select>
+  
+  <insert id="insertPay">
+  	insert into pay values(PAY_ID_SEQ.nextval,#{talent_id},#{member_id},#{pay_way},#{pay_money},#{pay_original_money})
+  </insert>
+  
+  <select id="getPay" resultType="com.spring.jj9.dto.Pay">
+  	SELECT * FROM pay where member_id = #{id}
+  </select>
+  
+  <select id="getPoint" resultType="int">
+  	SELECT member_point FROM member where member_id = #{id}
+  </select>
+  
+  <select id="getTalentId" resultType="String"> 
+  	SELECT member_id from talent_list where talent_id = #{id}
+  </select>
+  
+  <update id="updatePoint">
+  	update member set member_point = #{member_point} where member_id = #{member_id}
+  </update>
+  
+  <update id="updateCoupon">
+  	update coupon set coupon_unused = '사용후' where coupon_id= #{coupon_id} and member_id = #{member_id}
+  </update>
   
 </mapper>

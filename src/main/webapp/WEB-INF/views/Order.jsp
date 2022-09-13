@@ -32,21 +32,37 @@
 	
 	
 	<h3>할인</h3>
+	<form action="<c:url value="/order/completed"/>" method="POST">
 	<div>사용 가능한 쿠폰</div>
 		<select id="select-cupon-name" name="name">
-			<option value="null">사용가능한 쿠폰없음</option>
+			<option value="0">쿠폰 목록</option>
 		
 		<c:forEach items="${coupon }" var="cou">
 			<option  value="${cou.coupon_id }">${cou.coupon_name }</option>
 		</c:forEach>
 		
+		
 	 </select>
-	 할인 <input id="input-cupon-value" type = "text" placeholder="선택하신 쿠폰이 없습니다." readonly style="border: none;"> <br>
+	 
 	
 	<h3>결제방법</h3>
 	<label><input type="radio" name="order" value="toss">toss</label> 
 	<label><input type="radio" name="order" value="payco">payco</label>
 	<label><input type="radio" name="order" value="무통장입금">무통장입금</label>
+	
+	<h3>결제 </h3>
+		<div id="">
+			<div>총서비스 금액 <input id="total-service" name="original-money" value = "${order.talent_price }" type="text" readonly style="border: none; text-align: right">원</div> 
+			<div >쿠폰 할인 할인 <input id="input-cupon-value" type = "text" placeholder="선택하신 쿠폰이 없습니다." readonly style="border: none;"> <br></div>
+			<div id="dis-pay">0원</div>
+		</div>
+		<hr>
+		<div>
+			총결제 금액 <input id="total-pay" name="money" value="${order.talent_price }" type="text" readonly style="border: none; text-align: right">원
+		</div>
+		<input id="order-button" type="submit" value="결제하기">
+	</form>
+	
 </c:forEach>
 <script type="text/javascript" src="/jj9/resources/js/Orderjs.js"></script>
 </body>

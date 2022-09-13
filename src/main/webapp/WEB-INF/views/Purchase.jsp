@@ -85,7 +85,7 @@
 		<div>작업일수 : ${purchase.talent_workday }일</div>
 		<div>${purchase.talent_summary }</div>
 		<div>${purchase.talent_price }원</div>
-		<form action="<c:url value="/order/${purchase.talent_id }"/>" method="POST">
+		<form action="<c:url value="/order/${purchase.talent_id }"/>" method="GET">
 			<input id="order-button" type="submit" value="구매하기">
 		</form>
 	</div>
