@@ -6,4 +6,20 @@
 	<select id="getMember" resultType="com.spring.jj9.dto.Member">
 		SELECT * FROM member WHERE member_id = #{member_id}
 	</select>	
+	
+	<select id="getAll" resultType="com.spring.jj9.dto.Member">
+		SELECT * FROM member
+	</select>
+	
+	<delete id="deleteMemberById">
+		DELETE FROM member Where member_id = #{id}
+	</delete>
+	
+	<update id="updateMember">
+		UPDATE member 
+		SET member_email = #{member_email}, member_phoneNum = #{member_phoneNum}, member_birthday = #{member_birthday}
+		, member_name = #{member_name}, member_nickName = #{member_nickName}, member_comments = #{member_comments}	
+		WHERE member_id = #{member_id}			
+	</update>
+	
 </mapper>

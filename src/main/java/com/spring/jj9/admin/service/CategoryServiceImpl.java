@@ -31,4 +31,13 @@ public class CategoryServiceImpl implements CategoryService{
 		mapper.deleteCateById(id);
 	}
 
+	
+
+	@Override
+	public void updateCate(Integer pre_id, Category new_category) {
+		
+		mapper.updateCateById(pre_id, new_category.getCate_id(), new_category.getCate_main(), new_category.getCate_sub());
+		
+	}
+
 }

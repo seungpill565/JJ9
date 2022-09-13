@@ -6,12 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@Data
+@Data    
 public class Member {
     private String member_id;
     private String member_password;
-    private String member_eamil;
+    private String member_email;
     private String member_phoneNum;
     private Date member_birthday;
     private Integer member_point;
+    private String member_name;
+    private String member_nickName;
+    private String member_comments;
+
+    //비밀번호 재확인이 필요
+    private String member_rePassword;
+    
 }

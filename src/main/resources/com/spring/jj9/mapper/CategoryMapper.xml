@@ -15,4 +15,10 @@
 		DELETE FROM category Where cate_id = #{id}
 	</delete>
 	
+	<update id="updateCateById">
+		UPDATE category 
+		SET cate_id = #{cate_id}, cate_main = #{cate_main}, cate_sub = #{cate_sub}	
+		WHERE cate_id = #{pre_id}			
+	</update>
+	
 </mapper>

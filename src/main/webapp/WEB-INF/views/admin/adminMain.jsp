@@ -16,9 +16,13 @@
 <%= session.getAttribute("currUser") %>
  
 <hr />
-<a href=" <c:url value="/addCateForm"/>">카테고리 관리</a> <br />
-<a href="<c:url value="/memberManagement"/>">회원 관리</a> <br />
-<a href="">상품등록 요청 관리</a><br />
+<a href=" <c:url value="/categoryManage"/>">카테고리 관리</a> <br />
+<a href="<c:url value="/memberManage"/>">회원 관리</a> <br />
+<a href="<c:url value="/talentPermission"/>">재능등록 요청 관리</a><br />
+<a href="<c:url value="/talentManage"/>">재능 관리</a><br />
+<a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
+<a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
+
 
 <hr />
 

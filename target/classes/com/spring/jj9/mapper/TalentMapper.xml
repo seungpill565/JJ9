@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.TalentMapper">
+	
+	<select id="getUnpermittedTalent" resultType="com.spring.jj9.dto.Talent_list">
+		SELECT * FROM talent_list WHERE talent_permission='미승인' ORDER BY talent_date
+	</select>
+	
+	<update id="permissionByTalentId">
+		UPDATE talent_list 
+		SET talent_permission = '승인'	
+		WHERE talent_id = #{id}			
+	</update>
+	
+	<delete id="deleteTalent">
+		DELETE FROM talent_list Where talent_id = #{id}
+	</delete>
+ 
+	<select id="getTalentList" resultType="com.spring.jj9.dto.Talent_list">
+		SELECT * FROM talent_list WHERE talent_permission = '승인' ORDER BY talent_date DESC
+	</select>	
+	
+
+	
+</mapper>

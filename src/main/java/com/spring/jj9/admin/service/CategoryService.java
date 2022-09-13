@@ -13,4 +13,6 @@ public interface CategoryService {
 
 	public void deleteCate(int id);
 
+	public void updateCate(Integer pre_id, Category new_category);	
+
 }
