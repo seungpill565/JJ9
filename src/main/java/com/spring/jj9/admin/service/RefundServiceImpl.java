@@ -31,6 +31,11 @@ public class RefundServiceImpl implements RefundService{
 		mapper.refund(refund_id);
 	}
 
+	@Override
+	public void deleteRefundRequest(int refund_id) {
+		mapper.deleteRufundRequest(refund_id);
+	}
+
 	
 	
 	

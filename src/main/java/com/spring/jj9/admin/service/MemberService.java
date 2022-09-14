@@ -14,5 +14,7 @@ public interface MemberService {
 	public void deleteMember(String id);
 
 	public void updateMember(Member member);
+	
+	public void updatePoint(String member_id, Integer point);
 
 }

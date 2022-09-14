@@ -13,7 +13,9 @@
 관리자 ${currUser.member_id } 님 안녕하세요 <br />
 보유 포인트는 ${currUser.member_point } 점 입니다<br />
 
+<!-- 
 <%= session.getAttribute("currUser") %>
+ -->
  
 <hr />
 <a href=" <c:url value="/categoryManage"/>">카테고리 관리</a> <br />

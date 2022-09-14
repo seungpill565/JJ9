@@ -12,5 +12,7 @@ public interface RefundService {
 	
 	public void refund(int refund_id);
 
+	public void deleteRefundRequest(int refund_id);
+
 
 }

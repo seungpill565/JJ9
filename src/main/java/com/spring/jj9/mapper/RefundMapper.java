@@ -12,5 +12,7 @@ public interface RefundMapper {
 	
 	public void refund(int refund_id);
 
+	public void deleteRufundRequest(int refund_id);
+
 
 }

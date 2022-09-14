@@ -20,6 +20,7 @@
 <a href="<c:url value="/talentPermission"/>">재능등록 요청 관리</a><br />
 <a href="<c:url value="/talentManage"/>">재능 관리</a><br />
 <a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
+<a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
 
 <hr />
 <h4>- 환불 요청 목록 -</h4>
@@ -29,8 +30,15 @@
 	<c:forEach items="${refundRequests }" var="refundRequest">	
 		<li>		 
 			${refundRequest.refund_id} / ${refundRequest.pay_id} / ${refundRequest.request_status}	/ ${refundRequest.buyer_member_id} / ${refundRequest.pay_way} / ${refundRequest.pay_money}원 / ${refundRequest.pay_original_money}원 / ${refundRequest.talent_title} / ${refundRequest.seller_member_id} 
-			<a href="refund?refund_id=${refundRequest.refund_id }"><button>환불 승인</button></a>
-			<a href="deleteRefundRequest?id=${refundRequest.refund_id }"><button>요청 삭제</button></a>
+			<form action="./refund" method="post" style="display:inline-block">
+				<input type="hidden" name="refund_id" value=${refundRequest.refund_id} />
+				<input type="hidden" name="buyer_member_id" value=${refundRequest.buyer_member_id} />
+				<input type="hidden" name="pay_money" value=${refundRequest.pay_money} />
+				<input type="hidden" name="seller_member_id" value=${refundRequest.seller_member_id} />
+				<input type="hidden" name="pay_original_money" value=${refundRequest.pay_original_money} />
+				<input type="submit" value="환불 처리"/>
+			</form>			
+			<a href="deleteRefundRequest?refund_id=${refundRequest.refund_id }"><button>요청 삭제</button></a>
 		</li>		
 	</c:forEach>	
 </ul>

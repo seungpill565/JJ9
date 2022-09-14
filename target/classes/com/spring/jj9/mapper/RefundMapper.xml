@@ -26,6 +26,10 @@
 		WHERE refund_id = #{refund_id} AND request_status = '환불요청중'			
 	</update>
 	
+	<delete id="deleteRufundRequest">
+		DELETE FROM refund_request Where refund_id = #{refund_id}
+	</delete>
+	
 	
 	
 </mapper>

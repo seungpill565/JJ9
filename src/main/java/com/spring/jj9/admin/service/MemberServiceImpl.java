@@ -35,5 +35,12 @@ public class MemberServiceImpl implements MemberService{
 		mapper.updateMember(member);
 		
 	}
+	
+
+	@Override
+	public void updatePoint(String member_id, Integer point) {
+		mapper.updatePoint(member_id, point);
+		
+	}
 
 }

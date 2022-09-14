@@ -18,8 +18,14 @@
 	<update id="updateMember">
 		UPDATE member 
 		SET member_email = #{member_email}, member_phoneNum = #{member_phoneNum}, member_birthday = #{member_birthday}
-		, member_name = #{member_name}, member_nickName = #{member_nickName}, member_comments = #{member_comments}	
+		, member_name = #{member_name}, member_nickName = #{member_nickName}, member_comments = #{member_comments}, member_point = #{member_point}	
 		WHERE member_id = #{member_id}			
+	</update>
+	
+	<update id="updatePoint">
+		UPDATE member 
+		SET member_point = member_point + #{point}
+		WHERE member_id = #{member_id}
 	</update>
 	
 </mapper>

@@ -151,21 +151,19 @@ public class AdminController {
 	public String talentManage(Model model) {
 		
 		//멤버 리스트를 members에 담음
-		model.addAttribute("talents", talentService.getTalentList());	
-		
+		model.addAttribute("talents", talentService.getTalentList());		
 		//회원관리 페이지로 이동
 		return "admin/talentManage"; 
 	}	
 	
 	@GetMapping("/payLog")
-	public String payLog(Model model) {
-		
+	public String payLog(Model model) {		
 		//pay 리스트를 payLogs에 담음
-		model.addAttribute("payLogs", payService.getPayList());	
-		
+		model.addAttribute("payLogs", payService.getPayList());			
 		//payLog 페이지로 이동
 		return "admin/payLog"; 
 	}	
+	
 	@GetMapping("/refundManage")
 	public String refundManage(Model model) {
 		
@@ -178,17 +176,30 @@ public class AdminController {
 		//refundManage 페이지로 이동
 		return "admin/refundManage"; 
 	}	
-	@GetMapping("/refund")
-	public String refund(Model model, int refund_id) {
+	@PostMapping("/refund")
+	public String refund(Model model, int refund_id, String buyer_member_id, String seller_member_id, Integer pay_money, Integer pay_original_money) {
 		
 		//refund_id로 환불처리
 		refundService.refund(refund_id);
-		// 구매자 포인트 + 
-		// 판매자 포인트 - 
 		
+		// 구매자 포인트 + 		
+		memberService.updatePoint(buyer_member_id, pay_money);
+		
+		// 판매자 포인트 - 		
+		memberService.updatePoint(seller_member_id, -pay_original_money);
+		// 사용한 쿠폰도 조회후 돌려줘여함.
 		
 		//refundManage 페이지로 이동
-		return "admin/refundManage"; 
+		return "redirect:/refundManage"; 
+	}
+	
+	@GetMapping("/deleteRefundRequest")
+	public String deleteRefundRequest(Model model, int refund_id) {
+		
+		refundService.deleteRefundRequest(refund_id);
+		
+		//refundManage 페이지로 이동
+		return "redirect:/refundManage"; 
 	}	
 	
 	
