@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jj9 재능 구조대 메인</title>
+<title>jj9 재능구조대</title>
 </head>
 <body>
 <%@ include file="./include/menu.jsp" %>
