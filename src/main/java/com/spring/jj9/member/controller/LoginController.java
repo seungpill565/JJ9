@@ -31,15 +31,20 @@ public class LoginController {
 			HttpSession session, ModelAndView mav) {
 		log.info("id " + member.getMember_id() + " pw: " + member.getMember_password());
 		
-		String member_id = member.getMember_id();
-		String member_password = member.getMember_password();
-		
 		String name = loginService.login(member);
 		
 		if (name != null) {
 			session.setAttribute("member_id", member.getMember_id());
 			session.setAttribute("member_name", name);
-			mav.setViewName("list");
+			
+			/*
+			  제 설계 실수로 model and view 를 만들어서 쓸모없는 justMove 페이지를 만들었습니다^^... 
+			  ModelAndView 는 주소가 이동하지 않고 화면에 보이는 페이지만 이동합니다. 
+			  이 문제를 해결하기 위해 justMove 페이지를 만들었습니다.
+			  
+			  justMove 페이지는 main 페이지로 바로 이동하게 만드는 페이지이기 때문에 이건 무시하셔도 됩니다.
+			*/
+			mav.setViewName("justMove");
 			mav.addObject("message", "success");
 		} else {
 			mav.setViewName("login");
