@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class MyPageController {
 	
-	@GetMapping("/mypage")
+	@GetMapping("/account/mypage")
 	public String mypage(HttpSession session, HttpServletRequest request) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
@@ -22,7 +22,7 @@ public class MyPageController {
 			return "alert";			
 		}
 		
-		return "mypage";
+		return "account/mypage";
 	}
 	
 }

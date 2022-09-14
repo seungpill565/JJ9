@@ -7,6 +7,7 @@
 <title>jj9 - 재능구조대</title>
 </head>
 <body>
+<%@ include file="../include/menu.jsp" %>
 <h1>mypage</h1>
 </body>
 </html>

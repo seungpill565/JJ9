@@ -5,7 +5,7 @@
 <div style="text-align: center">
 	<a href="/jj9/main">Main</a>
 	<a href="/jj9/list">리스트</a>
-	<a href="/jj9/mypage">마이페이지</a>
+	<a href="/jj9/account/mypage">마이페이지</a>
 </div>
 
 <c:choose>
