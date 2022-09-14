@@ -6,7 +6,6 @@
 	<select id="getList" resultType="com.spring.jj9.dto.Member">
   		SELECT * FROM Member
   	</select>
-  	<!--  -->
   	<insert id="insert">
 		INSERT INTO member 
 		(member_id, member_password, member_email, 
@@ -17,12 +16,6 @@
 		#{member_phoneNum}, #{member_birthday}, 
 		#{member_name}, #{member_nickName}, #{member_comments})
 	</insert>
-	<!-- insert문 실행하고 확인용 getId -->
-	<!-- 
-  	<select id="getId" resultType="int">
-  		SELECT member_id FROM Member where member_id = #{member_id}
-  	</select>	
-	 -->
 	 <select id="idChecker" resultType="int" parameterType="String">
 	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}
 	 </select>
@@ -30,15 +23,20 @@
 	 	select member_name from member
 	 	where member_id = #{member_id} and member_password = #{member_password}
 	 </select>
+	 
+	 <!-- 아이디 찾기에서 id가 조회하는 구문 -->
 	 <select id="findId" resultType="String" parameterType="String">
 	 	select member_id from member
 	 	where member_name = #{name} and member_phoneNum = #{phone}
 	 </select>
+	 
+	 <!-- 비밀번호 찾기에서 id가 있는지 한 번 검토할 때 사용되는 구문 -->
 	 <select id="getIdMail" resultType="String" parameterType="String">
 	 	select member_id from member
 	 	where member_id = #{id} and member_email = #{email}
 	 </select>
 	 
+	 <!-- 비밀번호 찾기에서 임시 비밀번호를 업데이트 하는 구문 -->
 	 <update id="updatePw">
 	 	update member set member_password = #{ranPassword} where member_id = #{id}
 	 </update>
