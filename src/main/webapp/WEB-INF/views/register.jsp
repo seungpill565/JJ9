@@ -111,7 +111,12 @@ $(function() {
 			<label for="email">이메일</label><br>
 			<input id="email" name="member_email" type="email" placeholder="이메일을 입력하세요, ex) Email@gmail.com"/><br>		
 		</div>
-			<button id="email_check" type="button">본인 인증</button> </br>
+			<button id="email_check" type="button">본인 인증</button> <br>
+		<div class="form-tags">
+			<label for="authNum">인증 번호</label><br>
+			<input id="authNum" name="authNum" type="text" /><br>
+		</div>
+			<button id="authNum_check" type="button">확인</button> <br>
 		
 		<div class="form-tags">
 			<label for="phoneNum">전화번호</label><br>
@@ -162,7 +167,6 @@ $(function() {
 		}
 		
 		
-		
 		// 이메일 유효성 검사
 		const emailBtn = document.getElementById('email_check');
 		emailBtn.addEventListener('click', (e) => {
@@ -185,6 +189,30 @@ $(function() {
 				}
 			});	
 		});
+		
+		// 인증번호 확인 버튼
+		const authNumBtn = document.getElementById('authNum_check');
+		authNumBtn.addEventListener('click', (e) => {
+			authNum = $("#authNum").val();
+			param={"authNum" : authNum};
+			$.ajax({
+				type: "post",
+				url: "authNumCheck",
+				data: param,
+				success: function(result) { //login_result.jsp 에 출력된 내용 (responseText)
+					console.log(result);
+					let resultText = null;
+					if (result == 0) {
+						resultText = '인증에 성공하였습니다.';
+					} else if (result == -1) {
+						resultText = '인증에 실패했습니다. 다시 시도해주세요'
+						$("#authNum").val('');
+					}
+					alert(resultText); 
+				}
+			});	
+		})
+		
 		
 	</script>
 </body>

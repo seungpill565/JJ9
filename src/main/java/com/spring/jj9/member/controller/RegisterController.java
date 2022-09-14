@@ -15,8 +15,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -210,6 +208,22 @@ public class RegisterController {
         
         
 		return "0";
+	}
+		
+	// 인증 번호 검증, 여기로 jsp 에서 작성한 인증번호가 날라와야 함
+	@ResponseBody
+	@PostMapping(value="/authNumCheck", produces = MediaType.TEXT_PLAIN_VALUE)
+	public String authNumCheck(@RequestParam Integer authNum) {
+		
+		log.info("인증번호가 오는지 확인~~~~~ : " + authNum);
+		log.info("static 한 변수가 유지가 되는지 확인: ~~~~" + authNumber);
+		
+		if (authNum == authNumber) {
+			return "0";
+		} else {
+			return "-1"; 
+		}
+		
 	}
 	
 	 /**
