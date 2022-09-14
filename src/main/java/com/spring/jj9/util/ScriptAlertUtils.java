@@ -1,4 +1,4 @@
-package com.spring.jj9.write.util;
+package com.spring.jj9.util;
 
 import java.io.IOException;
 import java.io.PrintWriter;

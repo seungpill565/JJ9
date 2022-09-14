@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.spring.jj9.dto.Talent_list;
+import com.spring.jj9.util.ScriptAlertUtils;
 import com.spring.jj9.write.service.CateService;
-import com.spring.jj9.write.util.ScriptAlertUtils;
 
 import lombok.extern.log4j.Log4j2;
 

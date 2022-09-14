@@ -28,11 +28,15 @@
 		가격 <input type="number" name="talent_price"/> <br>
 		작업기간 <input type="text"/> <br>	
 		이미지 <input type="file" name="image_file"/> 최대 15MB<br>
-		상세내용 <input type="text" name="talent_service_exp"/> <br>
-		커리큘럼 <input type="text" name="talent_curriculum"/> <br>
+		상세내용 <br> <textarea name="" id="" cols="30" rows="10"></textarea> <br>
+		커리큘럼 <br> <textarea name="" id="" cols="30" rows="10"></textarea> <br>
 		<input type="hidden" value="1" name="member_id"/>
 		<input type="submit" value="올리기"/>
 	</form>
+	
+	<!--  <input type="textarea" name="talent_service_exp"/> 
+	<input type="textarea" name="talent_curriculum"/>
+	--> 
 	
 	
 	<script src="/jj9/resources/js/insertTalent.js"></script>

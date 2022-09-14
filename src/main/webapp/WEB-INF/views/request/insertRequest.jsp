@@ -28,7 +28,9 @@
 		제목 <input type="text" name="trequest_title"/> <br>
 		예산 <input type="number" name="trequest_budget"/> <br>
 		마감일 <input type="date" name="trequest_deadline" id="request-deadline"> <br>	
-		상세내용 <input type="text" name="trequest_content"/> <br>
+		상세내용 <br> 
+		<br> <textarea name="" id="" cols="30" rows="10"></textarea>
+		<!-- <input type="text" name="trequest_content"/>  --><br>
 		<input type="hidden" value="1" name="member_id"/>
 		<input type="submit" value="올리기"/>
 	

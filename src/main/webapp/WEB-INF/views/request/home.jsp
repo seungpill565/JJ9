@@ -23,6 +23,7 @@
 		</ul>
 	</c:forEach>
 	
+	<h4>의뢰 목록</h4>
 	<c:forEach items="${requests }" var="request">
 		<button value="${request.trequest_id }">${request.trequest_title }</button> <br>
 		

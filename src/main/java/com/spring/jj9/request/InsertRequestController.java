@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.jj9.dto.Talent_request;
 import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.ScriptAlertUtils;
 import com.spring.jj9.write.service.CateService;
-import com.spring.jj9.write.util.ScriptAlertUtils;
 
 import lombok.extern.log4j.Log4j2;
 
