@@ -45,10 +45,6 @@
 	 </select>
 	 
 	
-	<h3>결제방법</h3>
-	<label><input type="radio" name="order" value="toss">toss</label> 
-	<label><input type="radio" name="order" value="payco">payco</label>
-	<label><input type="radio" name="order" value="무통장입금">무통장입금</label>
 	
 	<h3>결제 </h3>
 		<div id="">

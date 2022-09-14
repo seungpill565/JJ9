@@ -16,7 +16,7 @@
 	<h3>결제내역</h3>
 	<div>주문하신 분 :${id }</div>
 	<div>결제금액 : ${money } 원</div>
-	<div>결제방식 :${way }</div>
+	<div>구매하신 재능 :${talentTitle }</div>
 
 </body>
 </html>

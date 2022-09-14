@@ -18,5 +18,8 @@ public interface OrderService {
 	public int updatePoint(Member member);
 	public String getTalentId(int id);
 	public int updateCoupon(Coupon coupon);
+	public Member getMember(String id);
+	public String getTalnetTitle(int id);
+	
 
 }

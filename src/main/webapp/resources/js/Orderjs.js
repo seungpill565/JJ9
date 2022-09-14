@@ -107,5 +107,7 @@ xHttp.addEventListener('readystatechange', (e)=>{
 	  	xHttp.open('GET', '/jj9/couponlist/'+e.target.value);
 	  	xHttp.send();
 	});
+	
+
 
 

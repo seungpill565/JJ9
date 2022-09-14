@@ -19,7 +19,7 @@
   </select>
   
   <insert id="insertPay">
-  	insert into pay values(PAY_ID_SEQ.nextval,#{talent_id},#{member_id},#{pay_way},#{pay_money},#{pay_original_money})
+  	insert into pay values(PAY_ID_SEQ.nextval,#{talent_id},#{member_id},#{pay_money},#{pay_orginal_money})
   </insert>
   
   <select id="getPay" resultType="com.spring.jj9.dto.Pay">
@@ -41,5 +41,13 @@
   <update id="updateCoupon">
   	update coupon set coupon_unused = '사용후' where coupon_id= #{coupon_id} and member_id = #{member_id}
   </update>
+  
+  <select id="getMember" resultType="com.spring.jj9.dto.Member">
+  	select * from member where member_id = #{id}
+  </select>
+  
+  <select id="getTalnetTitle" resultType="String">
+  select talent_title from talent_list where talent_id = #{id}
+  </select>
   
 </mapper>

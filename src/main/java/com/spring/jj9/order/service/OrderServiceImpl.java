@@ -62,4 +62,14 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.updateCoupon(coupon);
 	}
 
+	@Override
+	public Member getMember(String id) {
+		return mapper.getMember(id);
+	}
+
+	@Override
+	public String getTalnetTitle(int id) {
+		return mapper.getTalnetTitle(id);
+	}
+
 }
