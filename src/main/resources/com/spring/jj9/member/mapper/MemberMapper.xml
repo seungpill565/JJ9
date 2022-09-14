@@ -34,4 +34,13 @@
 	 	select member_id from member
 	 	where member_name = #{name} and member_phoneNum = #{phone}
 	 </select>
+	 <select id="getIdMail" resultType="String" parameterType="String">
+	 	select member_id from member
+	 	where member_id = #{id} and member_email = #{email}
+	 </select>
+	 
+	 <update id="updatePw">
+	 	update member set member_password = #{ranPassword} where member_id = #{id}
+	 </update>
+	 
 </mapper>

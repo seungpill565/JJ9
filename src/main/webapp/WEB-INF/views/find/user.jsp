@@ -113,10 +113,12 @@
 				success: function(result) {
 					console.log(result);
 					let resultText = null;
-					if (result == 0) {
-						resultText = "본인 인증에 성공하였습니다.";
-					} else if (result == -1) {
-						resultText = "올바른 이메일 형식이 아닙니다. 다시 시도해주세요"
+					if (result == -1) {
+						resultText = "공백이 들어갈 수 없습니다. 다시 시도해주세요"
+					} else if (result == 0) {
+						resultText = "조회되는 아이디가 없습니다. 다시 시도해주세요";
+					} else if (result == 1) {
+						resultText = "본인인증이 확인된 이메일로 임시 비밀번호를 전송했습니다.\n임시 비밀번호를 통해 로그인 해주세요."
 					}
 					alert(resultText); 
 				}

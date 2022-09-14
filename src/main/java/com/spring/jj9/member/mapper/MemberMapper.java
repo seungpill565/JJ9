@@ -20,5 +20,7 @@ public interface MemberMapper {
 	
 	public String findId(@Param("name") String name, @Param("phone") String phone);
 	
-	public String updatePw(String id, String email);
+	public String getIdMail(@Param("id") String id, @Param("email") String email);
+	
+	public Integer updatePw(@Param("id") String id, @Param("ranPassword") String ranPassword);
 }

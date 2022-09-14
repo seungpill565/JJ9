@@ -29,8 +29,26 @@ public class FindUserServiceImpl implements FindUserService {
 	}
 
 	@Override
-	public String updatePw(String id, String email) {
-		return null;
+	public String getId(String id, String email) {
+		
+		log.info("service-id : " + id + ", service-email : " + email);
+		
+		String nid = memberMapper.getIdMail(id, email);
+		log.info("nid가 잘 돌아왔는지 확인" + nid);
+		
+		return nid;
 	}
+	
+	@Override
+	public Integer updatePw(String id, String ranPassword) {
+		
+		log.info("update 문의 log 확인 service-nid : " + id + " ranPassword : " + ranPassword);
+		
+		Integer nPassword = memberMapper.updatePw(id, ranPassword);
+		log.info("nPassword가 잘 돌아왔는지 확인 " + memberMapper.updatePw(id, ranPassword));
+		
+		return nPassword;
+	}
+
 	
 }
