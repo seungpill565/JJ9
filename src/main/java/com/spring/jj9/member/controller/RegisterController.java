@@ -181,7 +181,7 @@ public class RegisterController {
 			// subject - 메일 제목, content - 메일 내용, from - 보내는 사람, to - 받는 사람
 		String subject = "jj9 재능구조대 회원가입 인증번호입니다.";
         String from = "jj9 - <testjj9mail@naver.com>";
-        String to = "kevinj0695@naver.com";
+        String to = email;
         
         getRandomNum();
         
