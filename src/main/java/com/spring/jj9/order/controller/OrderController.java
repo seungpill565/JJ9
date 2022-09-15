@@ -93,7 +93,6 @@ public class OrderController {
 		
 	
 		service.insertPay(pay);
-		Pay pays = service.getPay(sessionId);
 		model.addAttribute("id",sessionId);
 		model.addAttribute("money",getmoney);
 		model.addAttribute("talentTitle",talentTitle);

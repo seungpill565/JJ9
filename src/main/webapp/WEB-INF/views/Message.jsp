@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 	
-	<h1>1:1 쪽지 전송하기</h1>
+	<h1>쪽지 전송하기</h1>
 	
  	<form action="info" method="POST">
 	 	<div>제목</div>
@@ -17,10 +19,25 @@
 	 	 <div>받는 사람</div>
 	 	 <input type="text" name="sender_id" value="${id.member_id }"readonly="readonly">
 	 	 <div>내용</div>
-	 	 <textarea rows="5" cols="40" name="message_content"></textarea>
+	 	 <textarea id="text-area" rows="5" cols="40" name="message_content"></textarea>
+	 	 <div id="text-cnt">(0/100)</div>
 	 	 <input id="message-button" type="submit" value="전송">
  	</form>
 	
+	 <script>
+ 
+    $(document).ready(function() {
+        $('#text-area').on('keyup', function() {
+            $('#text-cnt').html("("+$(this).val().length+" / 100)");
+ 
+            if($(this).val().length > 100) {
+                $(this).val($(this).val().substring(0, 100));
+                $('#text-cnt').html("(100 / 100)");
+            }
+        });
+    });
+        
+    </script>
 	
 	
 
