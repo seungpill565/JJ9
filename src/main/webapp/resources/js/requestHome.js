@@ -14,7 +14,7 @@ $(".pageInfo a").on("click", function(e){
  
 	e.preventDefault();
 	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/jj9/category/"+para[1]);
+	moveForm.attr("action", "/jj9/req/"+para[1]);
 	moveForm.submit();
         
 });

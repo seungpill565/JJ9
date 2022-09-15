@@ -38,8 +38,6 @@ public class RequestHomeController {
 		model.addAttribute("page", page);
 		
 		
-		
-		
-		return "request/category"; // 해당 카테고리 클릭 시 페이지 이동
+		return "request/home"; // 해당 카테고리 클릭 시 페이지 이동
 	}
 }
