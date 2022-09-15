@@ -164,12 +164,12 @@ a:hover {
 	<br />
 	<div>
 		재능 등록 테스트 용<br />
-		<a href="./insert">재능 등록 </a> <br />
+		<a href="/jj9/insert">재능 등록 </a> <br />
 	</div>
 	
 	<div>
 		재능 의뢰 테스트 용<br />
-		<a href="./insertRequest">재능 의뢰 등록 </a> <br />
+		<a href="/jj9/insertRequest">재능 의뢰 등록 </a> <br />
 	</div>
 	
 	<br />

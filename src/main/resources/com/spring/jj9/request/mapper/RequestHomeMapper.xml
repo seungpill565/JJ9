@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.jj9.request.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
+<mapper namespace="com.spring.jj9.request.mapper.RequestHomeMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
 
   <select  id="readCategoryById" resultType="com.spring.jj9.dto.Category">
   		select * from category where cate_id = #{id} <!-- 특정 아이디의 카테고리 -->
