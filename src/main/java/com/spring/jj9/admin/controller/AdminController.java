@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.spring.jj9.admin.alert.AlertPopup;
 import com.spring.jj9.admin.service.CategoryService;
+import com.spring.jj9.admin.service.CouponService;
 import com.spring.jj9.admin.service.MemberService;
 import com.spring.jj9.admin.service.PayService;
 import com.spring.jj9.admin.service.RefundService;
@@ -41,6 +42,9 @@ public class AdminController {
 	
 	@Autowired
 	RefundService refundService;
+	
+	@Autowired
+	CouponService couponService;
 	
 	@GetMapping("/admin")
 	public String goToAdmin(Model model , HttpSession session) {
@@ -193,15 +197,44 @@ public class AdminController {
 		return "redirect:/refundManage"; 
 	}
 	
+	@GetMapping("/confirmDeleteRefundRequest")
+	public void confirmDeleteRefundRequest(HttpServletResponse response, int refund_id) throws IOException {
+		
+		AlertPopup.confirmAndMovePage(response, "삭제하시겠습니까?", "deleteRefundRequest?refund_id="+refund_id);			 
+	}	
+	
 	@GetMapping("/deleteRefundRequest")
 	public String deleteRefundRequest(Model model, int refund_id) {
 		
-		refundService.deleteRefundRequest(refund_id);
-		
+		refundService.deleteRefundRequest(refund_id);		
 		//refundManage 페이지로 이동
 		return "redirect:/refundManage"; 
 	}	
 	
+	
+	@GetMapping("/couponManage")
+	public String couponManage(Model model) {
+		
+		//pay 리스트를 payLogs에 담음
+		model.addAttribute("coupons", couponService.getCouponList());		
+		
+		//랜덤 coupon_code 생성후 기존에 있던 쿠폰과 중복되지 않으면 random_code에 담음
+		char[] charactor= {'A','B','C','D','E','F','G','F','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9'};
+		StringBuilder builder = new StringBuilder();		
+		
+		while(builder.length() != 10 || !couponService.isCodeAvailable(builder.toString())) {
+			
+			builder = new StringBuilder();
+			
+			for(int i = 0; i < 10; i++) {
+				builder.append(charactor[(int)(Math.random()*charactor.length)]);
+			}
+		}
+		model.addAttribute("random_code", builder);
+		
+		//couponManage 페이지로 이동
+		return "admin/couponManage"; 
+	}	
 	
 	
 	

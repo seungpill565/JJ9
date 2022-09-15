@@ -38,7 +38,7 @@
 				<input type="hidden" name="pay_original_money" value=${refundRequest.pay_original_money} />
 				<input type="submit" value="환불 처리"/>
 			</form>			
-			<a href="deleteRefundRequest?refund_id=${refundRequest.refund_id }"><button>요청 삭제</button></a>
+			<a href="confirmDeleteRefundRequest?refund_id=${refundRequest.refund_id }"><button>요청 삭제</button></a>
 		</li>		
 	</c:forEach>	
 </ul>

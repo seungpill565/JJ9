@@ -27,4 +27,16 @@ public class AlertPopup {
 				+ "window.location.href = document.referrer;</script> ");
 		out.flush();
 	}
+	public static void confirmAndMovePage(HttpServletResponse response, String alertText, String nextPage) throws IOException {
+		// 확인누르면 nextPage로 이동. 취소누르면 이전페이지로 이동
+		init(response);
+		PrintWriter out= response.getWriter();
+		out.println("<script>const answer = window.confirm('" + alertText + "');"				
+				+ "if (answer){"							
+				+ "    location.href='" + nextPage + "';"
+				+ "}else{"
+				+ "    window.location.href = document.referrer;"
+				+ "}</script>");			
+		out.flush();
+	}
 }
