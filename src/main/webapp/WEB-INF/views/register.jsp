@@ -5,38 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 회원가입 페이지</title>
-<style>
- /* 사용자의 textarea 사이즈 수정을 막습니다. */
-.noresize {
-	resize: none;
-}
-
-.register-title {
-	text-align: center;
-}
-
-.register-form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.register-form > .form-tags > #phoneNum {
-	display: inherit;
-	flex-direction: column;
-}
-
-.form-tags:not(#idChkMsg) {
-	width: 300px;
-}
-
-.form-tags > input:not(#phoneNum, #idChkMsg) {
-	width: inherit;
-	height: 40px;
-	padding-left: 10px;
-}
-
-</style>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
@@ -80,70 +48,60 @@ $(function() {
 	<!-- 이름, 별명, 아이디, 비번, 재입력, 이메일, 전화번호, 생년월일, 자기소개 -->
 	<form id="register-form" class="register-form" action="register" method="POST">
 		
-		<div class="form-tags">
-			<label for="name">이름</label> <br>
+		
+			<label for="name">이름</label>
 			<input id="name" name="member_name" type="text" placeholder="고객님의 성함을 입력하세요" /><br>
-		</div>
 		
-		<div class="form-tags">
-			<label for="nickName">별명</label><br>
+		
+		
+			<label for="nickName">별명</label>
 			<input id="nickName" name="member_nickName" type="text" placeholder="사이트 내에서 사용할 별명을 입력하세요" /><br>
-		</div>
 		
-		<div class="form-tags">
-			<label for="ID">아이디</label><br> <div id="idChkMsg" style="font-size: 12px;">ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.</div>
+		
+		
+			<label for="ID">아이디</label> <div id="idChkMsg" style="font-size: 12px;">ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.</div>
 			<input id="ID" name="member_id" type="text" onfocus="idModifying(this)" onblur="isIdValid(this)" placeholder="사용할 아이디를 입력하세요"/> 
-		</div>
-		<button id="overlappedID" type="button">중복확인</button> </br>
+			<button id="overlappedID" type="button">중복확인</button>
+		
+			<br>
 		
 		
-		<div class="form-tags">
-			<label for="pw">비밀번호</label><br>
+			<label for="pw">비밀번호</label>
 			<input id="pw" name="member_password" type="password" placeholder="비밀번호를 입력하세요" /> </br>
-		</div>
 		
-		<div class="form-tags">
-			<label for="rpw">비밀번호 재입력</label><br>
+		
+		
+			<label for="rpw">비밀번호 재입력</label>
 			<input id="rpw" name="member_rePassword" type="password" placeholder="비밀번호 재확인"> </br>
-		</div>
 		
-		<div class="form-tags">
-			<label for="email">이메일</label><br>
-			<input id="email" name="member_email" type="email" placeholder="이메일을 입력하세요, ex) Email@gmail.com"/><br>		
-		</div>
-			<button id="email_check" type="button">본인 인증</button> <br>
-		<div class="form-tags">
-			<label for="authNum">인증 번호</label><br>
-			<input id="authNum" name="authNum" type="text" /><br>
-		</div>
-			<button id="authNum_check" type="button">확인</button> <br>
 		
-		<div class="form-tags">
-			<label for="phoneNum">전화번호</label><br>
+		
+			<label for="email">이메일</label>
+			<input id="email" name="member_email" type="email" placeholder="이메일을 입력하세요, ex) Email@gmail.com"/>	
+			<button id="email_check" type="button">본인 인증</button>
+		
+			<br>
+			
+			<label for="authNum">인증 번호</label>
+			<input id="authNum" name="authNum" type="text" />
+			<button id="authNum_check" type="button">확인</button>
+		
+			<br>
+		
+			<label for="phoneNum">전화번호</label>
 			<input id="phoneNum" type='tel' name='phone1' />-
 	        <input id="phoneNum" type='tel' name='phone2' />-
-	        <input id="phoneNum" type='tel' name='phone3' /> <br>		
-		</div>
+	        <input id="phoneNum" type='tel' name='phone3' />		
+		
+        	<br>
         
-        <div class="form-tags">
-	        <label for="birthday">생년월일</label><br>
+	        <label for="birthday">생년월일</label>
 			<input id="birthday" type="date" name="member_birthday" value="2022-01-01"/><br>        
-        </div>
+       
 		
-		<div class="form-tags">
-			<label for="comments">자기소개</label><br>
-			<textarea 	id="comments" 
-						class="noresize"
-						rows="10" cols="60"
-						form="register-form" 
-						name="member_comments"
-						placeholder="판매자 글에 올라가는 자기소개란 입니다. (선택)">
-			</textarea><br>		
-		</div>
 		
-		<div class="form-tags">
 			<input id="submit_btn" type="submit" value="회원가입">		
-		</div>
+		
 	</form>
 	<script type="text/javascript">
 	 //아이디, 패스워드 유효성 검사

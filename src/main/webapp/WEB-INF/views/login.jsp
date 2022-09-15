@@ -84,16 +84,6 @@ $(function() {
 								id="btnLogin" 
 								class="auth-form__button--login"> 로그인
 							</button>
-							<c:if test="${message == 'error' }">
-								<div class="auth-form__label">
-									<span class="auth-form__label--error">아이디 또는 비밀번호가 일치하지 않습니다.</span>
-								</div>
-							</c:if>
-							<c:if test="${param.message == 'logout' }">
-								<div class="auth-form__label">
-									<span class="auth-form__label--logout">로그아웃되었습니다.</span>
-								</div>
-							</c:if>
 						</td>
 					</tr>
 				</table>
@@ -105,6 +95,16 @@ $(function() {
 					<a href="register">
 						<span class="auth-form__register">회원가입</span>
 					</a>
+					<c:if test="${message == 'error' }">
+						<div class="auth-form__label">
+							<span class="auth-form__label--error">아이디 또는 비밀번호가 일치하지 않습니다.</span>
+						</div>
+					</c:if>
+					<c:if test="${param.message == 'logout' }">
+						<div class="auth-form__label">
+							<span class="auth-form__label--logout">로그아웃되었습니다.</span>
+						</div>
+					</c:if>
 				</div>
 			</form>
 		</div>
