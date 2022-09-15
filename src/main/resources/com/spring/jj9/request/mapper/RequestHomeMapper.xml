@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.request.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
+
+  <select  id="readCategoryById" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_id = #{id} <!-- 특정 아이디의 카테고리 -->
+  </select>
+  
+  <select  id="readAllMainCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is null <!-- 메인카테고리들만 뽑기 -->
+  </select>
+  
+  <select id="readCategoryByCate_main" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_main = #{cate_main} and cate_sub is not null <!-- 메인카테고리 별 서브카테고리들  -->
+  </select>
+  
+  <select  id="requestCountByMainCate" resultType="int"> <!-- 메인만 눌렀을때 표시할 재능들의 총 개수 -->
+  		select count(*) from talent_request 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
+  </select>
+  
+  <select id="requestCountBySubCate" resultType="int"> <!-- 서브 눌렀을때 표시할 재능들의 총 개수 -->
+  		select count(*) from talent_request 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  </select>
+
+	<select id="readRequestAllForPagingByMainCate" resultType="com.spring.jj9.dto.Talent_request_all"> <!-- 메인 카테고리를 눌렀을때 불러오는 메인 재능들 / 페이징 시 필요 -->
+    <![CDATA[
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_request inner join category using(cate_id) where cate_main = #{cate_main} and member_id is not null  order by trequest_id desc) tal 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+	</select>
+    
+      <select id="readRequestAllForPagingBySubCate" resultType="com.spring.jj9.dto.Talent_request_all"> <!-- 서브 카테고리를 눌렀을때 불러오는 서브 재능들 / 페이징 시 필요-->
+    <![CDATA[
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_request inner join category using(cate_id) where cate_id = #{cate_id} and member_id is not null order by trequest_id desc) tal 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+    </select>
+ <!-- 
+  <select  id="readTalentAllByCate_main" resultType="com.spring.jj9.dto.TalentAll">  메인만 눌렀을때 표시할 재능들 
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
+  		order by talent_id desc
+  </select>
+  
+  <select id="readTalentAllByCate_id" resultType="com.spring.jj9.dto.TalentAll">  서브 눌렀을때 표시할 재능들 
+  		select * from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  		order by talent_id desc
+  </select>
+   -->
+</mapper>

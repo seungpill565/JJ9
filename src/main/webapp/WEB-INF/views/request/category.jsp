@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>category</title>
+<title>재능 의뢰 목록</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -96,24 +96,8 @@ a:hover {
 	</div>
 	
 	<br />
-<!-- 
-	<div>재능 목록 <br />  페이징 없이 카테고리별 재능 표시 
-		<c:forEach items="${purchases }" var="purchase">
-			<div>
-				<span>
-					<a href="../purchase/${purchase.talent_id }">
-					 	${purchase.talent_title } <br />
-					 	가격 : ${purchase.talent_price }
-					 	판매자 : ${purchase.member_id } <br />
-					 	cate_id : ${purchase.cate_id } <br />
-					 	재능 번호 : ${purchase.talent_id } <br />
-					 </a>
-				</span> 
-			</div><br />
-		</c:forEach>
-		
-	</div>
-	  -->
+	
+
 	
 	<br /><br />
 	
@@ -131,11 +115,11 @@ a:hover {
 			<c:forEach items="${purchases}" var="list">
 				<tr>
 					<td><c:out value="${list.rn}" /></td>
-					<td><c:out value="${list.talent_id}" /></td>
-					<td><a href="../purchase/${list.talent_id}"><c:out
-								value="${list.talent_title}" /></a></td>
+					<td><c:out value="${list.trequest_id}" /></td>
+					<td><a href="../purchase/${list.trequest_id}"><c:out
+								value="${list.trequest_title}" /></a></td>
 					<td><c:out value="${list.member_id}" /></td>
-					<td><fmt:formatDate value="${list.talent_date}"
+					<td><fmt:formatDate value="${list.trequest_date}"
 							pattern="yy-MM-dd" /></td>
 				</tr>
 			</c:forEach>

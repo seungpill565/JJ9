@@ -14,4 +14,6 @@ public class Member {
     private String member_phoneNum;
     private Date member_birthday;
     private Integer member_point;
+    private String member_nickname;
+    private String member_comments;
 }
