@@ -8,13 +8,13 @@
   	</select>
   	<insert id="insert">
 		INSERT INTO member 
-		(member_id, member_password, member_email, 
-		member_phoneNum, member_birthday, 
-		member_name, member_nickName, member_comments) 
+		(member_name, member_nickName, member_id, 
+		member_password, member_email, 
+		member_phoneNum, member_birthday) 
 		VALUES 
-		(#{member_id}, #{member_password}, #{member_email}, 
-		#{member_phoneNum}, #{member_birthday}, 
-		#{member_name}, #{member_nickName}, #{member_comments})
+		(#{member_name}, #{member_nickName}, #{member_id}, 
+		#{member_password}, #{member_email}, 
+		#{member_phoneNum}, #{member_birthday}) 
 	</insert>
 	 <select id="idChecker" resultType="int" parameterType="String">
 	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}

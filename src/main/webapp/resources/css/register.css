@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
+body {
+	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+	background-image: url('../image/travel.png');
+	background-repeat: no-repeat;
+	background-cover: cover;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	border-bottom: 1px solid white;
+}
+
+button, #submit_btn {
+	border: none;
+	padding: 6px 10px 8px 10px;
+	margin: 0 auto;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	font-size: 16px;
+	border-radius: 45px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+button {
+	width: 100px;
+}
+
+#submit_btn {
+	width: 308px;
+}
+
+button:hover, #submit_btn:hover {
+	background-color: rgb(200, 50, 50);
+}
+
+.sign-up__container {
+	margin: 15px 0;
+}
+
+.sign-up__title {
+	color: rgb(230, 70, 70);
+	font-size: 70px;
+	margin-top: 20px;
+}
+
+.form__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container__input--tags {
+	width: 600px;
+	height: 30px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid white;
+	background-color: transparent;
+	color: white;
+}
+
+.container__input--tags::placeholder {
+	color: white;
+}
+
+.input--with-btn {
+	width: 494px;
+}
