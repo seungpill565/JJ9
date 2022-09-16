@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
+body {
+	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	border-bottom: 1px solid black;
+}
+
+.title {
+	font-size: 60px;
+	margin-bottom: 30px;
+}
+
+.description {
+	font-size: 24px;
+	margin-bottom: 40px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tab__container {
+	display: flex;
+}
+
+.tab {
+	display: none;
+}
+
+.tab-label:hover {
+	cursor: pointer;
+}
+
+.id-label, .pw-label {
+	padding: 10px 20px;
+	font-size: 28px;
+	border-bottom: 3px solid black;
+	border-top: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+}
+
+.id-label {
+	border-right: 1px solid #c0c0c0;
+}
+
+/* id-tab 이 눌렸을 때 id-label은 */
+.id-tab:checked ~ .id-label {
+	background-color: rgb(230, 70, 70);
+	color: white;
+}
+
+/* pw-tab 이 눌렸을 때 pw-label은 */
+.pw-tab:checked ~ .pw-label {
+	background-color: rgb(230, 70, 70);
+	color: white;
+}
+
+.form__container {
+	margin-top: 70px;
+}

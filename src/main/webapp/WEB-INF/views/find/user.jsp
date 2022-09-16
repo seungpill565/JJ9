@@ -5,56 +5,64 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디/비밀번호 찾기</title>
+<link rel="stylesheet" href="/jj9/resources/css/finduser.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-	<h2>아이디/비밀번호 찾기</h2>
-	<p>인증된 이메일만 정보 찾기가 가능합니다 :D</p>
-	<div style="display:inline-block">
-		<input type="radio" id="searchId_tab" name="search_radio" onclick="search_chk(1)" checked="checked" />
-		<label for="search_id">아이디 찾기</label>
-	</div>
-	<div style="display:inline-block">
-		<input type="radio" id="searchPw_tab" name="search_radio" onclick="search_chk(2)">
-		<label for="search_pw">비밀번호 찾기</label>
-	</div>
-	<div id="searchId_form">
-		<div class="form-group">
-			<label for="inputName">이름</label>
-			<div>
+	<div class="container">
+		<h2 class="title">ID/PW 찾기</h2>
+		<p class="description">
+			회원가입에서 본인인증된 이메일만 비밀번호 찾기가 가능합니다. <br>
+			해당 계정에서 문제가 발생한 경우 고객센터로 상담해주세요 :D
+		</p>
+	
+		<div class="tab__container">
+			<div class="container__input--tab-menu">
+				<input type="radio" id="searchId_tab" class="tab id-tab" name="search_radio" onclick="search_chk(1)" checked="checked" />
+				<label for="searchId_tab" class="id-label">아이디 찾기</label>
+			</div>
+			<div class="container__input--tab-menu">
+				<input type="radio" id="searchPw_tab" class="tab pw-tab" name="search_radio" onclick="search_chk(2)">
+				<label for="searchPw_tab" class="pw-label">비밀번호 찾기</label>
+			</div>	
+		</div>
+		
+		<div id="searchId_form" class="form__container">
+			<div class="form-group">
+				<label for="inputName">이름</label><br>
 				<input type="text" id="inputName" name="inputName" placeholder="ex) 홍길동">
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="inputPhone">휴대폰번호</label>
-			<div>
+			<div class="form-group">
+				<label for="inputPhone">휴대폰번호</label><br>
 				<input type="text" id="inputPhone" name="inputPhone" placeholder="ex) 010-1234-1234">
 			</div>
-		</div>
-		<div class="form-group">
-			<button id="submitBtn1" type="button">확인</button>
-			<a href="${pageContext.request.contextPath }/main">취소</a>
-		</div>
-	</div>
-	<div id="searchPw_form" style="display: none">
-		<div class="form-group">
-			<label for="inputId">아이디</label>
-			<div>
-				<input type="text" id="inputId" name="inputId" placeholder="ex) godmisu">
+			<div class="form-group">
+				<a href="${pageContext.request.contextPath }/main">취소</a>
+				<button id="submitBtn1" type="button">확인</button>
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="inputEmail">이메일</label>
-			<div>
+		
+		<div id="searchPw_form" class="form__container" style="display: none">
+			<div class="form-group">
+				<label for="inputId">아이디</label><br>
+				<input type="text" id="inputId" name="inputId" placeholder="ex) godmisu">
+				
+			</div>
+			<div class="form-group">
+				<label for="inputEmail">이메일</label><br>
 				<input type="email" id="inputEmail" name="inputEmail" placeholder="ex) E-mail@gmail.com">
 			</div>
-		</div>
-		<div class="form-group">
-			<button id="submitBtn2" type="button">확인</button>
-		<a href="${pageContext.request.contextPath}">취소</a>
+			<div class="form-group">
+				<a href="${pageContext.request.contextPath}">취소</a>
+				<button id="submitBtn2" type="button">확인</button>
+			</div>
 		</div>
 	</div>
+	
+	
+	
+	
 	<script type="text/javascript">
 		function search_chk(num) {
 			if (num == '1') {
