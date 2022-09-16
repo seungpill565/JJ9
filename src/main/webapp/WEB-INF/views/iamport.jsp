@@ -35,7 +35,7 @@ IMP.request_pay({
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
-        var url = "./1";
+        var url = "./"+`${talentId }`;
     }
     alert(msg);
     location.href = url;

@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+*{
+	font-family: 'Jua', sans-serif;
+	font-size : 20px;
+}
+
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+
+
+
+#logo{
+	font-family: "210-supersize";
+	color: #E84646;
+	font-size : 30px;
+	
+}
+#message-button{
+	background-color: #E84646;
+	font-size : 20px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+
+
+
+
+
+	

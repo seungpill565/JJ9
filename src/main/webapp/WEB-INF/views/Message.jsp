@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/jj9/resources/css/Messagecss.css">
 </head>
 <body>
 	
-	<h1>쪽지 전송하기</h1>
+	<h1 id="logo">jj9</h1>
 	
  	<form action="info" method="POST">
 	 	<div>제목</div>

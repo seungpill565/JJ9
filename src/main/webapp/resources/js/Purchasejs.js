@@ -25,7 +25,7 @@ console.log(avgimg.src);
 const test = document.getElementById('window-button');
 const popurl = document.getElementById('pop-url');
 
- var option = "width = 390, height = 400, top = 100, left = 450, location = no,tatus=no,toolbar=no,scrollbars=no"
+ var option = "width = 490, height = 500, top = 100, left = 450, location = no,tatus=no,toolbar=no,scrollbars=no"
 
 test.addEventListener('click',(e)=>{
 	console.log(popurl.innerHTML);

@@ -4,7 +4,7 @@
   const price2 = document.getElementById('price2');
 
   let number = resultElement.innerText;
-  const priceNumber = price.innerText;
+  const priceNumber = price.innerText.replace(/,/g, "");
   
   const minusButton = document.getElementById('minus-button');
   
@@ -47,9 +47,9 @@ function count(type)  {
   resultElement.innerText = number;
   
    
-  price.innerText = sum;
-  total_service.value = sum;
-  total_pay.value = sum;
+  price.innerText = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  total_service.value = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  total_pay.value = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
  
   
   
@@ -92,9 +92,9 @@ xHttp.addEventListener('readystatechange', (e)=>{
 	    
 	    discount = input_cupone_value.value;
 	    console.log(discount);
-	    dispay.innerText = price.innerText*(discount/100); // 쿠폰 할인 금액 ..
+	    dispay.innerText = (price.innerText.replace(/,/g, "")*(discount/100)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 쿠폰 할인 금액 ..
 	    const httpStatus = e.target.httpStatus;
-		total_pay.value = parseInt(price.innerText) - parseInt(dispay.innerText);
+		total_pay.value = (parseInt(price.innerText.replace(/,/g, "")) - parseInt(dispay.innerText.replace(/,/g, ""))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
    	
 	   
 	   

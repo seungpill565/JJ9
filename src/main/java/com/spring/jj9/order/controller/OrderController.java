@@ -53,9 +53,12 @@ public class OrderController {
 			// 맴버 정보 가져오기
 			Member members = service.getMember(sessionId);
 			model.addAttribute("members",members);
+			
+			String moneyReplace = money.replaceAll("\\,", "");
+			String originalMoneyReplace = originalMoney.replaceAll("\\,", "");
 	
-			int getOriginalMoney = Integer.parseInt(originalMoney); // 할적용x 금액
-			int getmoney  = Integer.parseInt(money); // 할인적용된 금액 
+			int getOriginalMoney = Integer.parseInt(originalMoneyReplace); // 할적용x 금액
+			int getmoney  = Integer.parseInt(moneyReplace); // 할인적용된 금액 
 			String talentTitle = service.getTalnetTitle(talentId); // 재능 이름
 			
 			log.info("갑가가가가가가 :"+talentTitle);
@@ -65,9 +68,10 @@ public class OrderController {
 			model.addAttribute("originalMoney",getOriginalMoney);
 			model.addAttribute("talneTitle",talentTitle);
 			model.addAttribute("name",name);
+			model.addAttribute("talentId",talentId);
 			
 	
-				return "import";
+				return "iamport";
 		}
 	
 	@GetMapping(value = "/order/success")
