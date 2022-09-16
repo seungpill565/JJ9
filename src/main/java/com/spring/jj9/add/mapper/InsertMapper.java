@@ -1,4 +1,4 @@
-package com.spring.jj9.write.mapper;
+package com.spring.jj9.add.mapper;
 
 import java.util.List;
 

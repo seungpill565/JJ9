@@ -1,11 +1,11 @@
-package com.spring.jj9.write;
+package com.spring.jj9.add.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.jj9.write.service.CateService;
+import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 

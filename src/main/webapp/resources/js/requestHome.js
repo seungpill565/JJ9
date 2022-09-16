@@ -1,6 +1,6 @@
 let moveForm = $("#moveForm");
 
-var para = document.location.href.split("category/");
+var para = document.location.href.split("req/");
 console.log(para)
 
 const link = window.location.pathname;

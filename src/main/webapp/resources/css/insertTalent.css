@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+.local-font {
+    font-family: "210-supersize";
+    font-size: 70px;
+}

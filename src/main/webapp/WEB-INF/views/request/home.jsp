@@ -103,24 +103,29 @@ a:hover {
 	
 
 	<div>
-		<table>
+		<table border="1">
 			<tr>
 				<th>번호</th>
 				<th>재능번호</th>
 				<th>제목</th>
 				<th>작성자</th>
+				<th>예산</th>
 				<th>등록일</th>
+				<th>마감일</th>
 			</tr>
 
 			<c:forEach items="${purchases}" var="list">
 				<tr>
 					<td><c:out value="${list.rn}" /></td>
 					<td><c:out value="${list.trequest_id}" /></td>
-					<td><a href="../purchase/${list.trequest_id}"><c:out
+					<td><a href="../request/${list.trequest_id}"><c:out
 								value="${list.trequest_title}" /></a></td>
 					<td><c:out value="${list.member_id}" /></td>
+					<td><fmt:formatNumber value="${list.trequest_budget }" groupingUsed="true" /></td>
 					<td><fmt:formatDate value="${list.trequest_date}"
 							pattern="yy-MM-dd" /></td>
+					<td><fmt:formatDate value="${list.trequest_deadline}"
+							pattern="yy-MM-dd" /> </td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -158,23 +163,18 @@ a:hover {
 	</div>
 	
 
-
-
-	<br />
-	<br />
+	<br>
+	<br>
 	<div>
-		재능 등록 테스트 용<br />
 		<a href="/jj9/insert">재능 등록 </a> <br />
 	</div>
 	
 	<div>
-		재능 의뢰 테스트 용<br />
 		<a href="/jj9/insertRequest">재능 의뢰 등록 </a> <br />
 	</div>
 	
-	<br />
+	<br>
 	
-
 	<script src="/jj9/resources/js/requestHome.js"></script>
 
 </body>

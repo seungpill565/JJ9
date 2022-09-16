@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Talent_request;
+import com.spring.jj9.dto.Talent_request_all;
 import com.spring.jj9.request.mapper.RequestMapper;
 
 @Service
@@ -37,5 +38,11 @@ public class RequestServiceImpl implements RequestService {
 	public List<Talent_request> getRequestList() {
 		
 		return mapper.getRequestList();
+	}
+	
+	@Override
+	public Talent_request_all getRequestAllById(int trequest_id) {
+		
+		return mapper.getRequestAllById(trequest_id);
 	}
 }

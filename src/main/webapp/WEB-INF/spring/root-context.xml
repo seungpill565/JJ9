@@ -22,7 +22,7 @@
 		<property name="dataSource" ref="ds"/>
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.spring.jj9.write.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.add.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.jj9.request.mapper"/>
 		
 </beans>

@@ -1,4 +1,4 @@
-package com.spring.jj9.request;
+package com.spring.jj9.request.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.spring.jj9.dto.Talent_request;
 import com.spring.jj9.request.service.RequestService;
 import com.spring.jj9.util.ScriptAlertUtils;
-import com.spring.jj9.write.service.CateService;
+import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 

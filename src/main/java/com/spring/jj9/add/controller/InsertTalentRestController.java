@@ -1,4 +1,4 @@
-package com.spring.jj9.write;
+package com.spring.jj9.add.controller;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.jj9.dto.Category;
-import com.spring.jj9.write.service.CateService;
+import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 

@@ -4,10 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="">
 <meta charset="UTF-8">
 <title>jj9 - 재능 등록하기</title>
 </head>
 <body>
+
+	<h3 class="local-font"><a href="#">jj9</a></h3>
+
 	<h3>재능 등록</h3>
 	
 	<form action="./insert" method="POST" enctype="multipart/form-data">

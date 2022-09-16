@@ -39,7 +39,8 @@
 	<script src="/jj9/resources/js/insertRequest.js"></script>
 	
 	<script>
-	document.getElementById('request-deadline').value = new Date().toISOString().substring(0, 10);
+		// 날짜 default 값을 오늘 날짜로 설정
+		document.getElementById('request-deadline').value = new Date().toISOString().substring(0, 10);
 	</script>
 </body>
 </html>

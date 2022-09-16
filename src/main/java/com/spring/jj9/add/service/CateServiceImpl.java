@@ -1,4 +1,4 @@
-package com.spring.jj9.write.service;
+package com.spring.jj9.add.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Talent_list;
-import com.spring.jj9.write.mapper.InsertMapper;
+import com.spring.jj9.add.mapper.InsertMapper;
 
 @Service
 public class CateServiceImpl implements CateService {

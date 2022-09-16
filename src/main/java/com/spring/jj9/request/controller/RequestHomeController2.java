@@ -1,4 +1,4 @@
-package com.spring.jj9.request;
+package com.spring.jj9.request.controller;
 
 import java.util.List;
 

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.dto.Talent_request_all;
 import com.spring.jj9.util.Criteria;
 
 public interface RequestHomeMapper {
@@ -20,8 +21,8 @@ public interface RequestHomeMapper {
 	
 	public Integer requestCountBySubCate(int id); // 서브 카테고리 클릭 시 보여지는 재능들의 총 개수
 	
-	public List<TalentAll> readRequestAllForPagingByMainCate(@Param("cri")Criteria cri, @Param("cate_main")String cate_main); // 메인 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
+	public List<Talent_request_all> readRequestAllForPagingByMainCate(@Param("cri")Criteria cri, @Param("cate_main")String cate_main); // 메인 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
 	
-	public List<TalentAll> readRequestAllForPagingBySubCate(@Param("cri")Criteria cri, @Param("cate_id")int cate_id); // 서브 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
+	public List<Talent_request_all> readRequestAllForPagingBySubCate(@Param("cri")Criteria cri, @Param("cate_id")int cate_id); // 서브 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
 	
 }

@@ -1,4 +1,4 @@
-package com.spring.jj9.write;
+package com.spring.jj9.add.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.util.ScriptAlertUtils;
-import com.spring.jj9.write.service.CateService;
+import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 

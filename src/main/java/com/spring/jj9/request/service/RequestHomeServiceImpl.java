@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
-import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.dto.Talent_request_all;
 import com.spring.jj9.request.mapper.RequestHomeMapper;
 import com.spring.jj9.util.Criteria;
 
@@ -42,7 +42,7 @@ public class RequestHomeServiceImpl implements RequestHomeService{
 	}
 
 	@Override
-	public List<TalentAll> readRequestAllForPaging(Criteria cri, int cate_id) { // 메인이나 서브를 누르면 해당 카테고리의 전체 재능 중 amount 개수만큼 리턴 /페이징 시 필요
+	public List<Talent_request_all> readRequestAllForPaging(Criteria cri, int cate_id) { // 메인이나 서브를 누르면 해당 카테고리의 전체 재능 중 amount 개수만큼 리턴 /페이징 시 필요
 		
 		String cate_main = mapper.readCategoryById(cate_id).get(0).getCate_main(); // 가져온 id에 해당하는 메인카테고리 이름
 		

@@ -1,4 +1,4 @@
-package com.spring.jj9.request;
+package com.spring.jj9.request.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class RequestHomeController {
 	private RequestHomeService service;
 	
 	@GetMapping(value={"/{id}"})
-	public String category1(@PathVariable("id") int id, Model model, Criteria cri) {
+	public String requestHome(@PathVariable("id") int id, Model model, Criteria cri) {
 
 		model.addAttribute("subcategorys", service.readCategory(id)); // 서브카테고리 
 		model.addAttribute("maincategorys", service.readAllMainCategory()); // 메인카테고리
