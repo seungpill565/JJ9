@@ -99,26 +99,15 @@ public class RegisterController {
 	@PostMapping("/register")
 	public String registerMember(Member member, HttpServletRequest request) throws IOException {
 		
+		// member_id, password, rePassword 는 필수
 		String member_id = member.getMember_id();
 		String member_password = member.getMember_password();
 		String member_rePassword = member.getMember_rePassword();
 		
-		String phone1 = member.getPhone1();
-		String phone2 = member.getPhone2();
-		String phone3 = member.getPhone3();
+		// phoneNum 은 log 확인용
+		String member_phoneNum = member.getMember_phoneNum();
 		
-		String member_email = member.getMember_email();
-		
-		log.info("적은 아이디가 오는지 확인 " + member_id);
-		log.info("비밀번호와 비밀번호 재확인 " + member_password);
-		log.info("재확인 " + member_rePassword);
-		
-		log.info("phone 1 : " + phone1);
-		log.info("phone 2 : " + phone2);
-		log.info("phone 3 : " + phone3);
-		
-		String phoneNum = phone1 + "-" +  phone2 + "-" + phone3;
-		member.setMember_phoneNum(phoneNum);
+		log.info("phone: " + member_phoneNum);
 		
 		if (
 				member_id == null || member_id.equals("") ||

@@ -26,10 +26,6 @@ public class Member {
     
     //비밀번호 재확인이 필요
     private String member_rePassword;
-    //핸드폰번호
-    private String phone1;
-    private String phone2;
-    private String phone3;
     //idCheck
     private String check_id;
 }

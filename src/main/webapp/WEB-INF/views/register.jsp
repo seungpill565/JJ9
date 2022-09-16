@@ -52,11 +52,8 @@ $(function() {
 			<label for="name">이름</label>
 			<input id="name" name="member_name" type="text" placeholder="고객님의 성함을 입력하세요" /><br>
 		
-		
-		
 			<label for="nickName">별명</label>
 			<input id="nickName" name="member_nickName" type="text" placeholder="사이트 내에서 사용할 별명을 입력하세요" /><br>
-		
 		
 		
 			<label for="ID">아이디</label> <div id="idChkMsg" style="font-size: 12px;">ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.</div>
@@ -65,15 +62,11 @@ $(function() {
 		
 			<br>
 		
-		
 			<label for="pw">비밀번호</label>
 			<input id="pw" name="member_password" type="password" placeholder="비밀번호를 입력하세요" /> </br>
 		
-		
-		
 			<label for="rpw">비밀번호 재입력</label>
 			<input id="rpw" name="member_rePassword" type="password" placeholder="비밀번호 재확인"> </br>
-		
 		
 		
 			<label for="email">이메일</label>
@@ -89,17 +82,13 @@ $(function() {
 			<br>
 		
 			<label for="phoneNum">전화번호</label>
-			<input id="phoneNum" type='tel' name='phone1' />-
-	        <input id="phoneNum" type='tel' name='phone2' />-
-	        <input id="phoneNum" type='tel' name='phone3' />		
+			<input id="phoneNum" type='tel' name='member_phoneNum' />		
 		
         	<br>
         
 	        <label for="birthday">생년월일</label>
 			<input id="birthday" type="date" name="member_birthday" value="2022-01-01"/><br>        
        
-		
-		
 			<input id="submit_btn" type="submit" value="회원가입">		
 		
 	</form>
@@ -173,5 +162,42 @@ $(function() {
 		
 		
 	</script>
+	<script type="text/javascript">
+		function autoHypenPhone(str){
+	        str = str.replace(/[^0-9]/g, '');
+	        var tmp = '';
+	        if( str.length < 4){
+	            return str;
+	        }else if(str.length < 7){
+	            tmp += str.substr(0, 3);
+	            tmp += '-';
+	            tmp += str.substr(3);
+	            return tmp;
+	        }else if(str.length < 11){
+	            tmp += str.substr(0, 3);
+	            tmp += '-';
+	            tmp += str.substr(3, 3);
+	            tmp += '-';
+	            tmp += str.substr(6);
+	            return tmp;
+	        }else{              
+	            tmp += str.substr(0, 3);
+	            tmp += '-';
+	            tmp += str.substr(3, 4);
+	            tmp += '-';
+	            tmp += str.substr(7);
+	            return tmp;
+	        }
+	        return str;
+	    }
+
+		var phoneNum = document.getElementById('phoneNum');
+		phoneNum.onkeyup = function(event){
+		    event = event || window.event;
+		    var _val = this.value.trim();
+		    this.value = autoHypenPhone(_val) ;
+		}
+	</script>
+	
 </body>
 </html>
