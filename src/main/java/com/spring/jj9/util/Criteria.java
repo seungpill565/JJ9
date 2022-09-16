@@ -1,7 +1,6 @@
 package com.spring.jj9.util;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class Criteria {

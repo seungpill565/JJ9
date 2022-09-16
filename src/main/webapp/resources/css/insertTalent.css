@@ -1,9 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
 @font-face {
     font-family: "210-supersize";
     src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
 }
 
-.local-font {
-    font-family: "210-supersize";
-    font-size: 70px;
+body {
+    margin: 0;
 }
+
+div > * {
+    font-family: 'Jua', sans-serif;
+}
+.top-menu {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    border: solid black 1px;
+    height: 100px;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 1tr 3tr;
+    border: solid red 1px;
+}
+
+.top-row > div {
+    grid-row-start: 1;
+}
+
+.local-font {
+    font-family: "210-supersize", sans-serif;
+    font-size: 50px;
+    text-decoration: none;
+    color: #e64646;
+}
+
+
