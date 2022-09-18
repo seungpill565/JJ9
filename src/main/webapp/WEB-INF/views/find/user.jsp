@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디/비밀번호 찾기</title>
-<link rel="stylesheet" href="/jj9/resources/css/finduser.css">
+<link rel="stylesheet" href="/jj9/resources/css/find-user.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -18,11 +18,11 @@
 		</p>
 	
 		<div class="tab__container">
-			<div class="container__input--tab-menu">
+			<div>
 				<input type="radio" id="searchId_tab" class="tab id-tab" name="search_radio" onclick="search_chk(1)" checked="checked" />
 				<label for="searchId_tab" class="id-label">아이디 찾기</label>
 			</div>
-			<div class="container__input--tab-menu">
+			<div>
 				<input type="radio" id="searchPw_tab" class="tab pw-tab" name="search_radio" onclick="search_chk(2)">
 				<label for="searchPw_tab" class="pw-label">비밀번호 찾기</label>
 			</div>	
@@ -31,13 +31,25 @@
 		<div id="searchId_form" class="form__container">
 			<div class="form-group">
 				<label for="inputName">이름</label><br>
-				<input type="text" id="inputName" name="inputName" placeholder="ex) 홍길동">
+				<input 
+					type="text" 
+					id="inputName" 
+					class="container__input container__input--name"
+					name="inputName" 
+					placeholder="ex) 홍길동"
+				/>
 			</div>
 			<div class="form-group">
 				<label for="inputPhone">휴대폰번호</label><br>
-				<input type="text" id="inputPhone" name="inputPhone" placeholder="ex) 010-1234-1234">
+				<input 
+					type="text" 
+					id="inputPhone"
+					class="container__input container__input--phone" 
+					name="inputPhone" 
+					placeholder="ex) 010-1234-1234"
+				/>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-etc">
 				<a href="${pageContext.request.contextPath }/main">취소</a>
 				<button id="submitBtn1" type="button">확인</button>
 			</div>
@@ -46,14 +58,25 @@
 		<div id="searchPw_form" class="form__container" style="display: none">
 			<div class="form-group">
 				<label for="inputId">아이디</label><br>
-				<input type="text" id="inputId" name="inputId" placeholder="ex) godmisu">
-				
+				<input 
+					type="text" 
+					id="inputId"
+					class="container__input container__input--id" 
+					name="inputId" 
+					placeholder="ex) godmisu"
+				/>
 			</div>
 			<div class="form-group">
 				<label for="inputEmail">이메일</label><br>
-				<input type="email" id="inputEmail" name="inputEmail" placeholder="ex) E-mail@gmail.com">
+				<input 
+					type="email" 
+					id="inputEmail" 
+					class="container__input container__input--email"
+					name="inputEmail" 
+					placeholder="ex) E-mail@gmail.com"
+				/>
 			</div>
-			<div class="form-group">
+			<div class="form-group form-etc">
 				<a href="${pageContext.request.contextPath}">취소</a>
 				<button id="submitBtn2" type="button">확인</button>
 			</div>

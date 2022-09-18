@@ -18,6 +18,7 @@ a:hover {
 .title {
 	font-size: 60px;
 	margin-bottom: 30px;
+	color: rgb(230, 70, 70);
 }
 
 .description {
@@ -43,15 +44,19 @@ a:hover {
 	cursor: pointer;
 }
 
+
+/* 
+	id-label 과 pw-label 은 아이디 찾기와 비밀번호 찾기 탭 버튼 클래스 
+*/
 .id-label, .pw-label {
-	padding: 10px 20px;
+	padding: 10px 40px;
 	font-size: 28px;
 	border-bottom: 3px solid black;
 	border-top: 1px solid #c0c0c0;
 	border-left: 1px solid #c0c0c0;
 }
 
-.id-label {
+.pw-label {
 	border-right: 1px solid #c0c0c0;
 }
 
@@ -68,5 +73,48 @@ a:hover {
 }
 
 .form__container {
-	margin-top: 70px;
+	padding-top: 70px;
+}
+
+.form-group > label {
+	font-size: 24px;
+}
+
+/* input 태그 */
+.container__input {
+	width: 400px;
+	height: 30px;
+	margin: 20px 0 30px 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid black;
+	font-size: 16px;
+}
+
+.form-etc {
+	display: flex;
+	justify-content: end;
+}
+
+.form-etc > a {
+	margin: 10px;
+	padding: 10px 5px;
+	border-bottom: none;
+	font-size: 16px;
+}
+
+.form-etc > button {
+	margin: 10px 0 10px 10px;
+	border: none;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.form-etc > button:hover {
+	cursor: pointer;
+	background-color: rgb(200, 50, 50);
 }
