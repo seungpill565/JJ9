@@ -6,6 +6,10 @@
 <head>
 <meta charset="EUC-KR">
 <title>jj9</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script> <!--  jquery -->
 <style>
 .bestNew {
     display: flex;
@@ -32,14 +36,19 @@
 		
 		<br />
 
-		<div>
-			<form action="">
-				<input type="text" name="search" placeholder="재능이나 전문가를 검색하세요." />
-				<input type="submit" value="검색" />
-			</form>
+<!-- 검색 기능 -->
+		<div class="search_wrap">
+			<div class="search_area">
+				<form id="mainSearchForm" name="searchForm" method="get">
+					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
+						<button>Search</button>
+					
+					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
+					<input type="hidden" name="amount" value="${page.cri.amount }">
+				</form>
+			</div>
 		</div>
-
-	</div>
+<!-- /검색 기능 -->
 	
 	<br />
 
@@ -116,14 +125,15 @@
 	
 	<br />
 	
+	<hr />
+	<!-- footer -->
 	<div>
 	
 		footer 부분
 		
 	</div>
 	
-<script>
+<script src="/jj9/resources/js/category.js?ver=1"></script>
 
-</script>
 </body>
 </html>

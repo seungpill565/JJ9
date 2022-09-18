@@ -12,49 +12,11 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> <!--  jquery -->
-<style type="text/css">
-.show-page>li {
-	list-style: none;
-	float: left;
-	padding: 6px;
-}
-
-.pageInfo {
-	list-style: none;
-	display: inline-block;
-	margin: 50px 0 0 100px;
-}
-
-.pageInfo li {
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
-}
-
-a:link {
-	color: black;
-	text-decoration: none;
-}
-
-a:visited {
-	color: black;
-	text-decoration: none;
-}
-
-a:hover {
-	color: black;
-	text-decoration: underline;
-}
-.active{
-      background-color: #cdd5ec;
-  }
-</style>
+<link rel="stylesheet" href="/jj9/resources/css/category.css" />
 
 </head>
 <body>
-	<h1><a href="../mainpage">jj9</a></h1>
+	<h1><a href="/jj9/mainpage">jj9</a></h1>
 	
 	<div>
 		헤더 부분 <br />
@@ -64,13 +26,19 @@ a:hover {
 		
 		<br />
 
-		<div>
-			<form action="">
-				<input type="text" name="search" placeholder="재능이나 전문가를 검색하세요." />
-				<input type="submit" value="검색" />
-			</form>
+<!-- 검색 기능 -->
+		<div class="search_wrap">
+			<div class="search_area">
+				<form id="mainSearchForm" name="searchForm" method="get">
+					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
+						<button>Search</button>
+					
+					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
+					<input type="hidden" name="amount" value="${page.cri.amount }">
+				</form>
+			</div>
 		</div>
-
+<!-- /검색 기능 -->
 	</div>
 	
 	<br />
@@ -96,24 +64,6 @@ a:hover {
 	</div>
 	
 	<br />
-<!-- 
-	<div>재능 목록 <br />  페이징 없이 카테고리별 재능 표시 
-		<c:forEach items="${purchases }" var="purchase">
-			<div>
-				<span>
-					<a href="../purchase/${purchase.talent_id }">
-					 	${purchase.talent_title } <br />
-					 	가격 : ${purchase.talent_price }
-					 	판매자 : ${purchase.member_id } <br />
-					 	cate_id : ${purchase.cate_id } <br />
-					 	재능 번호 : ${purchase.talent_id } <br />
-					 </a>
-				</span> 
-			</div><br />
-		</c:forEach>
-		
-	</div>
-	  -->
 	
 	<br /><br />
 	
@@ -140,6 +90,7 @@ a:hover {
 				</tr>
 			</c:forEach>
 		</table>
+		
 		<div class="pagInfo-wrap">
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">

@@ -1,12 +1,10 @@
 package com.spring.jj9.category.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.jj9.category.service.CategoryService;
 import com.spring.jj9.util.Criteria;
@@ -38,6 +36,25 @@ public class CategoryController {
 		model.addAttribute("page", page);
 		
 		
+		
 		return "category/category"; // 해당 카테고리 클릭 시 페이지 이동
+	}
+	
+	@GetMapping(value="/search")
+	public String search(Model model, Criteria cri) { // 검색했을때 search 페이지로 보낼 메서드
+		
+		//model.addAttribute("subcategorys", service.readCategory(id)); // 서브카테고리 
+		model.addAttribute("maincategorys", service.readAllMainCategory()); // 메인카테고리 // 검색했을땐 메인카테고리만 표시
+		
+		model.addAttribute("purchases",service.readTalentAllBySearch(cri)); // 검색한 재능들 
+		log.info("key word ", cri.getKeyword());
+		
+		int total = service.readTalentCountBySearch(cri.getKeyword()); // 검색한 재능들 총 개수 
+		
+		PageMake page = new PageMake(cri, total); // 페이지네이션
+		model.addAttribute("page", page); 
+
+		
+		return "search/search";
 	}
 }

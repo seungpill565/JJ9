@@ -29,12 +29,28 @@ public class PagingTest {
 	CategoryService service;
 	
 	@Test
-	public void testreadTalentForPaging() {
+	public void testreadTalentAllByMainCate() {
 		Criteria cri = new Criteria();
 		cri.setPageNum(2);
-		//List list = mapper.readTalentAllForPaging(cri);
-		
-		List list = service.readTalentAllForPaging(cri);
+		List list = mapper.readTalentAllForPagingByMainCate(cri, mapper.readCategoryById(1).get(0).getCate_main());
+		list.forEach(board -> log.info(""+board));
+	}
+	
+	@Test
+	public void testreadTalentAllBySubCate() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(2);
+		List list = mapper.readTalentAllForPagingBySubCate(cri, 11);
+		list.forEach(board -> log.info(""+board));
+	}
+	
+	@Test
+	public void testreadTalentAllBySearch() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+	
+		cri.setKeyword("1-1");
+		List list = mapper.readTalentAllBySearch(cri);
 		list.forEach(board -> log.info(""+board));
 	}
 }

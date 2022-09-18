@@ -23,4 +23,8 @@ public interface CategoryMapper {
 	public List<TalentAll> readTalentAllForPagingByMainCate(@Param("cri")Criteria cri, @Param("cate_main")String cate_main); // 메인 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
 	
 	public List<TalentAll> readTalentAllForPagingBySubCate(@Param("cri")Criteria cri, @Param("cate_id")int cate_id); // 서브 카테고리 클릭시 amount 개수만큼 추려서 가져올 재능
+	
+	public List<TalentAll> readTalentAllBySearch(@Param("cri")Criteria cri); // 검색시 키워드로 뽑아낼 재능들
+	
+	public Integer readTalentCountBySearch(String keyword); // 검색으로 뽑아낸 재능의 총 개수	
 }
