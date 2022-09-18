@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리 관리</title>
+<title>공지사항 관리 </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<h3>카테고리 관리 페이지입니다.</h3>
+<h3>공지사항 관리 페이지입니다.</h3>
 관리자 ${currUser.member_id } 님 안녕하세요 <br />
 보유 포인트는 ${currUser.member_point } 점 입니다<br />
 
@@ -24,44 +24,31 @@
 <a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
 <a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
 <hr />
-
-
-<h4>- 새 카테고리 등록 -</h4>
-<form action="./addCategory" method="POST">
-	id : <input type="text" name="cate_id" />
-	메인 카테고리 : <input type="text" name="cate_main" />
-	세부 카테고리 : <input type="text" name="cate_sub" />
-	<input type="submit" value="등록하기 "/>
-</form>
+<button><h4>- 새 공지 작성 -</h4></button>
 
 <hr />
 
-<h4>- 카테고리 목록 -</h4>
+<h4>- 공지 사항 -</h4>
 
-
-<hr />
 <ul>
-	<c:forEach items="${categories }" var="category">	
+	<c:forEach items="${notices }" var="notice">	
 	
 		<li>
-			${category.cate_main} > ${category.cate_sub}			 
-			 <button type="button" data-bs-toggle="modal" data-bs-target="#modifyCateModal" 
-			 data-cate-id = "${category.cate_id }"
-			 data-cate-main = "${category.cate_main }"
-			 data-cate-sub = "${category.cate_sub }" >수정</button>
-			 <button class="deleteCateBtn" data-id=${category.cate_id }>삭제</button>			 
+			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+				data-notice-id = "${notice.notice_id }"
+				data-notice-title = "${notice.notice_title }"
+				data-notice-content = "${notice.notice_content }"
+				data-notice-date = "${notice.notice_date }"
+				data-notice-importance = "${notice.notice_importance }"				
+			 >${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} </button> 
+			 
 		</li>		
 	</c:forEach>		
 </ul>
-
-<!-- 버튼 모양 종류  
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@mdo">수정</button>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@fat">Open modal for @fat</button>
-<button type="button" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
--->
+<hr />
 
 <!-- modal 속성 구현-->
-<div class="modal fade" id="modifyCateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modifyNoticeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -69,21 +56,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="./updateCategory" method="POST">
+        <form action="./updateNotice" method="POST">          
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">카테고리 id</label>
-            <input type="text" class="form-control" id="new-cate-id" name="cate_id">
+            <label for="recipient-name" class="col-form-label">제목</label>
+            <input type="text" class="form-control" id="new-notice-title" name="notice_title">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">메인 카테고리</label>
-            <input type="text" class="form-control" id="new-cate-main" name="cate_main">
+            <label for="recipient-name" class="col-form-label">공지 내용</label>
+            <textarea class="form-control" id="new-notice-content" name="notice_content" style="height: 150px"> </textarea>
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">세부 카테고리</label>
-            <input type="text" class="form-control" id="new-cate-sub" name="cate_sub">
+            <label for="recipient-name" class="col-form-label">수정 날짜</label>
+            <input type="date" class="form-control" id="new-notice-date" name="notice_date">
+          </div>    
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">중요도</label>
+            <select class="form-select" aria-label="Default select example" id="new-notice-importance"  name="notice_importance">
+				
+				<option>1특별공지</option>
+				<option>2중요공지</option>
+				<option>3일반공지</option>	
+		  	</select>
           </div>
           <div>            
-            <input id="selectedCateId" type="text" hidden="true" name="pre_id" readonly >
+            <input id="notice-id" type="text" hidden="true" name="notice_id" readonly >
           </div>                
 	      <div class="modal-footer">
 	        <button type="submit" id="modifyConfirmBtn" class="btn btn-primary" data-bs-dismiss="modal" >수정하기</button>
@@ -99,7 +95,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="/jj9/resources/js/categoryManage.js?ver=1"></script>
+<script src="/jj9/resources/js/noticeManage.js?ver=34"></script>
 
 </body>
 </html>

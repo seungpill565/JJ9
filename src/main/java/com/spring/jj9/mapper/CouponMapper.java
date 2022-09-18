@@ -10,4 +10,6 @@ public interface CouponMapper {
 	public List<Coupon> getCouponList();
 
 	public Integer isCodeExist(String random_code);
+
+	public void createCoupon(Coupon coupon);
 }

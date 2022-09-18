@@ -10,4 +10,6 @@ public interface CouponService {
 
 	public boolean isCodeAvailable(String random_code);
 
+	public void createCoupon(Coupon coupon);
+
 }

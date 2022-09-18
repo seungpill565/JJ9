@@ -12,4 +12,6 @@ public class Faq {
     private String  faq_title;
     private String faq_content;
     private Date faq_date; 
+    private String member_id; 
+    private String faq_answer; 
 }

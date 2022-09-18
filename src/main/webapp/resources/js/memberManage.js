@@ -24,7 +24,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   // Update the modal's content.
   var modalTitle = exampleModal.querySelector('.modal-title')
   var newMemberId = exampleModal.querySelector('.modal-body #new-member-id')
-  var newMemberMain = exampleModal.querySelector('.modal-body #new-member-email')
+  var newMemberMail = exampleModal.querySelector('.modal-body #new-member-email')
   var newMemberPhoneNum = exampleModal.querySelector('.modal-body #new-member-phoneNum')  
   var newMemberBirthday = exampleModal.querySelector('.modal-body #new-member-birthday')  
   var newMemberName = exampleModal.querySelector('.modal-body #new-member-name')  
@@ -34,7 +34,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
   modalTitle.textContent = '회원수정하기 ' + memberName +'님('+ memberId +')';
   newMemberId.value = memberId;
-  newMemberMain.value = memberEmail;
+  newMemberMail.value = memberEmail;
   newMemberPhoneNum.value = memberPhoneNum;
   newMemberBirthday.value = memberBirthday;
   newMemberName.value = memberName;

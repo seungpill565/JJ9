@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.jj9.admin.alert.AlertPopup;
 import com.spring.jj9.admin.service.CategoryService;
 import com.spring.jj9.admin.service.CouponService;
+import com.spring.jj9.admin.service.FaqService;
 import com.spring.jj9.admin.service.MemberService;
+import com.spring.jj9.admin.service.NoticeService;
 import com.spring.jj9.admin.service.PayService;
 import com.spring.jj9.admin.service.RefundService;
 import com.spring.jj9.admin.service.TalentService;
 import com.spring.jj9.dto.Category;
+import com.spring.jj9.dto.Coupon;
+import com.spring.jj9.dto.Faq;
 import com.spring.jj9.dto.Member;
+import com.spring.jj9.dto.Notice;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -45,6 +50,13 @@ public class AdminController {
 	
 	@Autowired
 	CouponService couponService;
+	
+	@Autowired
+	FaqService faqService;
+	
+	@Autowired
+	NoticeService noticeService;
+	
 	
 	@GetMapping("/admin")
 	public String goToAdmin(Model model , HttpSession session) {
@@ -236,6 +248,48 @@ public class AdminController {
 		return "admin/couponManage"; 
 	}	
 	
+	@PostMapping("/createNewCoupon")
+	public void createNewCoupon(HttpServletResponse response, Model model, Coupon coupon) throws IOException {
+		
+		//새 쿠폰 생성
+		couponService.createCoupon(coupon);
+		
+		//쿠폰 생성 알림 팝업 후 쿠폰 관리창으로 이동
+		AlertPopup.alertAndMovePage(response, coupon.getCoupon_name()+ " 생성완료" +"\\n코드 : " +coupon.getCoupon_code()+"\\n만료 기간 : "+ coupon.getCoupon_period(), "./couponManage");
+	}
 	
 	
+	@GetMapping("/faqManage")
+	public String faqManage(Model model) {
+		
+		model.addAttribute("faqs", faqService.getFaqList());		
+		model.addAttribute("answeredFaqs", faqService.getAnsweredFaqList());
+		
+		return "admin/faqManage"; 
+	}	
+	
+	@PostMapping("/answerFaq")
+	public void faqAnswer(HttpServletResponse response, Model model, Integer faq_id, String faq_answer) throws IOException {
+		
+		// 문의 답변 등록
+		faqService.answerFaq(faq_id, faq_answer);		
+		//답변 등록 알림 후 1:1 문의 관리 페이지로 이동
+		AlertPopup.alertAndMovePage(response, "답변 등록이 완료되었습니다","./faqManage");
+	}
+	
+	@GetMapping("noticeManage")
+	public String noticeManage(Model model) {
+		
+		model.addAttribute("notices", noticeService.getNoticeList());		
+		return "admin/noticeManage"; 
+	}
+	
+	@PostMapping("/updateNotice")
+	public void updateNotice(HttpServletResponse response, Model model, Integer notice_id, Notice notice) throws IOException {
+		
+		// 공지사항 수정
+		noticeService.updateNotice(notice_id, notice);		
+		//수정 후 공지사항 관리 페이지로 이동
+		AlertPopup.alertAndMovePage(response, "공지사항이 수정되었습니다","./noticeManage");
+	}
 }

@@ -18,6 +18,7 @@
  -->
  
 <hr />
+<a href=" <c:url value="/admin"/>">관리자 메인 페이지</a> <br />
 <a href=" <c:url value="/categoryManage"/>">카테고리 관리</a> <br />
 <a href="<c:url value="/memberManage"/>">회원 관리</a> <br />
 <a href="<c:url value="/talentPermission"/>">재능등록 요청 관리</a><br />
@@ -25,6 +26,10 @@
 <a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
 <a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
 <a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
+<a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
+<a href="<c:url value="/noticeManage"/>">공지 사항 관리</a><br />
+
+
 
 <hr />
 

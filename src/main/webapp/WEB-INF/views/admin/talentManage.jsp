@@ -19,7 +19,10 @@
 	<a href="<c:url value="/talentManage"/>">재능 관리</a><br />
 	<a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
 	<a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
+	<a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
+	<a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
 	<hr />
+
 	
 	<h4>- 등록된 재능 목록 -</h4>
 	<ul>

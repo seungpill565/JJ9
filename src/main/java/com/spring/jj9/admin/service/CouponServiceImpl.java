@@ -26,6 +26,12 @@ public class CouponServiceImpl implements CouponService{
 		return mapper.isCodeExist(random_code) == null;
 	}
 
+	@Override
+	public void createCoupon(Coupon coupon) {
+		mapper.createCoupon(coupon);
+		
+	}
+
 	
 
 }
