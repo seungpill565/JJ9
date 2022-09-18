@@ -10,6 +10,7 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> <!--  jquery -->
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <style>
 .bestNew {
     display: flex;
@@ -26,7 +27,7 @@
 </head>
 <body>
 
-	<h1><a href="mainpage">jj9</a> 메인 페이지</h1>
+	<h1><a href="mainpage" class="jj9-mainpage">jj9</a></h1>
 
 	<div>
 		헤더 부분 <br />
@@ -40,7 +41,20 @@
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
-					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
+				
+				<!-- 
+					<select name="type">
+						<option value=""
+							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+						<option value="T"
+							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+						<option value="C"
+							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+						<option value="W"
+							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+					</select> 
+				 -->	
+						<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
 						<button>Search</button>
 					
 					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
@@ -125,13 +139,86 @@
 	
 	<br />
 	
-	<hr />
-	<!-- footer -->
-	<div>
+	<!-- footer1 -->
 	
-		footer 부분
+	<footer>
+		<hr /> 
+		<div class="footer1-wrap">
+			<nav class="footer1-menu">
+				<div class="footer1-menus">
+					<p class="footer1-menus-cs">고객센터</p>
+					<p class="footer1-menus-workTime">09:00~18:00 (점심시간 13:00~14:00)</p>
+					<p class="footer1-menus-holiday">주말, 공휴일 휴무</p>
+					<a role="link" color="default" href="" class="footer1-menus-requestLink">
+						<span class="footer1-menus-request">1:1 문의</span>
+					</a>
+				</div>
+				
+				<div class="footer1-menus">
+					<p class="footer1-menus-title">jj9</p>
+					<ul class="footer1-menus-ul">
+						<li class="footer1-menus-li">jj9 메인</li>
+						<li class="footer1-menus-li">Prime</li>
+						<li class="footer1-menus-li">엔터프라이즈</li>
+						<li class="footer1-menus-li">프리랜서클럽</li>
+					</ul>
+				</div>
+				
+				<div class="footer1-menus">
+					<p class="footer1-menus-title">jj9 정보</p>
+					<ul class="footer1-menus-ul">
+						<li class="footer1-menus-li">서비스 소개</li>
+						<li class="footer1-menus-li">인재영업</li>
+					</ul>
+				</div>
+
+				<div class="footer1-menus">
+					<p class="footer1-menus-title">관련 사이트</p>
+					<ul class="footer1-menus-ul">
+						<li class="footer1-menus-li">jj9 블로그</li>
+						<li class="footer1-menus-li">jj9 인스타그램</li>
+						<li class="footer1-menus-li">jj9 유튜브</li>
+					</ul>
+				</div>
+				
+				<div class="footer1-menus">
+					<p class="footer1-menus-title">지원</p>
+					<ul class="footer1-menus-ul">
+						<li class="footer1-menus-li">공지사항</li>
+						<li class="footer1-menus-li">자주 묻는 질문</li>
+						<li class="footer1-menus-li">이용약관</li>
+						<li class="footer1-menus-li">개인정보처리방침</li>
+						<li class="footer1-menus-li">전문가 센터</li>
+					</ul>
+				</div>
+	
+			
+			</nav>
+		</div>
+	<!-- footer2 -->
+	
+		<hr /> 
+		<div class="footer2-area1">
+			<p class="footer2-area1-content">
+				(주)jj9 | 
+				
+				팀장 : 안승필 | 
+				
+				사이트 관리자 : 장몽운, 김도현, 홍준혁, 박성훈 |
+				
+				고객센터 : 1234-5678 | 
+				
+				help@jj9
+			</p>
+		</div>
 		
-	</div>
+		<div class="footer2-area2">
+			<p class="footer2-area2-content1">(주)jj9는 스프링 프로젝트를 위해 만들어진 사이트입니다. 실제 서비스가 아님을 유의해 주시기 바랍니다.</p>
+			<div class="footer2-area2-content2">
+				<p class="footer2-area2-content2-p">Copyright @ 2022 jj9 Inc. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
 	
 <script src="/jj9/resources/js/category.js?ver=1"></script>
 

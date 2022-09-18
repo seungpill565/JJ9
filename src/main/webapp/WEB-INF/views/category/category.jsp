@@ -12,11 +12,11 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> <!--  jquery -->
-<link rel="stylesheet" href="/jj9/resources/css/category.css" />
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 
 </head>
 <body>
-	<h1><a href="/jj9/mainpage">jj9</a></h1>
+	<h1><a href="/jj9/mainpage" class="jj9-mainpage">jj9</a></h1>
 	
 	<div>
 		헤더 부분 <br />
@@ -30,6 +30,18 @@
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
+				<!-- 
+					<select name="type">
+						<option value=""
+							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+						<option value="T"
+							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+						<option value="C"
+							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+						<option value="W"
+							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+					</select> 
+				 -->
 					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
 						<button>Search</button>
 					
