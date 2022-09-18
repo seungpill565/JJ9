@@ -35,7 +35,6 @@ $(function() {
 </head>
 <body>
 <%@ include file="./include/menu.jsp" %>
-
 	<div class="form__container">
 		<div class="container__image">
 			<h1 class="container__image--title">Welcome!</h1>

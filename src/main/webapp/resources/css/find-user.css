@@ -54,6 +54,7 @@ a:hover {
 	border-bottom: 3px solid black;
 	border-top: 1px solid #c0c0c0;
 	border-left: 1px solid #c0c0c0;
+	cursor: pointer;
 }
 
 .pw-label {
