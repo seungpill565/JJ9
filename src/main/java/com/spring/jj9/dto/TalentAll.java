@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class TalentAll {
 	//talent_list
-	 	private    Integer    talent_id;
+	 	private    Integer   talent_id;
 	    private    Integer cate_id;
 	    private    String    member_id;
 	    private    String    talent_title;
@@ -21,6 +21,8 @@ public class TalentAll {
 	    private    Integer    talent_price;
 	    private    String    talent_service_exp;
 	    private    String    talent_curriculum;
+	    private 	Integer talent_paycount;
+	    private 	String talent_permission;
 	    
 	    // category
 	    
