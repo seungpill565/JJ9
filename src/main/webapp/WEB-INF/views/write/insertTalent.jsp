@@ -59,7 +59,7 @@
 			<div class="colcol2">
 				<div class="col-name">커리큘럼</div> <br> <textarea name="talent_curriculum" id="" cols="30" rows="10"></textarea>
 			</div> <br>
-			<input type="hidden" value="1" name="member_id"/>
+			<input type="hidden" value="test1" name="member_id"/>
 			<div><input id="submit" type="submit" value="확인"/></div>
 		</form>
 	</div>	
