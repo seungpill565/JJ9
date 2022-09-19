@@ -25,7 +25,7 @@ public class MyPageController {
 		return "account/mypage";
 	}
 	
-	@GetMapping("/account/shopping-cart")
+	@GetMapping("/account/sell-talent")
 	public String shoppingCart(HttpSession session, HttpServletRequest request) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
@@ -35,7 +35,7 @@ public class MyPageController {
 			return "alert";			
 		}
 		
-		return "account/shopping-cart";
+		return "account/sell-talent";
 	}
 	
 	@GetMapping("/account/purchase-history")
