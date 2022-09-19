@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Category;
-import com.spring.jj9.mapper.CategoryMapper;
+import com.spring.jj9.mapper.CategoryMapper1;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl1 implements CategoryService{
 
 	@Autowired
-	CategoryMapper mapper;
+	CategoryMapper1 mapper;
 
 	@Override
 	public Integer addCate(Category category) {

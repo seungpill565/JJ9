@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.spring.jj9.dto.Member;
 
-public interface MemberMapper {
+public interface MemberMapper1 {
 
 	public Member getMember(String member_id);
 

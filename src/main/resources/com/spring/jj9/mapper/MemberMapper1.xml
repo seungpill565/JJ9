@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.jj9.mapper.MemberMapper">
+<mapper namespace="com.spring.jj9.mapper.MemberMapper1">
 	<select id="getMember" resultType="com.spring.jj9.dto.Member">
 		SELECT * FROM member WHERE member_id = #{member_id}
 	</select>	

@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.spring.jj9.dto.Category;
 
-public interface CategoryMapper {
+public interface CategoryMapper1 {
 
 	public int addCate(Category category);
 

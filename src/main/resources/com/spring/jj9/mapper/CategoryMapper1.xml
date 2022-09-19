@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.jj9.mapper.CategoryMapper">
+<mapper namespace="com.spring.jj9.mapper.CategoryMapper1">
 	<insert id="addCate">
 		INSERT into category values(#{cate_id}, #{cate_main}, #{cate_sub})		
 	</insert>

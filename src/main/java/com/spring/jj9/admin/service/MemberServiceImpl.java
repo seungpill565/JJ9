@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.jj9.dto.Member;
-import com.spring.jj9.mapper.MemberMapper;
+import com.spring.jj9.mapper.MemberMapper1;
 
 @Service
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
-	MemberMapper mapper;
+	MemberMapper1 mapper;
 	
 	@Override
 	public Member getMember(String member_id) {
