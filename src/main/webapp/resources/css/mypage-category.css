@@ -12,6 +12,9 @@ a {
 	color: black;
 }
 
+.mypage {
+	display: flex;
+}
 
 .mypage-name {
 	padding-left: 110px;
@@ -49,4 +52,18 @@ a {
 }
 /* 카테고리까지 공통 부분 끝 */
 
+
+
 /* mypage-main 에만 해당하는 영역 */
+.thispage__main {
+	width: 1000px;
+	margin-left: 20px;
+}
+
+.main-container__title {
+	padding: 10px 20px;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	border-radius: 10px;
+}
+

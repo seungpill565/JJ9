@@ -15,7 +15,6 @@
 	<div class="category__container">
 		<ul class="cate-container__ul">
 			<li><h2>쿠폰 등록</h2></li>
-			<li><a href="./watchlist">관심재능리스트</a></li>
 			<li><a href="./shopping-cart">장바구니</a></li>
 			<li><a href="./purchase-history">구매내역</a></li>
 			<li><a href="./note">쪽지관리</a></li>
