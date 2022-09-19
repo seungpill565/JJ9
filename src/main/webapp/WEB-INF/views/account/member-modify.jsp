@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>jj9 - 회원정보수정</title>
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
+<link rel="stylesheet" href="/jj9/resources/css/member-modify.css">
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -29,6 +30,39 @@
 				<h2 class="main-container__title">회원정보수정</h2>
 				<div class="container__card">
 					<p>회원정보수정</p>
+					
+						
+					<form action="account/dddd">
+						<div class="form__container">
+							<div>
+								<label for="email">이메일</label><br>
+								<input id="email" type="email">
+							</div>
+							
+							<div>
+								<label for="name">이름</label><br>
+								<input id="name" type="text" readonly>
+							</div>
+							
+							<div>
+								<label for="nickName">별명</label><br>
+								<input id="nickName" type="text">
+							</div>
+							
+							<div>
+								<label for="birthday">생일</label><br>
+								<input id="birthday" type="date" readonly>
+							</div>
+							
+							<div>
+								<input id="submit-btn" type="submit" value="수정하기">
+							</div>
+							
+							<button class="password-btn">패스워드 변경하기</button>
+						</div>
+					</form>
+						
+					
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.form__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.password-btn {
+	margin-left: auto;
+	margin-right: auto;
+	
+}
