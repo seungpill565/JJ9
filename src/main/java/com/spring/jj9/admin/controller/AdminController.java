@@ -20,6 +20,7 @@ import com.spring.jj9.admin.service.MemberService;
 import com.spring.jj9.admin.service.NoticeService;
 import com.spring.jj9.admin.service.PayService;
 import com.spring.jj9.admin.service.RefundService;
+import com.spring.jj9.admin.service.RequestTalentService;
 import com.spring.jj9.admin.service.TalentService;
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Coupon;
@@ -57,6 +58,9 @@ public class AdminController {
 	
 	@Autowired
 	NoticeService noticeService;
+	
+	@Autowired
+	RequestTalentService requestTalentService;
 	
 	
 	@GetMapping("/admin")
@@ -194,6 +198,27 @@ public class AdminController {
 		return "admin/talentManage"; 
 	}	
 	
+	@GetMapping("/requestTalentManage")
+	public String requestTalentManage(Model model) {
+		
+		//요청재능 리스트를 requestTalents에 담음
+		model.addAttribute("requestTalents", requestTalentService.getRequestTalentList());		
+		//요청재능 관리 페이지로 이동
+		return "admin/requestTalentManage"; 
+	}	
+	
+	
+	@GetMapping("/deleteRequestTalent")
+	public void deleteRequestTalent(HttpServletResponse response, int id) throws IOException {		
+		
+		requestTalentService.deleteRequestTalent(id);			
+		//승인 알림 팝업 후 이전 페이지로 이동
+		AlertPopup.alertAndBackPage(response, id +"번 요청재능 삭제완료");		
+	}
+	
+	////////////////////////////// 재능 관리 끝 ///////////////////////////////////
+	
+	////////////////////////////// 결제 관리 환불 관리 시작 ///////////////////////////////////
 	@GetMapping("/payLog")
 	public String payLog(Model model) {		
 		//pay 리스트를 payLogs에 담음
@@ -245,7 +270,11 @@ public class AdminController {
 		return "redirect:/refundManage"; 
 	}	
 	
+	//////////////////////////////결제 관리 끝 ///////////////////////////////////
+
 	
+	//////////////////////////////쿠폰 관리 시작 ///////////////////////////////////
+
 	@GetMapping("/couponManage")
 	public String couponManage(Model model) {
 		
@@ -279,8 +308,10 @@ public class AdminController {
 		//쿠폰 생성 알림 팝업 후 쿠폰 관리창으로 이동
 		AlertPopup.alertAndMovePage(response, coupon.getCoupon_name()+ " 생성완료" +"\\n코드 : " +coupon.getCoupon_code()+"\\n만료 기간 : "+ coupon.getCoupon_period(), "./couponManage");
 	}
-	
-	
+	////////////////////////////// 쿠폰 관리 끝 ///////////////////////////////////
+
+	////////////////////////////// 1:1 문의 관리 시작 ///////////////////////////////////
+
 	@GetMapping("/faqManage")
 	public String faqManage(Model model) {
 		
@@ -298,7 +329,9 @@ public class AdminController {
 		//답변 등록 알림 후 1:1 문의 관리 페이지로 이동
 		AlertPopup.alertAndMovePage(response, "답변 등록이 완료되었습니다","./faqManage");
 	}
+	////////////////////////////// 1:1 문의 관리 끝 ///////////////////////////////////
 	
+	////////////////////////////// 공지사항 관리 시작 ///////////////////////////////////
 	@GetMapping("noticeManage")
 	public String noticeManage(Model model) {
 		

@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>재능 관리</title>
+<title>요청 재능 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-	<h3>재능 관리 페이지입니다.</h3>
+	<h3>요청 재능 관리 페이지입니다.</h3>
 	관리자 ${currUser.member_id } 님 안녕하세요 <br />	
 	
 	<hr />
@@ -29,24 +29,23 @@
 	
 	<h4>- 등록된 재능 목록 -</h4>
 	<ul>
-	<c:forEach items="${talents }" var="talent">
-		<li>
-		${talent.talent_id}	/${talent.talent_title} / ${talent.member_id} / ${talent.talent_date}
+	<c:forEach items="${requestTalents }" var="requestTalent">
+		<li>		
 		<button type="button" data-bs-toggle="modal" data-bs-target="#talentDetailsModal"
 		
-			data-talent-id = "${talent.talent_id }"
-			data-talent-title = "${talent.talent_title }"
-			data-member-id = "${talent.member_id }"
-			data-talent-price = "${talent.talent_price }"
-			data-talent-date = "${talent.talent_date }"
-			data-talent-service-exp = "${talent.talent_service_exp }"
-			data-talent-curriculum = "${talent.talent_curriculum }"
-			data-talent-workday = "${talent.talent_workday }"
-			data-talent-summary = "${talent.talent_summary }"
-			data-talent-paycount = "${talent.talent_paycount }"
+			data-talent-id = "${requestTalent.trequest_id }"
+			data-member-id = "${requestTalent.member_id }"
+			data-talent-title = "${requestTalent.trequest_title }"
+			data-talent-content = "${requestTalent.trequest_content }"
+			data-talent-date = "${requestTalent.trequest_date }"
+			data-talent-budget = "${requestTalent.trequest_budget }"
+			data-talent-deadline = "${requestTalent.trequest_deadline }"
+			data-talent-cate-id = "${requestTalent.cate_id }"
+			data-talent-cate-main = "${requestTalent.cate_main }"	
+			data-talent-cate-sub = "${requestTalent.cate_sub }"			
 			
-		>수정</button>
-			 <a href="deleteTalent?id=${talent.talent_id }"><button>삭제</button></a>
+		>${requestTalent.trequest_id}	/${requestTalent.member_id} / ${requestTalent.trequest_title} / ${requestTalent.trequest_content}  </button>
+			 <a href="deleteRequestTalent?id=${requestTalent.trequest_id }"><button>삭제</button></a>
 		</li>		
 	</c:forEach>		
 	</ul>
@@ -61,46 +60,39 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <form action="./updateTalent2" method="POST">          
+	        <form action="./" method="POST">
+	                  
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 이름</label>
+	            <label for="recipient-name" class="col-form-label">요청 제목</label>
 	            <input type="text" class="form-control" id="new-talent-title" name="talent_title">
 	          </div>
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">신청자 id</label>
-	            <input type="text" class="form-control" id="new-member-id" name="member_id" readonly>
+	            <label for="recipient-name" class="col-form-label">카테고리</label>
+	            <input type="text" class="form-control" id="new-talent-cate" name="talent_workday">
+	          </div>  
+	          <div class="mb-3">
+	            <label for="recipient-name" class="col-form-label">요청 재능 내용</label>	            
+	            <textarea class="form-control" id="new-talent-content" name="talent_service_exp" style="height: 300px"> </textarea>
 	          </div>
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 가격</label>
-	            <input type="text" class="form-control" id="new-talent-price" name="talent_price">
+	            <label for="recipient-name" class="col-form-label">요청자 id</label>
+	            <input type="text" class="form-control" id="new-member-id" name="talent_price">
 	          </div>
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">신청 날짜</label>
+	            <label for="recipient-name" class="col-form-label">요청 날짜</label>
 	            <input type="date" class="form-control" id="new-talent-date" name="talent_date">
 	          </div> 
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 설명</label>
-	            <textarea class="form-control" id="new-talent-service-exp" name="talent_service_exp" style="height: 300px"> </textarea>
+	            <label for="recipient-name" class="col-form-label">요청 마감날짜</label>
+	            <input type="date" class="form-control" id="new-talent-deadline" name="talent_date">
 	          </div>  
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">커리큘럼 정보</label>
-	            <textarea class="form-control" id="new-talent-curriculum" name="talent_curriculum" style="height: 300px"> </textarea>
-	          </div>  
-	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 소요일</label>
-	            <input type="text" class="form-control" id="new-talent-workday" name="talent_workday">
-	          </div>     
-	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 요약</label>
-	            <input type="text" class="form-control" id="new-talent-summary" name="talent_summary">
-	          </div>  
-	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">재능 구매횟수</label>
-	            <input type="text" class="form-control" id="new-talent-paycount" name="talent_paycount" readonly>
-	          </div>     
+	            <label for="recipient-name" class="col-form-label">예산</label>
+	            <input type="text" class="form-control" id="new-talent-budget" name="talent_price">
+	          </div>  	          
 	          
 	          <div>            
-	            <input id="new-talent-id" type="text" hidden="true" name="talent_id" readonly >
+	            <input id="new-trequest-id" type="text" hidden="true" name="trequest_id" readonly >
 	          </div>  
 	                        
 		      <div class="modal-footer">
@@ -114,7 +106,7 @@
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="/jj9/resources/js/talentManage.js?ver=3"></script>
+	<script src="/jj9/resources/js/requestTalentManage.js?ver=3"></script>
 
 </body>
 </html>
