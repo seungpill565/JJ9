@@ -16,7 +16,9 @@
 		</div>
 	</div>
 
-	<h3>재능 등록하기</h3>
+	<div id="sub-title">
+		<h3>재능 등록하기</h3>
+	</div>
 	
 	
 	<div class="content-body">	
