@@ -16,32 +16,46 @@
 		</div>
 	</div>
 
-	<h3>재능 등록</h3>
+	<h3>재능 등록하기</h3>
 	
 	
-	<div>
+	<div class="content-body">	
 		<form action="./insert" method="POST" enctype="multipart/form-data">
-			카테고리 
-			<select id="select-cate-main" name="cate-main">
-				<option value="null">카테고리 선택</option>
-				<c:forEach items="${mainCates }" var="cate">
-					<option value="${cate.cate_main }">${cate.cate_main }</option>
-				</c:forEach>
-			</select>
-	
-			<select id="select-cate-sub" name="cate-sub">
-				<option value="null">세부 카테고리 선택</option>
-			</select> <br>
+			<div class="colcol1">
+				<div class="col-name">카테고리</div> 
+				<select id="select-cate-main" name="cate-main">
+					<option value="null">선택</option>
+					<c:forEach items="${mainCates }" var="cate">
+						<option value="${cate.cate_main }">${cate.cate_main }</option>
+					</c:forEach>
+				</select>
+		
+				<select id="select-cate-sub" name="cate-sub">
+					<option value="null">세부카테고리 선택</option>
+				</select> <br>
+			</div>
 			
-	
-			제목 <input type="text" name="talent_title"/> <br>
-			가격 <input type="number" name="talent_price"/> <br>
-			작업기간 <input type="text"/> <br>	
-			이미지 <input type="file" name="image_file"/> 최대 15MB<br>
-			상세내용 <br> <textarea name="" id="" cols="30" rows="10"></textarea> <br>
-			커리큘럼 <br> <textarea name="" id="" cols="30" rows="10"></textarea> <br>
+			
+			<div class="colcol">
+				<div class="col-name">제목</div> <input type="text" name="talent_title"/>
+			</div> <br>
+			<div class="colcol">
+				<div class="col-name">가격</div> <input type="number" name="talent_price"/>
+			</div> <br>
+			<div class="colcol">
+				<div class="col-name">기간</div> <input type="text"/>
+			</div> <br>
+			<div class="colcol">
+				<div class="col-name">이미지</div> <input type="file" name="image_file"/> (최대 15MB) 
+			</div> <br>
+			<div class="colcol2">
+				<div class="col-name">상세내용</div> <br> <textarea name="" id="" cols="30" rows="20"></textarea>
+			</div> <br>
+			<div class="colcol2">
+				<div class="col-name">커리큘럼</div> <br> <textarea name="" id="" cols="30" rows="10"></textarea>
+			</div> <br>
 			<input type="hidden" value="1" name="member_id"/>
-			<input type="submit" value="올리기"/>
+			<div><input id="submit" type="submit" value="확인"/></div>
 		</form>
 	</div>	
 	<!--  <input type="textarea" name="talent_service_exp"/> 
