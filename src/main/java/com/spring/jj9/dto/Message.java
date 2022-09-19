@@ -1,6 +1,7 @@
 package com.spring.jj9.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,6 @@ public class Message {
 	private String message_content;
 	private String sender_id;
 	private String resiver;
-	private Date message_date;
+	private Timestamp message_date;
 
 }
