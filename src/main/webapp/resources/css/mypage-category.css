@@ -56,8 +56,8 @@ a {
 
 /* mypage-main 에만 해당하는 영역 */
 .thispage__main {
-	width: 1000px;
-	margin-left: 20px;
+	width: 1200px;
+	margin-left: 100px;
 }
 
 .main-container__title {

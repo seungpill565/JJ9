@@ -28,7 +28,7 @@
 		<div class="thispage__main">
 			<div class="main__container">
 				<h2 class="main-container__title">마이 페이지</h2>
-				<div class="container__card--profile">
+				<div class="container__card">
 					<p>프로필</p>
 				</div>
 			</div>
