@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+body {
+    margin: 0;
+}
+
+div > * {
+    font-family: 'Jua', sans-serif;
+}
+
+.local-font {
+    font-family: "210-supersize", sans-serif;
+    font-size: 50px;
+    text-decoration: none;
+    color: #e64646;
+}
+.top-menu {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    border-bottom: solid #e64646 20px;
+    height: 120px;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 1tr 3tr;
+}
+
+.top-row > div {
+    padding-top: 20px;
+    grid-row-start: 1;
+}
+
+
+.top-menu > * {
+    grid-column-start: 2;
+}
+
+#sub-title {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+#sub-title > h3 {
+    grid-column-start: 2;
+}
+
+.content-body {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+.content-body > * {
+    grid-column-start: 2;
+}
+
+.col-name {
+    font-size: 20px;
+}
+
+.colcol {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    border-bottom: solid darkgrey 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.colcol1 {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    border-bottom: solid darkgrey 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.colcol > input {
+    grid-column-start: 2;
+}	
+
+#submit {
+    width: 100px;
+    height: 40px;
+    background-color: #e64646;
+    color: white;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    background-color: #c83232;
+    cursor : pointer;
+}
+
+.colcol2 {
+    display: grid;
+    border-bottom: solid darkgrey 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+textarea {
+	resize: none;
+}
