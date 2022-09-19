@@ -41,6 +41,15 @@ div > * {
     grid-column-start: 2;
 }
 
+#sub-title {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+#sub-title > h3 {
+    grid-column-start: 2;
+}
+
 .content-body {
     display: grid;
     grid-template-columns: 25% 50% 25%;
