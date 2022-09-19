@@ -19,6 +19,7 @@
 				<li><a href="./purchase-history">구매재능내역</a></li>
 				<li><a href="./note">쪽지관리</a></li>
 				<li><a href="./add-coupon">쿠폰등록</a></li>
+				<li><a href="./inquiry.jsp">1:1 문의</a></li>
 				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="./member-modify">회원정보수정</a></li>
 				<li><a href="./secession">회원탈퇴</a></li>
 			</ul>
