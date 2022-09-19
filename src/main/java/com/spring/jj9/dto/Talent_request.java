@@ -18,5 +18,8 @@ public class Talent_request {
 	private Integer trequest_budget;
 	private Integer cate_id;
 	 
-
+	//category
+	
+	private String cate_main;
+	private String cate_sub;
 }

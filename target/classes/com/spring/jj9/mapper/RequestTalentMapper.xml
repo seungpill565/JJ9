@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.RequestTalentMapper">
+	
+	<select id="getRequestTalentList" resultType="com.spring.jj9.dto.Talent_request">
+		SELECT * FROM talent_request r INNER JOIN category c ON r.cate_id= c.cate_id 
+	</select>
+
+	<delete id="deleteRequestTalent">
+		DELETE FROM talent_request WHERE trequest_id = #{id}
+	</delete>
+	
+</mapper>

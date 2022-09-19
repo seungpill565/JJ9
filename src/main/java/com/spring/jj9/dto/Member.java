@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Data    
 public class Member {
 
     private String member_id;
@@ -20,6 +20,7 @@ public class Member {
     private String member_phoneNum;
     private Date member_birthday;
     private Integer member_point;
+
 
     private String member_name;
     private String member_nickName;
@@ -35,7 +36,4 @@ public class Member {
     private String member_rePassword;
     //idCheck
     private String check_id;
-
-
-
 }

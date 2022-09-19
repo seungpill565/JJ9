@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.PayMapper">
+	
+	<select id="getPayList" resultType="com.spring.jj9.dto.Pay_talentList">
+		SELECT p.pay_id,  p.talent_id, t.talent_title, t.member_id as "seller_member_id", p.member_id as "buyer_member_id", p.pay_way, p.pay_money, p.pay_original_money from pay p INNER JOIN talent_list t ON p.talent_id = t.talent_id
+	</select>	
+
+	
+</mapper>

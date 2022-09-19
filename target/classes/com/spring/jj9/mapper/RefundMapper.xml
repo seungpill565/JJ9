@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.RefundMapper">
+	
+	<select id="getRefundList" resultType="com.spring.jj9.dto.Refund_request_pay_talent_list">
+		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_way, p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
+			FROM refund_request r
+			INNER JOIN pay p ON r.pay_id= p.pay_id
+			INNER JOIN talent_list t ON t.talent_id= p.talent_id 
+			WHERE r.request_status = '환불요청중'
+	</select>	
+	
+	<select id="getRefundCompletedList" resultType="com.spring.jj9.dto.Refund_request_pay_talent_list">
+		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_way, p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
+			FROM refund_request r
+			INNER JOIN pay p ON r.pay_id= p.pay_id
+			INNER JOIN talent_list t ON t.talent_id= p.talent_id 
+			WHERE r.request_status = '환불완료'
+	</select>	
+	
+	<update id="refund">
+		UPDATE refund_request 
+		SET request_status = '환불완료'	
+		WHERE refund_id = #{refund_id} AND request_status = '환불요청중'			
+	</update>
+	
+	<delete id="deleteRufundRequest">
+		DELETE FROM refund_request Where refund_id = #{refund_id}
+	</delete>
+	
+	
+	
+</mapper>

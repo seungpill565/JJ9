@@ -31,6 +31,12 @@
 	<mybatis-spring:scan base-package="com.spring.jj9.purchase.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.jj9.message.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.jj9.order.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.member.mapper"/>
+
+
+	<mybatis-spring:scan base-package="com.spring.jj9.add.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.request.mapper"/>
 
 
 	<!-- navermail설정 -->
@@ -52,12 +58,8 @@
 		 </property>
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.spring.jj9.mapper"/>
-	<mybatis-spring:scan base-package="com.spring.jj9.member.mapper"/>
 
 
-	<mybatis-spring:scan base-package="com.spring.jj9.add.mapper"/>
-	<mybatis-spring:scan base-package="com.spring.jj9.request.mapper"/>
 		
 
 </beans>

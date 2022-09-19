@@ -20,8 +20,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.spring.jj9" />
-	
-	
-	
+	<context:component-scan base-package="com.spring.jj9"
+		scoped-proxy="targetClass" />
+
+
+
 </beans:beans>
