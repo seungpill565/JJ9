@@ -26,7 +26,7 @@ public class PurchaseController {
 	@Autowired
 	PurchaseService service;
 	
-	@GetMapping(value = "/Purchase/{id}")
+	@GetMapping(value = "/purchase/{id}")
 	public String PurchaseView(@PathVariable("id") int id, Model model) {
 		List<TalentAll> talentAll = service.getList(id);
 		List<TalentAll> talentReivew = service.getReviewList(id);
