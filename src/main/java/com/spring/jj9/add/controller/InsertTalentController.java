@@ -2,6 +2,7 @@ package com.spring.jj9.add.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -15,9 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.spring.jj9.add.service.CateService;
 import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.util.ScriptAlertUtils;
-import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -32,7 +33,7 @@ public class InsertTalentController {
 	public String insertTalent(HttpServletRequest request, HttpServletResponse response) {
 		
 		// 파일 경로
-		String savePath = Paths.get("target/talent").toString();
+		String savePath = Paths.get("/target/images").toString();
 		
 		log.info("파일경로 : " + savePath);
 		
@@ -42,7 +43,7 @@ public class InsertTalentController {
 		// 파일 경로가 존재하지 않으면 만들어준다.
 		File file = new File(savePath);
 		if(!file.exists()) {
-			file.mkdirs();			
+			file.mkdirs();
 		}
 		
 		MultipartRequest multi;

@@ -19,4 +19,8 @@ public class Talent_list {
     private    String    talent_service_exp;
     private    String    talent_curriculum;
     private    Integer    talent_id;
+    private    Integer    talent_workday;
+    private    String    talent_summary;
+    private     Integer talent_paycount;   // 0
+    private     String talent_permission;  // 미승인
 }

@@ -49,10 +49,10 @@
 				<div class="col-name">이미지</div> <input type="file" name="image_file"/> (최대 15MB) 
 			</div> <br>
 			<div class="colcol2">
-				<div class="col-name">상세내용</div> <br> <textarea name="" id="" cols="30" rows="20"></textarea>
+				<div class="col-name">상세내용</div> <br> <textarea name="talent_service_exp" id="" cols="30" rows="20"></textarea>
 			</div> <br>
 			<div class="colcol2">
-				<div class="col-name">커리큘럼</div> <br> <textarea name="" id="" cols="30" rows="10"></textarea>
+				<div class="col-name">커리큘럼</div> <br> <textarea name="talent_curriculum" id="" cols="30" rows="10"></textarea>
 			</div> <br>
 			<input type="hidden" value="1" name="member_id"/>
 			<div><input id="submit" type="submit" value="확인"/></div>
