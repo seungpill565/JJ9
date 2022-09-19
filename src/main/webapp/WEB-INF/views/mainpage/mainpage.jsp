@@ -33,7 +33,7 @@
 	<div>
 		헤더 부분 <br />
 		<div>
-			로그인 테스트 용<br /> <a href="">로그인</a> <br /> <a href="">회원가입</a>
+			로그인 테스트 용<br /> <a href="login">로그인</a> <br /> <a href="">회원가입</a>
 		</div>
 		
 		<br />

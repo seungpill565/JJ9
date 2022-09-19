@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
+body {
+	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+}
+
+a {
+	text-decoration : none;
+	color: black;
+}
+
+a:hover {
+	border-bottom: 1px solid black;
+}
+
+.description {
+	text-align: center;
+	font-size: 60px;
+	font-weight: 400;
+	margin-top: 25%;
+	color: rgb(230, 70, 70);
+}
+
+.auth-form {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 0 30px 20px;
+}
+
+.auth-form__label--id, .auth-form__label--pw {
+	text-align: end;
+	font-weight: 600;
+	font-family: 'Jua', sans-serif;
+	padding-left: 35px;
+}
+
+.auth-form__input {
+	width: 300px;
+	height: 30px;
+	margin: 10px 0 10px 20px;
+	padding: 5px 0 5px 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 3px solid black;
+	font-size: 16px;
+}
+
+.auth-form__button--login {
+	margin: 20px 0 0 26%;
+	padding: 10px 80px;
+	border-radius: 10px;
+	border: none;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	font-size: 16px;
+}
+
+.auth-form__button--login:hover {
+	background-color: rgb(200, 50, 50);
+	cursor: pointer;
+}
+
+.auth-form__link--etc {
+	text-align: center;
+	margin-right: 5px;
+}
+
+.auth-form__line--division {
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.auth-form__label {
+	width: 100%;
+}
+
+.auth-form__label--error, .auth-form__label--logout {
+	display: inline-block;
+	color: red;
+}
+
+
+.form__container {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	align-item: center;
+}
+
+.container__image {
+	width: 600px;
+	height: 700px;
+	position: relative;
+	border: 3px solid black;
+	border-right: none;
+	background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) ), url("../image/talent.jpg");
+	background-position: right bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-top-left-radius: 100px;
+}
+
+.container__login {
+	border: 3px solid black;
+	border-bottom-right-radius: 100px;
+}
+
+.container__image--title {
+	color: rgb(230, 70, 70);
+	font-size: 70px;
+	margin: 20% 0 30px 0;
+}
+
+.container__image--description {
+	margin-top: 10px;
+	font-weight: 300;
+	font-size: 24px;
+	color: white;
+}
+
+.container__image--title, .container__image--description {
+	text-align: center;
+}
+
