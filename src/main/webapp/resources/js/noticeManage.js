@@ -32,3 +32,22 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   newNoticeId.value = noticeId;
   
 })
+
+
+var exampleModal2 = document.getElementById('newNoticeModal')
+exampleModal2.addEventListener('show.bs.modal', function (event) {
+  // Button that triggered the modal
+  var button = event.relatedTarget
+  // Extract info from data-bs-* attributes  
+
+  // If necessary, you could initiate an AJAX request here
+  // and then do the updating in a callback.
+  //
+  // Update the modal's content.
+  var modalTitle = exampleModal2.querySelector('.modal-title')
+  var newNoticeDate = exampleModal2.querySelector('.modal-body #new-notice-date-now')  
+  
+  modalTitle.textContent = '새 공지 작성'; 
+  var date = new Date()
+  newNoticeDate.value = date.toISOString().substring(0, 10);   
+})

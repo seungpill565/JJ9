@@ -14,6 +14,8 @@ public interface TalentService {
 
 	public List<Talent_list> getTalentList();
 
+	public void updateTalent(Integer talent_id, Talent_list talent);
+
 	
 
 }

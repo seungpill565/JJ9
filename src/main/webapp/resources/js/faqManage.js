@@ -8,6 +8,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   // Extract info from data-bs-* attributes 
 
   var faqId = button.getAttribute('data-faq-id')
+  var faqCate = button.getAttribute('data-faq-cate') 
   var faqTitle = button.getAttribute('data-faq-title')
   var faqContent = button.getAttribute('data-faq-content') 
   var faqDate = button.getAttribute('data-faq-date') 
@@ -20,6 +21,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   // Update the modal's content.
   var modalTitle = exampleModal.querySelector('.modal-title')
   var modalTitle2 = exampleModal.querySelector('.modal-title2')
+  var newFaqCate = exampleModal.querySelector('.modal-body #new-faq-cate')  
   var newFaqId = exampleModal.querySelector('.modal-body #new-faq-id')  
   var newFaqContent = exampleModal.querySelector('.modal-body #new-faq-content')  
   var newFaqDate = exampleModal.querySelector('.modal-body #new-faq-date')  
@@ -29,6 +31,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   modalTitle.textContent = faqTitle;
   modalTitle2.textContent = '작성자 : ' + memberId;
   newFaqId.innerHTML = faqId;
+  newFaqCate.innerHTML = faqCate;
   newFaqDate.innerHTML = faqDate;  
   newFaqContent.value = faqContent;
   newFaqAnswer.value = faqAnswer; 

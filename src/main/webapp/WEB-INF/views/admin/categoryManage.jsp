@@ -23,6 +23,7 @@
 <a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
 <a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
 <a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
+<a href="<c:url value="/noticeManage"/>">공지 사항 관리</a><br />
 <hr />
 
 

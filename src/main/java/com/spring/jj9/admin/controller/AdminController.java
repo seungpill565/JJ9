@@ -26,6 +26,7 @@ import com.spring.jj9.dto.Coupon;
 import com.spring.jj9.dto.Faq;
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.dto.Notice;
+import com.spring.jj9.dto.Talent_list;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -144,6 +145,27 @@ public class AdminController {
 		model.addAttribute("talents", talentService.getUnpermittedTalentList());			
 		//재능 등록 승인 페이지로 이동
 		return "admin/talentPermission"; 
+	}
+	//재능등록 요청관리에서의 수정
+	@PostMapping("/updateTalent")
+	public void updateTalent(HttpServletResponse response, Model model, Talent_list talent, Integer talent_id) throws IOException {
+		
+		//재능 정보 수정
+		talentService.updateTalent(talent_id, talent);		
+		
+		//쿠폰 생성 알림 팝업 후 쿠폰 관리창으로 이동
+		AlertPopup.alertAndMovePage(response, " 수정완료", "./talentPermission");
+	}
+	
+	//재능관리에서의 수정
+	@PostMapping("/updateTalent2")
+	public void updateTalent2(HttpServletResponse response, Model model, Talent_list talent, Integer talent_id) throws IOException {
+		
+		//재능 정보 수정
+		talentService.updateTalent(talent_id, talent);		
+		
+		//쿠폰 생성 알림 팝업 후 쿠폰 관리창으로 이동
+		AlertPopup.alertAndMovePage(response, " 수정완료", "./talentManage");
 	}
 	
 	@GetMapping("/permissionTalent")

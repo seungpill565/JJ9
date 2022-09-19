@@ -23,6 +23,7 @@
 <a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
 <a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
 <a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
+<a href="<c:url value="/noticeManage"/>">공지 사항 관리</a><br />
 <hr />
 
 
@@ -34,11 +35,12 @@
 		<li>
 			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#answerFaqModal"
 				data-faq-id = "${faq.faq_id }"
+				data-faq-cate = "${faq.faq_cate }"
 				data-faq-title = "${faq.faq_title }"
 				data-faq-content = "${faq.faq_content }"
 				data-faq-date = "${faq.faq_date }"
 				data-member-id = "${faq.member_id }"				
-			 >${faq.faq_id} / ${faq.faq_title}/ ${faq.faq_date}  / ${faq.member_id} </button> 
+			 >${faq.faq_id} / ${faq.faq_cate} / ${faq.faq_title}/ ${faq.faq_date}  / ${faq.member_id} </button> 
 			 
 		</li>		
 	</c:forEach>		
@@ -57,9 +59,10 @@
       <div class="modal-body">
         <form action="./answerFaq" method="POST">
           <div class="mb-3">
-          	<span class="modal-title2" id="exampleModalLabel2">New message</span>   
-           <label for="recipient-name" class="col-form-label">  작성일 : <span id="new-faq-date" ></span></label>
-            <label for="recipient-name" class="col-form-label">  문의 번호 : <span id="new-faq-id"></span></label>
+	          <span class="modal-title2" id="exampleModalLabel2">New message</span>   
+	          <label for="recipient-name" class="col-form-label">  작성일 : <span id="new-faq-date" ></span></label>
+	          <label for="recipient-name" class="col-form-label">  문의 번호 : <span id="new-faq-id"></span></label>
+	          <label for="recipient-name" class="col-form-label">  문의 분류 : <span id="new-faq-cate"></span></label>
           </div>          
                
           <div class="mb-3">
@@ -97,7 +100,7 @@
 				data-faq-date = "${faq.faq_date }"
 				data-member-id = "${faq.member_id }"
 				data-faq-answer = "${faq.faq_answer }"				
-			 >${faq.faq_id} / ${faq.faq_title}/ ${faq.faq_date}  / ${faq.member_id} </button> 
+			 > ${faq.faq_id} / ${faq.faq_cate} / ${faq.faq_title}/ ${faq.faq_date}  / ${faq.member_id} </button> 
 			 
 		</li>		
 	</c:forEach>		

@@ -40,6 +40,13 @@ public class TalentServiceImpl implements TalentService{
 		return  mapper.getTalentList();
 	}
 
+
+	@Override
+	public void updateTalent(Integer talent_id, Talent_list talent) {
+		mapper.updateTalent(talent_id, talent.getTalent_title(), talent.getTalent_price(), talent.getTalent_date(),
+				talent.getTalent_service_exp(), talent.getTalent_curriculum(), talent.getTalent_workday(), talent.getTalent_summary());		
+	}
+
 	
 
 }

@@ -22,6 +22,12 @@
 		SELECT * FROM talent_list WHERE talent_permission = '승인' ORDER BY talent_date DESC
 	</select>	
 	
+	<update id="updateTalent">
+		UPDATE talent_list 
+		SET talent_title = #{talent_title}, talent_price = #{talent_price}, talent_date = #{talent_date}, talent_service_exp = #{talent_service_exp}
+		, talent_curriculum = #{talent_curriculum}, talent_workday = #{talent_workday}, talent_summary = #{talent_summary}
+		WHERE talent_id = #{talent_id}			
+	</update>
 
 	
 </mapper>
