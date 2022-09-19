@@ -23,6 +23,14 @@
 				<li><a href="./secession">회원탈퇴</a></li>
 			</ul>
 		</div>
+		<div class="thispage__main">
+			<div class="main__container">
+				<h2 class="main-container__title">회원정보수정</h2>
+				<div class="container__card">
+					<p>회원정보수정</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

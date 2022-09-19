@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jj9 - 장바구니</title>
+<title>jj9 - 판매재능관리</title>
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 </head>
 <body>
@@ -22,6 +22,14 @@
 				<li><a href="./member-modify">회원정보수정</a></li>
 				<li><a href="./secession">회원탈퇴</a></li>
 			</ul>
+		</div>
+		<div class="thispage__main">
+			<div class="main__container">
+				<h2 class="main-container__title">판매재능관리</h2>
+				<div class="container__card">
+					<p>판매재능관리</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
