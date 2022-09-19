@@ -1,5 +1,7 @@
 package com.spring.jj9.category.controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,10 +48,10 @@ public class CategoryController {
 		//model.addAttribute("subcategorys", service.readCategory(id)); // 서브카테고리 
 		model.addAttribute("maincategorys", service.readAllMainCategory()); // 메인카테고리 // 검색했을땐 메인카테고리만 표시
 		
-		model.addAttribute("purchases",service.readTalentAllBySearch(cri)); // 검색한 재능들 
-		log.info("key word ", cri.getKeyword());
+		model.addAttribute("purchases",service.readTalentAllBySearch(cri)); // 검색한 재능들
+		System.out.println("type : " + cri.getType());
 		
-		int total = service.readTalentCountBySearch(cri.getKeyword()); // 검색한 재능들 총 개수 
+		int total = service.readTalentCountBySearch(cri); // 검색한 재능들 총 개수 
 		
 		PageMake page = new PageMake(cri, total); // 페이지네이션
 		model.addAttribute("page", page); 

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>jj9</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -30,31 +31,28 @@
 	<h1><a href="mainpage" class="jj9-mainpage">jj9</a></h1>
 
 	<div>
-		Çì´õ ºÎºĞ <br />
+		í—¤ë” ë¶€ë¶„ <br />
 		<div>
-			·Î±×ÀÎ Å×½ºÆ® ¿ë<br /> <a href="">·Î±×ÀÎ</a> <br /> <a href="">È¸¿ø°¡ÀÔ</a>
+			ë¡œê·¸ì¸ í…ŒìŠ¤íŠ¸ ìš©<br /> <a href="">ë¡œê·¸ì¸</a> <br /> <a href="">íšŒì›ê°€ì…</a>
 		</div>
 		
 		<br />
 
-<!-- °Ë»ö ±â´É -->
+<!-- ê²€ìƒ‰ ê¸°ëŠ¥ -->
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
-				
-				<!-- 
 					<select name="type">
 						<option value=""
 							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
-						<option value="T"
-							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>Á¦¸ñ</option>
-						<option value="C"
-							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>³»¿ë</option>
-						<option value="W"
-							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>ÀÛ¼ºÀÚ</option>
+						<option value="title"
+							<c:out value="${pageMaker.cri.type eq 'title'?'selected':'' }"/>>ì œëª©</option>
+						<option value="content"
+							<c:out value="${pageMaker.cri.type eq 'content'?'selected':'' }"/>>ë‚´ìš©</option>
+						<option value="writer"
+							<c:out value="${pageMaker.cri.type eq 'writer'?'selected':'' }"/>>ì „ë¬¸ê°€</option>
 					</select> 
-				 -->	
-						<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="Àç´ÉÀÌ³ª Àü¹®°¡¸¦ °Ë»öÇÏ¼¼¿ä.">
+						<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="ì¬ëŠ¥ì´ë‚˜ ì „ë¬¸ê°€ë¥¼ ê²€ìƒ‰í•˜ì„¸ìš”.">
 						<button>Search</button>
 					
 					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
@@ -62,13 +60,13 @@
 				</form>
 			</div>
 		</div>
-<!-- /°Ë»ö ±â´É -->
+<!-- /ê²€ìƒ‰ ê¸°ëŠ¥ -->
 	
 	<br />
 
-	<h3>Ä«Å×°í¸® Å×½ºÆ®¿ë</h3>
+	<h3>ì¹´í…Œê³ ë¦¬ í…ŒìŠ¤íŠ¸ìš©</h3>
 	<div>
-		<ul> ÀüÃ¼ Ä«Å×°í¸®  <br />
+		<ul> ì „ì²´ ì¹´í…Œê³ ë¦¬  <br />
 			<c:forEach items="${categorys }" var="category">
 				<li><a href="category/${category.cate_id }">${category.cate_main }</a></li>
 			</c:forEach>
@@ -80,13 +78,13 @@
 	<br />
 	
 	<div>
-		Àç´É µî·Ï Å×½ºÆ® ¿ë<br />
-		<a href="">Àç´É µî·Ï </a> <br />
+		ì¬ëŠ¥ ë“±ë¡ í…ŒìŠ¤íŠ¸ ìš©<br />
+		<a href="">ì¬ëŠ¥ ë“±ë¡ </a> <br />
 	</div>
 	
 	<div>
-		Àç´É ÀÇ·Ú Å×½ºÆ® ¿ë<br />
-		<a href="">Àç´É ÀÇ·Ú </a> <br />
+		ì¬ëŠ¥ ì˜ë¢° í…ŒìŠ¤íŠ¸ ìš©<br />
+		<a href="">ì¬ëŠ¥ ì˜ë¢° </a> <br />
 	</div>
 	
 	<br />
@@ -94,17 +92,17 @@
 	<div class="bestNew">
 	
 	
-	<div><h3>BEST Àç´É</h3>
+	<div><h3>BEST ì¬ëŠ¥</h3>
 		<c:forEach items="${bestpurchases }" var="bestpurchase">
 			<span>
 					<a href="purchase/${bestpurchase.talent_id }">
 					 	${bestpurchase.talent_title } <br />
 					 	
-					 	°¡°İ : ${bestpurchase.talent_price }
-					 	ÆÇ¸ÅÀÚ : ${bestpurchase.member_id } 
-					 	ÆÇ¸Å È½¼ö : ${bestpurchase.talent_paycount } <br />
+					 	ê°€ê²© : ${bestpurchase.talent_price }
+					 	íŒë§¤ì : ${bestpurchase.member_id } 
+					 	íŒë§¤ íšŸìˆ˜ : ${bestpurchase.talent_paycount } <br />
 					 	cate_id : ${bestpurchase.cate_id } <br />
-					 	Àç´É ¹øÈ£ : ${bestpurchase.talent_id } <br />
+					 	ì¬ëŠ¥ ë²ˆí˜¸ : ${bestpurchase.talent_id } <br />
 					 </a>
 				</span> 
 				<br />
@@ -116,17 +114,17 @@
 	<br />
 	
 	
-	<div><h3>NEW Àç´É</h3>
+	<div><h3>NEW ì¬ëŠ¥</h3>
 		<c:forEach items="${newpurchases }" var="newpurchase">
 			<span>
 					<a href="purchase/${newpurchase.talent_id }">
 					 	${newpurchase.talent_title } <br />
 					 	
-					 	°¡°İ : ${newpurchase.talent_price }
-					 	ÆÇ¸ÅÀÚ : ${newpurchase.member_id } 
- 						ÆÇ¸Å È½¼ö : ${newpurchase.talent_paycount } <br />
+					 	ê°€ê²© : ${newpurchase.talent_price }
+					 	íŒë§¤ì : ${newpurchase.member_id } 
+ 						íŒë§¤ íšŸìˆ˜ : ${newpurchase.talent_paycount } <br />
 					 	cate_id : ${newpurchase.cate_id } <br />
-					 	Àç´É ¹øÈ£ : ${newpurchase.talent_id } <br />
+					 	ì¬ëŠ¥ ë²ˆí˜¸ : ${newpurchase.talent_id } <br />
 					 </a>
 				</span> 
 				<br />
@@ -146,49 +144,49 @@
 		<div class="footer1-wrap">
 			<nav class="footer1-menu">
 				<div class="footer1-menus">
-					<p class="footer1-menus-cs">°í°´¼¾ÅÍ</p>
-					<p class="footer1-menus-workTime">09:00~18:00 (Á¡½É½Ã°£ 13:00~14:00)</p>
-					<p class="footer1-menus-holiday">ÁÖ¸», °øÈŞÀÏ ÈŞ¹«</p>
+					<p class="footer1-menus-cs">ê³ ê°ì„¼í„°</p>
+					<p class="footer1-menus-workTime">09:00~18:00 (ì ì‹¬ì‹œê°„ 13:00~14:00)</p>
+					<p class="footer1-menus-holiday">ì£¼ë§, ê³µíœ´ì¼ íœ´ë¬´</p>
 					<a role="link" color="default" href="" class="footer1-menus-requestLink">
-						<span class="footer1-menus-request">1:1 ¹®ÀÇ</span>
+						<span class="footer1-menus-request">1:1 ë¬¸ì˜</span>
 					</a>
 				</div>
 				
 				<div class="footer1-menus">
 					<p class="footer1-menus-title">jj9</p>
 					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">jj9 ¸ŞÀÎ</li>
+						<li class="footer1-menus-li">jj9 ë©”ì¸</li>
 						<li class="footer1-menus-li">Prime</li>
-						<li class="footer1-menus-li">¿£ÅÍÇÁ¶óÀÌÁî</li>
-						<li class="footer1-menus-li">ÇÁ¸®·£¼­Å¬·´</li>
+						<li class="footer1-menus-li">ì—”í„°í”„ë¼ì´ì¦ˆ</li>
+						<li class="footer1-menus-li">í”„ë¦¬ëœì„œí´ëŸ½</li>
 					</ul>
 				</div>
 				
 				<div class="footer1-menus">
-					<p class="footer1-menus-title">jj9 Á¤º¸</p>
+					<p class="footer1-menus-title">jj9 ì •ë³´</p>
 					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">¼­ºñ½º ¼Ò°³</li>
-						<li class="footer1-menus-li">ÀÎÀç¿µ¾÷</li>
+						<li class="footer1-menus-li">ì„œë¹„ìŠ¤ ì†Œê°œ</li>
+						<li class="footer1-menus-li">ì¸ì¬ì˜ì—…</li>
 					</ul>
 				</div>
 
 				<div class="footer1-menus">
-					<p class="footer1-menus-title">°ü·Ã »çÀÌÆ®</p>
+					<p class="footer1-menus-title">ê´€ë ¨ ì‚¬ì´íŠ¸</p>
 					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">jj9 ºí·Î±×</li>
-						<li class="footer1-menus-li">jj9 ÀÎ½ºÅ¸±×·¥</li>
-						<li class="footer1-menus-li">jj9 À¯Æ©ºê</li>
+						<li class="footer1-menus-li">jj9 ë¸”ë¡œê·¸</li>
+						<li class="footer1-menus-li">jj9 ì¸ìŠ¤íƒ€ê·¸ë¨</li>
+						<li class="footer1-menus-li">jj9 ìœ íŠœë¸Œ</li>
 					</ul>
 				</div>
 				
 				<div class="footer1-menus">
-					<p class="footer1-menus-title">Áö¿ø</p>
+					<p class="footer1-menus-title">ì§€ì›</p>
 					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">°øÁö»çÇ×</li>
-						<li class="footer1-menus-li">ÀÚÁÖ ¹¯´Â Áú¹®</li>
-						<li class="footer1-menus-li">ÀÌ¿ë¾à°ü</li>
-						<li class="footer1-menus-li">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</li>
-						<li class="footer1-menus-li">Àü¹®°¡ ¼¾ÅÍ</li>
+						<li class="footer1-menus-li">ê³µì§€ì‚¬í•­</li>
+						<li class="footer1-menus-li">ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</li>
+						<li class="footer1-menus-li">ì´ìš©ì•½ê´€</li>
+						<li class="footer1-menus-li">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</li>
+						<li class="footer1-menus-li">ì „ë¬¸ê°€ ì„¼í„°</li>
 					</ul>
 				</div>
 	
@@ -200,20 +198,20 @@
 		<hr /> 
 		<div class="footer2-area1">
 			<p class="footer2-area1-content">
-				(ÁÖ)jj9 | 
+				(ì£¼)jj9 | 
 				
-				ÆÀÀå : ¾È½ÂÇÊ | 
+				íŒ€ì¥ : ì•ˆìŠ¹í•„ | 
 				
-				»çÀÌÆ® °ü¸®ÀÚ : Àå¸ù¿î, ±èµµÇö, È«ÁØÇõ, ¹Ú¼ºÈÆ |
+				ì‚¬ì´íŠ¸ ê´€ë¦¬ì : ì¥ëª½ìš´, ê¹€ë„í˜„, í™ì¤€í˜, ë°•ì„±í›ˆ |
 				
-				°í°´¼¾ÅÍ : 1234-5678 | 
+				ê³ ê°ì„¼í„° : 1234-5678 | 
 				
 				help@jj9
 			</p>
 		</div>
 		
 		<div class="footer2-area2">
-			<p class="footer2-area2-content1">(ÁÖ)jj9´Â ½ºÇÁ¸µ ÇÁ·ÎÁ§Æ®¸¦ À§ÇØ ¸¸µé¾îÁø »çÀÌÆ®ÀÔ´Ï´Ù. ½ÇÁ¦ ¼­ºñ½º°¡ ¾Æ´ÔÀ» À¯ÀÇÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</p>
+			<p class="footer2-area2-content1">(ì£¼)jj9ëŠ” ìŠ¤í”„ë§ í”„ë¡œì íŠ¸ë¥¼ ìœ„í•´ ë§Œë“¤ì–´ì§„ ì‚¬ì´íŠ¸ì…ë‹ˆë‹¤. ì‹¤ì œ ì„œë¹„ìŠ¤ê°€ ì•„ë‹˜ì„ ìœ ì˜í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</p>
 			<div class="footer2-area2-content2">
 				<p class="footer2-area2-content2-p">Copyright @ 2022 jj9 Inc. All rights reserved.</p>
 			</div>

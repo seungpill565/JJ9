@@ -18,5 +18,5 @@ public interface CategoryService {
 	
 	public List<TalentAll> readTalentAllBySearch(Criteria cri);
 	
-	public Integer readTalentCountBySearch(String keyword);	
+	public Integer readTalentCountBySearch(Criteria cri);	
 }

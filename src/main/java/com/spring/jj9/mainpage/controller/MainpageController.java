@@ -32,7 +32,7 @@ public class MainpageController {
 		model.addAttribute("bestpurchases", service.readBestPurchase());
 		model.addAttribute("newpurchases", service.readNewPurchase());
 	
-		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri));
 		model.addAttribute("page", page);
 		
 		return "mainpage/mainpage";

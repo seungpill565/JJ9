@@ -42,12 +42,12 @@
 	<select id="readTalentAllForPagingByMainCate" resultType="com.spring.jj9.dto.TalentAll"> 
     <![CDATA[
        select * from
-       (select rownum rn, tal.* from 
-       (select * from talent_list 
-       inner join member using(member_id) 
-       inner join category using(cate_id) 
-       where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
-       where rownum <= #{cri.pageNum} * #{cri.amount})
+       	(select rownum rn, tal.* from 
+       		(select * from talent_list 
+       		 inner join member using(member_id) 
+       		 inner join category using(cate_id) 
+       		 where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
+       	where rownum <= #{cri.pageNum} * #{cri.amount})
        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
     ]]>
@@ -68,6 +68,27 @@
     
     ]]>
     </select>
+    
+    
+    <!-- 주제별 검색 시 필요한 조건문 -->
+	<sql id="criteria">
+		<trim prefix="OR">
+			<choose>
+				<when test="cri.type == 'title'.toString()">
+					talent_title like '%'||#{cri.keyword}||'%'
+				</when>
+				<when test="cri.type == 'content'.toString()">
+					talent_service_exp like '%'||#{cri.keyword}||'%'
+				</when>
+				<when test="cri.type == 'writer'.toString()">
+					member_name like '%'||#{cri.keyword}||'%'
+				</when>
+			</choose>
+		</trim>
+
+
+
+	</sql>
     	
     	
 <!-- 검색했을때 제목에서 찾아오는 재능들 -->
@@ -81,7 +102,8 @@
        where member_id is not null
        
        <if test="cri.keyword != null">
-       		 and talent_title like '%'||#{cri.keyword}||'%'  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		<!--  and talent_title like '%'||#{cri.keyword}||'%' -->  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		 <include refid="criteria"></include> 
     	</if> 
        
          order by talent_id desc) tal
@@ -99,8 +121,9 @@
   		inner join category using(cate_id) 
   		inner join member using(member_id)  
   		where member_id is not null
-  		 <if test="keyword != null">
-       		and talent_title like '%'||#{keyword}||'%' <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+  		 <if test="cri.keyword != null">
+       		<!-- and talent_title like '%'||#{keyword}||'%' --> <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		 <include refid="criteria"></include>
        </if>
   		
   		 

@@ -26,5 +26,5 @@ public interface CategoryMapper {
 	
 	public List<TalentAll> readTalentAllBySearch(@Param("cri")Criteria cri); // 검색시 키워드로 뽑아낼 재능들
 	
-	public Integer readTalentCountBySearch(String keyword); // 검색으로 뽑아낸 재능의 총 개수	
+	public Integer readTalentCountBySearch(@Param("cri")Criteria cri); // 검색으로 뽑아낸 재능의 총 개수	
 }

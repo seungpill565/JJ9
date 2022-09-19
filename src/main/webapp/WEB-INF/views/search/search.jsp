@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Àç´É °Ë»ö</title>
+<title>ìž¬ëŠ¥ ê²€ìƒ‰</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -18,14 +18,14 @@
 	<h1><a href="/jj9/mainpage" class="jj9-mainpage">jj9</a></h1>
 	
 	<div>
-		Çì´õ ºÎºÐ <br />
+		í—¤ë” ë¶€ë¶„ <br />
 		<div>
-			·Î±×ÀÎ Å×½ºÆ® ¿ë<br /> <a href="">·Î±×ÀÎ</a> <br /> <a href="">È¸¿ø°¡ÀÔ</a>
+			ë¡œê·¸ì¸ í…ŒìŠ¤íŠ¸ ìš©<br /> <a href="">ë¡œê·¸ì¸</a> <br /> <a href="">íšŒì›ê°€ìž…</a>
 		</div>
 		
 		<br />
 
-<!-- °Ë»ö ±â´É -->
+<!-- ê²€ìƒ‰ ê¸°ëŠ¥ -->
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
@@ -34,14 +34,14 @@
 						<option value=""
 							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
 						<option value="T"
-							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>Á¦¸ñ</option>
+							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>ì œëª©</option>
 						<option value="C"
-							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>³»¿ë</option>
+							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>ë‚´ìš©</option>
 						<option value="W"
-							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>ÀÛ¼ºÀÚ</option>
+							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>ìž‘ì„±ìž</option>
 					</select> 
 				 -->
-					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="Àç´ÉÀÌ³ª Àü¹®°¡¸¦ °Ë»öÇÏ¼¼¿ä.">
+					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="ìž¬ëŠ¥ì´ë‚˜ ì „ë¬¸ê°€ë¥¼ ê²€ìƒ‰í•˜ì„¸ìš”.">
 						<button>Search</button>
 					
 					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
@@ -49,7 +49,7 @@
 				</form>
 			</div>
 		</div>
-<!-- /°Ë»ö ±â´É -->
+<!-- /ê²€ìƒ‰ ê¸°ëŠ¥ -->
 
 	</div>
 	
@@ -58,7 +58,7 @@
 
 	<h3>category </h3>
 	<div>
-		<span>¸ÞÀÎ Ä«Å×°í¸®
+		<span>ë©”ì¸ ì¹´í…Œê³ ë¦¬
 			<ul>
 				<c:forEach items="${maincategorys }" var="maincategory">
 					<li><a href="../jj9/category/${maincategory.cate_id }" id="${maincategory.cate_id }">${maincategory.cate_id }
@@ -76,11 +76,11 @@
 	<div>
 		<table>
 			<tr>
-				<th>¹øÈ£</th>
-				<th>Àç´É¹øÈ£</th>
-				<th>Á¦¸ñ</th>
-				<th>ÀÛ¼ºÀÚ</th>
-				<th>µî·ÏÀÏ</th>
+				<th>ë²ˆí˜¸</th>
+				<th>ìž¬ëŠ¥ë²ˆí˜¸</th>
+				<th>ì œëª©</th>
+				<th>ìž‘ì„±ìž</th>
+				<th>ë“±ë¡ì¼</th>
 			</tr>
 
 			<c:forEach items="${purchases}" var="list">
@@ -99,23 +99,23 @@
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">
 
-					<!-- ÀÌÀüÆäÀÌÁö ¹öÆ° -->
+					<!-- ì´ì „íŽ˜ì´ì§€ ë²„íŠ¼ -->
 					<c:if test="${page.prev}">
 						<li class="pageInfo_btn previous">
-							<a href="${page.startPage-1}">ÀÌÀü</a> <!-- 11~20 ÆäÀÌÁö¸¦ º¸°íÀÖ´Ù¸é ÀÌÀü ¹öÆ° Å¬¸¯ ½Ã 11-1 ÆäÀÌÁö·Î ÀÌµ¿ -->
+							<a href="${page.startPage-1}">ì´ì „</a> <!-- 11~20 íŽ˜ì´ì§€ë¥¼ ë³´ê³ ìžˆë‹¤ë©´ ì´ì „ ë²„íŠ¼ í´ë¦­ ì‹œ 11-1 íŽ˜ì´ì§€ë¡œ ì´ë™ -->
 						</li>
 					</c:if>
-					<!-- °¢ ¹øÈ£ ÆäÀÌÁö ¹öÆ° -->
+					<!-- ê° ë²ˆí˜¸ íŽ˜ì´ì§€ ë²„íŠ¼ -->
 					<c:forEach var="num" begin="${page.startPage}" end="${page.endPage}">
-                    <li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }"> <!-- ³»°¡ Å¬¸¯ÇÑ ÆäÀÌÁö ¹øÈ£¿¡ À½¿µ ³Ö±â -->
+                    <li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }"> <!-- ë‚´ê°€ í´ë¦­í•œ íŽ˜ì´ì§€ ë²ˆí˜¸ì— ìŒì˜ ë„£ê¸° -->
                              		<a href="${num }">${num}</a></li>
 
                 </c:forEach>
 
-					<!-- ´ÙÀ½ÆäÀÌÁö ¹öÆ° -->
+					<!-- ë‹¤ìŒíŽ˜ì´ì§€ ë²„íŠ¼ -->
 					<c:if test="${page.next}">
 						<li class="pageInfo_btn next">
-							<a href="${page.endPage + 1 }">´ÙÀ½</a> <!--  11~20 ÆäÀÌÁö¸¦ º¸°íÀÖ´Ù¸é ´ÙÀ½ ¹öÆ° Å¬¸¯ ½Ã 20+1 ÆäÀÌÁö·Î ÀÌµ¿ -->
+							<a href="${page.endPage + 1 }">ë‹¤ìŒ</a> <!--  11~20 íŽ˜ì´ì§€ë¥¼ ë³´ê³ ìžˆë‹¤ë©´ ë‹¤ìŒ ë²„íŠ¼ í´ë¦­ ì‹œ 20+1 íŽ˜ì´ì§€ë¡œ ì´ë™ -->
 						</li>
 					</c:if>
 
@@ -135,13 +135,13 @@
 	<br />
 	<br />
 	<div>
-		Àç´É µî·Ï Å×½ºÆ® ¿ë<br />
-		<a href="">Àç´É µî·Ï </a> <br />
+		ìž¬ëŠ¥ ë“±ë¡ í…ŒìŠ¤íŠ¸ ìš©<br />
+		<a href="">ìž¬ëŠ¥ ë“±ë¡ </a> <br />
 	</div>
 	
 	<div>
-		Àç´É ÀÇ·Ú Å×½ºÆ® ¿ë<br />
-		<a href="">Àç´É ÀÇ·Ú </a> <br />
+		ìž¬ëŠ¥ ì˜ë¢° í…ŒìŠ¤íŠ¸ ìš©<br />
+		<a href="">ìž¬ëŠ¥ ì˜ë¢° </a> <br />
 	</div>
 	
 	<br />

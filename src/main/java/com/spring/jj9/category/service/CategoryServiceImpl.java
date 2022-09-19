@@ -78,9 +78,9 @@ public class CategoryServiceImpl implements CategoryService{
 
 
 	@Override
-	public Integer readTalentCountBySearch(String keyword) { // 검색 시 불러오는 재능들 총 개수
+	public Integer readTalentCountBySearch(Criteria cri) { // 검색 시 불러오는 재능들 총 개수
 
-		return mapper.readTalentCountBySearch(keyword);
+		return mapper.readTalentCountBySearch(cri);
 	}
 
 }
