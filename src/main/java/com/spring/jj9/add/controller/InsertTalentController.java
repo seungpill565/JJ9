@@ -33,7 +33,7 @@ public class InsertTalentController {
 	public String insertTalent(HttpServletRequest request, HttpServletResponse response) {
 		
 		// 파일 경로
-		String savePath = Paths.get("/target/images").toString();
+		String savePath = Paths.get("target/images").toString();
 		
 		log.info("파일경로 : " + savePath);
 		
@@ -71,6 +71,8 @@ public class InsertTalentController {
 		    Integer	talent_price = Integer.parseInt(multi.getParameter("talent_price"));
 		    String	talent_service_exp = multi.getParameter("talent_service_exp");
 		    String	talent_curriculum = multi.getParameter("talent_curriculum");
+		    Integer talent_workday = Integer.parseInt(multi.getParameter("talent_workday"));
+		    String	talent_summary = multi.getParameter("talent_summary");
 			
 		
 		    if (talent_price <= 0) {
@@ -106,6 +108,8 @@ public class InsertTalentController {
 			tl.setTalent_price(talent_price);				
 			tl.setTalent_service_exp(talent_service_exp);
 			tl.setTalent_curriculum(talent_curriculum);
+			tl.setTalent_workday(talent_workday);
+			tl.setTalent_summary(talent_summary);
 			
 			// Talent_list 테이블에 insert
 			cateService.insertTalent(tl);

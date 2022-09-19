@@ -15,6 +15,7 @@
 	</select>
 	<insert id="insertTalent" parameterType="com.spring.jj9.dto.Talent_list">
 		INSERT INTO talent_list VALUES(#{cate_id}, #{member_id}, #{talent_title}, #{talent_image},
-									#{talent_date}, #{talent_price}, #{talent_service_exp}, #{talent_curriculum}, talent_id_seq.nextval)
+									#{talent_date}, #{talent_price}, #{talent_service_exp}, #{talent_curriculum}, talent_id_seq.nextval,
+									#{talent_workday}, #{talent_summary}, 0 , '미승인')
 	</insert>
 </mapper>

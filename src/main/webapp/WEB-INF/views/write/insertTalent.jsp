@@ -43,10 +43,13 @@
 				<div class="col-name">가격</div> <input type="number" name="talent_price"/>
 			</div> <br>
 			<div class="colcol">
-				<div class="col-name">기간</div> <input type="text"/>
+				<div class="col-name">작업기간(일)</div> <input type="number" name="talent_workday"/>
 			</div> <br>
 			<div class="colcol">
 				<div class="col-name">이미지</div> <input type="file" name="image_file"/> (최대 15MB) 
+			</div> <br>
+			<div class="colcol2">
+				<div class="col-name">샘플</div> <br> <textarea name="talent_summary" id="" cols="30" rows="5"></textarea>
 			</div> <br>
 			<div class="colcol2">
 				<div class="col-name">상세내용</div> <br> <textarea name="talent_service_exp" id="" cols="30" rows="20"></textarea>
