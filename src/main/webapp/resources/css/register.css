@@ -77,3 +77,8 @@ button:hover, #submit_btn:hover {
 .input--with-btn {
 	width: 494px;
 }
+
+.required-s {
+	color: red;
+	padding-left: 20px;
+}

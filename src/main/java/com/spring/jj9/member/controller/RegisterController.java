@@ -37,6 +37,9 @@ public class RegisterController {
 	// 이메일 인증번호
 	private int authNumber;
 	
+	// 이메일이 인증 되었는지 체크해주는 불리언
+	private boolean isEmailAuth = false;
+	
 	@RequestMapping(value = "/sendMailTest", method = RequestMethod.GET)
     public String sendMailTest() throws Exception{
         
@@ -104,10 +107,11 @@ public class RegisterController {
 		String member_password = member.getMember_password();
 		String member_rePassword = member.getMember_rePassword();
 		
-		// phoneNum 은 log 확인용
+		// phoneNum 
+		String member_email = member.getMember_email();
 		String member_phoneNum = member.getMember_phoneNum();
 		
-		log.info("phone: " + member_phoneNum);
+		
 		
 		if (
 				member_id == null || member_id.equals("") ||
@@ -122,13 +126,25 @@ public class RegisterController {
 			request.setAttribute("msg", "비밀번호가 일치하지 않습니다. \\n다시 입력해주세요");
 			request.setAttribute("url", "/jj9/register");
 			return "alert"; 
+		} else if (
+				member_email == null || member_email.equals("") ||
+				member_phoneNum == null || member_phoneNum.equals("")
+				) {
+			request.setAttribute("msg", "이메일과 전화번호를 공백인 상태로\\n회원가입을 진행할 수 없습니다. \\n다시 시도해주세요");
+			request.setAttribute("url", "/jj9/register");
+			return "alert";
+		} else if (isEmailAuth == false) {
+			request.setAttribute("msg", "이메일이 인증되지 않아 회원가입을 진행할 수 없습니다. \\n다시 시도해주세요");
+			request.setAttribute("url", "/jj9/register");
+			return "alert";
 		} else {
 			Integer id = service.insertMember(member);
-				
+			
 			request.setAttribute("msg", "회원가입이 완료되었습니다.");
 			request.setAttribute("url", "/jj9/list");
 			return "alert";		
 		}
+		
 		
 	}
 	
@@ -208,6 +224,7 @@ public class RegisterController {
 		log.info("static 한 변수가 유지가 되는지 확인: ~~~~" + authNumber);
 		
 		if (authNum == authNumber) {
+			this.isEmailAuth = true;
 			return "0";
 		} else {
 			return "-1"; 

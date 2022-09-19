@@ -106,7 +106,7 @@ $(function() {
 			</div>
 		
 			<div class="container__input--email sign-up__container">
-				<label for="email">이메일</label><br>
+				<label for="email">이메일</label><span class="required-s">*</span><span class="required-t">필수</span><br>
 				<input 
 					id="email" 
 					class="container__input--tags input--with-btn"
@@ -129,7 +129,7 @@ $(function() {
 			</div>
 		
 			<div class="container__input--phoneNUm sign-up__container">
-				<label for="phoneNum">전화번호</label><br>
+				<label for="phoneNum">전화번호</label><span class="required-s">*</span><span class="required-t">필수</span><br>
 				<input 
 					id="phoneNum" 
 					class="container__input--tags"
