@@ -12,11 +12,13 @@ public interface CategoryService {
 	
 	public List<Category> readAllMainCategory();
 	
+	public List<Category> readAllSubCategory();
+	
 	public Integer readTalentAllByMainOrSubCount(int id); // 메인 카테고리 클릭 시 보여지는 재능들의 총 개수 / 페이징 시 필요
 	
 	public List<TalentAll> readTalentAllForPaging(Criteria cri, int id);
 	
 	public List<TalentAll> readTalentAllBySearch(Criteria cri);
 	
-	public Integer readTalentCountBySearch(Criteria cri);	
+	public Integer readTalentCountBySearch(String keyword);	
 }

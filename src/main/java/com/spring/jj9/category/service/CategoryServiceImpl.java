@@ -41,6 +41,13 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> readAllMainCategory() { // 모든 메인카테고리들 리턴
 		return mapper.readAllMainCategorys();
 	}
+	
+
+	@Override
+	public List<Category> readAllSubCategory() {
+
+		return mapper.readAllSubCategorys();
+	}
 
 	@Override
 	public List<TalentAll> readTalentAllForPaging(Criteria cri, int cate_id) { // 메인이나 서브를 누르면 해당 카테고리의 전체 재능 중 amount 개수만큼 리턴 /페이징 시 필요
@@ -78,9 +85,11 @@ public class CategoryServiceImpl implements CategoryService{
 
 
 	@Override
-	public Integer readTalentCountBySearch(Criteria cri) { // 검색 시 불러오는 재능들 총 개수
+	public Integer readTalentCountBySearch(String keyword) { // 검색 시 불러오는 재능들 총 개수
 
-		return mapper.readTalentCountBySearch(cri);
+		return mapper.readTalentCountBySearch(keyword);
 	}
+
+
 
 }
