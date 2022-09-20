@@ -68,7 +68,7 @@ public class AdminController {
 		log.info("접속완료");
 		log.info(memberService.getMember("admin1"));
 		Member currUser= memberService.getMember("admin1");
-		System.out.println(currUser);
+		
 		//접속한 아이디 정보를 세션에 저장
 		session.setAttribute("currUser", currUser);	
 		

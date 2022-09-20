@@ -17,7 +17,6 @@ public class Refund_request_pay_talent_list {
 	//pay	
 	private Integer talent_id;
 	private String buyer_member_id;
-	private String pay_way;	
 	private Integer pay_money;
 	private Integer pay_original_money;
 	

@@ -5,7 +5,7 @@
 <mapper namespace="com.spring.jj9.mapper.RefundMapper">
 	
 	<select id="getRefundList" resultType="com.spring.jj9.dto.Refund_request_pay_talent_list">
-		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_way, p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
+		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
 			FROM refund_request r
 			INNER JOIN pay p ON r.pay_id= p.pay_id
 			INNER JOIN talent_list t ON t.talent_id= p.talent_id 
@@ -13,7 +13,7 @@
 	</select>	
 	
 	<select id="getRefundCompletedList" resultType="com.spring.jj9.dto.Refund_request_pay_talent_list">
-		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_way, p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
+		SELECT r.refund_id, r.pay_id, r.request_status, p.member_id as "buyer_member_id", p.pay_money, p.pay_original_money, t.talent_title, t.member_id as "seller_member_id"
 			FROM refund_request r
 			INNER JOIN pay p ON r.pay_id= p.pay_id
 			INNER JOIN talent_list t ON t.talent_id= p.talent_id 

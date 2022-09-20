@@ -1,0 +1,116 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+
+/* 공통 부분 시작 */
+body {
+    box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+    font-size: 22px;
+    margin: 30px;
+}
+
+.inline {
+    display: inline-block;	
+}
+
+.flex {
+	display: flex;
+}
+
+.block {
+    display: block;
+}
+
+.flex-column {
+	display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: black;
+}
+
+li{
+    list-style-type: none;
+}
+
+ul{
+    padding-left: 0;
+}
+
+#logo {
+	margin-bottom: -15px;
+}
+
+#logo-sub {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+
+.jj9-logo{
+	font-family: "210-supersize";
+    font-size: 70px;
+    color: black;    
+}
+
+
+.adminMenu-container__ul {
+	list-style: none;	
+	width: 200px;
+	padding-inline-start: 0px;
+}
+
+.adminMenu-container__ul > li {
+	text-align: center;
+}
+.adminMenu__container{
+    margin-top: 20px;
+}
+
+.adminMenu-container__ul > li {
+	border-top: 1px solid #c0c0c0;
+	border-right: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	padding: 10px 0;
+}
+
+.adminMenu-container__ul > li:hover {
+	background-color: #c0c0c0;
+}
+
+
+/* mypage-main 에만 해당하는 영역 */
+.thispage__main {
+	width: 100%;
+	margin-left: 10px;
+    margin-top:10px;
+}
+
+.main-container__title {
+	padding: 10px 20px;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	border-radius: 10px;
+}
+.container__card {
+	margin-left: 50px;
+	
+}
+
+.flex-column {
+	margin-top: 30px;
+	margin-left: 50px;
+}
+
