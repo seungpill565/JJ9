@@ -79,12 +79,12 @@
 	
 	<div>
 		재능 등록 테스트 용<br />
-		<a href="">재능 등록 </a> <br />
+		<a href="insert">재능 등록 </a> <br />
 	</div>
 	
 	<div>
 		재능 의뢰 테스트 용<br />
-		<a href="">재능 의뢰 </a> <br />
+		<a href="req/1">재능 의뢰 </a> <br />
 	</div>
 	
 	<br />

@@ -37,6 +37,7 @@
 
 	<mybatis-spring:scan base-package="com.spring.jj9.add.mapper"/>
 	<mybatis-spring:scan base-package="com.spring.jj9.request.mapper"/>
+	<mybatis-spring:scan base-package="com.spring.jj9.buytalent.mapper"/>
 
 
 	<!-- navermail설정 -->

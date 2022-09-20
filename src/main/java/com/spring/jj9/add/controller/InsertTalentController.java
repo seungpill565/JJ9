@@ -2,13 +2,13 @@ package com.spring.jj9.add.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,13 +29,25 @@ public class InsertTalentController {
 	@Autowired
 	CateService cateService;
 	
+	String session_id = null;
+	
 	@PostMapping(value = "/insert")
-	public String insertTalent(HttpServletRequest request, HttpServletResponse response) {
+	public String insertTalent(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	
+		
+		try {
+			session_id = session.getAttribute("member_id").toString();
+		} catch (NullPointerException e) {
+			session_id = "1";
+		}
+		
 		
 		// 파일 경로
 		String savePath = Paths.get("target/images").toString();
 		
 		log.info("파일경로 : " + savePath);
+		
+		
 		
 		// 파일 크기 제한 15MB
 		final int MAX_SIZE = 15 * 1024 * 1024;
@@ -51,6 +63,22 @@ public class InsertTalentController {
 			multi = new MultipartRequest(request, savePath, MAX_SIZE, "utf-8", new DefaultFileRenamePolicy());
 			
 			String fileName = multi.getFilesystemName("image_file");
+			
+			String extension = "";
+			
+			if (fileName != null) {
+				extension = fileName.split("\\.")[1];				
+			}
+			
+			log.info("파일이름파일이름 : " + fileName);
+			log.info("확장자 : " + extension);
+			
+			// jpg도 아니고 png도 아니고 jpeg도 아니면 빠꾸
+			if(extension.equals("jpg") || extension.equals("png") || extension.equals("jpeg") || extension.equals("")) {
+				
+			} else {
+				ScriptAlertUtils.alertAndBackPage(response, "이미지 파일만 등록이 가능합니다!");
+			}
 			
 			if (
 					multi.getParameter("cate-sub") == null || multi.getParameter("cate-sub").equals("null") ||
@@ -86,7 +114,9 @@ public class InsertTalentController {
 		    		talent_title == null || talent_title.equals("") ||
 		    		talent_price == null || talent_price.equals("") ||
 		    		talent_service_exp == null || talent_service_exp.equals("") ||
-		    		talent_curriculum == null || talent_curriculum.equals("")
+		    		talent_curriculum == null || talent_curriculum.equals("") ||
+		    		talent_workday == null || talent_workday.equals("") ||
+		    		talent_summary == null || talent_summary.equals("")
 		    		) {
 		    	ScriptAlertUtils.alertAndBackPage(response, "내용을 채워주세요!");
 		    }
@@ -101,7 +131,7 @@ public class InsertTalentController {
 			
 			// getParameter를 이용해 객체에 데이터들을 set 해준다.
 			tl.setCate_id(cate_id);
-			tl.setMember_id(member_id);
+			tl.setMember_id(session_id);
 			tl.setTalent_title(talent_title);
 			// date를 오늘날짜로 set.
 			tl.setTalent_date(talent_date);

@@ -12,7 +12,7 @@
 
 	<div class="top-menu">
 		<div class="top-row">
-			<div><a href="#" class="local-font">jj9</a></div>
+			<div><a href="mainpage" class="local-font">jj9</a></div>
 		</div>
 	</div>
 

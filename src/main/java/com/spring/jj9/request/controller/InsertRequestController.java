@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.jj9.add.service.CateService;
 import com.spring.jj9.dto.Talent_request;
 import com.spring.jj9.request.service.RequestService;
 import com.spring.jj9.util.ScriptAlertUtils;
-import com.spring.jj9.add.service.CateService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -30,8 +31,20 @@ public class InsertRequestController {
 	@Autowired
 	RequestService requestService;
 	
+	String session_id = null;
+	
 	@RequestMapping("/insertRequest")
-	public String insert(Model model) {
+	public String insert(HttpServletResponse response, HttpSession session, Model model) {
+		
+		try {
+			session_id = session.getAttribute("member_id").toString();
+		} catch (NullPointerException e) {
+			try {
+				ScriptAlertUtils.alertAndMovePage(response ,"로그인 페이지로 이동합니다.","/jj9/login");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		
 		model.addAttribute("mainCates", cateService.getCategories()); 
 		
@@ -73,4 +86,6 @@ public class InsertRequestController {
 
 		return "request/home";
 	}
+	
+
 }

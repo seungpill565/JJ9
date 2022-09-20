@@ -59,7 +59,8 @@ a:hover {
 	<div>
 		헤더 부분 <br />
 		<div>
-			로그인 테스트 용<br /> <a href="">로그인</a> <br /> <a href="">회원가입</a>
+			로그인 테스트 용<br /> <a href="../login">로그인</a> <br /> <a href="../register">회원가입</a><br>
+			<a href="../logout">로그아웃</a>
 		</div>
 		
 		<br />
@@ -165,12 +166,9 @@ a:hover {
 
 	<br>
 	<br>
-	<div>
-		<a href="/jj9/insert">재능 등록 </a> <br />
-	</div>
 	
 	<div>
-		<a href="/jj9/insertRequest">재능 의뢰 등록 </a> <br />
+		<a href="/jj9/insertRequest">재능 의뢰하기 </a> <br />
 	</div>
 	
 	<br>

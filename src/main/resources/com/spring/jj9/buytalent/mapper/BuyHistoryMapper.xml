@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.jj9.buytalent.mapper.BuyHistoryMapper">
+	<select id="getPayTalNull" resultType="com.spring.jj9.dto.Pay_talentList">
+		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			from pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IS NULL
+	</select>
+	
+	<select id="getPayTalRequest" resultType="com.spring.jj9.dto.Pay_talentList">
+		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			from pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불요청')
+	</select>
+	
+	<select id="getPayTalRefund" resultType="com.spring.jj9.dto.Pay_talentList">
+		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			from pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불완료')
+	</select>
+</mapper>

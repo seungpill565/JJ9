@@ -29,10 +29,96 @@
 			<div class="main__container">
 				<h2 class="main-container__title">구매재능내역</h2>
 				<div class="container__card">
-					<p>구매재능내역</p>
+					<c:choose>
+						<c:when test="${payTalNull eq '1' }">
+							<h2>구매한 재능이 없습니다.</h2>
+						</c:when>
+						<c:otherwise>
+							<table border=1>
+								<thead>
+									<th>결제번호</th>
+									<th>제목</th>
+									<th>결제금액</th>
+									<th>판매자</th>
+									<th>환불</th>
+								</thead>
+								<tbody>
+									<c:forEach items="${payTalNull }" var="payTal">
+										<tr>
+											<td>${payTal.pay_id }</td>
+											<td><a href="">${payTal.talent_title }</a></td>
+											<td>${payTal.pay_money }</td>
+											<td>${payTal.seller_member_id }</td>
+											<td><a href="">환불하기</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</c:otherwise>
+					</c:choose>
+					<hr>
+					<c:choose>
+						<c:when test="${payTalRequest eq '1' }">
+						</c:when>
+						<c:otherwise>
+							<h2 class="main-container__title">환불요청 중인 상품</h2>
+							<table border=1>
+								<thead>
+									<th>결제번호</th>
+									<th>제목</th>
+									<th>결제금액</th>
+									<th>판매자</th>
+									<th>환불</th>
+								</thead>
+								<tbody>
+									<c:forEach items="${payTalRequest }" var="payTal">
+										<tr>
+											<td>${payTal.pay_id }</td>
+											<td><a href="">${payTal.talent_title }</a></td>
+											<td>${payTal.pay_money }</td>
+											<td>${payTal.seller_member_id }</td>
+											<td><a href="">취소하기</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</c:otherwise>
+					</c:choose>
+					<hr>
+					<c:choose>
+						<c:when test="${payTalRefund eq '1' }">
+						</c:when>
+						<c:otherwise>
+							<h2 class="main-container__title">환불이 완료 된 상품</h2>
+							<table border=1>
+								<thead>
+									<th>결제번호</th>
+									<th>제목</th>
+									<th>결제금액</th>
+									<th>판매자</th>
+									<th>환불</th>
+								</thead>
+								<tbody>
+									<c:forEach items="${payTalRefund }" var="payTal">
+										<tr>
+											<td>${payTal.pay_id }</td>
+											<td><a href="">${payTal.talent_title }</a></td>
+											<td>${payTal.pay_money }</td>
+											<td>${payTal.seller_member_id }</td>
+											<td>환불완료</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div>
+		
 	</div>
 </body>
 </html>

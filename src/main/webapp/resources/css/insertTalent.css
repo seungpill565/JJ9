@@ -44,6 +44,7 @@ div > * {
 #sub-title {
     display: grid;
     grid-template-columns: 25% 50% 25%;
+    height: 100px;
 }
 
 #sub-title > h3 {
