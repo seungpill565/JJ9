@@ -8,6 +8,7 @@
 <title>jj9 - 회원탈퇴</title>
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <link rel="stylesheet" href="/jj9/resources/css/secession.css">
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -70,8 +71,37 @@
 	<script type="text/javascript">
 		const secession-btn = document.getElementById('secession-btn');
 		
+		const password = document.getElementById('pw');
+		
 		secession-btn.addEventListener('click', (e) => {
+			var result = confirm("정말 탈퇴하시겠습니까?");
 			
+			
+			
+			if (result) {
+				pw = password.value;
+				
+				console.log(pw);
+				
+				param={"password" : pw};
+				
+				$.ajax({
+					type: "post",
+					url: "user-secession",
+					data: param,
+					success: function(result) {
+						let resultText = null;
+						if (result == 0) {
+							resultText = '탈퇴 되었습니다.\n그동안 jj9를 이용해주셔서 감사합니다.';
+							alert(resultText); 
+							location.href = "main";
+						} else {
+							resultText = '예기치 않은 오류가 발생하였습니다. 개발자 실수';
+							alert(resultText);
+						}
+					}
+				});
+			}
 		})
 	</script>
 </body>
