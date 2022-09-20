@@ -90,18 +90,6 @@ public class MyPageController {
 		return "account/inquiry";
 	}
 	
-	@GetMapping("/account/member-modify")
-	public String memberModify(HttpSession session, HttpServletRequest request) {
-		try {
-			String member_id = session.getAttribute("member_id").toString();			
-		} catch (NullPointerException e) {
-			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
-			request.setAttribute("url", "/jj9/login");
-			return "alert";			
-		}
-		
-		return "account/member-modify";
-	}
 	
 	@GetMapping("/account/secession")
 	public String secession(HttpSession session, HttpServletRequest request) {
