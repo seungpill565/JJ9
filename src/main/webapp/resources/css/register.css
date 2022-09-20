@@ -31,6 +31,10 @@ button, #submit_btn {
 	cursor: pointer;
 }
 
+#submit_btn {
+	font-size: 20px;
+}
+
 button {
 	width: 100px;
 }
@@ -48,6 +52,8 @@ button:hover, #submit_btn:hover {
 }
 
 .sign-up__title {
+	display: flex;
+	justify-content: center;
 	color: rgb(230, 70, 70);
 	font-size: 70px;
 	margin-top: 20px;
@@ -55,12 +61,24 @@ button:hover, #submit_btn:hover {
 
 .form__container {
 	display: flex;
+	justify-content: center;
+}
+
+.container__left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 50px;
+}
+
+.container__right {
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
 .container__input--tags {
-	width: 600px;
+	width: 500px;
 	height: 30px;
 	border-top: none;
 	border-left: none;
@@ -68,6 +86,7 @@ button:hover, #submit_btn:hover {
 	border-bottom: 2px solid white;
 	background-color: transparent;
 	color: white;
+	padding-bottom: 0;
 }
 
 .container__input--tags::placeholder {
@@ -75,10 +94,19 @@ button:hover, #submit_btn:hover {
 }
 
 .input--with-btn {
-	width: 494px;
+	width: 394px;
 }
 
 .required-s {
 	color: red;
 	padding-left: 20px;
+}
+
+.container__submit {
+	display: flex;
+	justify-content: center;
+}
+
+.comments {
+	resize: none;
 }

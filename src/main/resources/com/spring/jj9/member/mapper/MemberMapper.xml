@@ -10,11 +10,11 @@
 		INSERT INTO member 
 		(member_name, member_nickName, member_id, 
 		member_password, member_email, 
-		member_phoneNum, member_birthday) 
+		member_phoneNum, member_birthday, member_point, member_comments) 
 		VALUES 
 		(#{member_name}, #{member_nickName}, #{member_id}, 
 		#{member_password}, #{member_email}, 
-		#{member_phoneNum}, #{member_birthday}) 
+		#{member_phoneNum}, #{member_birthday}, #{member_point}, #{member_comments}) 
 	</insert>
 	 <select id="idChecker" resultType="int" parameterType="String">
 	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}
@@ -41,4 +41,25 @@
 	 	update member set member_password = #{ranPassword} where member_id = #{id}
 	 </update>
 	 
+	 <select id="getMember" resultType="com.spring.jj9.dto.Member" parameterType="String">
+	 	select * from member where member_id = #{member_id}
+	 </select>
+	 
+	 <!-- 회원정보 수정 
+	 			@RequestParam String name, 
+				@RequestParam String nickName, 
+				@RequestParam String email, 
+				@RequestParam String phone,
+				@RequestParam String point,
+				@RequestParam String birthday
+	 -->
+	 <update id="updateMember">
+	 	update member set 
+	 		member_name = #{name}, 
+	 		member_nickName = #{nickName},
+	 		member_email = #{email},
+	 		member_phoneNum = #{phone},
+	 		member_point = #{point},
+	 		member_birthday = #{birthday}
+	 </update>
 </mapper>
