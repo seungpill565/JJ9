@@ -69,32 +69,29 @@
 	</div>
 	
 	<script type="text/javascript">
-		const secession-btn = document.getElementById('secession-btn');
+		const secessionBtn = document.getElementById('secession-btn');
 		
-		const password = document.getElementById('pw');
-		
-		secession-btn.addEventListener('click', (e) => {
+		secessionBtn.addEventListener('click', (e) => {
+			
 			var result = confirm("정말 탈퇴하시겠습니까?");
-			
-			
+			const password = document.getElementById('pw');
 			
 			if (result) {
 				pw = password.value;
-				
-				console.log(pw);
-				
 				param={"password" : pw};
-				
 				$.ajax({
 					type: "post",
 					url: "user-secession",
 					data: param,
 					success: function(result) {
 						let resultText = null;
-						if (result == 0) {
+						if (result == 1) {
 							resultText = '탈퇴 되었습니다.\n그동안 jj9를 이용해주셔서 감사합니다.';
 							alert(resultText); 
-							location.href = "main";
+							location.href = "../main";
+						} else if (result == -1) {
+							resultText = '비밀번호가 일치하지 않습니다. 다시 시도해주세요';
+							alert(resultText)
 						} else {
 							resultText = '예기치 않은 오류가 발생하였습니다. 개발자 실수';
 							alert(resultText);

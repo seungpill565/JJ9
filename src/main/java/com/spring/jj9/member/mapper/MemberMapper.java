@@ -41,5 +41,10 @@ public interface MemberMapper {
 				@Param("change_password") String change_password,
 				@Param("member_id") String member_id
 			);
+
+	public Integer deleteMember(
+				@Param("member_id") String member_id, 
+				@Param("password")	String password
+			);
 	
 }

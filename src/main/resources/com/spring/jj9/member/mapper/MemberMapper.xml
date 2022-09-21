@@ -68,4 +68,9 @@
 	 	update member set member_password = #{change_password}
 	 	where member_id = #{member_id}
 	 </update>
+	 
+	 <delete id="deleteMember">
+	 	delete from member 
+	 	where member_id = #{member_id} and member_password = #{password} 
+	 </delete>
 </mapper>
