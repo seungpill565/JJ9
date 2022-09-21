@@ -7,12 +7,12 @@ import com.spring.jj9.dto.Member;
 import com.spring.jj9.member.mapper.MemberMapper;
 
 @Service
-public class MemberModifyServiceImpl implements MemberModifyService {
+public class MyPageServiceImpl implements MyPageService {
 
 	MemberMapper memberMapper;
 	
 	@Autowired
-	public MemberModifyServiceImpl(MemberMapper memberMapper) {
+	public MyPageServiceImpl(MemberMapper memberMapper) {
 		this.memberMapper = memberMapper;
 	}
 

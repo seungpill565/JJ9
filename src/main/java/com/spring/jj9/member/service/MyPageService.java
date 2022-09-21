@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.spring.jj9.dto.Member;
 
-public interface MemberModifyService {
+public interface MyPageService {
 
 	public Member getMember(String member_id);
 	

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.jj9.dto.Member;
-import com.spring.jj9.member.service.MemberModifyService;
+import com.spring.jj9.member.service.MyPageService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -21,10 +21,10 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class MemberModifyController {
 	
-	MemberModifyService service;
+	MyPageService service;
 	
 	@Autowired
-	public MemberModifyController(MemberModifyService service) {
+	public MemberModifyController(MyPageService service) {
 		this.service = service;
 	}
 	
