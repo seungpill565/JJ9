@@ -73,4 +73,18 @@
 	 	delete from member 
 	 	where member_id = #{member_id} and member_password = #{password} 
 	 </delete>
+	 
+	 <!-- inquire, faq에 문의를 하는 insert문 -->
+	 <insert id="inquire">
+	 	INSERT INTO faq
+	 	(faq_id, faq_cate, faq_title, faq_content, faq_date, member_id)
+	 	VALUES (
+	 		faq_id_seq.nextval, 
+	 		#{inquiry}, 
+	 		#{faq_title}, 
+	 		#{faq_content},
+	 		#{faq_date},
+	 		#{member_id}
+	 	)
+	 </insert>
 </mapper>

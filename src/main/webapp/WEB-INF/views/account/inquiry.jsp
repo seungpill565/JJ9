@@ -128,18 +128,23 @@
 			m_title = title.value;
 			m_content = content.value;
 			
-			param={"inquiry" : m_inquiry, "title" : m_title, "content" : m_content};
+			param={"inquiry" : m_inquiry, "title" : m_title, "content" : m_content.replace(/\r\n|\n/ , "<br>")};
 			$.ajax({
 				type: "post",
 				url: "inquiry",
 				data: param,
 				success: function(result) {
 					let resultText = null;
-					if (result == 0) {
-						resultText = 'FaqController 에서 돌아왔습니다.';
+					if (result == 1) {
+						resultText = '문의가 등록되었습니다.';
 					} else if (result == -1) {
 						resultText = '분류기준이 존재하지 않습니다.\n분류 기준을 선택 후 다시 시도해주세요';
+					} else if (result == -2) {
+						resultText = '제목을 작성하지 않았습니다.\n제목을 작성 후 다시 시도해주세요';
+					} else if (result == -3) {
+						resultText = '내용이 없습니다. \n작성 후 다시 시도해주세요'
 					}
+					
 					alert(resultText);
 				}
 			});

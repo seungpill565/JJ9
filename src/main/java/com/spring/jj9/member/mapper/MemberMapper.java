@@ -1,10 +1,12 @@
 package com.spring.jj9.member.mapper;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.jj9.dto.Faq;
 import com.spring.jj9.dto.Member;
 
 public interface MemberMapper {
@@ -45,6 +47,20 @@ public interface MemberMapper {
 	public Integer deleteMember(
 				@Param("member_id") String member_id, 
 				@Param("password")	String password
+			);
+
+	public Integer inquire(
+				Faq faq, 
+				@Param("member_id") String member_id, 
+				@Param("inquiry") 	String inquiry
+			);
+
+	public Integer inquire(
+				@Param("inquiry") 		String inquiry,
+				@Param("faq_title") 	String faq_title,
+				@Param("faq_content") 	String faq_content, 
+				@Param("faq_date") 		Date faq_date, 
+				@Param("member_id") 	String member_id 
 			);
 	
 }

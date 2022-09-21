@@ -1,5 +1,6 @@
 package com.spring.jj9.member.controller;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.jj9.dto.Faq;
-import com.spring.jj9.member.service.FaqService;
+import com.spring.jj9.member.service.InquiryService;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Controller
-public class FaqController {
+public class InquiryController {
 
-	FaqService service;
+	InquiryService service;
 	
 	@Autowired
-	public FaqController(FaqService service) {
+	public InquiryController(InquiryService service) {
 		this.service = service;
 	}
 	
@@ -61,14 +62,34 @@ public class FaqController {
 			LocalDate now = LocalDate.now();
 			log.info("localDate : " + now);
 			
+			Date date = java.sql.Date.valueOf(now);
+			
+			// set하기
+			
+			faq.setFaq_title(title);
+			faq.setFaq_content(content);
+			faq.setFaq_date(date);
+			
+			log.info("faq한 날짜 : " + faq.getFaq_date());
+			log.info("faq 타이틀 : " + faq.getFaq_title());
+			log.info("faq 콘텐트 : " + faq.getFaq_content());
 			if (inquiry == "") {
 				return "-1";
+			} else if (title == "") {
+				return "-2";
+			} else if (content == "") {
+				return "-3";
 			}
 			
-			// ☆ inquiry, title, content 에서 오는 공백 처리
+			// ★ inquiry, title, content 에서 오는 공백 처리
 			// ☆ service, impl, mapper, xml 생성해야 함
-			// ☆ 
 			
-		return null;
+			Integer row = service.inquire(date, inquiry, title, content, member_id);
+			
+			if (row == 1) { // 문의가 성공적으로 이루어짐
+				return "1";
+			} else {
+				return "0";
+			}
 	}
 }
