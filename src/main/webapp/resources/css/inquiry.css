@@ -1,1 +1,105 @@
 @charset "UTF-8";
+
+/* 탭버튼 처리 */
+.tab__container {
+	display: flex;
+	border-bottom: 1px solid #c0c0c0;
+	padding-bottom: 11px;
+	margin-bottom: 30px;
+}
+
+.tab {
+	display: none;
+}
+
+.inquiry-label, .faq-label {
+	padding: 12px 40px;
+	border-bottom: 1px solid #c0c0c0;
+	cursor: pointer;
+	color: #6e6e6e;
+}
+
+.inquiry-label:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+}
+
+.faq-label:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+}
+
+/* inquiry-tab 이 눌렸을 때 inquiry-label은 */
+.inquiry-tab:checked ~ .inquiry-label {
+	border-bottom: 1px solid rgb(230, 70, 70);
+	color: rgb(230, 70, 70);
+}
+
+/* faq-tab 이 눌렸을 때 faq-label은 */
+.faq-tab:checked ~ .faq-label {
+	border-bottom: 1px solid rgb(230, 70, 70);
+	color: rgb(230, 70, 70);
+}
+
+/* container 처리 */
+.container__select--label {
+	padding-right: 14px;
+}
+
+.container__select--select {
+	height: 30px;
+	font-size: 18px;
+}
+
+.inquiry__container {
+	display: flex;
+	flex-direction: column;
+	padding-left: 100px;
+}
+
+.inquiry__container > div {
+	padding-bottom: 20px;
+}
+
+.inquiry__container > div > label {
+	font-size: 18px;
+}
+
+.container__title--input {
+	width: 1000px;
+	height: 35px;
+	font-size: 18px;
+}
+
+.container__content--textarea {
+	width: 1000px;
+	font-size: 16px;
+	resize: none;
+}
+
+.text-count {
+	width: inherit;
+	text-align: end;
+	margin-right: 100px;
+}
+
+.container__submit--btn {
+	width: 1000px;
+	text-align: center;
+}
+
+.inquiry-btn {
+	padding: 10px 20px;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+.inquiry-btn:hover {
+	background-color: rgb(200, 50, 50);
+	cursor: pointer;
+}

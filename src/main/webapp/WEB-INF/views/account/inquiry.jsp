@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>jj9 - 1:1 문의</title>
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
+<link rel="stylesheet" href="/jj9/resources/css/inquiry.css">
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -28,10 +30,90 @@
 			<div class="main__container">
 				<h2 class="main-container__title">1:1 문의</h2>
 				<div class="container__card">
-					<p>1:1 문의</p>
+				
+					<div class="tab__container">
+						<div>
+							<input type="radio" id="inquiry_tab" class="tab inquiry-tab" name="inquiry_radio" onclick="inquiry_chk(1)" checked="checked" />
+							<label for="inquiry_tab" class="inquiry-label">1:1 문의하기</label>
+						</div>
+						<div>
+							<input type="radio" id="faq_tab" class="tab faq-tab" name="inquiry_radio" onclick="inquiry_chk(2)">
+							<label for="faq_tab" class="faq-label">문의 내역</label>
+						</div>
+					</div>
+	
+					<div id="inquiry-form" class="inquiry__container">
+						<div class="container__select">
+							<label for="inquiry" class="container__select--label">분류 기준</label>
+							<select id="inquiry" class="container__select--select" name="inquiry">
+								<option value="">========== 선택 ==========</option>
+								<option value="1">주문 관련 문제</option>
+								<option value="2">스팸이나 악용 또는 불법 신고하기</option>
+								<option value="3">나의 계정 문제</option>
+								<option value="4">판매자가 연락이 안됨</option>
+								<option value="5">구매자가 연락이 안됨</option>
+								<option value="6">제휴 문의</option>
+								<option value="7">직거래 신고</option>
+								<option value="8">버그 신고</option>
+								<option value="9">기타 문의</option>
+							</select>
+						</div>
+						
+						<div class="container__title">
+							<label for="title">제목</label><br>
+							<input 
+								id="title" 
+								class="container__title--input"
+								type="text"
+							/>
+						</div>
+						
+						<div class="container__content">
+							<label for="content">내용</label><br>
+							<textarea 
+								id="content" 
+								class="container__content--textarea"
+								rows="10" 
+								cols="60"></textarea>
+							<p id="text-cnt" class="text-count">(0 / 500)</p>
+						</div>
+						<div class="container__submit--btn">
+							<button id="inquiry-btn" class="inquiry-btn">문의하기</button>
+						</div>
+					</div>
+					
+					<div id="faq-form" style="display: none;">
+						<div>
+							<h1>문의</h1>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		function inquiry_chk(num) {
+			if (num == '1') {
+				document.getElementById("faq-form").style.display = "none";
+				document.getElementById("inquiry-form").style.display = "";	
+			} else {
+				document.getElementById("inquiry-form").style.display = "none";
+				document.getElementById("faq-form").style.display = "";
+			}
+		}
+	
+		// 글자 수 제한
+		$(document).ready(function() {         
+			$('#content').on('keyup', function() {             
+				$('#text-cnt').html("("+$(this).val().length+" / 500)");               
+				if($(this).val().length > 500) {                 
+					$(this).val($(this).val().substring(0, 500));                 
+					$('#text-cnt').html("(500 / 500)");             
+				}         
+			});     
+		});              
+	</script>
+	
 </body>
 </html>
