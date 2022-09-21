@@ -21,10 +21,10 @@ public class ScriptAlertUtils {
 	    }
       
       public static void alertAndBackPage(HttpServletResponse response, String alertText) throws IOException {
-	    	// 사용법 : ScriptAlertUtils.alertAndBackPage("아이디가 중복", "/login.do");
+	    	// 사용법 : ScriptAlertUtils.alertAndBackPage("아이디가 중복");
 	        init(response);
 	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('" + alertText + "'); history.go(-1);</script>");
+	        out.println("<script>alert('" + alertText + "'); location.href = document.referrer;</script>");
 	        out.flush();
 	    }
 	 
@@ -33,6 +33,13 @@ public class ScriptAlertUtils {
 	        init(response);
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('" + alertText + "'); location.href='" + nextPage + "';</script> ");
+	        out.flush();
+	    }
+	    
+	    public static void reload (HttpServletResponse response) throws IOException {
+	    	init(response);
+	    	PrintWriter out = response.getWriter();
+	        out.println("<script> location.reload();</script>");
 	        out.flush();
 	    }
 }

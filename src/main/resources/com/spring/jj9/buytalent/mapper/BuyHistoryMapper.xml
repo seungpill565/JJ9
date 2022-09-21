@@ -22,4 +22,26 @@
 			from pay p INNER JOIN talent_list t USING (talent_id) 
 			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불완료')
 	</select>
+	
+	<insert id="addRefundRequest" parameterType="com.spring.jj9.dto.Refund_request">
+		INSERT INTO refund_request VALUES(refund_id_seq.nextval, #{pay_id}, '환불요청')
+	</insert>
+	
+	<update id="updatePayRefundRequest">
+	    UPDATE pay SET refund_request = '환불요청' WHERE pay_id = #{pay_id}
+  	</update>
+  	
+	<update id="updatePayRefundSetNull">
+	    UPDATE pay SET refund_request = null WHERE pay_id = #{pay_id}
+  	</update>
+  	
+  	<update id="updateBuyFix">
+	    UPDATE pay SET refund_request = '구매확정' WHERE pay_id = #{pay_id}
+  	</update>
+  	
+  	<delete id="deleteRefundRequest">
+		DELETE FROM refund_request WHERE pay_id = #{pay_id}
+	</delete>
+	
+	
 </mapper>

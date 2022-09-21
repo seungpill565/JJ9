@@ -93,7 +93,7 @@ public class OrderController {
 		pay.setMember_id(sessionId);
 		pay.setPay_money(getmoney);
 		pay.setTalent_id(talentId);
-		pay.setPay_orginal_money(getOriginalMoney);
+		pay.setPay_original_money(getOriginalMoney);
 		
 	
 		service.insertPay(pay);

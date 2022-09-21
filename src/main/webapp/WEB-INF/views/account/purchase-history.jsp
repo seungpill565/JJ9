@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,10 +47,10 @@
 									<c:forEach items="${payTalNull }" var="payTal">
 										<tr>
 											<td>${payTal.pay_id }</td>
-											<td><a href="">${payTal.talent_title }</a></td>
-											<td>${payTal.pay_money }</td>
+											<td><a href="buyInfo/${payTal.pay_id }">${payTal.talent_title }</a></td>
+											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
-											<td><a href="">환불하기</a></td>
+											<td><a href="refund/${payTal.pay_id }">환불하기</a> / <a href="fix/${payTal.pay_id }">구매확정</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -74,10 +75,10 @@
 									<c:forEach items="${payTalRequest }" var="payTal">
 										<tr>
 											<td>${payTal.pay_id }</td>
-											<td><a href="">${payTal.talent_title }</a></td>
-											<td>${payTal.pay_money }</td>
+											<td>${payTal.talent_title }</td>
+											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
-											<td><a href="">취소하기</a></td>
+											<td><a href="cancel/${payTal.pay_id }">취소하기</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -102,8 +103,8 @@
 									<c:forEach items="${payTalRefund }" var="payTal">
 										<tr>
 											<td>${payTal.pay_id }</td>
-											<td><a href="">${payTal.talent_title }</a></td>
-											<td>${payTal.pay_money }</td>
+											<td>${payTal.talent_title }</td>
+											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
 											<td>환불완료</td>
 										</tr>
@@ -115,10 +116,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div>
-		
 	</div>
 </body>
 </html>

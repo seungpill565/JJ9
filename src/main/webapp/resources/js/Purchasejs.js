@@ -8,7 +8,7 @@ const avgimg = document.getElementById('avg-img');
 
 if(0 == parseInt(avgnumhtml)){
 	avgimg.src = "/jj9/resources/images/star/star0.PNG"
-}else if(0<parseInt(avgnumhtml) && parseInt(avgnumhtml) <1){
+}else if(0<parseInt(avgnumhtml) && parseInt(avgnumhtml) <=1){
 	avgimg.src = "/jj9/resources/images/star/star1.PNG";
 }else if(2<=parseInt(avgnumhtml)&& parseInt(avgnumhtml) <3){
 	avgimg.src = "/jj9/resources/images/star/star2.PNG";

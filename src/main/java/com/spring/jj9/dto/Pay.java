@@ -13,7 +13,7 @@ public class Pay {
 	private String member_id;
 
 	private Integer pay_money;
-	private Integer pay_orginal_money;
+	private Integer pay_original_money;
 	private String refund_request;
 
 }

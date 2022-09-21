@@ -11,4 +11,14 @@ public interface BuyHistoryMapper {
 	public List<Pay_talentList> getPayTalRequest(String member_id);
 	
 	public List<Pay_talentList> getPayTalRefund(String member_id);
+	
+	public Integer addRefundRequest(int pay_id);
+	
+	public Integer updatePayRefundRequest(int pay_id);
+	
+	public Integer deleteRefundRequest(int pay_id);
+	
+	public Integer updatePayRefundSetNull(int pay_id);
+	
+	public Integer updateBuyFix(int pay_id);
 }
