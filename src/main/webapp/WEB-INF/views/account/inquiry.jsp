@@ -47,15 +47,15 @@
 							<label for="inquiry" class="container__select--label">분류 기준</label>
 							<select id="inquiry" class="container__select--select" name="inquiry">
 								<option value="">========== 선택 ==========</option>
-								<option value="1">주문 관련 문제</option>
-								<option value="2">스팸이나 악용 또는 불법 신고하기</option>
-								<option value="3">나의 계정 문제</option>
-								<option value="4">판매자가 연락이 안됨</option>
-								<option value="5">구매자가 연락이 안됨</option>
-								<option value="6">제휴 문의</option>
-								<option value="7">직거래 신고</option>
-								<option value="8">버그 신고</option>
-								<option value="9">기타 문의</option>
+								<option value="주문 관련 문제">주문 관련 문제</option>
+								<option value="스팸이나 악용 또는 불법 신고하기">스팸이나 악용 또는 불법 신고하기</option>
+								<option value="나의 계정 문제">나의 계정 문제</option>
+								<option value="판매자가 연락이 안됨">판매자가 연락이 안됨</option>
+								<option value="구매자가 연락이 안됨">구매자가 연락이 안됨</option>
+								<option value="제휴 문의">제휴 문의</option>
+								<option value="직거래 신고">직거래 신고</option>
+								<option value="버그 신고">버그 신고</option>
+								<option value="기타 문의">기타 문의</option>
 							</select>
 						</div>
 						
@@ -93,6 +93,7 @@
 		</div>
 	</div>
 	<script>
+		// 탭 버튼
 		function inquiry_chk(num) {
 			if (num == '1') {
 				document.getElementById("faq-form").style.display = "none";
@@ -112,7 +113,38 @@
 					$('#text-cnt').html("(500 / 500)");             
 				}         
 			});     
-		});              
+		});    
+		
+		// ajax 전송
+		const inquiryBtn = document.getElementById('inquiry-btn');
+		
+		inquiryBtn.addEventListener('click', (e) => {
+			
+			const inquiry = document.getElementById('inquiry');
+			const title = document.getElementById('title');
+			const content = document.getElementById('content');
+			
+			m_inquiry = inquiry.value;
+			m_title = title.value;
+			m_content = content.value;
+			
+			param={"inquiry" : m_inquiry, "title" : m_title, "content" : m_content};
+			$.ajax({
+				type: "post",
+				url: "inquiry",
+				data: param,
+				success: function(result) {
+					let resultText = null;
+					if (result == 0) {
+						resultText = 'FaqController 에서 돌아왔습니다.';
+					} else if (result == -1) {
+						resultText = '분류기준이 존재하지 않습니다.\n분류 기준을 선택 후 다시 시도해주세요';
+					}
+					alert(resultText);
+				}
+			});
+			
+		})
 	</script>
 	
 </body>
