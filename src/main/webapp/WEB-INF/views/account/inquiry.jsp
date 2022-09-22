@@ -41,7 +41,7 @@
 		</div>
 		<div class="thispage__main">
 			<div class="main__container">
-				<h2 class="main-container__title">1:1 문의</h2>
+				<h2 class="main-container__title">1:1문의</h2>
 				<div class="container__card">
 					<c:choose>
 						<c:when test="${faqId == null }">
