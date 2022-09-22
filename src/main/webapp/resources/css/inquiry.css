@@ -103,3 +103,91 @@
 	background-color: rgb(200, 50, 50);
 	cursor: pointer;
 }
+
+/* 테이블 */
+.faq_table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.head {
+	border-bottom: 1px solid black;
+	font-size: 24px;
+}
+
+.body {
+	border-bottom: 1px solid #c0c0c0;
+	height: 30px;
+}
+
+.faq_id--head {
+	padding: 0 20px;
+}
+
+.faq_cate--head {
+	width: 250px;
+}
+
+.faq_title--head {
+	width: 350px;
+}
+
+.faq_date--head {
+	width: 150px;
+}
+
+.faq_answer--head {
+	width: 100px;
+}
+
+.faq_id, .faq_date, .faq_answer {
+	text-align: center;
+}
+
+.faq_answer--n {
+	color: rgb(255, 179, 102);
+	pointer-events: none;
+}
+
+.faq_answer--o > a {
+	color: rgb(0, 230, 0);
+}
+
+.faq_answer--o > a:hover {
+	border-bottom: 1px solid rgb(0, 230, 0);
+}
+
+
+/* 문의답변 페이지 */
+.faqAnswer-title {
+	margin-top: 0px;
+}
+
+.container__faqAnswer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container__faqAnswer > div {
+	padding: 10px;
+}
+
+.container__faqAnswer > div > label {
+	font-size: 20px;
+}
+
+.container__faqAnswer > div > input {
+	width: 800px;
+	height: 35px;
+	font-size: 18px;
+	border: none;
+}
+
+.container__faqAnswer > div > textarea {
+	width: 800px;
+	height: 80px;
+	resize: none;
+	font-size: 18px;
+	border: none;
+}

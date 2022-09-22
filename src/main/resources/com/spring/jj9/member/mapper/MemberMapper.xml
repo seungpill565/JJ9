@@ -87,4 +87,12 @@
 	 		#{member_id}
 	 	)
 	 </insert>
+	 
+	 <select id="getFaqList" resultType="com.spring.jj9.dto.Faq">
+	 	select * from faq where member_id = #{member_id}
+	 </select>
+	 
+	 <select id="getMyFaq" resultType="com.spring.jj9.dto.Faq">
+	 	select * from faq where member_id = #{member_id} and faq_id = #{faq_id} 
+	 </select>
 </mapper>

@@ -63,4 +63,11 @@ public interface MemberMapper {
 				@Param("member_id") 	String member_id 
 			);
 	
+	public List<Faq> getFaqList(String member_id);
+
+	public Faq getMyFaq(
+				@Param("faq_id") 	Integer faq_id, 
+				@Param("member_id") String member_id
+			);
+	
 }

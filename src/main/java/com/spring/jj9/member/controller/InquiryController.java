@@ -2,13 +2,16 @@ package com.spring.jj9.member.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +33,7 @@ public class InquiryController {
 	}
 	
 	@GetMapping("/account/inquiry")
-	public String inquiry(HttpSession session, HttpServletRequest request) {
+	public String inquiry(HttpSession session, HttpServletRequest request, Model model) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -38,6 +41,12 @@ public class InquiryController {
 			request.setAttribute("url", "/jj9/login");
 			return "alert";			
 		}
+		
+		List<Faq> faq = service.getFaqList(session.getAttribute("member_id").toString());
+		
+		log.info("이 컨트롤러에서의 faq는 어떻게 되고있나...? : " + faq);
+		
+		model.addAttribute("faqs", service.getFaqList(session.getAttribute("member_id").toString()));
 		
 		return "account/inquiry";
 	}
@@ -91,5 +100,33 @@ public class InquiryController {
 			} else {
 				return "0";
 			}
+	}
+	
+	@GetMapping("/account/inquiry/faq_id={faq_id}")
+	public String inquiryAnswer(
+			HttpSession session, 
+			HttpServletRequest request, 
+			Model model, Faq faq,
+			@PathVariable("faq_id") String faq_id) {
+		try {
+			String member_id = session.getAttribute("member_id").toString();			
+		} catch (NullPointerException e) {
+			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
+			request.setAttribute("url", "/jj9/login");
+			return "alert";			
+		}
+		
+		log.info("controller 에는 잘 왔나 확인 faq_id: " + faq_id);
+		model.addAttribute("faqId", faq_id);
+		
+		faq.setFaq_id(Integer.valueOf(faq_id));
+		log.info("getFaq_id: " + faq.getFaq_id());
+		
+		faq = service.getMyFaq(faq.getFaq_id(), session.getAttribute("member_id").toString());
+		
+		log.info("service로 돌아온 faq : " + faq);
+		model.addAttribute("faqAnswer", faq);
+		
+		return "account/inquiry";
 	}
 }

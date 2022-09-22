@@ -1,6 +1,7 @@
 package com.spring.jj9.member.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,19 @@ public class InquiryServiceImpl implements InquiryService {
 		
 		return memberMapper.inquire(inquiry, title, content, date, member_id);
 	}
+
+	@Override
+	public List<Faq> getFaqList(String member_id) {
+		
+		return memberMapper.getFaqList(member_id);
+	}
+
+	@Override
+	public Faq getMyFaq(Integer faq_id, String member_id) {
+		
+		return memberMapper.getMyFaq(faq_id, member_id);
+	}
+
 
 	
 }
