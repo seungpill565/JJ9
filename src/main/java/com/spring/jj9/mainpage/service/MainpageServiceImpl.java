@@ -20,6 +20,11 @@ public class MainpageServiceImpl implements MainpageService{
 
 		return mapper.readMainCate();
 	}
+	
+	@Override
+	public List<Category> readAllSubCategory() {
+		return mapper.readAllSubCategorys();
+	}
 
 	@Override
 	public List<TalentAll> readBestPurchase() {
@@ -31,5 +36,7 @@ public class MainpageServiceImpl implements MainpageService{
 	public List<TalentAll> readNewPurchase() {
 		return mapper.readNewPurchase();
 	}
+
+
 
 }

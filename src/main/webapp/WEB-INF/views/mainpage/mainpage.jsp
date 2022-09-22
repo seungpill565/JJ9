@@ -29,7 +29,7 @@
 <body>
 
 	<!-- header -->
-	<header>
+	<div class="main-header">
 		<!-- section1 -->
 		<section class="header-section1">
 			<div class="logo-div">	
@@ -53,21 +53,20 @@
 			<button class="category-button">
 				<div class="category-menu-img"></div>
 				<span style="font-size:20px;">메인 카테고리</span>
-				
 			</button>
 			<div class="mainCategory-div">
-				<c:forEach items="${maincategorys }" var="maincategory">
-					<c:forEach items="${subcategorys }" var="subcategory">
-						<a href="/jj9/category/${maincategory.cate_id }">${maincategory.cate_main }</a>
-					<c:if test="${category.cate_main } == ${subcategory }"></c:if>
-					<div class="subcategory-div">
+				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
+					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">${maincategory.cate_main }
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
 				
-					</div>
-					</c:forEach>
+					</a>
 				</c:forEach>
 			</div>
-			
-
 		</div>
 		<!-- 카테고리 -->
 		
@@ -96,7 +95,7 @@
 		</section>
 
 
-	</header>
+	</div>
 	<!-- header -->
 	
 	<!-- body -->
@@ -247,9 +246,72 @@
 	</footer>
 	
 <script src="/jj9/resources/js/category.js?ver=1"></script>
+<script>
+
+	var main = new Array();
+	<c:forEach items="${maincategorys }" var="maincategory">
+		main.push({cate_id:"${maincategory.cate_id}"
+					,cate_main:"${maincategory.cate_main}"});
+	</c:forEach>
+	
+	var subAll = new Array();
+	<c:forEach items="${subcategorys }" var="subcategory">
+		subAll.push({cate_id:"${subcategory.cate_id}"
+					,cate_main:"${subcategory.cate_main}"
+					,cate_sub:"${subcategory.cate_sub}"});
+	</c:forEach>
+	
+	
+	var box=document.getElementById('mainCategory-a');
+	
+	//box.addEventListener('mouseover')
+	
+	console.log(main[0].cate_main)
+	console.log(main[0])
+	
+	
+	var sub = new Array();
+	
+	for(var i=0;i<main.length;i++){
+		for(var j=0;j<subAll.lenght;j++){
+			if(main[i].cate_main==subAll[j].cate_main){
+				sub.push({"cate_sub":"subAll[j].cate_sub"});
+			}	
+		}
+	}
+	
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- 검색 기능 

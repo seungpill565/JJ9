@@ -44,17 +44,17 @@
 		<!-- section1 -->
 		
 		<!-- section2 -->
-		<!-- 카테고리 -->
 		<section class="header-section2">
+		
+		<!-- 카테고리 -->
 		<div class="mainPage-mainCategory-div">
 			<button class="category-button">
 				<div class="category-menu-img"></div>
-				<span>메인 카테고리</span>
+				<span style="font-size:20px;">메인 카테고리</span>
 			</button>
-			<div class="category-div">
-				<c:forEach items="${maincategorys }" var="category">
-				<a href="/jj9/category/${category.cate_id }">${category.cate_main }</a>
-			
+			<div class="mainCategory-div">
+				<c:forEach items="${maincategorys }" var="maincategory">
+				<a href="/jj9/category/${maincategory.cate_id }">${maincategory.cate_main }</a>
 				</c:forEach>
 			</div>
 		</div>

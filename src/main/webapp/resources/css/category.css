@@ -41,6 +41,12 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 /* /mainpage */
 
 /* header */
+/*.main-header{
+    width: 1200px;
+    position: fixed;
+    margin: 0 auto;
+    padding: 0 16px;
+}*/
 
 /* section1 */
 .header-section1{
@@ -134,11 +140,11 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
   min-width : 200px;
 }
 
-.category-div a:hover{
+.mainCategory-div a:hover{
     background-color: #e67878;
 }
 
-.category-div a{
+.mainCategory-div a{
   display : block;
   text-decoration : none;
   color : rgb(37, 37, 37);
@@ -147,7 +153,21 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
   
 }
 
-.mainPage-mainCategory-div:hover .category-div{
+.mainPage-mainCategory-div:hover .mainCategory-div{
+    display: block;
+}
+
+.test1{
+    display: none;
+    border-radius: 5px;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    font-weight: 400;
+    background-color: yellow;
+    min-width : 200px;
+}
+
+.mainCategory-div a:hover .test1{
     display: block;
 }
 

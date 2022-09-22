@@ -9,6 +9,8 @@ public interface MainpageMapper {
 
 	public List<Category> readMainCate();
 	
+	public List<Category> readAllSubCategorys(); // 서브카테고리들만 불러오기
+	
 	public List<TalentAll> readBestPurchase();
 	
 	public List<TalentAll> readNewPurchase();

@@ -28,6 +28,7 @@ public class MainpageController {
 	public String mainpage(Model model, Criteria cri) { //mainpage.jsp로 가는 메서드
 		//log.info(service.readMainCategory());
 		
+		model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
 		model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
 		model.addAttribute("bestpurchases", service.readBestPurchase());
 		model.addAttribute("newpurchases", service.readNewPurchase());
