@@ -33,10 +33,10 @@
 				<h2 class="main-container__title">회원탈퇴</h2>
 				<div class="container__card">
 				
-					<p>회원 탈퇴 시 내 모든 정보가 삭제되며, 이후 복구가 불가능합니다.</p>
+					<p style="padding-left: 120px; font-size: 24px;">회원 탈퇴 시 내 모든 정보가 삭제되며, 이후 복구가 불가능합니다.</p>
 					<div class="notify__container">
 						<div class="card__notify--secession">
-							<h4>회원 탈퇴 시 유의사항</h4>
+							<h3>회원 탈퇴 시 유의사항</h3>
 							<p>
 								* 회원탈퇴를 위해선 아래 2가지 조건 확인이 필요합니다.<br><br>
 								-판매 또는 구매가 진행중인 상품이 없어야 합니다. <br>
@@ -45,7 +45,7 @@
 							</p>
 						</div>
 						<div class="card__notify--duration">
-							<h4>탈퇴회원 회원정보 보존기간</h4>
+							<h3>탈퇴회원 회원정보 보존기간</h3>
 							<p>
 								* 회원탈퇴가 완료되더라도 판/구매자의 권익을 보호하기 위해 다음과<br>
 								같이 일정기간 회원정보가 보존됨을 알려드립니다. <br><br>
@@ -60,7 +60,7 @@
 				</div>
 				
 				<div class="secession__container">
-					<p>현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주되고 탈퇴 처리가 진행됩니다.</p>
+					<p style="font-size: 18px;">현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주되고 탈퇴 처리가 진행됩니다.</p>
 					<input id="pw" class="secession__password" type="password" placeholder="현재 비밀번호">
 					<button id="secession-btn" class="secession-btn">탈퇴하기</button>
 				</div>
