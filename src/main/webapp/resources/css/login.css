@@ -1,9 +1,14 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
 
 body {
 	box-sizing: border-box;
 	font-family: 'Jua', sans-serif;
+}
+
+input, select, textarea, button {
+	font-family: inherit;
 }
 
 a {
@@ -17,6 +22,7 @@ a:hover {
 
 .description {
 	text-align: center;
+	font-family: 'Noto Serif', serif;
 	font-size: 60px;
 	font-weight: 400;
 	margin-top: 25%;
@@ -45,7 +51,7 @@ a:hover {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 3px solid black;
+	border-bottom: 2px solid black;
 	font-size: 16px;
 }
 
@@ -95,22 +101,23 @@ a:hover {
 	width: 600px;
 	height: 700px;
 	position: relative;
-	border: 3px solid black;
 	border-right: none;
 	background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) ), url("../image/talent.jpg");
 	background-position: right bottom;
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-top-left-radius: 100px;
+	box-shadow: 0 0 10px;
 }
 
 .container__login {
-	border: 3px solid black;
 	border-bottom-right-radius: 100px;
+	box-shadow: 0 0 10px;
 }
 
 .container__image--title {
 	color: rgb(230, 70, 70);
+	font-family: 'Noto Serif', serif;
 	font-size: 70px;
 	margin: 20% 0 30px 0;
 }
