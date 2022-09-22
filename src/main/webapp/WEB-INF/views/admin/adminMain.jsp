@@ -27,6 +27,7 @@
 					<ul class="adminMenu-container__ul">
 						<li style="background-color: rgb(230, 70, 70);"><a href="./admin">관리자 메인 페이지</a></li>
 						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>
 						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li><a href="./talentManage">재능 관리</a></li>
 						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
@@ -49,6 +50,7 @@
 
 	<hr />
 
+<br /><br /><br />
 
 </body>
 </html>

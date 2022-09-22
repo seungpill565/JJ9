@@ -27,6 +27,7 @@
 				<div class="adminMenu__container">
 					<ul class="adminMenu-container__ul">
 						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>						
 						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li><a href="./talentManage">재능 관리</a></li>
 						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
@@ -44,17 +45,32 @@
 						<div class="flex">
 							<h1>쿠폰 목록</h1>
 							<button type="button" class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#createCouponModal" 
-								data-random-code = "${random_code }" style="margin-left: 20px; height: 45px;">새 쿠폰 생성하기</button>
-							<hr />
+								data-random-code = "${random_code }" style="margin-left: 20px; height: 45px;">새 쿠폰 생성하기</button>							
 						</div>
-						<ul>
-							<c:forEach items="${coupons }" var="coupon">							
-								<li>
-									${coupon.coupon_code} / ${coupon.coupon_name} / ${coupon.coupon_period} / ${coupon.discount_percent}  / ${coupon.coupon_unused}/ ${coupon.member_id}								 
-								</li>		
-							</c:forEach>		
-						</ul>
-						<hr />						
+						<hr />
+							
+							<table border="1" class="content-table" style="margin: 20px">
+								<th><h2 style="margin-top: 10px">&nbsp; 쿠폰 코드</h2></th>
+								<th><h2 style="margin-top: 10px">쿠폰명</h2></th>
+								<th><h2 style="margin-top: 10px">만료기간</h2></th>
+								<th><h2 style="margin-top: 10px">할인률</h2></th>
+								<th><h2 style="margin-top: 10px">사용유무</h2></th>
+								<th><h2 style="margin-top: 10px">소유자id</h2></th>
+								
+								<c:forEach items="${coupons }" var="coupon">
+								
+									<tr>
+									    <td style="width: 200px; padding: 10px;">&nbsp; ${coupon.coupon_code} </td>
+									    <td style="width: 230px">${coupon.coupon_name}</td>
+									    <td style="width: 200px">${coupon.coupon_period}</td>
+									    <td style="width: 200px">${coupon.discount_percent} %</td>
+									    <td style="width: 200px">${coupon.coupon_unused}</td>
+									    <td style="width: 200px">${coupon.member_id}</td>								
+									</tr>		
+														
+								</c:forEach>															
+						    </table>						
+												
 					</div>
 				</div>
 			</div>
@@ -154,7 +170,7 @@
   </div>
 </div>
 
-
+<br /><br /><br />
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

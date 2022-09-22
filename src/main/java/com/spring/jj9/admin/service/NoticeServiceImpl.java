@@ -17,13 +17,29 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeMapper mapper;
 
 	@Override
-	public List<Notice> getNoticeList() {		
-		return mapper.getNoticeList();
+	public List<Notice> getNoticeList1() {		
+		return mapper.getNoticeList1();
 	}
+	
+	@Override
+	public List<Notice> getNoticeList2() {		
+		return mapper.getNoticeList2();
+	}
+	
+	@Override
+	public List<Notice> getNoticeList3() {		
+		return mapper.getNoticeList3();
+	}	
 
 	@Override
 	public void updateNotice(Integer notice_id, Notice notice) {
 		mapper.updateNotice(notice_id, notice.getNotice_title(), notice.getNotice_content(), notice.getNotice_date(), notice.getNotice_importance());
+		
+	}
+
+	@Override
+	public void newNotice(Notice notice) {
+		mapper.newNotice(notice);
 		
 	}
 

@@ -8,6 +8,7 @@
 <title>카테고리 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"	crossorigin="anonymous">
 <link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=1">
+
 </head>
 <body>
 	<div class="inline">
@@ -28,6 +29,7 @@
 					<ul class="adminMenu-container__ul">
 						<li style="background-color: rgb(230, 70, 70);"><a
 							href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>							
 						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li><a href="./talentManage">재능 관리</a></li>
 						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
@@ -51,31 +53,35 @@
 						<hr />
 						<h1> 카테고리 목록 </h1>
 
-						<ul>
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px">&nbsp; id</h2></th>
+							<th><h2 style="margin-top: 10px">메인 카테고리</h2></th>
+							<th><h2 style="margin-top: 10px">세부 카테고리</h2></th>
+						
 							<c:forEach items="${categories }" var="category">
-
-								<li>#${category.cate_id} ${category.cate_main} >
-									${category.cate_sub}
-									<button type="button" data-bs-toggle="modal"
-										data-bs-target="#modifyCateModal"
-										data-cate-id="${category.cate_id }"
-										data-cate-main="${category.cate_main }"
-										data-cate-sub="${category.cate_sub }">수정</button>
-									<button class="deleteCateBtn" data-id=${category.cate_id }>삭제</button>
-								</li>
+							
+								<tr>
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${category.cate_id} </td>
+								    <td style="width: 200px">${category.cate_main}</td>
+								    <td style="width: 300px">${category.cate_sub}</td>
+									<td>
+										<button type="button" data-bs-toggle="modal"
+											data-bs-target="#modifyCateModal"
+											data-cate-id="${category.cate_id }"
+											data-cate-main="${category.cate_main }"
+											data-cate-sub="${category.cate_sub }">수정</button>
+										<button class="deleteCateBtn" data-id=${category.cate_id } style="margin-right: 10px; margin-left:10px ">삭제</button>
+									</td>
+								</tr>		
+													
 							</c:forEach>
-						</ul>
+														
+					    </table>						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- 버튼 모양 종류  
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@mdo">수정</button>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@fat">Open modal for @fat</button>
-<button type="button" data-bs-toggle="modal" data-bs-target="#modifyCateModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
--->
 
 	<!-- modal 속성 구현-->
 	<div class="modal fade" id="modifyCateModal" tabindex="-1"
@@ -119,7 +125,7 @@
 			</div>
 		</div>
 	</div>
-
+<br /><br /><br />
 
 
 

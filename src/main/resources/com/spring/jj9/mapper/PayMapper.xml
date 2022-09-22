@@ -5,7 +5,9 @@
 <mapper namespace="com.spring.jj9.mapper.PayMapper">
 	
 	<select id="getPayList" resultType="com.spring.jj9.dto.Pay_talentList">
-		SELECT p.pay_id,  p.talent_id, t.talent_title, t.member_id as "seller_member_id", p.member_id as "buyer_member_id", p.pay_money, p.pay_original_money from pay p INNER JOIN talent_list t ON p.talent_id = t.talent_id
+		SELECT p.pay_id,  p.talent_id, p.refund_request, t.talent_title, t.member_id as "seller_member_id", p.member_id as "buyer_member_id", p.pay_money, p.pay_original_money from pay p 
+		INNER JOIN talent_list t ON p.talent_id = t.talent_id 
+		ORDER BY p.pay_id DESC
 	</select>	
 
 	

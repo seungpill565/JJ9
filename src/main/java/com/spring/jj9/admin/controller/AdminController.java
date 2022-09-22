@@ -335,8 +335,20 @@ public class AdminController {
 	@GetMapping("noticeManage")
 	public String noticeManage(Model model) {
 		
-		model.addAttribute("notices", noticeService.getNoticeList());		
+		model.addAttribute("notices1", noticeService.getNoticeList1());	//1 특별공지
+		model.addAttribute("notices2", noticeService.getNoticeList2()); //2 중요공지
+		model.addAttribute("notices3", noticeService.getNoticeList3()); //3 일반공지
+		
 		return "admin/noticeManage"; 
+	}
+	
+	@PostMapping("/newNotice")
+	public void newNotice(HttpServletResponse response, Model model, Notice notice) throws IOException {
+		
+		// 공지사항 등록
+		noticeService.newNotice( notice);		
+		//수정 후 공지사항 관리 페이지로 이동
+		AlertPopup.alertAndMovePage(response, "공지사항이 등록되었습니다","./noticeManage");
 	}
 	
 	@PostMapping("/updateNotice")
@@ -347,4 +359,5 @@ public class AdminController {
 		//수정 후 공지사항 관리 페이지로 이동
 		AlertPopup.alertAndMovePage(response, "공지사항이 수정되었습니다","./noticeManage");
 	}
+	
 }

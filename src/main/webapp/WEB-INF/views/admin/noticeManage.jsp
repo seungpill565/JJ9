@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>공지사항 관리 </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=1">
+<link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=12">
 </head>
 <body>
 	<div class="inline">
@@ -27,6 +27,7 @@
 				<div class="adminMenu__container">
 					<ul class="adminMenu-container__ul">
 						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>
 						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li><a href="./talentManage">재능 관리</a></li>
 						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
@@ -44,26 +45,152 @@
 					<div class="flex">
 						<h1> 공지 사항 </h1>					
 						<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#newNoticeModal" style="margin-left: 20px; height: 45px;"><h4> 새 공지 작성 </h4></button>
-					</div>				
+					</div>
+					
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px">&nbsp; 공지id</h2></th>
+							<th><h2 style="margin-top: 10px">제목</h2></th>
+							<th><h2 style="margin-top: 10px">작성일</h2></th>							
+						
+							<c:forEach items="${notices1 }" var="notice">
+							
+								<tr class="notice1-part">
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${notice.notice_id} </td>
+								    <td style="width: 200px">${notice.notice_title}</td>
+								    <td style="width: 300px">${notice.notice_date}</td>
+								    <td style="width: 300px">${notice.notice_importance}</td>
+									<td>
+										<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+											data-notice-id = "${notice.notice_id }"
+											data-notice-title = "${notice.notice_title }"
+											data-notice-content = "${notice.notice_content }"
+											data-notice-date = "${notice.notice_date }"
+											data-notice-importance = "${notice.notice_importance }"				
+										 style="margin-right: 10px; margin-left:10px " >상세보기/수정</button>										
+									</td>
+								</tr>													
+							</c:forEach>				
+							
+							
+							<c:forEach items="${notices2 }" var="notice">
+							
+								<tr class="notice2-part">
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${notice.notice_id} </td>
+								    <td style="width: 200px">${notice.notice_title}</td>
+								    <td style="width: 300px">${notice.notice_date}</td>
+								    <td style="width: 300px">${notice.notice_importance}</td>
+									<td>
+										<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+											data-notice-id = "${notice.notice_id }"
+											data-notice-title = "${notice.notice_title }"
+											data-notice-content = "${notice.notice_content }"
+											data-notice-date = "${notice.notice_date }"
+											data-notice-importance = "${notice.notice_importance }"				
+										 style="margin-right: 10px; margin-left:10px " >상세보기/수정</button>										
+									</td>
+								</tr>													
+							</c:forEach>
+							
+							<c:forEach items="${notices3 }" var="notice">
+							
+								<tr class="notice3-part">
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${notice.notice_id} </td>
+								    <td style="width: 200px">${notice.notice_title}</td>
+								    <td style="width: 300px">${notice.notice_date}</td>
+								    <td style="width: 300px">${notice.notice_importance}</td>
+									<td>
+										<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+											data-notice-id = "${notice.notice_id }"
+											data-notice-title = "${notice.notice_title }"
+											data-notice-content = "${notice.notice_content }"
+											data-notice-date = "${notice.notice_date }"
+											data-notice-importance = "${notice.notice_importance }"				
+										 style="margin-right: 10px; margin-left:10px " >상세보기/수정</button>										
+									</td>
+								</tr>													
+							</c:forEach>							
+														
+					    </table>					
+					
+					
+									
 					<ul>
-						<c:forEach items="${notices }" var="notice">						
+						<c:forEach items="${notices1 }" var="notice">						
 							<li>
+							${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} 
 								<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
 									data-notice-id = "${notice.notice_id }"
 									data-notice-title = "${notice.notice_title }"
 									data-notice-content = "${notice.notice_content }"
 									data-notice-date = "${notice.notice_date }"
 									data-notice-importance = "${notice.notice_importance }"				
-								 >${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} </button>								 
+								 >상세보기/수정</button>								 
 							</li>		
 						</c:forEach>		
 					</ul>
-					<hr />						
+					<hr />	
+					<ul>
+						<c:forEach items="${notices2 }" var="notice">						
+							<li>
+								${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} 
+								<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+									data-notice-id = "${notice.notice_id }"
+									data-notice-title = "${notice.notice_title }"
+									data-notice-content = "${notice.notice_content }"
+									data-notice-date = "${notice.notice_date }"
+									data-notice-importance = "${notice.notice_importance }"				
+								 >상세보기/수정</button>								 
+							</li>		
+						</c:forEach>		
+					</ul>
+					
+					<hr />	
+					<ul>
+						<c:forEach items="${notices3 }" var="notice">						
+							<li>
+								${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} 
+								<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
+									data-notice-id = "${notice.notice_id }"
+									data-notice-title = "${notice.notice_title }"
+									data-notice-content = "${notice.notice_content }"
+									data-notice-date = "${notice.notice_date }"
+									data-notice-importance = "${notice.notice_importance }"				
+								 >상세보기/수정</button>								 
+							</li>		
+						</c:forEach>		
+					</ul>										
 					</div>					
 				</div>
 			</div>
 		</div>
 	</div>
+	
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px">&nbsp; id</h2></th>
+							<th><h2 style="margin-top: 10px">메인 카테고리</h2></th>
+							<th><h2 style="margin-top: 10px">세부 카테고리</h2></th>
+						
+							
+							
+								<tr class="asd1">
+								    <td style="width: 100px; padding: 10px;">&nbsp; asdf </td>
+								    <td style="width: 200px">adsf</td>
+								    <td style="width: 300px">afdf</td>									
+								</tr>		
+								<tr class="asd1">
+								    <td style="width: 100px; padding: 10px;">&nbsp; asdf </td>
+								    <td style="width: 200px">adsf</td>
+								    <td style="width: 300px">afdf</td>									
+								</tr>
+								<tr class="asd1">
+								    <td style="width: 100px; padding: 10px;">&nbsp; asdf </td>
+								    <td style="width: 200px">adsf</td>
+								    <td style="width: 300px">afdf</td>									
+								</tr>					
+							
+														
+					    </table>
+	
 
 <!-- 
 <h3>공지사항 관리 페이지입니다.</h3>
@@ -198,6 +325,7 @@
   </div>
 </div>
 
+<br /><br /><br />
 
 
 

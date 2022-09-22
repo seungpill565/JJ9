@@ -99,10 +99,11 @@ ul{
 }
 
 .main-container__title {
-	padding: 10px 20px;
+	padding: 20px 40px;
 	background-color: rgb(230, 70, 70);
 	color: white;
 	border-radius: 10px;
+	font-size: 40px;
 }
 .container__card {
 	margin-left: 50px;
@@ -114,3 +115,15 @@ ul{
 	margin-left: 50px;
 }
 
+
+.content-table td {
+	border-top: solid black 1px;
+}
+
+.notice1-part:last-child{ 
+	border: 30px solid black;
+}
+
+.asd1:last-child{
+	border: 30px solid red;
+}

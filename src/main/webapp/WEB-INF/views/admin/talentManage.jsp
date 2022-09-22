@@ -27,6 +27,7 @@
 				<div class="adminMenu__container">
 					<ul class="adminMenu-container__ul">
 						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>
 						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li style="background-color: rgb(230, 70, 70);"><a
 							 href="./talentManage">재능 관리</a></li>
@@ -42,28 +43,44 @@
 					<div>
 						<h1> 등록된 재능 목록 </h1>
 						<hr />
-						<ul>
-						<c:forEach items="${talents }" var="talent">
-							<li>
-							${talent.talent_id}	/${talent.talent_title} / ${talent.member_id} / ${talent.talent_date}
-							<button type="button" data-bs-toggle="modal" data-bs-target="#talentDetailsModal"
+						
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px">&nbsp; id</h2></th>
+							<th><h2 style="margin-top: 10px">재능 이름</h2></th>
+							<th><h2 style="margin-top: 10px">판매자</h2></th>
+							<th><h2 style="margin-top: 10px">등록일</h2></th>
+						
+							<c:forEach items="${talents }" var="talent">
 							
-								data-talent-id = "${talent.talent_id }"
-								data-talent-title = "${talent.talent_title }"
-								data-member-id = "${talent.member_id }"
-								data-talent-price = "${talent.talent_price }"
-								data-talent-date = "${talent.talent_date }"
-								data-talent-service-exp = "${talent.talent_service_exp }"
-								data-talent-curriculum = "${talent.talent_curriculum }"
-								data-talent-workday = "${talent.talent_workday }"
-								data-talent-summary = "${talent.talent_summary }"
-								data-talent-paycount = "${talent.talent_paycount }"
-								
-							>수정</button>
-								 <a href="deleteTalent?id=${talent.talent_id }"><button>삭제</button></a>
-							</li>		
-						</c:forEach>		
-						</ul>
+								<tr>
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${talent.talent_id} </td>
+								    <td style="width: 450px;">${talent.talent_title}</td>
+								    <td style="width: 250px;">${talent.member_id}</td>
+								    <td style="width: 200px;">${talent.talent_date}</td>
+									<td style="width: 130px;">
+										<button type="button" data-bs-toggle="modal" data-bs-target="#talentDetailsModal"
+							
+											data-talent-id = "${talent.talent_id }"
+											data-talent-title = "${talent.talent_title }"
+											data-member-id = "${talent.member_id }"
+											data-talent-price = "${talent.talent_price }"
+											data-talent-date = "${talent.talent_date }"
+											data-talent-service-exp = "${talent.talent_service_exp }"
+											data-talent-curriculum = "${talent.talent_curriculum }"
+											data-talent-workday = "${talent.talent_workday }"
+											data-talent-summary = "${talent.talent_summary }"
+											data-talent-paycount = "${talent.talent_paycount }"								
+											>수정
+										</button>&nbsp;
+										<a href="deleteTalent?id=${talent.talent_id }"><button>삭제</button></a>									
+										
+									</td>
+								</tr>		
+													
+							</c:forEach>
+														
+					    </table>	
+						
 					</div>		
 				</div>
 			</div>
@@ -131,6 +148,8 @@
 	    </div>
 	  </div>
 	</div>
+	
+	<br /><br /><br />
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src="/jj9/resources/js/talentManage.js?ver=3"></script>

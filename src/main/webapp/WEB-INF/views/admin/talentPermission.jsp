@@ -26,6 +26,7 @@
 				<div class="adminMenu__container">
 					<ul class="adminMenu-container__ul">
 						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>
 						<li style="background-color: rgb(230, 70, 70);"><a href="./talentPermission">재능등록 요청 관리</a></li>
 						<li><a href="./talentManage">재능 관리</a></li>
 						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
@@ -40,29 +41,42 @@
 					<div>
 						<h1>등록 요청 목록</h1>
 						<hr />
-						<ul>
-						<c:forEach items="${talents }" var="talent">
-							<li>
-							<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#talentDetailsModal" style="font-size : 22px;
+						
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px; width: 800px"> &nbsp; 등록 요청 내용</h2></th>
+							<th><h2></h2></th>
+							<th><h2></h2></th>
+						
+							<c:forEach items="${talents }" var="talent">
 							
-								data-talent-id = "${talent.talent_id }"
-								data-talent-title = "${talent.talent_title }"
-								data-member-id = "${talent.member_id }"
-								data-talent-price = "${talent.talent_price }"
-								data-talent-date = "${talent.talent_date }"
-								data-talent-service-exp = "${talent.talent_service_exp }"
-								data-talent-curriculum = "${talent.talent_curriculum }"
-								data-talent-workday = "${talent.talent_workday }"
-								data-talent-summary = "${talent.talent_summary }"
+								<tr>
+								    <td>
+								    	<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#talentDetailsModal" style= "font-size : 22px";
+							
+										data-talent-id = "${talent.talent_id}"
+										data-talent-title = "${talent.talent_title }"
+										data-member-id = "${talent.member_id }"
+										data-talent-price = "${talent.talent_price }"
+										data-talent-date = "${talent.talent_date }"
+										data-talent-service-exp = "${talent.talent_service_exp }"
+										data-talent-curriculum = "${talent.talent_curriculum }"
+										data-talent-workday = "${talent.talent_workday }"
+										data-talent-summary = "${talent.talent_summary }"
 								
-							>
-							${talent.talent_id}	/${talent.talent_title} / ${talent.member_id} / ${talent.talent_date}
-							</button> 
-								 <a href="permissionTalent?id=${talent.talent_id }"><button>등록</button></a>
-								 <a href="deleteTalent?id=${talent.talent_id }"><button>요청 삭제</button></a>
-							</li>		
-						</c:forEach>		
-						</ul>
+										>
+										${talent.talent_title} / ${talent.member_id} / ${talent.talent_date}
+										</button>  
+									</td>
+									
+								    <td><a href="permissionTalent?id=${talent.talent_id }"><button>등록</button></a></td>
+								    <td style="padding: 10px; margin-right: 10px; margin-left:10px "><a href="deleteTalent?id=${talent.talent_id }"><button>요청 삭제</button></a></td>
+									
+								</tr>		
+													
+							</c:forEach>
+														
+					    </table>				
+						
 					</div>					
 				</div>
 			</div>
@@ -116,7 +130,7 @@
 	          </div>    
 	          
 	          <div>            
-	            <input id="new-talent-id" type="text" hidden="true" name="talent_id" readonly >
+	            <input id="new-talent-id" type="text"  name="talent_id" hidden="true" readonly >
 	          </div>  
 	                        
 		      <div class="modal-footer">
@@ -128,6 +142,8 @@
 	    </div>
 	  </div>
 	</div>
+	
+	<br /><br /><br />
 
 	
 
