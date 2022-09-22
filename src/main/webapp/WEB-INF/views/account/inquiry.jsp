@@ -16,7 +16,7 @@
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
-				<li><h2>1:1 문의</h2></li>
+				<li><h2>1:1문의</h2></li>
 				<c:choose>
 					<c:when test="${faqId == null }">
 						<li><a href="./sell-talent">판매재능관리</a></li>

@@ -14,7 +14,7 @@
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
-				<li><h2>쿠폰 등록</h2></li>
+				<li><h2>쿠폰등록</h2></li>
 				<li><a href="./sell-talent">판매재능관리</a></li>
 				<li><a href="./purchase-history">구매재능내역</a></li>
 				<li><a href="./note">쪽지관리</a></li>
