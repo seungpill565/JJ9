@@ -50,7 +50,14 @@
 											<td><a href="buyInfo/${payTal.pay_id }">${payTal.talent_title }</a></td>
 											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
-											<td><a href="refund/${payTal.pay_id }">환불하기</a> / <a href="fix/${payTal.pay_id }">구매확정</a></td>
+											<c:choose>
+												<c:when test="${payTal.refund_request eq '구매확정' }">
+													<td style="color : green">구매확정</td>
+												</c:when>
+												<c:otherwise>
+													<td><button id="refundBtn" value="${payTal.pay_id }">환불하기</button> / <button id="confirmBtn" value=${payTal.pay_id }>구매확정</a></td>
+												</c:otherwise>
+											</c:choose>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -78,7 +85,7 @@
 											<td>${payTal.talent_title }</td>
 											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
-											<td><a href="cancel/${payTal.pay_id }">취소하기</a></td>
+											<td><button id="cancelBtn" value="${payTal.pay_id }">취소하기</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -117,5 +124,43 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	if(document.getElementById('refundBtn')){
+		const refundBtn = document.getElementById('refundBtn');
+		
+		refundBtn.addEventListener('click', (e) => {
+			var result = confirm("환불신청 하시겠습니까?");
+		        
+		        if(result) {
+		            location.href='refund/' + refundBtn.value;
+		        }
+		});
+	}
+	
+	if(document.getElementById('confirmBtn')){
+		const confirmBtn = document.getElementById('confirmBtn');
+		
+		confirmBtn.addEventListener('click', (e) => {
+			var result = confirm("구매확정 하시겠습니까?");
+			
+		        if(result) {
+		            location.href='fix/' + refundBtn.value;
+		        }
+		});
+	}
+	
+	if(document.getElementById('cancelBtn')){
+		const cancelBtn = document.getElementById('cancelBtn');
+		
+		cancelBtn.addEventListener('click', (e) => {
+			var result = confirm("환불요청을 취소하시겠습니까?");
+			
+		        if(result) {
+		            location.href='cancel/' + cancelBtn.value;
+		        }
+		});
+	}
+	
+	</script>
 </body>
 </html>

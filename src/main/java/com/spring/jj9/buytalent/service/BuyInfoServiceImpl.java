@@ -1,5 +1,7 @@
 package com.spring.jj9.buytalent.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +32,29 @@ public class BuyInfoServiceImpl implements BuyInfoService {
 	public Integer addReview(Review review) {
 		
 		return buyInfoMapper.addReview(review);
+	}
+	
+	@Override
+	public Review reviewIsExist(int pay_id) {
+		
+		return buyInfoMapper.reviewIsExist(pay_id);
+	}
+	
+	@Override
+	public Integer updateReview(Review review) {
+		
+		return buyInfoMapper.updateReview(review);
+	}
+	
+	@Override
+	public Review getReview(int review_id) {
+		
+		return buyInfoMapper.getReview(review_id);
+	}
+	
+	@Override
+	public Integer deleteReview(int review_id) {
+		
+		return buyInfoMapper.deleteReview(review_id);
 	}
 }

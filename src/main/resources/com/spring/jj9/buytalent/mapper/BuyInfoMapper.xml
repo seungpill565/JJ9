@@ -8,11 +8,11 @@
 
 	<select id="getPayTal"
 		resultType="com.spring.jj9.dto.Pay_talentList">
-		select p.pay_id, p.pay_money, p.member_id as
-		"buyer_member_id",
+		SELECT p.pay_id, p.pay_money, p.member_id AS
+		"buyer_member_id", p.refund_request,
 		p.pay_original_money, talent_id, t.talent_title,
-		t.member_id as "seller_member_id"
-		from pay p INNER JOIN talent_list t
+		t.member_id AS "seller_member_id"
+		FROM pay p INNER JOIN talent_list t
 		USING (talent_id)
 		WHERE p.pay_id = #{pay_id}
 	</select>
@@ -22,10 +22,26 @@
 		member_id = #{member_id}
 	</select>
 
+	<select id="reviewIsExist" resultType="com.spring.jj9.dto.Review">
+	    SELECT * FROM review WHERE pay_id = #{pay_id}
+  	</select>
+  	
+  	<select id="getReview" resultType="com.spring.jj9.dto.Review">
+	    SELECT * FROM review WHERE review_id = #{review_id}
+  	</select>
+  	
 	<insert id="addReview" parameterType="com.spring.jj9.dto.Review">
 		INSERT INTO review
 		VALUES(review_id_seq.nextval, #{member_id}, #{talent_id}, #{review_grade},
-		#{review_content}, #{review_date})
+		#{review_content}, #{review_date}, #{pay_id})
 	</insert>
+	
+	<update id="updateReview">
+	    UPDATE review SET review_grade = #{review_grade}, review_content = #{review_content} WHERE review_id = #{review_id}
+  	</update>
+	
+	<delete id="deleteReview">
+		DELETE FROM review WHERE review_id = #{review_id}
+	</delete>
 
 </mapper> 

@@ -62,37 +62,107 @@
 						</tbody>
 					</table>
 					<hr>
-					<div>
-						<form action="../review" class="mb-3" name="myform" id="myform" method="POST">
-							<fieldset>
-								<span class="text-bold">별점을 선택해주세요</span> 
-								<input type="radio" name="review_grade" value="5" id="rate1">
-								<label for="rate1">★</label> 
-								<input type="radio" name="review_grade" value="4" id="rate2">
-								<label for="rate2">★</label> 
-								<input type="radio" name="review_grade" value="3" id="rate3">
-								<label for="rate3">★</label>
-								<input type="radio" name="review_grade" value="2" id="rate4">
-								<label for="rate4">★</label> 
-								<input type="radio" name="review_grade" value="1" id="rate5">
-								<label for="rate5">★</label>
-							</fieldset>
+					<c:choose>
+						<c:when test="${payTal.refund_request eq '구매확정' and exist eq '0'}">
 							<div>
-								<textarea class="col-auto form-control" type="text"
-									id="reviewContents"
-									name="review_content"
-									placeholder="리뷰를 남겨주세요!!"></textarea>
+								<form action="../review" class="mb-3" name="myform" id="myform" method="POST">
+									<fieldset>
+										<span class="text-bold">별점을 선택해주세요</span> 
+										<input type="radio" name="review_grade" value="5" id="rate1">
+										<label for="rate1">★</label> 
+										<input type="radio" name="review_grade" value="4" id="rate2">
+										<label for="rate2">★</label> 
+										<input type="radio" name="review_grade" value="3" id="rate3">
+										<label for="rate3">★</label>
+										<input type="radio" name="review_grade" value="2" id="rate4">
+										<label for="rate4">★</label> 
+										<input type="radio" name="review_grade" value="1" id="rate5">
+										<label for="rate5">★</label>
+									</fieldset>
+									<div>
+										<textarea class="col-auto form-control" type="text"
+											id="reviewContents"
+											name="review_content"
+											placeholder="리뷰를 남겨주세요!!"></textarea>
+									</div>
+									<input type="hidden" name="talent_id" value="${payTal.talent_id }"/>
+									<input type="hidden" name="pay_id" value="${payTal.pay_id }"/>
+									<input id="submit" type="submit" value="입력"/>
+								</form>
 							</div>
-							<input type="hidden" name="talent_id" value="${payTal.talent_id }"/>
-							<input id="submit" type="submit" value="입력"/>
-						</form>
-					</div>
+						</c:when>
+						<c:when test="${payTal.refund_request eq '구매확정'}">
+							<div>
+								<form action="../modifyReview/${review.review_id }" class="mb-3" name="myform" id="myform" method="POST">
+									<fieldset>
+										<input type="hidden" value="${review.review_grade }" id="grade"/>
+										<span class="text-bold">내 리뷰</span> 
+										<input type="radio" name="review_grade" value="5" id="rate5">
+										<label for="rate5">★</label> 
+										<input type="radio" name="review_grade" value="4" id="rate4">
+										<label for="rate4">★</label> 
+										<input type="radio" name="review_grade" value="3" id="rate3">
+										<label for="rate3">★</label>
+										<input type="radio" name="review_grade" value="2" id="rate2">
+										<label for="rate2">★</label> 
+										<input type="radio" name="review_grade" value="1" id="rate1">
+										<label for="rate1">★</label>
+									</fieldset>
+									<div>
+										<textarea class="col-auto form-control" type="text"
+											id="reviewContents"
+											name="review_content"
+											placeholder="${review.review_content }">${review.review_content }</textarea>
+										<input type="hidden" name="pay_id" value="${review.review_id }"/>
+										<input id="submit" type="submit" value="수정하기"/> 
+									</div>			
+								</form>
+								<button id="deleteBtn" value="${review.review_id }">삭제하기</button>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<form class="mb-3" name="myform" id="myform" method="POST">
+									<fieldset>
+										<span class="text-bold2"></span> 
+										<input type="radio" name="review_grade" value="5" id="rate1" onclick= "return(false);">
+										<label for="rate1">★</label> 
+										<input type="radio" name="review_grade" value="4" id="rate2" onclick= "return(false);">
+										<label for="rate2">★</label> 
+										<input type="radio" name="review_grade" value="3" id="rate3" onclick= "return(false);">
+										<label for="rate3">★</label>
+										<input type="radio" name="review_grade" value="2" id="rate4" onclick= "return(false);">
+										<label for="rate4">★</label> 
+										<input type="radio" name="review_grade" value="1" id="rate5" onclick= "return(false);">
+										<label for="rate5">★</label>
+									</fieldset>
+									<div>
+										<textarea class="col-auto form-control" type="text"
+											id="reviewContents"
+											name="review_content"
+											placeholder="구매확정 후 작성 가능합니다." readonly></textarea>
+									</div>
+								</form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	
+	<script src="/jj9/resources/js/buyInfo.js"></script>
+	<script>
+	if(document.getElementById('deleteBtn')){
+		const deleteBtn = document.getElementById('deleteBtn');
+		
+		deleteBtn.addEventListener('click', (e) => {
+			var result = confirm("환불요청을 취소하시겠습니까?");
+			
+		        if(result) {
+		            location.href='../deleteReview/' + deleteBtn.value;
+		        }
+		});
+	}
+	</script>
 
 
 </body>

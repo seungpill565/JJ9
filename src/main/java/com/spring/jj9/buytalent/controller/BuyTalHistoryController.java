@@ -1,12 +1,15 @@
 package com.spring.jj9.buytalent.controller;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.binding.BindingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +40,7 @@ public class BuyTalHistoryController {
 	@GetMapping(value = "account/refund/{pay_id}")
 	public String refundRequest(@PathVariable("pay_id") Integer pay_id, HttpServletResponse response) {
 		
+		
 		try {
 			if(buyService.addRefundRequest(pay_id) == 1 &&
 					buyService.updatePayRefundRequest(pay_id) == 1) {
@@ -47,6 +51,7 @@ public class BuyTalHistoryController {
 		} catch (IOException e) {
 			
 		}
+		
 		return "account/purchase-history";
 	}
 	
@@ -85,8 +90,17 @@ public class BuyTalHistoryController {
 				
 		String seller_id = ptl.getSeller_member_id();
 		
+		Review review = buyInfoService.reviewIsExist(pay_id);
+		
+		if (review == null) {
+			model.addAttribute("exist", "0");
+		} else {
+			model.addAttribute("review", review);
+		}
+		
 		model.addAttribute("payTal", ptl); 
-		model.addAttribute("member", buyInfoService.getMember(seller_id));
+		model.addAttribute("member", buyInfoService.getMember(seller_id));		
+		
 		
 		return "account/buyinfo";
 	}
@@ -125,7 +139,43 @@ public class BuyTalHistoryController {
 			}			
 		} catch (IOException e) {
 			
-		}
+		}	
+	}
+	
+	@PostMapping(value = "account/modifyReview/{review_id}")
+	public void modifyReview(@PathVariable("review_id") Integer review_id, Review review,  HttpServletResponse response) {
+		
+		try {
+			if (buyInfoService.updateReview(review) == 1) {
+				ScriptAlertUtils.alertAndBackPage(response, "리뷰가 수정되었습니다.");
+			} else {
+				ScriptAlertUtils.alertAndBackPage(response, "리뷰 수정에 실패했습니다.");
+			}
+		} catch (IOException e) {
 			
+		}
+		
+	}
+	
+	@GetMapping(value = "account/deleteReview/{review_id}")
+	public void deleteReview(@PathVariable("review_id") Integer review_id, HttpServletResponse response) {
+		
+		try {
+			if (buyInfoService.deleteReview(review_id) == 1) {
+				ScriptAlertUtils.alertAndBackPage(response, "리뷰가 삭제되었습니다.");
+			} else {
+				ScriptAlertUtils.alertAndBackPage(response, "리뷰가 삭제에 실패했습니다");
+			}
+		} catch (IOException e) {
+			
+		}
 	}
 }
+
+
+
+
+
+
+
+

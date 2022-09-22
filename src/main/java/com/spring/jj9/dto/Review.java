@@ -15,5 +15,6 @@ public class Review {
     private Integer review_grade;
     private String review_content;
     private Date review_date;
+    private Integer pay_id;
 
 }

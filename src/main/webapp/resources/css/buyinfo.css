@@ -7,6 +7,7 @@
 }
 
 
+
 div > * {
     font-family: 'Jua', sans-serif;
 }
@@ -60,3 +61,4 @@ div > * {
     background-color: #c83232;
     cursor : pointer;
 }
+

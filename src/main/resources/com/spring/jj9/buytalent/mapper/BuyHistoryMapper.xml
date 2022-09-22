@@ -6,20 +6,20 @@
   
 <mapper namespace="com.spring.jj9.buytalent.mapper.BuyHistoryMapper">
 	<select id="getPayTalNull" resultType="com.spring.jj9.dto.Pay_talentList">
-		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
-			from pay p INNER JOIN talent_list t USING (talent_id) 
-			WHERE p.member_id = #{member_id} AND p.refund_request IS NULL
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IS NULL OR p.refund_request = '구매확정'
 	</select>
 	
 	<select id="getPayTalRequest" resultType="com.spring.jj9.dto.Pay_talentList">
-		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
-			from pay p INNER JOIN talent_list t USING (talent_id) 
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
 			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불요청')
 	</select>
 	
 	<select id="getPayTalRefund" resultType="com.spring.jj9.dto.Pay_talentList">
-		select p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
-			from pay p INNER JOIN talent_list t USING (talent_id) 
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id AS "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
 			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불완료')
 	</select>
 	

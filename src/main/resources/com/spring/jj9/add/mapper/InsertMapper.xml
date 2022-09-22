@@ -8,7 +8,7 @@
 		SELECT DISTINCT cate_main FROM category
 	</select>
 	<select id="getCateByMain" resultType="com.spring.jj9.dto.Category">
-		SELECT * FROM category WHERE cate_main = #{cate_main}
+		SELECT * FROM category WHERE cate_main = #{cate_main} AND cate_sub IS NOT NULL
 	</select>
 	<select id="getCateIdBySub" resultType="com.spring.jj9.dto.Category">
 		SELECT cate_id FROM category WHERE cate_sub = #{cate_sub}

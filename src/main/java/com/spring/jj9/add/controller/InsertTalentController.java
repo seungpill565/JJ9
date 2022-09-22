@@ -142,7 +142,12 @@ public class InsertTalentController {
 			tl.setTalent_summary(talent_summary);
 			
 			// Talent_list 테이블에 insert
-			cateService.insertTalent(tl);
+			if (cateService.insertTalent(tl) == 1) {
+				ScriptAlertUtils.alertAndBackPage(response, "등록이 완료되었습니다!");
+				return "redirect:/mainpage";
+			} else {
+				ScriptAlertUtils.alertAndBackPage(response, "등록에 실패했습니다!");
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

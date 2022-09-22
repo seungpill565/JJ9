@@ -22,7 +22,7 @@
 	
 	
 	<div class="content-body">	
-		<form action="./insert" method="POST" enctype="multipart/form-data">
+		<form action="./insert" method="POST" enctype="multipart/form-data" onsubmit="return confirm('등록 하시겠습니까?');">
 			<div class="colcol1">
 				<div class="col-name">카테고리</div> 
 				<select id="select-cate-main" name="cate-main">
@@ -63,10 +63,6 @@
 			<div><input id="submit" type="submit" value="확인"/></div>
 		</form>
 	</div>	
-	<!--  <input type="textarea" name="talent_service_exp"/> 
-	<input type="textarea" name="talent_curriculum"/>
-	--> 
-	
 	
 	<script src="/jj9/resources/js/insertTalent.js"></script>
 </body>
