@@ -62,13 +62,17 @@ a:hover {
 	border-radius: 10px;
 	border: none;
 	background-color: rgb(230, 70, 70);
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 	color: white;
 	font-size: 16px;
+	transition: all 0.3s ease 0s;
 }
 
 .auth-form__button--login:hover {
 	background-color: rgb(200, 50, 50);
+	box-shadow: 0px 15px 20px rgba(200, 50, 50);
 	cursor: pointer;
+	transform: translateY(-3px);
 }
 
 .auth-form__link--etc {
