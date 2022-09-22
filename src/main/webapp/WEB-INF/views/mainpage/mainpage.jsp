@@ -56,13 +56,10 @@
 			</button>
 			<div class="mainCategory-div">
 				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
-					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">${maincategory.cate_main }
+					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">
+					<span id="mainCategory-span">${maincategory.cate_main }</span>
 						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
+						
 				
 					</a>
 				</c:forEach>
@@ -270,16 +267,38 @@
 	console.log(main[0])
 	
 	
+	var maincate = document.getElementById('mainCategory-span').innerHTML;
 	var sub = new Array();
 	
-	for(var i=0;i<main.length;i++){
-		for(var j=0;j<subAll.lenght;j++){
-			if(main[i].cate_main==subAll[j].cate_main){
-				sub.push({"cate_sub":"subAll[j].cate_sub"});
+	var main1 = "${maincategorys[1].cate_main}"
+	
+	console.log("main1 " + main1);
+	
+	console.log("main : "+maincate);
+	var subcate = document.getElementById('test1');
+	
+	$('#mainCategory-span').hover(function(){
+		var main11 = document.getElementById('mainCategory-span').innerHTML;
+		
+		for(var i=0;i<subAll.length;i++){
+			if(main11==subAll[i].cate_main){
+				$('.test1').text(subAll[i].cate_sub);
 			}	
 		}
+		
+	})
+	
+	
+	
+		for(var j=0;j<subAll.lenght;j++){
+			if(maincate==subAll[j].cate_main){
+				sub.push({cate_sub:"subAll[j].cate_sub"});
+			}	
 	}
 	
+	console.log(sub[0])
+
+
 </script>
 
 </body>
