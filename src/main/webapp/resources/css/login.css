@@ -27,6 +27,7 @@ a:hover {
 	font-weight: 400;
 	margin-top: 25%;
 	color: rgb(230, 70, 70);
+	text-shadow: 3px 3px 2px rgb(0, 0, 0, 0.3);
 }
 
 .auth-form {
@@ -116,10 +117,11 @@ a:hover {
 }
 
 .container__image--title {
-	color: rgb(230, 70, 70);
+	color: rgb(255, 255, 255);
 	font-family: 'Noto Serif', serif;
 	font-size: 70px;
 	margin: 20% 0 30px 0;
+	text-shadow: 6px 5px 2px rgb(200, 50, 50);
 }
 
 .container__image--description {
