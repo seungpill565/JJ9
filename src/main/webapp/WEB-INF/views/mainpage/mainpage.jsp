@@ -58,7 +58,10 @@
 				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
 					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">
 					<span id="mainCategory-span">${maincategory.cate_main }</span>
-						<li class="test1">1234</li>
+						<div class="test1">
+							<c:forEach items="">
+							</c:forEach>
+						</div>
 						
 				
 					</a>
@@ -155,8 +158,14 @@
 				<br />
 		</c:forEach>
 		
+	</div>	
 	</div>
 	
+	<div>
+		<c:forEach begin="0" end="6">
+		<a href="" class="fortest"></a>
+		
+		</c:forEach>
 	</div>
 	
 	<br />
@@ -258,6 +267,13 @@
 					,cate_sub:"${subcategory.cate_sub}"});
 	</c:forEach>
 	
+	for(var i=0;i<main.length;i++){ // 속성값 수정 및 요소 텍스트 수정
+ 		$('.fortest').attr("href", "/jj9/category/"+main[i].cate_id);
+ 		$('.fortest').text(main[i].cate_main);
+	}
+
+ 	
+	
 	
 	var box=document.getElementById('mainCategory-a');
 	
@@ -266,7 +282,7 @@
 	console.log(main[0].cate_main)
 	console.log(main[0])
 	
-	
+	////////////////////////////////////////////////////////////
 	var maincate = document.getElementById('mainCategory-span').innerHTML;
 	var sub = new Array();
 	
@@ -277,26 +293,22 @@
 	console.log("main : "+maincate);
 	var subcate = document.getElementById('test1');
 	
-	$('#mainCategory-span').hover(function(){
-		var main11 = document.getElementById('mainCategory-span').innerHTML;
-		
-		for(var i=0;i<subAll.length;i++){
-			if(main11==subAll[i].cate_main){
-				$('.test1').text(subAll[i].cate_sub);
-			}	
-		}
-		
-	})
 	
+//	$('#mainCategory-span').on('mouseover', function(){
+//		var main11 = document.getElementById('mainCategory-span').innerHTML;
+//		console.log('선택된 메인 카테고리 : ' + main11)
+//		for(var i=0;i<subAll.length;i++){
+//			if(main11==subAll[i].cate_main){
+//				$('.test1').text(subAll[i].cate_sub);
+//			}	
+//			console.log(subAll[i].cate_sub)
+//		}
+//		console.log(subcate);
+//		
+//	}).mouseout(function(){
+//		main11 = null;
+//	})
 	
-	
-		for(var j=0;j<subAll.lenght;j++){
-			if(maincate==subAll[j].cate_main){
-				sub.push({cate_sub:"subAll[j].cate_sub"});
-			}	
-	}
-	
-	console.log(sub[0])
 
 
 </script>
