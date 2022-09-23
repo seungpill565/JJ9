@@ -15,17 +15,19 @@
 		<div class="category__container">
 			<ul class="cate-container__ul">
 				<li><h2>판매재능관리</h2></li>
-				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="../account/sell-talent">판매재능관리</a></li>
-				<li><a href="../account/purchase-history">구매재능내역</a></li>
-				<li><a href="../account/note">쪽지관리</a></li>
-				<li><a href="../account/add-coupon">쿠폰등록</a></li>
-				<li><a href="../account/inquiry.jsp">1:1 문의</a></li>
-				<li><a href="../account/member-modify">회원정보수정</a></li>
-				<li><a href="../account/secession">회원탈퇴</a></li>
+				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="/jj9/account/sell-talent">판매재능관리</a></li>
+				<li><a href="/jj9/account/purchase-history">구매재능내역</a></li>
+				<li><a href="/jj9/insert">재능등록하기</a></li>
+				<li><a href="/jj9/insertRequest">재능의뢰등록</a></li>
+				<li><a href="/jj9/account/note">쪽지관리</a></li>
+				<li><a href="/jj9/account/add-coupon">쿠폰등록</a></li>
+				<li><a href="/jj9/account/inquiry">1:1 문의</a></li>
+				<li><a href="/jj9/account/member-modify">회원정보수정</a></li>
+				<li><a href="/jj9/account/secession">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="thispage__main">
-			<h1 class="main-container__title">구매자 리스트</h1>
+			<h2 class="main-container__title">구매자 리스트</h2>
 		<c:choose>
 			  <c:when test="${member eq '1' }">
 			  	<h2>구매자가 없습니다.</h2>

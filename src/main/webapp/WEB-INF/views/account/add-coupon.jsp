@@ -15,20 +15,22 @@
 		<div class="category__container">
 			<ul class="cate-container__ul">
 				<li><h2>쿠폰 등록</h2></li>
-				<li><a href="./sell-talent">판매재능관리</a></li>
-				<li><a href="./purchase-history">구매재능내역</a></li>
-				<li><a href="./note">쪽지관리</a></li>
-				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="./add-coupon">쿠폰등록</a></li>
-				<li><a href="./inquiry">1:1 문의</a></li>
-				<li><a href="./member-modify">회원정보수정</a></li>
-				<li><a href="./secession">회원탈퇴</a></li>
+				<li><a href="/jj9/account/sell-talent">판매재능관리</a></li>
+				<li><a href="/jj9/account/purchase-history">구매재능내역</a></li>
+				<li><a href="/jj9/insert">재능등록하기</a></li>
+				<li><a href="/jj9/insertRequest">재능의뢰등록</a></li>
+				<li><a href="/jj9/account/note">쪽지관리</a></li>
+				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="/jj9/account/add-coupon">쿠폰등록</a></li>
+				<li><a href="/jj9/account/inquiry">1:1 문의</a></li>
+				<li><a href="/jj9/account/member-modify">회원정보수정</a></li>
+				<li><a href="/jj9/account/secession">회원탈퇴</a></li>
 			</ul>
 		</div>
 		
 		<div class="thispage__main">
 			<div class="main__container">
 				
-				<h1 class="main-container__title">내구폰 리스트</h1>
+				<h2 class="main-container__title">내쿠폰 리스트</h2>
 				<c:choose>
 			  <c:when test="${coupon eq '1' }">
 			  	<h2>보유하신 쿠폰이 없습니다.</h2>
