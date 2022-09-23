@@ -42,7 +42,11 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
   modalTitle.textContent = '재능 요청 상세정보 (요청 번호 : '+talentId+')';
   newTalentTitle.value = talentTitle;
-  newTalentCate.value = talentCateMain+'('+talentCateSub+')';
+  newTalentCate.value = talentCateid;
+  console.log(talentCateMain);
+  console.log(talentCateSub);
+  console.log(talentCateid);
+
   newTalentContent.value = talentContent;
   newMemberId.value = memberId;
   newTalentDate.value = talentDate;

@@ -9,6 +9,8 @@ public interface MainpageService {
 
 	public List<Category> readMainCategory();
 	
+	public List<Category> readAllSubCategory();
+	
 	public List<TalentAll> readBestPurchase();
 	
 	public List<TalentAll> readNewPurchase();

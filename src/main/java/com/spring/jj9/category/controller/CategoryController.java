@@ -51,7 +51,7 @@ public class CategoryController {
 		model.addAttribute("purchases",service.readTalentAllBySearch(cri)); // 검색한 재능들
 		System.out.println("type : " + cri.getType());
 		
-		int total = service.readTalentCountBySearch(cri); // 검색한 재능들 총 개수 
+		int total = service.readTalentCountBySearch(cri.getKeyword()); // 검색한 재능들 총 개수 
 		
 		PageMake page = new PageMake(cri, total); // 페이지네이션
 		model.addAttribute("page", page); 

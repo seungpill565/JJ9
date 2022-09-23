@@ -15,45 +15,77 @@
 <link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 </head>
 <body>
-	<h1><a href="/jj9/mainpage" class="jj9-mainpage">jj9</a></h1>
-	
-	<div>
-		헤더 부분 <br />
-		<div>
-			로그인 테스트 용<br /> <a href="">로그인</a> <br /> <a href="">회원가입</a>
+	<!-- header -->
+	<header>
+		<!-- section1 -->
+		<section class="header-section1">
+		
+		<div class="logo-div">	
+			<a href="/jj9/mainpage" class="jj9-mainpage">jj9</a>
+		</div>
+
+		<div class="login-register-div">
+			<div class="login-register-div-login">
+		 		<a href="login" class="member-login">로그인</a>
+		 	</div>
+		 	<div class="login-register-div-register">  
+		 		<a href="register" class="member-register">회원가입</a>
+		 	</div>
 		</div>
 		
-		<br />
+		
 
-<!-- 검색 기능 -->
+
+
+	
+		</section>
+		<!-- section1 -->
+		
+		<!-- section2 -->
+		<section class="header-section2">
+		
+		<!-- 카테고리 -->
+		<div class="mainPage-mainCategory-div">
+			<button class="category-button">
+				<div class="category-menu-img"></div>
+				<span style="font-size:20px;">메인 카테고리</span>
+			</button>
+			<div class="mainCategory-div">
+				<c:forEach items="${maincategorys }" var="maincategory">
+				<a href="/jj9/category/${maincategory.cate_id }">${maincategory.cate_main }</a>
+				</c:forEach>
+			</div>
+		</div>
+		<!-- 카테고리 -->
+				
+		
+		<!-- 검색 기능 -->
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
-				<!-- 
-					<select name="type">
-						<option value=""
-							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
-						<option value="T"
-							<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
-						<option value="C"
-							<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
-						<option value="W"
-							<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
-					</select> 
-				 -->
-					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
-						<button>Search</button>
-					
+					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능을 검색하세요.">
+						<button class="searchButton">검색</button>
 					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
 					<input type="hidden" name="amount" value="${page.cri.amount }">
 				</form>
 			</div>
 		</div>
-<!-- /검색 기능 -->
+		<!-- /검색 기능 -->
+		<div class="insert-register-div">
+			<div class="talent-insert">
+				 <a href="insert">재능 등록하기 </a> <br />
+			</div>
 
-	</div>
-	
-	<br />
+			<div class="talent-request">
+				 <a href="req/1">재능 의뢰하기 </a> <br />
+			</div>
+		</div>
+
+		</section>
+
+
+	</header>
+	<!-- header -->
 
 
 	<h3>category </h3>

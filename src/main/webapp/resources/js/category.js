@@ -51,6 +51,13 @@ $(".search_area button").on("click", function(e){
 
 
 
+
+
+
+
+
+
+
 //  $(".search_area button").keypress(function(e){
  		
 //  		if(e.keyCode == 13){

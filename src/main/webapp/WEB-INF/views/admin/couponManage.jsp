@@ -7,8 +7,80 @@
 <meta charset="UTF-8">
 <title>쿠폰 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=1">
 </head>
 <body>
+	<div class="inline">
+		<h1 id="logo">
+			<a href="./admin" class="jj9-logo">JJ9</a>
+		</h1>
+		<h3 id="logo-sub">관리자용</h3>
+	</div>
+	${currUser.member_id } 님 안녕하세요
+	<br />
+
+
+	<div class="thispage__main">
+		<div class="main__container">
+			<h2 class="main-container__title">쿠폰 관리</h2>
+			<div class="adminMenu flex">
+				<div class="adminMenu__container">
+					<ul class="adminMenu-container__ul">
+						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>						
+						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
+						<li><a href="./talentManage">재능 관리</a></li>
+						<li><a href="./requestTalentManage">요청 재능 관리</a></li>
+						<li><a href="./payLog">결제 기록 조회</a></li>
+						<li><a href="./refundManage">환불 요청 관리</a></li>
+						<li style="background-color: rgb(230, 70, 70);"><a 
+							href="./couponManage">쿠폰 관리</a></li>
+						<li><a href="./faqManage">1:1 문의 관리</a></li>
+						<li><a href="./noticeManage">공지 사항 관리</a></li>
+					</ul>
+				</div>
+				<div class="flex-column page-content">
+					
+					<div>
+						<div class="flex">
+							<h1>쿠폰 목록</h1>
+							<button type="button" class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#createCouponModal" 
+								data-random-code = "${random_code }" style="margin-left: 20px; height: 45px;">새 쿠폰 생성하기</button>							
+						</div>
+						<hr />
+							
+							<table border="1" class="content-table" style="margin: 20px">
+								<th><h2 style="margin-top: 10px">&nbsp; 쿠폰 코드</h2></th>
+								<th><h2 style="margin-top: 10px">쿠폰명</h2></th>
+								<th><h2 style="margin-top: 10px">만료기간</h2></th>
+								<th><h2 style="margin-top: 10px">할인률</h2></th>
+								<th><h2 style="margin-top: 10px">사용유무</h2></th>
+								<th><h2 style="margin-top: 10px">소유자id</h2></th>
+								
+								<c:forEach items="${coupons }" var="coupon">
+								
+									<tr>
+									    <td style="width: 200px; padding: 10px;">&nbsp; ${coupon.coupon_code} </td>
+									    <td style="width: 230px">${coupon.coupon_name}</td>
+									    <td style="width: 200px">${coupon.coupon_period}</td>
+									    <td style="width: 200px">${coupon.discount_percent} %</td>
+									    <td style="width: 200px">${coupon.coupon_unused}</td>
+									    <td style="width: 200px">${coupon.member_id}</td>								
+									</tr>		
+														
+								</c:forEach>															
+						    </table>						
+												
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- 
+
 <h3>쿠폰 관리 페이지입니다.</h3>
 관리자 ${currUser.member_id } 님 안녕하세요 <br />
 보유 포인트는 ${currUser.member_point } 점 입니다<br />
@@ -45,6 +117,7 @@
 	</c:forEach>		
 </ul>
 <hr />
+ -->
 
 <!-- modal 속성 구현-->
 <div class="modal fade" id="createCouponModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,7 +170,7 @@
   </div>
 </div>
 
-
+<br /><br /><br />
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

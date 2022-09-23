@@ -28,66 +28,109 @@
 </head>
 <body>
 
-	<h1><a href="mainpage" class="jj9-mainpage">jj9</a></h1>
-
-	<div>
-		헤더 부분 <br />
-		<div>
-			로그인 테스트 용<br /> <a href="login">로그인</a> <br /> <a href="">회원가입</a>
-		</div>
+	<!-- header -->
+	<div class="main-header">
+		<!-- section1 -->
+		<section class="header-section1">
+			<div class="logo-div">	
+				<a href="/jj9/mainpage" class="jj9-mainpage">jj9</a>
+			</div>
+			<div class="login-register-div">
+				<div class="login-register-div-login">
+			 		<a href="login" class="member-login">로그인</a>
+			 	</div>
+			 	<div class="login-register-div-register">  
+			 		<a href="register" class="member-register">회원가입</a>
+			 	</div>
+			</div>
+		</section>
+		<!-- section1 -->
 		
-		<br />
-
-<!-- 검색 기능 -->
+		<!-- section2 -->
+		<section class="header-section2">
+		<!-- 카테고리 -->
+		<div class="mainPage-mainCategory-div">
+			<button class="category-button">
+				<div class="category-menu-img"></div>
+				<span style="font-size:20px;">메인 카테고리</span>
+			</button>
+			<div class="mainCategory-div">
+				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
+					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">${maincategory.cate_main }
+						<li class="test1">1234</li>
+						<li class="test1">2345</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+						<li class="test1">1234</li>
+				
+					</a>
+				</c:forEach>
+			</div>
+		</div>
+		<!-- 카테고리 -->
+		
+		<!-- 검색 기능 -->
 		<div class="search_wrap">
 			<div class="search_area">
 				<form id="mainSearchForm" name="searchForm" method="get">
-					<select name="type">
-						<option value=""
-							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
-						<option value="title"
-							<c:out value="${pageMaker.cri.type eq 'title'?'selected':'' }"/>>제목</option>
-						<option value="content"
-							<c:out value="${pageMaker.cri.type eq 'content'?'selected':'' }"/>>내용</option>
-						<option value="writer"
-							<c:out value="${pageMaker.cri.type eq 'writer'?'selected':'' }"/>>전문가</option>
-					</select> 
-						<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
-						<button>Search</button>
-					
+					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능을 검색하세요.">
+						<button class="searchButton">검색</button>
 					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
 					<input type="hidden" name="amount" value="${page.cri.amount }">
 				</form>
 			</div>
 		</div>
-<!-- /검색 기능 -->
-	
-	<br />
+		<!-- /검색 기능 -->
+		<div class="insert-register-div">
+			<div class="talent-insert">
+				 <a href="insert">재능 등록하기 </a> <br />
+			</div>
 
-	<h3>카테고리 테스트용</h3>
-	<div>
-		<ul> 전체 카테고리  <br />
-			<c:forEach items="${categorys }" var="category">
-				<li><a href="category/${category.cate_id }">${category.cate_main }</a></li>
-			</c:forEach>
-		</ul>
-	</div>
+			<div class="talent-request">
+				 <a href="req/1">재능 의뢰하기 </a> <br />
+			</div>
+		</div>
+
+		</section>
 
 
+<<<<<<< HEAD
 	
 	<br />
 	
 	<div>
 		재능 등록 테스트 용<br />
 		<a href="insert">재능 등록 </a> <br />
+=======
+>>>>>>> refs/remotes/origin/dohyun
 	</div>
+	<!-- header -->
 	
+<<<<<<< HEAD
 	<div>
 		재능 의뢰 테스트 용<br />
 		<a href="req/1">재능 의뢰 </a> <br />
 	</div>
+=======
+	<!-- body -->
+>>>>>>> refs/remotes/origin/dohyun
 	
-	<br />
+	<section class="body-section">
+		
+		<div class="howToUsejj9-div">
+			
+		</div>
+		
+		<div class="best-new-div">
+			<div class="new-div">
+			</div>
+			
+			<div class="best-div">
+			</div>
+		</div>
+	
+	</section>
 	
 	<div class="bestNew">
 	
@@ -219,6 +262,94 @@
 	</footer>
 	
 <script src="/jj9/resources/js/category.js?ver=1"></script>
+<script>
+
+	var main = new Array();
+	<c:forEach items="${maincategorys }" var="maincategory">
+		main.push({cate_id:"${maincategory.cate_id}"
+					,cate_main:"${maincategory.cate_main}"});
+	</c:forEach>
+	
+	var subAll = new Array();
+	<c:forEach items="${subcategorys }" var="subcategory">
+		subAll.push({cate_id:"${subcategory.cate_id}"
+					,cate_main:"${subcategory.cate_main}"
+					,cate_sub:"${subcategory.cate_sub}"});
+	</c:forEach>
+	
+	
+	var box=document.getElementById('mainCategory-a');
+	
+	//box.addEventListener('mouseover')
+	
+	//console.log(main[0].cate_main)
+	console.log(main[0])
+	
+	
+	var sub = new Array();
+	
+	for(var i=0;i<main.length;i++){
+		for(var j=0;j<subAll.lenght;j++){
+			if(main[i].cate_main==subAll[j].cate_main){
+				sub.push({"cate_sub":"subAll[j].cate_sub"});
+			}	
+		}
+	}
+	
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 검색 기능 
+		<div class="search_wrap">
+			<div class="search_area">
+				<form id="mainSearchForm" name="searchForm" method="get">
+					<select name="type">
+						<option value=""
+							<c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+						<option value="title"
+							<c:out value="${pageMaker.cri.type eq 'title'?'selected':'' }"/>>제목</option>
+						<option value="content"
+							<c:out value="${pageMaker.cri.type eq 'content'?'selected':'' }"/>>내용</option>
+						<option value="writer"
+							<c:out value="${pageMaker.cri.type eq 'writer'?'selected':'' }"/>>전문가</option>
+					</select> 
+						<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능이나 전문가를 검색하세요.">
+						<button>Search</button>
+					
+					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
+					<input type="hidden" name="amount" value="${page.cri.amount }">
+				</form>
+			</div>
+		</div>
+ /검색 기능 -->

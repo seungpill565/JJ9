@@ -8,6 +8,11 @@
     	<!-- select cate_id, cate_main from category where cate_id &lt; 10 -->
   </select>
   
+    <!-- 서브카테고리들만 뽑기 -->
+  <select  id="readAllSubCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is not null 
+  </select>
+  
   <select id="readBestPurchase" resultType="com.spring.jj9.dto.TalentAll">
   		select * from (select * from talent_list order by talent_paycount desc, talent_id asc) where <![CDATA[rownum < 5]]> and member_id is not null<!-- 판매횟수가 많은 것중 4개만 읽기 -->
   </select>

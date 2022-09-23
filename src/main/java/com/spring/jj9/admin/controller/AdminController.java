@@ -2,6 +2,8 @@ package com.spring.jj9.admin.controller;
 
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,17 +27,40 @@ import com.spring.jj9.admin.service.RequestTalentService;
 import com.spring.jj9.admin.service.TalentService;
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Coupon;
-import com.spring.jj9.dto.Faq;
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.dto.Notice;
 import com.spring.jj9.dto.Talent_list;
+import com.spring.jj9.dto.Talent_request;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Controller
 public class AdminController {
+    @ExceptionHandler(java.sql.SQLIntegrityConstraintViolationException.class)
+    public void pKConstraintViolation (Exception e, HttpServletResponse response) throws IOException {
+        System.err.println(e.getClass());
+        AlertPopup.alertAndBackPage(response, "유효하지 않은 값이 있습니다.");
+        
+    }
+    
+    
+    @ExceptionHandler(org.springframework.validation.BindException.class)
+    public void dataTypeViolation(Exception e, HttpServletResponse response) throws IOException {
+        System.err.println(e.getClass());
+        AlertPopup.alertAndBackPage(response, "유효하지 않은 값이 있습니다.");
+        
+    }
+    
+    @ExceptionHandler(org.mybatis.spring.MyBatisSystemException.class)
+    public void pkNullViolatoin(Exception e, HttpServletResponse response) throws IOException {
+        System.err.println(e.getClass());
+        AlertPopup.alertAndBackPage(response, "유효하지 않은 값이 있습니다.");
+        
+    }
 
+    
+    
 	@Autowired
 	MemberService memberService;
 	
@@ -68,7 +94,7 @@ public class AdminController {
 		log.info("접속완료");
 		log.info(memberService.getMember("admin1"));
 		Member currUser= memberService.getMember("admin1");
-		System.out.println(currUser);
+		
 		//접속한 아이디 정보를 세션에 저장
 		session.setAttribute("currUser", currUser);	
 		
@@ -88,12 +114,18 @@ public class AdminController {
 	}
 	
 	@PostMapping(value = "/addCategory")
-	public String insertNewCate(Category cate) {
+	public void insertNewCate(HttpServletResponse response, Category cate) throws IOException {
 		
-		cateService.addCate(cate);
-		log.info(cate+ " 새 카테고리로 추가완료!!!");
+		if(cate.getCate_main().equals("") || cate.getCate_sub().equals("")) {
+			AlertPopup.alertAndBackPage(response, "빈칸없이 항목을 채워주세요.");
+			return;
+		}
+		
 		// 입력받은 카테고리 추가 후 카테고리추가 페이지로 이동
-		return "redirect:/categoryManage"; 
+		cateService.addCate(cate);
+		
+		AlertPopup.alertAndMovePage(response, cate.getCate_main() +" > "+ cate.getCate_sub()+" 카테고리 추가 완료", "./categoryManage");
+		
 	}
 	
 	@GetMapping("/deleteCategory")
@@ -133,7 +165,22 @@ public class AdminController {
 	}	
 	
 	@PostMapping("/updateMember")
-	public void updateMember(HttpServletResponse response, Member member) throws IOException {		
+	public void updateMember(HttpServletResponse response, Member member) throws IOException {	
+		
+		if(member.getMember_phoneNum().length() < 11) {
+			AlertPopup.alertAndBackPage(response, "유효하지 않은 연락처 형식입니다.");
+			return;
+		}
+		
+	    String emailRegex = "([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})";
+	    Pattern MyPattern = Pattern.compile(emailRegex);
+	    Matcher MyMatcher = MyPattern.matcher(member.getMember_email());
+		
+		if(!MyMatcher.matches()) {
+			AlertPopup.alertAndBackPage(response, "유효하지 않은 이메일 형식입니다.");
+			return;
+		}
+		
 		memberService.updateMember(member);		  
 		
 		AlertPopup.alertAndMovePage(response, member.getMember_id() +"계정 수정 완료", "./memberManage");
@@ -203,9 +250,21 @@ public class AdminController {
 		
 		//요청재능 리스트를 requestTalents에 담음
 		model.addAttribute("requestTalents", requestTalentService.getRequestTalentList());		
+		// 카테고리 리스트를 categories에 담음
+		model.addAttribute("categories", cateService.getCateListBy11());
+		
+		
 		//요청재능 관리 페이지로 이동
 		return "admin/requestTalentManage"; 
 	}	
+	@PostMapping("/updateRequestTalent")
+	public void updateRequestTalent(HttpServletResponse response, int trequest_id, Talent_request talent_request) throws IOException {		
+		
+		requestTalentService.updateRequestTalent(talent_request);			
+		//수정 알림 팝업 후 이전 페이지로 이동
+		AlertPopup.alertAndBackPage(response, trequest_id +"번 요청재능 수정완료");		
+	}
+	
 	
 	
 	@GetMapping("/deleteRequestTalent")
@@ -335,16 +394,54 @@ public class AdminController {
 	@GetMapping("noticeManage")
 	public String noticeManage(Model model) {
 		
-		model.addAttribute("notices", noticeService.getNoticeList());		
+		model.addAttribute("notices1", noticeService.getNoticeList1());	//1 특별공지
+		model.addAttribute("notices2", noticeService.getNoticeList2()); //2 중요공지
+		model.addAttribute("notices3", noticeService.getNoticeList3()); //3 일반공지
+		
 		return "admin/noticeManage"; 
+	}
+	
+	@PostMapping("/newNotice")
+	public void newNotice(HttpServletResponse response, Model model, Notice notice) throws IOException {
+		
+		if(notice.getNotice_title().equals("") || notice.getNotice_content().equals("")) {
+			AlertPopup.alertAndBackPage(response, "제목과 내용을 빈칸없이 채워주세요.");
+			return;
+		}
+		
+		
+		// 공지사항 등록
+		noticeService.newNotice( notice);		
+		//수정 후 공지사항 관리 페이지로 이동
+		AlertPopup.alertAndMovePage(response, "공지사항이 등록되었습니다","./noticeManage");
 	}
 	
 	@PostMapping("/updateNotice")
 	public void updateNotice(HttpServletResponse response, Model model, Integer notice_id, Notice notice) throws IOException {
+		
+		if(notice.getNotice_title().equals("") || notice.getNotice_content().equals("")) {
+			AlertPopup.alertAndBackPage(response, "제목과 내용을 빈칸없이 채워주세요.");
+			return;
+		}
 		
 		// 공지사항 수정
 		noticeService.updateNotice(notice_id, notice);		
 		//수정 후 공지사항 관리 페이지로 이동
 		AlertPopup.alertAndMovePage(response, "공지사항이 수정되었습니다","./noticeManage");
 	}
+	
+	@GetMapping("/confirmDeleteNotice")
+	public void confirmDeleteNotice(HttpServletResponse response, int notice_id) throws IOException {
+		
+		AlertPopup.confirmAndMovePage(response, "삭제하시겠습니까?", "deleteNotice?notice_id="+notice_id);			 
+	}	
+	
+	@GetMapping("/deleteNotice")
+	public String deleteNotice(Model model, int notice_id) {
+		
+		noticeService.deleteNotice(notice_id);		
+		//noticeManage 페이지로 이동
+		return "redirect:/noticeManage"; 
+	}	
+	
 }

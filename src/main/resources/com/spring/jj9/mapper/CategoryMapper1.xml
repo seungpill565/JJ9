@@ -11,6 +11,10 @@
 		SELECT * FROM category ORDER BY cate_id
 	</select>
 	
+	<select id="getCateListBy11" resultType="com.spring.jj9.dto.Category">
+		SELECT * FROM category WHERE cate_id > 10 ORDER BY cate_id 
+	</select>
+	
 	<delete id="deleteCateById">
 		DELETE FROM category Where cate_id = #{id}
 	</delete>

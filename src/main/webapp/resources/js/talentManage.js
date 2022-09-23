@@ -18,6 +18,8 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   var talentWorkday = button.getAttribute('data-talent-workday') 
   var talentSummery = button.getAttribute('data-talent-summary') 
   var talentPaycount = button.getAttribute('data-talent-paycount') 
+
+  console.log(talentId);
   
 
   // If necessary, you could initiate an AJAX request here
