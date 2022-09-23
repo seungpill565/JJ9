@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.form__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20px;
+}
+
+.form__container > div {
+	padding: 10px;
+	font-size: 20px;
+}
+
+.form__container > div > input {
+	width: 500px;
+	height: 35px;
+	font-size: 18px;
+	border: 1px solid #c0c0c0;
+	padding-left: 10px;
+}
+
+.readonly {
+	background-color: #c0c0c0;
+	pointer-events: none;
+}
+
+.submit-btn {
+	background-color: rgb(230, 70, 70);
+	color: white;
+	padding: 10px 20px;
+	margin-top: 10px;
+	border: none;
+	font-size: 18px;
+	border-radius: 5px;
+}
+
+.submit-btn:hover {
+	background-color: rgb(200, 50, 50);
+	cursor: pointer;
+}
+
+.tab__container {
+	display: flex;
+	border-bottom: 1px solid #c0c0c0;
+	padding-bottom: 11px;
+}
+
+.tab {
+	display: none;
+}
+
+.mem-label, .pw-label {
+	padding: 12px 40px;
+	border-bottom: 1px solid #c0c0c0;
+	cursor: pointer;
+	color: #6e6e6e;
+}
+
+
+.mem-label:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+}
+
+.pw-label:hover {
+	border-bottom: 1px solid black;
+	cursor: pointer;
+	color: black;
+}
+
+/* mem-tab 이 눌렸을 때 mem-label은 */
+.mem-tab:checked ~ .mem-label {
+	border-bottom: 1px solid rgb(230, 70, 70);
+	color: rgb(230, 70, 70);
+}
+
+/* pw-tab 이 눌렸을 때 pw-label은 */
+.pw-tab:checked ~ .pw-label {
+	border-bottom: 1px solid rgb(230, 70, 70);
+	color: rgb(230, 70, 70);
+}

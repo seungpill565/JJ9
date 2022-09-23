@@ -6,7 +6,7 @@
 }
 
 .notify__container > div {
-	padding: 40px;
+	padding: 0 40px 20px 40px;
 }
 
 .secession__container {
@@ -17,7 +17,8 @@
 
 .secession__password {
 	width: 600px;
-	height: 30px;
+	height: 35px;
+	font-size: 18px;
 	background-color: light-grey;
 	border: 1px solid #c0c0c0;
 }

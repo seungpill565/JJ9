@@ -10,11 +10,11 @@
 		INSERT INTO member 
 		(member_name, member_nickName, member_id, 
 		member_password, member_email, 
-		member_phoneNum, member_birthday) 
+		member_phoneNum, member_birthday, member_point, member_comments) 
 		VALUES 
 		(#{member_name}, #{member_nickName}, #{member_id}, 
 		#{member_password}, #{member_email}, 
-		#{member_phoneNum}, #{member_birthday}) 
+		#{member_phoneNum}, #{member_birthday}, #{member_point}, #{member_comments}) 
 	</insert>
 	 <select id="idChecker" resultType="int" parameterType="String">
 	 	SELECT COUNT(member_id) FROM member WHERE member_id = #{ID}
@@ -41,4 +41,58 @@
 	 	update member set member_password = #{ranPassword} where member_id = #{id}
 	 </update>
 	 
+	 <select id="getMember" resultType="com.spring.jj9.dto.Member" parameterType="String">
+	 	select * from member where member_id = #{member_id}
+	 </select>
+	 
+	 <!-- 회원정보 수정 
+	 			@RequestParam String name, 
+				@RequestParam String nickName, 
+				@RequestParam String email, 
+				@RequestParam String phone,
+				@RequestParam String point,
+				@RequestParam String birthday
+	 -->
+	 <update id="updateMember">
+	 	update member set 
+	 		member_name = #{name}, 
+	 		member_nickName = #{nickName},
+	 		member_email = #{email},
+	 		member_phoneNum = #{phone},
+	 		member_point = #{point},
+	 		member_birthday = #{birthday}
+	 	where member_id = #{member_id}
+	 </update>
+	 
+	 <update id="updatePassword">
+	 	update member set member_password = #{change_password}
+	 	where member_id = #{member_id}
+	 </update>
+	 
+	 <delete id="deleteMember">
+	 	delete from member 
+	 	where member_id = #{member_id} and member_password = #{password} 
+	 </delete>
+	 
+	 <!-- inquire, faq에 문의를 하는 insert문 -->
+	 <insert id="inquire">
+	 	INSERT INTO faq
+	 	(faq_id, faq_cate, faq_title, faq_content, faq_date, member_id)
+	 	VALUES (
+	 		faq_id_seq.nextval, 
+	 		#{inquiry}, 
+	 		#{faq_title}, 
+	 		#{faq_content},
+	 		#{faq_date},
+	 		#{member_id}
+	 	)
+	 </insert>
+	 
+	 <select id="getFaqList" resultType="com.spring.jj9.dto.Faq">
+	 	select * from faq where member_id = #{member_id}
+	 </select>
+	 
+	 <select id="getMyFaq" resultType="com.spring.jj9.dto.Faq">
+	 	select * from faq where member_id = #{member_id} and faq_id = #{faq_id} 
+	 </select>
 </mapper>

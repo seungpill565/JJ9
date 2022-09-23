@@ -111,7 +111,7 @@ public class RegisterController {
 		String member_email = member.getMember_email();
 		String member_phoneNum = member.getMember_phoneNum();
 		
-		
+		member.setMember_point(0);
 		
 		if (
 				member_id == null || member_id.equals("") ||

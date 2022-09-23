@@ -1,9 +1,14 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
 
 body {
 	box-sizing: border-box;
 	font-family: 'Jua', sans-serif;
+}
+
+input, select, textarea, button {
+	font-family: inherit;
 }
 
 a {
@@ -17,10 +22,12 @@ a:hover {
 
 .description {
 	text-align: center;
+	font-family: 'Noto Serif', serif;
 	font-size: 60px;
 	font-weight: 400;
 	margin-top: 25%;
 	color: rgb(230, 70, 70);
+	text-shadow: 3px 3px 2px rgb(0, 0, 0, 0.3);
 }
 
 .auth-form {
@@ -45,7 +52,7 @@ a:hover {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: 3px solid black;
+	border-bottom: 2px solid black;
 	font-size: 16px;
 }
 
@@ -55,13 +62,17 @@ a:hover {
 	border-radius: 10px;
 	border: none;
 	background-color: rgb(230, 70, 70);
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 	color: white;
 	font-size: 16px;
+	transition: all 0.3s ease 0s;
 }
 
 .auth-form__button--login:hover {
 	background-color: rgb(200, 50, 50);
+	box-shadow: 0px 15px 20px rgba(200, 50, 50);
 	cursor: pointer;
+	transform: translateY(-3px);
 }
 
 .auth-form__link--etc {
@@ -95,24 +106,26 @@ a:hover {
 	width: 600px;
 	height: 700px;
 	position: relative;
-	border: 3px solid black;
 	border-right: none;
 	background-image: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) ), url("../image/talent.jpg");
 	background-position: right bottom;
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-top-left-radius: 100px;
+	box-shadow: 0 0 10px;
 }
 
 .container__login {
-	border: 3px solid black;
 	border-bottom-right-radius: 100px;
+	box-shadow: 0 0 10px;
 }
 
 .container__image--title {
-	color: rgb(230, 70, 70);
+	color: rgb(255, 255, 255);
+	font-family: 'Noto Serif', serif;
 	font-size: 70px;
 	margin: 20% 0 30px 0;
+	text-shadow: 6px 5px 2px rgb(200, 50, 50);
 }
 
 .container__image--description {

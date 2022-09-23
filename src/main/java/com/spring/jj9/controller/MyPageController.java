@@ -45,7 +45,7 @@ public class MyPageController {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
-			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
+			request.setAttribute("msg", "");
 			request.setAttribute("url", "/jj9/login");
 			return "alert";			
 		}
@@ -95,8 +95,7 @@ public class MyPageController {
 			return "alert";			
 		}
 		
-		// 로그인 된 회원의 결제내역과 결제한 talent의 정보를 가져온다.
-		// 환불요청 = Null인경우
+	슦
 		List<Pay_talentList> payNullList = buyService.getPayTalNull(member_id);
 		
 		if(payNullList.size() == 0) {
@@ -105,7 +104,7 @@ public class MyPageController {
 			model.addAttribute("payTalNull", payNullList);			
 		}
 		
-		// 환불요청 상태인 경우
+		
 		List<Pay_talentList> payRequestList = buyService.getPayTalRequest(member_id);
 		
 		if(payRequestList.size() == 0) {
@@ -114,7 +113,7 @@ public class MyPageController {
 			model.addAttribute("payTalRequest", payRequestList);
 		}
 		
-		// 환불완료 상태인 경우
+		
 		List<Pay_talentList> payRefundList = buyService.getPayTalRefund(member_id);
 		
 		if(payRefundList.size() == 0) {
@@ -180,44 +179,5 @@ public class MyPageController {
 	}
 	
 
-	
-	@GetMapping("/account/inquiry")
-	public String inquiry(HttpSession session, HttpServletRequest request) {
-		try {
-			String member_id = session.getAttribute("member_id").toString();			
-		} catch (NullPointerException e) {
-			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
-			request.setAttribute("url", "/jj9/login");
-			return "alert";			
-		}
-		
-		return "account/inquiry";
-	}
-	
-	@GetMapping("/account/member-modify")
-	public String memberModify(HttpSession session, HttpServletRequest request) {
-		try {
-			String member_id = session.getAttribute("member_id").toString();			
-		} catch (NullPointerException e) {
-			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
-			request.setAttribute("url", "/jj9/login");
-			return "alert";			
-		}
-		
-		return "account/member-modify";
-	}
-	
-	@GetMapping("/account/secession")
-	public String secession(HttpSession session, HttpServletRequest request) {
-		try {
-			String member_id = session.getAttribute("member_id").toString();			
-		} catch (NullPointerException e) {
-			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
-			request.setAttribute("url", "/jj9/login");
-			return "alert";			
-		}
-		
-		return "account/secession";
-	}
 	
 }

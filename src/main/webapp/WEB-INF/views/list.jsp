@@ -17,7 +17,7 @@
 	<ul>
 		<c:forEach items="${members}" var="member">
 			<li>${member.member_id} | ${member.member_password} | ${member.member_email} |
-			${member.member_phoneNum} | ${member.member_birthday} | ${member.member_point}</li>
+			${member.member_phoneNum} | ${member.member_birthday} | ${member.member_point} | ${member.member_comments }</li>
 		</c:forEach>
 	</ul>
 	
