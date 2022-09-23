@@ -7,48 +7,83 @@
 <meta charset="UTF-8">
 <title>요청 재능 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=1">
 </head>
 <body>
-	<h3>요청 재능 관리 페이지입니다.</h3>
-	관리자 ${currUser.member_id } 님 안녕하세요 <br />	
-	
-	<hr />
-	<a href=" <c:url value="/admin"/>">관리자 메인 페이지</a> <br />
-	<a href=" <c:url value="/categoryManage"/>">카테고리 관리</a> <br />
-	<a href="<c:url value="/memberManage"/>">회원 관리</a> <br />
-	<a href="<c:url value="/talentPermission"/>">재능등록 요청 관리</a><br />
-	<a href="<c:url value="/talentManage"/>">재능 관리</a><br />
-	<a href="<c:url value="/requestTalentManage"/>">요청 재능 관리</a><br />
-	<a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
-	<a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
-	<a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
-	<a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
-	<a href="<c:url value="/noticeManage"/>">공지 사항 관리</a><br />
-	<hr />
+	<div class="inline">
+		<h1 id="logo">
+			<a href="./admin" class="jj9-logo">JJ9</a>
+		</h1>
+		<h3 id="logo-sub">관리자용</h3>
+	</div>
+	${currUser.member_id } 님 안녕하세요
+	<br />
 
-	
-	<h4>- 등록된 재능 목록 -</h4>
-	<ul>
-	<c:forEach items="${requestTalents }" var="requestTalent">
-		<li>		
-		<button type="button" data-bs-toggle="modal" data-bs-target="#talentDetailsModal"
-		
-			data-talent-id = "${requestTalent.trequest_id }"
-			data-member-id = "${requestTalent.member_id }"
-			data-talent-title = "${requestTalent.trequest_title }"
-			data-talent-content = "${requestTalent.trequest_content }"
-			data-talent-date = "${requestTalent.trequest_date }"
-			data-talent-budget = "${requestTalent.trequest_budget }"
-			data-talent-deadline = "${requestTalent.trequest_deadline }"
-			data-talent-cate-id = "${requestTalent.cate_id }"
-			data-talent-cate-main = "${requestTalent.cate_main }"	
-			data-talent-cate-sub = "${requestTalent.cate_sub }"			
-			
-		>${requestTalent.trequest_id}	/${requestTalent.member_id} / ${requestTalent.trequest_title} / ${requestTalent.trequest_content}  </button>
-			 <a href="deleteRequestTalent?id=${requestTalent.trequest_id }"><button>삭제</button></a>
-		</li>		
-	</c:forEach>		
-	</ul>
+
+	<div class="thispage__main">
+		<div class="main__container">
+			<h2 class="main-container__title"> 요청 재능 관리</h2>
+			<div class="adminMenu flex">
+				<div class="adminMenu__container">
+					<ul class="adminMenu-container__ul">
+						<li><a href="./categoryManage">카테고리 관리</a></li>
+						<li><a href="./memberManage">회원 관리</a></li>
+						<li><a href="./talentPermission">재능등록 요청 관리</a></li>
+						<li><a href="./talentManage">재능 관리</a></li>
+						<li style="background-color: rgb(230, 70, 70);"><a
+							href="./requestTalentManage">요청 재능 관리</a></li>
+						<li><a href="./payLog">결제 기록 조회</a></li>
+						<li><a href="./refundManage">환불 요청 관리</a></li>
+						<li><a href="./couponManage">쿠폰 관리</a></li>
+						<li><a href="./faqManage">1:1 문의 관리</a></li>
+						<li><a href="./noticeManage">공지 사항 관리</a></li>
+					</ul>
+				</div>
+				<div class="flex-column page-content">
+					<div>
+						<h1>요청중 목록</h1>
+						<hr />
+						
+						
+						<table border="1" class="content-table" style="margin: 20px">
+							<th><h2 style="margin-top: 10px">&nbsp; id</h2></th>
+							<th><h2 style="margin-top: 10px">요청 회원</h2></th>
+							<th><h2 style="margin-top: 10px">요청 제목</h2></th>							
+						
+							<c:forEach items="${requestTalents }" var="requestTalent">
+							
+								<tr>
+								    <td style="width: 100px; padding: 10px;">&nbsp; ${requestTalent.trequest_id} </td>
+								    <td style="width: 200px">${requestTalent.member_id}</td>
+								    <td style="width: 600px">${requestTalent.trequest_title}</td>								    
+									<td>
+										<button type="button" data-bs-toggle="modal" data-bs-target="#talentDetailsModal"
+										
+											data-talent-id = "${requestTalent.trequest_id }"
+											data-member-id = "${requestTalent.member_id }"
+											data-talent-title = "${requestTalent.trequest_title }"
+											data-talent-content = "${requestTalent.trequest_content }"
+											data-talent-date = "${requestTalent.trequest_date }"
+											data-talent-budget = "${requestTalent.trequest_budget }"
+											data-talent-deadline = "${requestTalent.trequest_deadline }"
+											data-talent-cate-id = "${requestTalent.cate_id }"
+											data-talent-cate-main = "${requestTalent.cate_main }"	
+											data-talent-cate-sub = "${requestTalent.cate_sub }"			
+											
+										>상세보기/수정</button>
+										<a href="deleteRequestTalent?id=${requestTalent.trequest_id }"><button style="margin-right: 10px; margin-left:10px ">삭제</button></a>
+										
+									</td>
+								</tr>		
+													
+							</c:forEach>
+														
+					    </table>						
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- 재능 수정 modal 속성 구현-->
@@ -104,6 +139,7 @@
 	    </div>
 	  </div>
 	</div>
+	<br /><br /><br />
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src="/jj9/resources/js/requestTalentManage.js?ver=3"></script>

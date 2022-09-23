@@ -58,7 +58,7 @@
 				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
 					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">${maincategory.cate_main }
 						<li class="test1">1234</li>
-						<li class="test1">1234</li>
+						<li class="test1">2345</li>
 						<li class="test1">1234</li>
 						<li class="test1">1234</li>
 						<li class="test1">1234</li>
@@ -266,7 +266,7 @@
 	
 	//box.addEventListener('mouseover')
 	
-	console.log(main[0].cate_main)
+	//console.log(main[0].cate_main)
 	console.log(main[0])
 	
 	

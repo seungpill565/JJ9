@@ -68,7 +68,7 @@ public class AdminController {
 		log.info("접속완료");
 		log.info(memberService.getMember("admin1"));
 		Member currUser= memberService.getMember("admin1");
-		System.out.println(currUser);
+		
 		//접속한 아이디 정보를 세션에 저장
 		session.setAttribute("currUser", currUser);	
 		
@@ -335,8 +335,20 @@ public class AdminController {
 	@GetMapping("noticeManage")
 	public String noticeManage(Model model) {
 		
-		model.addAttribute("notices", noticeService.getNoticeList());		
+		model.addAttribute("notices1", noticeService.getNoticeList1());	//1 특별공지
+		model.addAttribute("notices2", noticeService.getNoticeList2()); //2 중요공지
+		model.addAttribute("notices3", noticeService.getNoticeList3()); //3 일반공지
+		
 		return "admin/noticeManage"; 
+	}
+	
+	@PostMapping("/newNotice")
+	public void newNotice(HttpServletResponse response, Model model, Notice notice) throws IOException {
+		
+		// 공지사항 등록
+		noticeService.newNotice( notice);		
+		//수정 후 공지사항 관리 페이지로 이동
+		AlertPopup.alertAndMovePage(response, "공지사항이 등록되었습니다","./noticeManage");
 	}
 	
 	@PostMapping("/updateNotice")
@@ -347,4 +359,19 @@ public class AdminController {
 		//수정 후 공지사항 관리 페이지로 이동
 		AlertPopup.alertAndMovePage(response, "공지사항이 수정되었습니다","./noticeManage");
 	}
+	
+	@GetMapping("/confirmDeleteNotice")
+	public void confirmDeleteNotice(HttpServletResponse response, int notice_id) throws IOException {
+		
+		AlertPopup.confirmAndMovePage(response, "삭제하시겠습니까?", "deleteNotice?notice_id="+notice_id);			 
+	}	
+	
+	@GetMapping("/deleteNotice")
+	public String deleteNotice(Model model, int notice_id) {
+		
+		noticeService.deleteNotice(notice_id);		
+		//noticeManage 페이지로 이동
+		return "redirect:/noticeManage"; 
+	}	
+	
 }
