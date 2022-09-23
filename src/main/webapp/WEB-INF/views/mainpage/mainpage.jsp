@@ -56,11 +56,10 @@
 			</button>
 			<div class="mainCategory-div">
 				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
-					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">
-					<span id="mainCategory-span">${maincategory.cate_main }</span>
+					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a">
+					<span id="mainCategory-span${status.count }">${maincategory.cate_main }</span>
 						<div class="test1">
-							<c:forEach items="">
-							</c:forEach>
+
 						</div>
 						
 				
@@ -283,7 +282,7 @@
 	console.log(main[0])
 	
 	////////////////////////////////////////////////////////////
-	var maincate = document.getElementById('mainCategory-span').innerHTML;
+	var maincate = document.getElementById('mainCategory-span3').innerHTML;
 	var sub = new Array();
 	
 	var main1 = "${maincategorys[1].cate_main}"
@@ -294,23 +293,27 @@
 	var subcate = document.getElementById('test1');
 	
 	
-//	$('#mainCategory-span').on('mouseover', function(){
-//		var main11 = document.getElementById('mainCategory-span').innerHTML;
-//		console.log('선택된 메인 카테고리 : ' + main11)
-//		for(var i=0;i<subAll.length;i++){
-//			if(main11==subAll[i].cate_main){
-//				$('.test1').text(subAll[i].cate_sub);
-//			}	
-//			console.log(subAll[i].cate_sub)
-//		}
-//		console.log(subcate);
-//		
-//	}).mouseout(function(){
-//		main11 = null;
-//	})
-	
 
+	var testarr = new Array();
+	for (i = 1; i < 8; i++)
+		(function(i) {
+			var main11 = document.getElementById('mainCategory-span'+i).innerHTML;
+			testarr.push(main11);
+			console.log(testarr[i-1]);
+		})(i);
 
+	for (var i = 1; i < 8; i++) {
+		$('#mainCategory-span' + i).on('mouseover', function() {
+			
+			
+			for (var i = 0; i < subAll.length; i++) {
+				if (testarr[i] == subAll[i].cate_main) {
+					$('.test1').text(subAll[i].cate_sub);	
+				}
+			}
+		}).mouseout(function() {
+		})
+	}
 </script>
 
 </body>
