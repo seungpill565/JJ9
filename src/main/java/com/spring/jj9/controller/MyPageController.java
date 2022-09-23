@@ -95,7 +95,7 @@ public class MyPageController {
 			return "alert";			
 		}
 		
-	슦
+	
 		List<Pay_talentList> payNullList = buyService.getPayTalNull(member_id);
 		
 		if(payNullList.size() == 0) {

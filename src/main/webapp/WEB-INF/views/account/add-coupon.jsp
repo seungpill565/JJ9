@@ -14,7 +14,7 @@
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
-				<li><h2>쿠폰등록</h2></li>
+				<li><h2>쿠폰 등록</h2></li>
 				<li><a href="./sell-talent">판매재능관리</a></li>
 				<li><a href="./purchase-history">구매재능내역</a></li>
 				<li><a href="./note">쪽지관리</a></li>
@@ -27,7 +27,6 @@
 		
 		<div class="thispage__main">
 			<div class="main__container">
-<<<<<<< HEAD
 				
 				<h1 class="main-container__title">내구폰 리스트</h1>
 				<c:choose>
@@ -57,11 +56,6 @@
 				  	<a href="../coupon/registration"
 					 onclick="window.open(this.href,'팝업창','width = 490, height = 500, top = 100, left = 450, location = no,tatus=no,toolbar=no,scrollbars=no');return false;">쿠폰 등록하기</a>
 			      </button>
-=======
-				<h2 class="main-container__title">쿠폰등록</h2>
-				<div class="container__card">
-					<p>쿠폰 등록</p>
->>>>>>> refs/remotes/origin/mongwoon
 				</div>
 			</div>
 		</div>
