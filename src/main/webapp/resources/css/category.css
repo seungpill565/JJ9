@@ -41,12 +41,9 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 /* /mainpage */
 
 /* header */
-/*.main-header{
-    width: 1200px;
-    position: fixed;
-    margin: 0 auto;
-    padding: 0 16px;
-}*/
+.main-header{
+    border-bottom: #9a9ba7;
+}
 
 /* section1 */
 .header-section1{
@@ -235,34 +232,68 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     background-size: 100% 100%;
 }
 
-.best-new-div{
+.best-new-div1{
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-around;
-    height: 500px;
+    align-items: center;
+    width: 1200px;
+    height: 1000px;
+    background-color: #f7c7c7;
+    border-radius: 5px;
 }
 
-.best-new-div-div{
+.best-new-div2{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 600px;
+    height: 100%;
 }
-.best-new-talent-title{
 
-    font-size: 20px;
-    font-weight: 100;
+
+.best-new-talent-title{
+    display: flex;
+    height: 10%;
+    align-items: center;
+    justify-items: start;
+}
+
+.best-new-talent-title > #best-new{
+    font-size: 40px;
+    font-style: italic;
     color: #e64646;
-    background-color: yellow;
+    font-weight: 100;
+}
+
+.best-new-talent-title > #talent{
+    
+    font-style: italic;
+    color: #927474;
+    font-size: 38px;
+    font-weight: 100;
+}
+
+.best-new-div3{
+    height: 90%;
+    display: grid;
+    grid-template-columns: 250px 250px;
+    row-gap: 20px;
+    column-gap: 20px;
 }
 
 .best-new-talent-div{ /* grid*/
-    display: grid;
-    grid-template-columns: 200px 200px;
-    grid-row: 100px 100px ;
+    display: block;
 }
 
 .best-new-talent{
     display: block;
+}
+
+.best-new-talent-image{
+    width: 250px;
+    height: 250px;
 }
 
 
