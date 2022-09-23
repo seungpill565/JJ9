@@ -138,51 +138,31 @@
 									<div class="container__faqAnswer">
 										<div>
 											<label for="faqAnswer--faq_cate">분류기준</label><br>
-											<input 
-												id="faqAnswer--faq_cate" 
-												value="${faqAnswer.faq_cate }" 
-												disabled
-											/>
+											<p id="faqAnswer--faq_cate">${faqAnswer.faq_cate}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_date">작성일</label><br>
-											<input
-												id="faqAnswer--faq_date"
-												value="${faqAnswer.faq_date }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_date">${faqAnswer.faq_date}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_title">제목</label><br>
-											<input
-												id="faqAnswer--faq_title"
-												value="${faqAnswer.faq_title }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_title">${faqAnswer.faq_title}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_content">문의내용</label><br>
-											<textarea 
-												id="faqAnswer--faq_content"
-												disabled
-												>${fn:replace(faqAnswer.faq_content, replaceChar, '<br>')}</textarea>
-											<pre>${faqAnswer.faq_content}</pre>
+											<p id="faqAnswer--faq_content">${faqAnswer.faq_content}</p>
 											<hr>
 										</div>
 
 										<div>
 											<label for="faqAnswer--faq_answer">답변</label><br>
-											<input
-												id="faqAnswer--faq_answer"
-												value="${faqAnswer.faq_answer }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_answer">${faqAnswer.faq_answer }</p>
 										</div>
 									</div>
 								</c:otherwise>
