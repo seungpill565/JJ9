@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.jj9.selltalent.mapper.SellTalentMapper">
+  <select id="getTalentList" resultType="com.spring.jj9.dto.Talent_list">
+  	select * from talent_list where member_id = #{id}
+  </select>
+  
+  <select id="getMemberInfo" resultType ="com.spring.jj9.dto.PayMember">
+  	select * from pay inner join member Using(member_id)
+	inner join talent_list Using(talent_id) where talent_id = #{id}
+  </select>
+  
+  <delete id="delTalent">
+  	DELETE FROM talent_list where talent_id = #{id}
+  </delete>
+  
+  
+ </mapper>
