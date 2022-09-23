@@ -18,46 +18,47 @@
 <body>
 	
 	<!-- header -->
-	<header>
+	<div class="main-header">
 		<!-- section1 -->
 		<section class="header-section1">
-		
-		<div class="logo-div">	
-			<a href="/jj9/mainpage" class="jj9-mainpage">jj9</a>
-		</div>
-
-		<div class="login-register-div">
-			<div class="login-register-div-login">
-		 		<a href="login" class="member-login">로그인</a>
-		 	</div>
-		 	<div class="login-register-div-register">  
-		 		<a href="register" class="member-register">회원가입</a>
-		 	</div>
-		</div>
-		
-		
-
-
-
-	
+			<div class="logo-div">	
+				<a href="/jj9/mainpage" class="jj9-mainpage">jj9</a>
+			</div>
+			<div class="login-register-div">
+				<div class="login-register-div-login">
+			 		<a href="login" class="member-login">로그인</a>
+			 	</div>
+			 	<div class="login-register-div-register">  
+			 		<a href="register" class="member-register">회원가입</a>
+			 	</div>
+			</div>
 		</section>
 		<!-- section1 -->
 		
 		<!-- section2 -->
 		<section class="header-section2">
-		
 		<!-- 카테고리 -->
-		<div class="mainPage-mainCategory-div">
-			<button class="category-button">
-				<div class="category-menu-img"></div>
-				<span style="font-size:20px;">메인 카테고리</span>
-			</button>
-			<div class="mainCategory-div">
-				<c:forEach items="${maincategorys }" var="maincategory">
-				<a href="/jj9/category/${maincategory.cate_id }">${maincategory.cate_main }</a>
-				</c:forEach>
-			</div>
-		</div>
+
+				<div class="mainPage-mainCategory-div">
+            <button class="category-button">
+                <div class="category-menu-img"></div>
+                <span style="font-size:20px;">메인 카테고리</span>
+            </button>
+            <div class="mainCategory-div">
+                <c:forEach items="${mainCates }" var="maincategory" varStatus="status">
+                    <div id="mainCategory-div${status.count }" class="mainCategory-div2"> 
+                        <a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a"> ${maincategory.cate_main } ▼</a>
+                    <div class="subCategory-div">
+                        <c:set var="sub" value="sub${status.count}" />
+                        <c:forEach items="${requestScope[sub] }" var="sub" varStatus="status2">
+                            <a href="/jj9/category/${sub.cate_id }" id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
+                        </c:forEach>
+                    </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+		
 		<!-- 카테고리 -->
 		
 		<!-- 검색 기능 -->
@@ -85,47 +86,17 @@
 		</section>
 
 
-	</header>
-	<!-- header -->
-	
-
-
-	<h3>category </h3>
-	<div>
-		<span>메인 카테고리
-			<ul>
-				<c:forEach items="${maincategorys }" var="maincategory">
-					<li><a href="${maincategory.cate_id }" id="${maincategory.cate_id }">${maincategory.cate_id }
-							/ ${maincategory.cate_main } / ${maincategory.cate_sub } </a></li>
-				</c:forEach>
-			</ul>
-		</span> <span>서브 카테고리
-			<ul>
-				<c:forEach items="${subcategorys }" var="subcategory">
-					<li><a href="${subcategory.cate_id }" id="${subcategory.cate_id }">${subcategory.cate_id }
-							/ ${subcategory.cate_main } / ${subcategory.cate_sub } </a></li>
-				</c:forEach>
-			</ul>
-		</span>
 	</div>
-	
-	<br />
-	
-	<br /><br />
+	<!-- header -->
+
 	
 
-	<div>
-		<table>
-			<tr>
-				<th>번호</th>
-				<th>재능번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>등록일</th>
-			</tr>
-
+<!-- body -->
+<section class="category-section1">
+	<div class="category-div1">
+		<div class="category-div2">
 			<c:forEach items="${purchases}" var="list">
-				<tr>
+
 					<td><c:out value="${list.rn}" /></td>
 					<td><c:out value="${list.talent_id}" /></td>
 					<td><a href="../purchase/${list.talent_id}"><c:out
@@ -133,10 +104,12 @@
 					<td><c:out value="${list.member_id}" /></td>
 					<td><fmt:formatDate value="${list.talent_date}"
 							pattern="yy-MM-dd" /></td>
-				</tr>
+				
 			</c:forEach>
-		</table>
+			
+		</div>
 		
+		<div class="category-paging-div"> <!-- paging -->
 		<div class="pagInfo-wrap">
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">
@@ -169,9 +142,63 @@
         	<input type="hidden" name="amount" value="${page.cri.amount }">
         </form> 
 	</div>
+		
+		</div>
+	
+	</div>
+
+</section>
+
+
 	
 
+
+	
+		<!-- footer -->
+<%@ include file="../footer.jsp" %>
 	<script src="/jj9/resources/js/category.js"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+	<h3>category </h3>
+	<div>
+		<span>메인 카테고리
+			<ul>
+				<c:forEach items="${maincategorys }" var="maincategory">
+					<li><a href="${maincategory.cate_id }" id="${maincategory.cate_id }">${maincategory.cate_id }
+							/ ${maincategory.cate_main } / ${maincategory.cate_sub } </a></li>
+				</c:forEach>
+			</ul>
+		</span> <span>서브 카테고리
+			<ul>
+				<c:forEach items="${subcategorys }" var="subcategory">
+					<li><a href="${subcategory.cate_id }" id="${subcategory.cate_id }">${subcategory.cate_id }
+							/ ${subcategory.cate_main } / ${subcategory.cate_sub } </a></li>
+				</c:forEach>
+			</ul>
+		</span>
+	</div>
+	 -->

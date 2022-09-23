@@ -12,19 +12,7 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> <!--  jquery -->
 <link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
-<style>
-.bestNew {
-    display: flex;
-    padding-left: 5px;
-    padding-right: 5px;
-}
 
-.bestNew > * {
-    
-    padding: 30px;
-}
-
-</style>
 </head>
 <body>
 
@@ -49,25 +37,27 @@
 		<!-- section2 -->
 		<section class="header-section2">
 		<!-- 카테고리 -->
-		<div class="mainPage-mainCategory-div">
-			<button class="category-button">
-				<div class="category-menu-img"></div>
-				<span style="font-size:20px;">메인 카테고리</span>
-			</button>
-			<div class="mainCategory-div">
-				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
-					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a" value="${maincategory.cate_main }">${maincategory.cate_main }
-						<li class="test1">1234</li>
-						<li class="test1">2345</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-						<li class="test1">1234</li>
-				
-					</a>
-				</c:forEach>
-			</div>
-		</div>
+
+				<div class="mainPage-mainCategory-div">
+            <button class="category-button">
+                <div class="category-menu-img"></div>
+                <span style="font-size:20px;">메인 카테고리</span>
+            </button>
+            <div class="mainCategory-div">
+                <c:forEach items="${mainCates }" var="maincategory" varStatus="status">
+                    <div id="mainCategory-div${status.count }" class="mainCategory-div2"> 
+                        <a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a"> ${maincategory.cate_main } ▼</a>
+                    <div class="subCategory-div">
+                        <c:set var="sub" value="sub${status.count}" />
+                        <c:forEach items="${requestScope[sub] }" var="sub" varStatus="status2">
+                            <a href="/jj9/category/${sub.cate_id }" id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
+                        </c:forEach>
+                    </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+		
 		<!-- 카테고리 -->
 		
 		<!-- 검색 기능 -->
@@ -95,171 +85,77 @@
 		</section>
 
 
-<<<<<<< HEAD
-	
-	<br />
-	
-	<div>
-		재능 등록 테스트 용<br />
-		<a href="insert">재능 등록 </a> <br />
-=======
->>>>>>> refs/remotes/origin/dohyun
 	</div>
+	<hr />
 	<!-- header -->
-	
-<<<<<<< HEAD
-	<div>
-		재능 의뢰 테스트 용<br />
-		<a href="req/1">재능 의뢰 </a> <br />
-	</div>
-=======
-	<!-- body -->
->>>>>>> refs/remotes/origin/dohyun
-	
-	<section class="body-section">
-		
-		<div class="howToUsejj9-div">
-			
-		</div>
-		
-		<div class="best-new-div">
-			<div class="new-div">
-			</div>
-			
-			<div class="best-div">
-			</div>
-		</div>
-	
-	</section>
-	
-	<div class="bestNew">
-	
-	
-	<div><h3>BEST 재능</h3>
-		<c:forEach items="${bestpurchases }" var="bestpurchase">
-			<span>
-					<a href="purchase/${bestpurchase.talent_id }">
-					 	${bestpurchase.talent_title } <br />
-					 	
-					 	가격 : ${bestpurchase.talent_price }
-					 	판매자 : ${bestpurchase.member_id } 
-					 	판매 횟수 : ${bestpurchase.talent_paycount } <br />
-					 	cate_id : ${bestpurchase.cate_id } <br />
-					 	재능 번호 : ${bestpurchase.talent_id } <br />
-					 </a>
-				</span> 
-				<br />
-				<br />
-		</c:forEach>
-		
-	</div>
-	
-	<br />
-	
-	
-	<div><h3>NEW 재능</h3>
-		<c:forEach items="${newpurchases }" var="newpurchase">
-			<span>
-					<a href="purchase/${newpurchase.talent_id }">
-					 	${newpurchase.talent_title } <br />
-					 	
-					 	가격 : ${newpurchase.talent_price }
-					 	판매자 : ${newpurchase.member_id } 
- 						판매 횟수 : ${newpurchase.talent_paycount } <br />
-					 	cate_id : ${newpurchase.cate_id } <br />
-					 	재능 번호 : ${newpurchase.talent_id } <br />
-					 </a>
-				</span> 
-				<br />
-				<br />
-		</c:forEach>
-		
-	</div>
-	
-	</div>
-	
-	<br />
-	
-	<!-- footer1 -->
-	
-	<footer>
-		<hr /> 
-		<div class="footer1-wrap">
-			<nav class="footer1-menu">
-				<div class="footer1-menus">
-					<p class="footer1-menus-cs">고객센터</p>
-					<p class="footer1-menus-workTime">09:00~18:00 (점심시간 13:00~14:00)</p>
-					<p class="footer1-menus-holiday">주말, 공휴일 휴무</p>
-					<a role="link" color="default" href="" class="footer1-menus-requestLink">
-						<span class="footer1-menus-request">1:1 문의</span>
-					</a>
-				</div>
-				
-				<div class="footer1-menus">
-					<p class="footer1-menus-title">jj9</p>
-					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">jj9 메인</li>
-						<li class="footer1-menus-li">Prime</li>
-						<li class="footer1-menus-li">엔터프라이즈</li>
-						<li class="footer1-menus-li">프리랜서클럽</li>
-					</ul>
-				</div>
-				
-				<div class="footer1-menus">
-					<p class="footer1-menus-title">jj9 정보</p>
-					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">서비스 소개</li>
-						<li class="footer1-menus-li">인재영업</li>
-					</ul>
-				</div>
 
-				<div class="footer1-menus">
-					<p class="footer1-menus-title">관련 사이트</p>
-					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">jj9 블로그</li>
-						<li class="footer1-menus-li">jj9 인스타그램</li>
-						<li class="footer1-menus-li">jj9 유튜브</li>
-					</ul>
+	<!-- body -->
+
+	<section class="body-section">
+		<div class="body-div">
+			<div class="howToUsejj9-div"></div>
+			<div class="best-new-div1">
+					<div class="best-new-div2">
+						<div class="best-new-talent-title best-new-div2-item">
+							<span id="best-new">NEW</span>
+							<span id="talent"> 재능</span>
+						</div>
+						<div>
+						</div>
+						<div class="best-new-div3">
+						<c:forEach items="${newpurchases }" var="newpurchase">
+							<div class="best-new-talent-div">
+							<div class="best-new-talent">
+								<a href="purchase/${newpurchase.talent_id }">
+									
+										<img class="best-new-talent-image" src=""></img>
+										<div class="best-new-talent-title2">${newpurchase.talent_title }</div>
+										<div class="best-new-talent-price">가격 : ${newpurchase.talent_price }</div>
+										<div class="best-new-talent-seller">판매자 :	${newpurchase.member_id }</div>
+										</a>
+									</div>
+							
+							</div>
+
+						</c:forEach>
+						</div>
+					</div>
+
+
+					<div class="best-new-div2">
+						<div class="best-new-talent-title best-new-div2-item">
+							<span id="best-new">BEST</span>
+							<span id="talent"> 재능</span>
+						</div>
+						<div>
+						</div>
+						<div class="best-new-div3">
+						<c:forEach items="${bestpurchases }" var="bestpurchase">
+							<div class="best-new-talent-div">
+							<div class="best-new-talent">
+								<a href="purchase/${bestpurchase.talent_id }">
+									
+										<img class="best-new-talent-image" src=""></img>
+										<div class="best-new-talent-title2">${bestpurchase.talent_title }</div>
+										<div class="best-new-talent-price">가격 : ${bestpurchase.talent_price }</div>
+										<div class="best-new-talent-seller">판매자 :	${bestpurchase.member_id }</div>
+										</a>
+									</div>
+							
+							</div>
+
+						</c:forEach>
+						</div>
+					</div>
 				</div>
-				
-				<div class="footer1-menus">
-					<p class="footer1-menus-title">지원</p>
-					<ul class="footer1-menus-ul">
-						<li class="footer1-menus-li">공지사항</li>
-						<li class="footer1-menus-li">자주 묻는 질문</li>
-						<li class="footer1-menus-li">이용약관</li>
-						<li class="footer1-menus-li">개인정보처리방침</li>
-						<li class="footer1-menus-li">전문가 센터</li>
-					</ul>
-				</div>
+		</div>
+		<!-- best-new-div1 -->
+	</section>
+	<!-- /body -->
 	
-			
-			</nav>
-		</div>
-	<!-- footer2 -->
-	
-		<hr /> 
-		<div class="footer2-area1">
-			<p class="footer2-area1-content">
-				(주)jj9 | 
-				
-				팀장 : 안승필 | 
-				
-				사이트 관리자 : 장몽운, 김도현, 홍준혁, 박성훈 |
-				
-				고객센터 : 1234-5678 | 
-				
-				help@jj9
-			</p>
-		</div>
-		
-		<div class="footer2-area2">
-			<p class="footer2-area2-content1">(주)jj9는 스프링 프로젝트를 위해 만들어진 사이트입니다. 실제 서비스가 아님을 유의해 주시기 바랍니다.</p>
-			<div class="footer2-area2-content2">
-				<p class="footer2-area2-content2-p">Copyright @ 2022 jj9 Inc. All rights reserved.</p>
-			</div>
-		</div>
-	</footer>
+
+	<!-- footer -->
+<%@ include file="../footer.jsp" %>
 	
 <script src="/jj9/resources/js/category.js?ver=1"></script>
 <script>
@@ -277,25 +173,64 @@
 					,cate_sub:"${subcategory.cate_sub}"});
 	</c:forEach>
 	
+	for(var i=0;i<main.length;i++){ // 속성값 수정 및 요소 텍스트 수정
+ 		$('.fortest').attr("href", "/jj9/category/"+main[i].cate_id);
+ 		$('.fortest').text(main[i].cate_main);
+	}
+
+ 	
+	
 	
 	var box=document.getElementById('mainCategory-a');
 	
 	//box.addEventListener('mouseover')
 	
-	//console.log(main[0].cate_main)
+	console.log(main[0].cate_main)
 	console.log(main[0])
 	
+	////////////////////////////////////////////////////////////
 	
-	var sub = new Array();
+	var main1 = "${maincategorys[1].cate_main}"
+	console.log("main1 test :  " + main1);
 	
-	for(var i=0;i<main.length;i++){
-		for(var j=0;j<subAll.lenght;j++){
-			if(main[i].cate_main==subAll[j].cate_main){
-				sub.push({"cate_sub":"subAll[j].cate_sub"});
-			}	
-		}
+
+
+	var testarr = new Array();
+	for (i = 1; i < 8; i++)
+        (function(i) {
+            var main11 = document.getElementById('mainCategory-div'+i).innerHTML;
+            testarr.push(main11);
+            console.log('메인카테고리 들어오는지? : ' + testarr[i-1]);
+
+            $('#mainCategory-div' + i).on('mouseover', function() {
+                console.log(testarr[i-1]);
+
+                    for (var j = 0; j < subAll.length; j++) {
+                        if (testarr[i-1] == subAll[j].cate_main) {
+                        	console.log('i : '+ (i-1))
+                        	for(k=0;k<5;k++){
+                            	//$('.subCategory-a'+k).attr('href', '/jj9/category/'+subAll[j].cate_id);
+                            	
+                        	}
+                        }
+                    }
+                }).mouseout(function() {
+                })
+        })(i);
+	/*
+	for (var i = 1; i < 8; i++) {
+		$('#mainCategory-span' + i).on('mouseover', function() {
+			
+			
+			for (var j = 0; j < subAll.length; j++) {
+				if (testarr[i-1] == subAll[j].cate_main) {
+					$('.test1').text(subAll[j].cate_sub);	
+				}
+			}
+		}).mouseout(function() {
+		})
 	}
-	
+	*/
 </script>
 
 </body>
