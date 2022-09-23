@@ -7,10 +7,6 @@ body {
 	font-family: 'Jua', sans-serif;
 }
 
-input, select, textarea, button {
-	font-family: inherit;
-}
-
 a {
 	text-decoration: none;
 	color: black;
@@ -70,4 +66,170 @@ a {
 	color: white;
 	border-radius: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------*/
+#purchase_img{
+  width: 250px;
+  height:180px;
+}
+#table>thead>th{
+	text-align: center;	
+}
+#table>tbody>tr>td{
+	text-align: center;
+}
+#button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+#button>a:link{
+	color:white;	
+}
+#button>a:visited{
+	color:white;	
+}
+#button>a:hover {
+	color: black;
+}
+#window-button{
+	background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+#window-button>a{
+	font-size: 25px;
+	text-decoration-line: none;
+	
+}
+#window-button>a:link{
+	color:white;	
+}
+#window-button>a:visited{
+	color:white;	
+}
+#window-button>a:hover {
+	color: black;
+}
+#del-button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+
+
+
+/* ----------------------------------------*/
+#purchase_img{
+  width: 250px;
+  height:180px;
+}
+#table>thead>th{
+	text-align: center;	
+}
+#table>tbody>tr>td{
+	text-align: center;
+}
+#button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+#button>a:link{
+	color:white;	
+}
+#button>a:visited{
+	color:white;	
+}
+#button>a:hover {
+	color: black;
+}
+#window-button{
+	background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+#window-button>a{
+	font-size: 25px;
+	text-decoration-line: none;
+	
+}
+#window-button>a:link{
+	color:white;	
+}
+#window-button>a:visited{
+	color:white;	
+}
+#window-button>a:hover {
+	color: black;
+}
+#del-button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
 
