@@ -25,18 +25,23 @@ public class PurchaseServiceImpl implements PurchaseService{
 	}
 
 	@Override
-	public double getSumReviewGrade(int id) {
-		List<TalentAll>reviewsum =  mapper.getgardelist(id);
-		int sum = 0;
-		int i = 0;
-		for(TalentAll grade : reviewsum) {
-			sum += grade.getReview_grade();
-			i++;
-		}
-		double avg = (double)(sum/i);
-		
-		return avg;
-	}
+    public double getSumReviewGrade(int id) {
+        List<TalentAll>reviewsum =  mapper.getgardelist(id);
+        int sum = 0;
+        int i = 0;
+        double avg = 0.0;
+        if(reviewsum.size() == 0) {
+            return avg;
+        }else
+
+        for(TalentAll grade : reviewsum) {
+            sum += grade.getReview_grade();
+            i++;
+        }
+         avg = (double)(sum/i);
+
+        return avg;
+    }
 
 	@Override
 	public int getCountGrade(int id) {
