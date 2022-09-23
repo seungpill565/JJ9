@@ -131,7 +131,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 }
 
 .mainCategory-div{
-  display : none;
+  display : inline;
   border-radius: 5px;
   position : absolute;
   z-index : 1; /*다른 요소들보다 앞에 배치*/
@@ -153,22 +153,20 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
   
 }
 
+.subCategory-div{
+    display: none;
+}
 .mainPage-mainCategory-div:hover .mainCategory-div{
     display: block;
 }
 
-.test1{
-    display: none;
-    border-radius: 5px;
-    position : absolute;
-    z-index : 1; /*다른 요소들보다 앞에 배치*/
-    font-weight: 400;
-    background-color: yellow;
-    min-width : 200px;
+.mainCategory-div2:hover .subCategory-div{
+    display: block;
+
 }
 
-.mainCategory-div a:hover .test1{
-    display: block;
+.subCategory-div a:hover{
+    background-color: #e67878;
 }
 
 /* search */
@@ -219,7 +217,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 
 /* body */
 
-.body-section{
+.body-div{
     height: 1000px;
     display: flex;
     flex-direction: column;
@@ -235,6 +233,37 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+.best-new-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 500px;
+}
+
+.best-new-div-div{
+    display: flex;
+    flex-direction: column;
+}
+.best-new-talent-title{
+
+    font-size: 20px;
+    font-weight: 100;
+    color: #e64646;
+    background-color: yellow;
+}
+
+.best-new-talent-div{ /* grid*/
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: 100px 100px ;
+}
+
+.best-new-talent{
+    display: block;
+}
+
 
 
 /* footer */

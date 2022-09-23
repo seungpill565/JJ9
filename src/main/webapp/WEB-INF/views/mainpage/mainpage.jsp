@@ -49,24 +49,32 @@
 		<!-- section2 -->
 		<section class="header-section2">
 		<!-- 카테고리 -->
-		<div class="mainPage-mainCategory-div">
-			<button class="category-button">
-				<div class="category-menu-img"></div>
-				<span style="font-size:20px;">메인 카테고리</span>
-			</button>
-			<div class="mainCategory-div">
-				<c:forEach items="${maincategorys }" var="maincategory" varStatus="status" >
-					<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a">
-					<span id="mainCategory-span${status.count }">${maincategory.cate_main }</span>
-						<div class="test1">
 
-						</div>
-						
-				
-					</a>
-				</c:forEach>
+		<div class="mainPage-mainCategory-div">
+            <button class="category-button">
+                <div class="category-menu-img"></div>
+                <span style="font-size:20px;">메인 카테고리</span>
+            </button>
+				<div class="mainCategory-div">
+					<c:forEach items="${mainCates }" var="maincategory" varStatus="status" begin="1">
+						<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a">
+							<div id="mainCategory-div${status.count }" class="mainCategory-div2">
+							${maincategory.cate_main } ▼
+								<div class="subCategory-div">
+									<c:set var="sub" value="sub${status.count}" />
+									<c:forEach items="${requestScope[sub] }" var="sub"
+										varStatus="status2">
+										<a href="/jj9/category/${sub.cate_id }"
+											id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
+									</c:forEach>
+								</div>
+								
+							</div>
+						</a>
+						<br>
+					</c:forEach>
+				</div>
 			</div>
-		</div>
 		<!-- 카테고리 -->
 		
 		<!-- 검색 기능 -->
@@ -96,78 +104,55 @@
 
 	</div>
 	<!-- header -->
-	
+
 	<!-- body -->
-	
+
 	<section class="body-section">
-		
-		<div class="howToUsejj9-div">
-			
-		</div>
-		
-		<div class="best-new-div">
-			<div class="new-div">
+		<div class="body-div">
+			<div class="howToUsejj9-div"></div>
+
+			<div class="best-new-div">
+				<div class="best-new-div-div">
+						<div class="best-new-talent-title">NEW 재능</div>
+						<c:forEach items="${newpurchases }" var="newpurchase">
+							<a href="purchase/${newpurchase.talent_id }">
+								<div class="best-new-talent-div">
+									<div class="best-new-talent">
+										<div class="best-new-talent-image"></div>
+										<div class="best-new-talent-price">가격 :
+											${newpurchase.talent_price }</div>
+										<div class="best-new-talent-seller">판매자 :
+											${newpurchase.member_id }</div>
+
+
+									</div>
+								</div>
+							</a>
+						</c:forEach>
+
+					</div>
+				</div>
+
+				<div class="best-new-div-div">
+					<div>
+						<div class="best-new-talent-title">BEST 재능</div>
+						<c:forEach items="${bestpurchases }" var="bestpurchase">
+							<span> <a href="purchase/${bestpurchase.talent_id }">
+									${bestpurchase.talent_title } <br /> 가격 :
+									${bestpurchase.talent_price } 판매자 : ${bestpurchase.member_id } <br />
+									${bestpurchase.talent_image } <br />
+
+									
+							</a>
+							</span>
+						</c:forEach>
+
+					</div>
+				</div>
 			</div>
-			
-			<div class="best-div">
-			</div>
 		</div>
-	
 	</section>
-	
-	<div class="bestNew">
-	
-	
-	<div><h3>BEST 재능</h3>
-		<c:forEach items="${bestpurchases }" var="bestpurchase">
-			<span>
-					<a href="purchase/${bestpurchase.talent_id }">
-					 	${bestpurchase.talent_title } <br />
-					 	
-					 	가격 : ${bestpurchase.talent_price }
-					 	판매자 : ${bestpurchase.member_id } 
-					 	판매 횟수 : ${bestpurchase.talent_paycount } <br />
-					 	cate_id : ${bestpurchase.cate_id } <br />
-					 	재능 번호 : ${bestpurchase.talent_id } <br />
-					 </a>
-				</span> 
-				<br />
-				<br />
-		</c:forEach>
-		
-	</div>
-	
-	<br />
-	
-	
-	<div><h3>NEW 재능</h3>
-		<c:forEach items="${newpurchases }" var="newpurchase">
-			<span>
-					<a href="purchase/${newpurchase.talent_id }">
-					 	${newpurchase.talent_title } <br />
-					 	
-					 	가격 : ${newpurchase.talent_price }
-					 	판매자 : ${newpurchase.member_id } 
- 						판매 횟수 : ${newpurchase.talent_paycount } <br />
-					 	cate_id : ${newpurchase.cate_id } <br />
-					 	재능 번호 : ${newpurchase.talent_id } <br />
-					 </a>
-				</span> 
-				<br />
-				<br />
-		</c:forEach>
-		
-	</div>	
-	</div>
-	
-	<div>
-		<c:forEach begin="0" end="6">
-		<a href="" class="fortest"></a>
-		
-		</c:forEach>
-	</div>
-	
-	<br />
+	<!-- /body -->
 	
 	<!-- footer1 -->
 	
@@ -282,38 +267,48 @@
 	console.log(main[0])
 	
 	////////////////////////////////////////////////////////////
-	var maincate = document.getElementById('mainCategory-span3').innerHTML;
-	var sub = new Array();
 	
 	var main1 = "${maincategorys[1].cate_main}"
+	console.log("main1 test :  " + main1);
 	
-	console.log("main1 " + main1);
-	
-	console.log("main : "+maincate);
-	var subcate = document.getElementById('test1');
-	
-	
+
 
 	var testarr = new Array();
 	for (i = 1; i < 8; i++)
-		(function(i) {
-			var main11 = document.getElementById('mainCategory-span'+i).innerHTML;
-			testarr.push(main11);
-			console.log(testarr[i-1]);
-		})(i);
+        (function(i) {
+            var main11 = document.getElementById('mainCategory-div'+i).innerHTML;
+            testarr.push(main11);
+            console.log('메인카테고리 들어오는지? : ' + testarr[i-1]);
 
+            $('#mainCategory-div' + i).on('mouseover', function() {
+                console.log(testarr[i-1]);
+
+                    for (var j = 0; j < subAll.length; j++) {
+                        if (testarr[i-1] == subAll[j].cate_main) {
+                        	console.log('i : '+ (i-1))
+                        	for(k=0;k<5;k++){
+                            	//$('.subCategory-a'+k).attr('href', '/jj9/category/'+subAll[j].cate_id);
+                            	
+                        	}
+                        }
+                    }
+                }).mouseout(function() {
+                })
+        })(i);
+	/*
 	for (var i = 1; i < 8; i++) {
 		$('#mainCategory-span' + i).on('mouseover', function() {
 			
 			
-			for (var i = 0; i < subAll.length; i++) {
-				if (testarr[i] == subAll[i].cate_main) {
-					$('.test1').text(subAll[i].cate_sub);	
+			for (var j = 0; j < subAll.length; j++) {
+				if (testarr[i-1] == subAll[j].cate_main) {
+					$('.test1').text(subAll[j].cate_sub);	
 				}
 			}
 		}).mouseout(function() {
 		})
 	}
+	*/
 </script>
 
 </body>

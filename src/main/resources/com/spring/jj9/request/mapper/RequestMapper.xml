@@ -6,11 +6,11 @@
 <mapper namespace="com.spring.jj9.request.mapper.RequestMapper">
 
 	<select id="getMainCategories" resultType="com.spring.jj9.dto.Category">
-		SELECT DISTINCT cate_main FROM category
+		SELECT * FROM category WHERE cate_sub is null
 	</select>
 	
 	<select id="getSubCateByMain" resultType="com.spring.jj9.dto.Category">
-		SELECT cate_sub FROM category WHERE cate_main = #{cate_main}
+		SELECT * FROM category WHERE cate_main = #{cate_main} AND cate_sub IS NOT NULL
 	</select>
 	
 	<select id="getRequestList" resultType="com.spring.jj9.dto.Talent_request">
