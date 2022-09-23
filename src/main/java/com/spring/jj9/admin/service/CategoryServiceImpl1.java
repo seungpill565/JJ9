@@ -27,6 +27,12 @@ public class CategoryServiceImpl1 implements CategoryService{
 	}
 
 	@Override
+	public List<Category> getCateListBy11() {
+	
+		return mapper.getCateListBy11();
+	}
+	
+	@Override
 	public void deleteCate(int id) {		
 		mapper.deleteCateById(id);
 	}
@@ -39,5 +45,6 @@ public class CategoryServiceImpl1 implements CategoryService{
 		mapper.updateCateById(pre_id, new_category.getCate_id(), new_category.getCate_main(), new_category.getCate_sub());
 		
 	}
+
 
 }

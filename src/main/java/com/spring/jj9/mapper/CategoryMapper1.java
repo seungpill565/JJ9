@@ -12,11 +12,14 @@ public interface CategoryMapper1 {
 
 	public List<Category> getAll();
 
+	public List<Category> getCateListBy11();
+	
 	public void deleteCateById(int id);		
 
 	public void updateCateById(@Param("pre_id") Integer pre_id, 
 			@Param("cate_id") Integer cate_id, 
 			@Param("cate_main") String cate_main, 
 			@Param("cate_sub") String cate_sub);
+
 
 }

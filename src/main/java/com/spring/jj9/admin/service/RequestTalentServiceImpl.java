@@ -23,6 +23,12 @@ public class RequestTalentServiceImpl implements RequestTalentService{
 	public void deleteRequestTalent(int id) {
 		mapper.deleteRequestTalent(id);
 	}
+
+	@Override
+	public void updateRequestTalent(Talent_request talent_request) {
+		mapper.updateRequestTalent(talent_request);
+		
+	}
 	
 	
 	

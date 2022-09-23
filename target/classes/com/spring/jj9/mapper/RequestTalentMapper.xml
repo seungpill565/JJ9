@@ -12,4 +12,11 @@
 		DELETE FROM talent_request WHERE trequest_id = #{id}
 	</delete>
 	
+	<update id="updateRequestTalent">
+		UPDATE talent_request 
+		SET trequest_title = #{trequest_title}, trequest_content = #{trequest_content}, cate_id = #{cate_id}
+		, trequest_date = #{trequest_date}, trequest_budget = #{trequest_budget}, trequest_deadline = #{trequest_deadline}
+		WHERE trequest_id = #{trequest_id}			
+	</update>
+	
 </mapper>

@@ -106,7 +106,7 @@
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">재능 가격</label>
-	            <input type="text" class="form-control" id="new-talent-price" name="talent_price">
+	            <input type="number" class="form-control" id="new-talent-price" name="talent_price">
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">신청 날짜</label>
@@ -122,7 +122,7 @@
 	          </div>  
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">재능 소요일</label>
-	            <input type="text" class="form-control" id="new-talent-workday" name="talent_workday">
+	            <input type="number" class="form-control" id="new-talent-workday" name="talent_workday">
 	          </div>     
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">재능 요약</label>

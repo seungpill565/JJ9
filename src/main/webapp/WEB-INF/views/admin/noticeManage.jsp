@@ -125,50 +125,9 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-						
+	</div>							
 
-<!-- 
-<h3>공지사항 관리 페이지입니다.</h3>
-관리자 ${currUser.member_id } 님 안녕하세요 <br />
-보유 포인트는 ${currUser.member_point } 점 입니다<br />
 
-<hr />
-<a href=" <c:url value="/admin"/>">관리자 메인 페이지</a> <br />
-<a href=" <c:url value="/categoryManage"/>">카테고리 관리</a> <br />
-<a href="<c:url value="/memberManage"/>">회원 관리</a> <br />
-<a href="<c:url value="/talentPermission"/>">재능등록 요청 관리</a><br />
-<a href="<c:url value="/talentManage"/>">재능 관리</a><br />
-<a href="<c:url value="/requestTalentManage"/>">요청 재능 관리</a><br />
-<a href="<c:url value="/payLog"/>">결제 기록 조회</a><br />
-<a href="<c:url value="/refundManage"/>">환불 요청 관리</a><br />
-<a href="<c:url value="/couponManage"/>">쿠폰 관리</a><br />
-<a href="<c:url value="/faqManage"/>">1:1 문의 관리</a><br />
-<a href="<c:url value="/noticeManage"/>">공지 사항 관리</a><br />
-<hr />
-<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newNoticeModal"><h4>- 새 공지 작성 -</h4></button>
-
-<hr />
-
-<h4>- 공지 사항 -</h4>
-
-<ul>
-	<c:forEach items="${notices }" var="notice">	
-	
-		<li>
-			<button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modifyNoticeModal"
-				data-notice-id = "${notice.notice_id }"
-				data-notice-title = "${notice.notice_title }"
-				data-notice-content = "${notice.notice_content }"
-				data-notice-date = "${notice.notice_date }"
-				data-notice-importance = "${notice.notice_importance }"				
-			 >${notice.notice_id} / ${notice.notice_title}/ ${notice.notice_date}  / ${notice.notice_importance} </button> 
-			 
-		</li>		
-	</c:forEach>		
-</ul>
-<hr />
- -->
 
 <!-- 새 공지 작성 modal 속성 구현-->
 <div class="modal fade" id="newNoticeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

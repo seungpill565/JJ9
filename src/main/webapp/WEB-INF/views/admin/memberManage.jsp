@@ -8,6 +8,7 @@
 <title>회원 관리</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="/jj9/resources/css/adminMain.css?ver=1">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 
@@ -105,7 +106,7 @@
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">보유포인트</label>
-	            <input type="text" class="form-control" id="new-member-point" name="member_point">
+	            <input type="number" class="form-control" id="new-member-point" name="member_point">
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">생년월일</label>
@@ -113,11 +114,16 @@
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">연락처</label>
+	            <!--  
 	            <input type="text" class="form-control" id="new-member-phoneNum" name="member_phoneNum">
+	            -->
+	            <input type="tel"  class="form-control m-input" id="new-member-phoneNum" name="member_phoneNum"
+	            	maxlength="13" placeholder="예) 010-1234-5678"
+				/>
 	          </div>	          
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">이메일</label>
-	            <input type="text" class="form-control" id="new-member-email" name="member_email">
+	            <input type="email" class="form-control" id="new-member-email" name="member_email">	             
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">자기소개</label>

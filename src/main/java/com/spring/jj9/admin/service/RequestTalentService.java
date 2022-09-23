@@ -10,6 +10,8 @@ public interface RequestTalentService {
 
 	public void deleteRequestTalent(int id);
 
+	public void updateRequestTalent(Talent_request talent_request);
+
 	
 
 	

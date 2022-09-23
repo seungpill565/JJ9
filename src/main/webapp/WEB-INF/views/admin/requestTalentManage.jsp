@@ -86,7 +86,7 @@
 	</div>
 
 
-	<!-- 재능 수정 modal 속성 구현-->
+	<!-- 요청 재능 수정 modal 속성 구현-->
 	<div class="modal fade" id="talentDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
@@ -95,35 +95,41 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <form action="./" method="POST">
+	        <form action="./updateRequestTalent" method="POST">
 	                  
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">요청 제목</label>
-	            <input type="text" class="form-control" id="new-talent-title" name="talent_title">
+	            <label for="recipient-name" class="col-form-label">요청자 id</label>
+	            <input type="text" class="form-control" id="new-member-id" name="member_id" readonly>
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">카테고리</label>
-	            <input type="text" class="form-control" id="new-talent-cate" name="talent_workday">
+	            	            
+	            <select class="form-select" aria-label="Default select example"  id="new-talent-cate"  name="cate_id">				
+		            <c:forEach items="${categories }" var="category">
+						<option value="${category.cate_id }">${category.cate_main } > ${category.cate_sub }</option>
+			  		</c:forEach>						
+		  		</select>
+		  		
 	          </div>  
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">요청 재능 내용</label>	            
-	            <textarea class="form-control" id="new-talent-content" name="talent_service_exp" style="height: 300px"> </textarea>
+	            <label for="recipient-name" class="col-form-label">요청 제목</label>
+	            <input type="text" class="form-control" id="new-talent-title" name="trequest_title">
 	          </div>
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">요청자 id</label>
-	            <input type="text" class="form-control" id="new-member-id" name="talent_price">
+	            <label for="recipient-name" class="col-form-label">요청 재능 내용</label>	            
+	            <textarea class="form-control" id="new-talent-content" name="trequest_content" style="height: 300px"> </textarea>
 	          </div>
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">요청 날짜</label>
-	            <input type="date" class="form-control" id="new-talent-date" name="talent_date">
+	            <input type="date" class="form-control" id="new-talent-date" name="trequest_date">
 	          </div> 
 	          <div class="mb-3">
-	            <label for="recipient-name" class="col-form-label">요청 마감날짜</label>
-	            <input type="date" class="form-control" id="new-talent-deadline" name="talent_date">
+	            <label for="recipient-name" class="col-form-label">요청 마감 기한</label>
+	            <input type="date" class="form-control" id="new-talent-deadline" name="trequest_deadline">
 	          </div>  
 	          <div class="mb-3">
 	            <label for="recipient-name" class="col-form-label">예산</label>
-	            <input type="text" class="form-control" id="new-talent-budget" name="talent_price">
+	            <input type="number" class="form-control" id="new-talent-budget" name="trequest_budget">
 	          </div>  	          
 	          
 	          <div>            
