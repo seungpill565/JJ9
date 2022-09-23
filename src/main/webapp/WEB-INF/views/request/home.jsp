@@ -174,6 +174,6 @@ a:hover {
 	<br>
 	
 	<script src="/jj9/resources/js/requestHome.js"></script>
-
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

@@ -19,7 +19,7 @@
   </select>
   
   <insert id="insertPay">
-  	insert into pay values(PAY_ID_SEQ.nextval,#{talent_id},#{member_id},#{pay_money},#{pay_original_money})
+  	insert into pay values(PAY_ID_SEQ.nextval,#{talent_id},#{member_id},#{pay_money},#{pay_original_money},null)
   </insert>
   
   <select id="getPay" resultType="com.spring.jj9.dto.Pay">

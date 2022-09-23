@@ -35,7 +35,7 @@
 	
 	
 	
-
+<%@ include file="../footer.jsp" %>
 
 
 

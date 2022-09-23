@@ -149,7 +149,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<%@ include file="../footer.jsp" %>
 	<script src="/jj9/resources/js/buyInfo.js"></script>
 	<script>
 	if(document.getElementById('deleteBtn')){

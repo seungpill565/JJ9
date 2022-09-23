@@ -87,7 +87,7 @@
 		</div>
 	</div>
 
-	
+<%@ include file="../footer.jsp" %>
 	
 	
 	<script src="/jj9/resources/js/insertTalent.js"></script>
