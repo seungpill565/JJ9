@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,7 +170,9 @@
 											<label for="faqAnswer--faq_content">문의내용</label><br>
 											<textarea 
 												id="faqAnswer--faq_content"
-												disabled>${faqAnswer.faq_content }</textarea>
+												disabled
+												>${fn:replace(faqAnswer.faq_content, replaceChar, '<br>')}</textarea>
+											<pre>${faqAnswer.faq_content}</pre>
 											<hr>
 										</div>
 
@@ -249,6 +254,8 @@
 			});
 			
 		})
+		
+		
 	</script>
 	
 </body>
