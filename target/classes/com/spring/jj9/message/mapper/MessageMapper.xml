@@ -11,7 +11,7 @@
   
   <insert id="insertMessage">
   insert into message VALUES(message_id_seq.nextval,#{message_name},#{message_content},#{sender_id}
-  ,'abcd',#{message_date})
+  ,#{resiver },#{message_date})
   </insert>
   
 </mapper>

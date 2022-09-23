@@ -3,6 +3,7 @@ package com.spring.jj9.order.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,14 +25,23 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 public class OrderController {
 	
-	String sessionId="abcd";
+	String sessionId= null;
 	int talentId = 0;
 	
 	@Autowired
 	OrderService service;
 	
 	@GetMapping(value = "/order/{id}")
-	public String OrderView(@PathVariable("id") int id, Model model) {
+	public String OrderView(
+			@PathVariable("id") int id,
+			Model model,
+			HttpSession session) {
+		try {
+			sessionId = session.getAttribute("member_id").toString();
+		}catch(NullPointerException e) {
+			sessionId = "로그인 필요함";
+		}
+		
 		talentId = id;
 		List<TalentAll> talentAll = service.getList(id);
 		List<Coupon>coupon = service.getCoupon(sessionId);
@@ -49,8 +59,19 @@ public class OrderController {
 			@RequestParam("name")String name,
 			Pay pay, Model model ,
 			HttpServletRequest req,
+			HttpSession session,
 			Coupon coupon, Member member) {
 			// 맴버 정보 가져오기
+		try {
+			sessionId = session.getAttribute("member_id").toString();
+		}catch(NullPointerException e) {
+			req.setAttribute("msg", "로그인 후 결제가 가능합니다.");
+			req.setAttribute("url", "/jj9/order/"+talentId);
+			return "alert";
+		}
+		
+		
+		
 			Member members = service.getMember(sessionId);
 			model.addAttribute("members",members);
 			

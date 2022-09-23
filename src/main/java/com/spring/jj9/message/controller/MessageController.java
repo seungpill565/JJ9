@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +29,20 @@ public class MessageController {
 	MessageService service;
 	
 	Integer talentid;
+	String sessionId = null;
 	
 	@GetMapping(value = "/message/{id}")
-	public String messageView (@PathVariable("id") int id, Model model) {
+	public String messageView (
+			@PathVariable("id") int id, Model model,
+			HttpSession session,HttpServletRequest req) {
+		try {
+			sessionId = session.getAttribute("member_id").toString();
+		}catch(NullPointerException e) {
+			req.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
+			req.setAttribute("url", "/jj9/login");
+			return "Messagealert";
+		}
+		
 		TalentAll getid = service.getMemberId(id);
 		model.addAttribute("id",getid);
 		
@@ -41,11 +53,15 @@ public class MessageController {
 	}
 	
 	@PostMapping(value = "/message/info" )
-	public String infoView ( Message message , HttpServletRequest req) throws IOException {
+	public String infoView ( Message message ,
+			HttpSession session,
+			HttpServletRequest req) throws IOException {
 		String name = message.getMessage_name();
 		String id = message.getSender_id();
 		String content = message.getMessage_content();
 		Timestamp date = Timestamp.valueOf(LocalDateTime.now());
+		sessionId = session.getAttribute("member_id").toString();
+		message.setResiver(sessionId);
 		log.info(name);
 		log.info(id);
 		log.info(content);
