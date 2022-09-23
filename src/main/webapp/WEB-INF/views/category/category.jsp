@@ -91,22 +91,12 @@
 
 	
 
-
-
-	
-
-	<div>
-		<table>
-			<tr>
-				<th>번호</th>
-				<th>재능번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>등록일</th>
-			</tr>
-
+<!-- body -->
+<section class="category-section1">
+	<div class="category-div1">
+		<div class="category-div2">
 			<c:forEach items="${purchases}" var="list">
-				<tr>
+
 					<td><c:out value="${list.rn}" /></td>
 					<td><c:out value="${list.talent_id}" /></td>
 					<td><a href="../purchase/${list.talent_id}"><c:out
@@ -114,10 +104,12 @@
 					<td><c:out value="${list.member_id}" /></td>
 					<td><fmt:formatDate value="${list.talent_date}"
 							pattern="yy-MM-dd" /></td>
-				</tr>
+				
 			</c:forEach>
-		</table>
+			
+		</div>
 		
+		<div class="category-paging-div"> <!-- paging -->
 		<div class="pagInfo-wrap">
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">
@@ -150,8 +142,20 @@
         	<input type="hidden" name="amount" value="${page.cri.amount }">
         </form> 
 	</div>
+		
+		</div>
+	
+	</div>
+
+</section>
+
+
 	
 
+
+	
+		<!-- footer -->
+<%@ include file="../footer.jsp" %>
 	<script src="/jj9/resources/js/category.js"></script>
 
 </body>
