@@ -131,7 +131,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 }
 
 .mainCategory-div{
-  display : inline;
+  display : none;
   border-radius: 5px;
   position : absolute;
   z-index : 1; /*다른 요소들보다 앞에 배치*/
@@ -162,6 +162,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 
 .mainCategory-div2:hover .subCategory-div{
     display: block;
+    background-color: #f5a8a8;
 
 }
 

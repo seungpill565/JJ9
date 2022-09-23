@@ -50,31 +50,26 @@
 		<section class="header-section2">
 		<!-- 카테고리 -->
 
-		<div class="mainPage-mainCategory-div">
+				<div class="mainPage-mainCategory-div">
             <button class="category-button">
                 <div class="category-menu-img"></div>
                 <span style="font-size:20px;">메인 카테고리</span>
             </button>
-				<div class="mainCategory-div">
-					<c:forEach items="${mainCates }" var="maincategory" varStatus="status" begin="1">
-						<a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a">
-							<div id="mainCategory-div${status.count }" class="mainCategory-div2">
-							${maincategory.cate_main } ▼
-								<div class="subCategory-div">
-									<c:set var="sub" value="sub${status.count}" />
-									<c:forEach items="${requestScope[sub] }" var="sub"
-										varStatus="status2">
-										<a href="/jj9/category/${sub.cate_id }"
-											id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
-									</c:forEach>
-								</div>
-								
-							</div>
-						</a>
-						<br>
-					</c:forEach>
-				</div>
-			</div>
+            <div class="mainCategory-div">
+                <c:forEach items="${mainCates }" var="maincategory" varStatus="status">
+                    <div id="mainCategory-div${status.count }" class="mainCategory-div2"> 
+                        <a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a"> ${maincategory.cate_main } ▼</a>
+                    <div class="subCategory-div">
+                        <c:set var="sub" value="sub${status.count}" />
+                        <c:forEach items="${requestScope[sub] }" var="sub" varStatus="status2">
+                            <a href="/jj9/category/${sub.cate_id }" id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
+                        </c:forEach>
+                    </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+		
 		<!-- 카테고리 -->
 		
 		<!-- 검색 기능 -->
