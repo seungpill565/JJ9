@@ -14,7 +14,7 @@ public class Criteria {
 	private List<String> typeArr;
 	
 	public Criteria() { // 留ㅺ컻蹂��닔濡� �븘臾닿쾬�룄 �뱾�뼱�삤吏��븡�쑝硫� 1�럹�씠吏��씠誘�濡� 1, 10�쑝濡� 珥덇린�솕
-		this(1, 12);
+		this(1, 24);
 	}
 
 	public Criteria(int pageNum, int amount) { 

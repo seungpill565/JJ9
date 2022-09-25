@@ -24,6 +24,10 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	text-decoration: underline;
 }
 
+a:visited{
+    color: black;
+}
+
 .active{ /* 보고있는 페이지 번호에 색상 주기 */
       background-color: #cdd5ec;
       border-radius: 20px;
@@ -37,6 +41,9 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     text-decoration: none;
     color: #e64646;
     text-decoration: none;
+}
+.jj9-mainpage:visited{
+    color: #e64646;
 }
 /* /mainpage */
 
@@ -78,6 +85,11 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     border-style: solid;
     border-color: transparent;
     padding: 22px 0;
+}
+
+.login-register-div-name{
+    color: #927474;
+    text-decoration: underline;
 }
 
 /* section2 */
@@ -212,6 +224,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     justify-content: space-between;
     align-items: center;
 }
+/* /header */
 
 /* body */
 
@@ -296,9 +309,35 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     height: 250px;
 }
 
+.purchase-a:hover{
+    text-decoration: underline;
+}
+
+/*///////////////////////////////////////////////*/
+
+/* category.jsp*/
+
+/* body */
 .category-div1{
     display: flex;
     flex-direction: column;
     width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 16px;
+    background-color: #f7c7c7;
 }
 
+.category-div2{
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    row-gap: 40px;
+    column-gap: 40px;
+
+}
+
+.purchase-image{
+    width: 250px;
+    height: 250px;
+}

@@ -35,12 +35,12 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/seung/OneDrive/Desktop/database/sqldeveloper-21.4.3.063.0100-x64/sqldeveloper/jdbc/lib/ojdbc8.jar">
+	<classpathentry kind="lib" path="D:/JAVAaws/lib/cos.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/seung/OneDrive/Desktop/spring-workspace/FinalProject/src/main/webapp/WEB-INF/lib/cos.jar">
+	<classpathentry kind="lib" path="D:/JAVAaws/database/sqldeveloper/jdbc/lib/ojdbc8.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
