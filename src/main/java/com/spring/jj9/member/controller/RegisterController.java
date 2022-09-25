@@ -141,7 +141,7 @@ public class RegisterController {
 			Integer id = service.insertMember(member);
 			
 			request.setAttribute("msg", "회원가입이 완료되었습니다.");
-			request.setAttribute("url", "/jj9/list");
+			request.setAttribute("url", "/jj9/mainpage");
 			return "alert";		
 		}
 		
