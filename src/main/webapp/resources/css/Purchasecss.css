@@ -1,0 +1,129 @@
+@charset "EUC-KR";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+*{
+	font-family: 'Jua', sans-serif;
+}
+#main_img{
+	position: absolute;
+	top: 4%;
+	left: 11%;
+}
+#purchase_img{
+    border: solid black 1px;
+    padding : 5px;
+    margin: 3px;
+}
+#gradeAvg{
+	position: absolute;
+	left: 35%;
+}
+#title{
+	position: absolute;
+	top :8%;
+	right: 17%;
+	border: solid gray 1px;
+	margin: 3px;
+	
+	
+	
+}
+#title-name{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#order-button{
+background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+#window-button{
+	background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+
+#explanation{
+	position: absolute;
+	top :90%;
+	left: 11%;
+	
+	
+}
+
+#seller-info{
+	position: absolute;
+	top :55%;
+	right: 15%;
+	border: solid gray 1px;
+	
+}
+#description{
+	font-size: 20px;
+}
+#review-star{
+	width: 200px;
+	height:150px;
+}
+#main-content{
+	position : absolute;
+	width: 150%;
+	
+	
+}
+
+#pay-content{
+	position: absolute;
+	top :45%;
+	right: 12.5%;
+}
+#avg-grid{
+	
+	display: grid;
+	grid-template-columns: 40px 50px 150px;
+	font-size: 20px;
+}
+#avg-img{
+	width: 250px;
+	height:180px;
+}
+#avg{
+	position: absolute;
+	left: 32%
+	
+}
+#a-button{
+	background-color: #E84646;
+}
+#a-button>a{
+	font-size: 25px;
+	text-decoration-line: none;
+	
+}
+#a-button>a:link{
+	color:black;	
+}
+#a-button>a:visited{
+	color:black;	
+}
+#a-button>a:hover {
+	color: white;
+}
+
+
+
+
+
+	

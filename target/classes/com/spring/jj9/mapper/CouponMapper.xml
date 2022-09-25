@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.CouponMapper">
+	
+	<select id="getCouponList" resultType="com.spring.jj9.dto.Coupon">
+		SELECT * FROM coupon ORDER BY coupon_id
+	</select>
+	
+	<select id="isCodeExist" resultType="java.lang.Integer">
+		SELECT coupon_id FROM coupon WHERE coupon_code = #{random_code}
+	</select>
+	
+	<insert id="createCoupon">
+		INSERT into coupon values(coupon_id_seq.NEXTVAL, #{coupon_code}, #{coupon_name}, #{coupon_period},'사용전', #{discount_percent}, null)		
+	</insert>
+	
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.add.mapper.InsertMapper">
+	<select id="getCategories" resultType="com.spring.jj9.dto.Category">
+		SELECT DISTINCT cate_main FROM category
+	</select>
+	<select id="getCateByMain" resultType="com.spring.jj9.dto.Category">
+		SELECT * FROM category WHERE cate_main = #{cate_main} AND cate_sub IS NOT NULL
+	</select>
+	<select id="getCateIdBySub" resultType="com.spring.jj9.dto.Category">
+		SELECT cate_id FROM category WHERE cate_sub = #{cate_sub}
+	</select>
+	<insert id="insertTalent" parameterType="com.spring.jj9.dto.Talent_list">
+		INSERT INTO talent_list VALUES(#{cate_id}, #{member_id}, #{talent_title}, #{talent_image},
+									#{talent_date}, #{talent_price}, #{talent_service_exp}, #{talent_curriculum}, talent_id_seq.nextval,
+									#{talent_workday}, #{talent_summary}, 0 , '미승인')
+	</insert>
+</mapper>

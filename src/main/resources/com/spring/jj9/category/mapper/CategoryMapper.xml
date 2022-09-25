@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.category.mapper.CategoryMapper">						<!-- @@@@@@@@@@@@돌리기전 db commit 할것 @@@@@@@@@@@@@-->
+
+
+<!-- 특정 아이디의 카테고리 -->
+  <select  id="readCategoryById" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_id = #{id} 
+  </select>
+  
+<!-- 메인카테고리들만 뽑기 -->
+  <select  id="readAllMainCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is null 
+  </select>
+  
+  <!-- 서브카테고리들만 뽑기 -->
+  <select  id="readAllSubCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is not null 
+  </select>
+  
+<!-- 메인카테고리 별 서브카테고리들  -->
+  <select id="readCategoryByCate_main" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_main = #{cate_main} and cate_sub is not null 
+  </select>
+  
+  
+<!-- 메인만 눌렀을때 표시할 재능들의 총 개수 -->
+  <select  id="readTalentCountByMainCate" resultType="int"> 
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where cate_main = #{cate_main} and member_id is not null
+  </select>
+  
+  
+<!-- 서브 눌렀을때 표시할 재능들의 총 개수 -->
+  <select id="readTalentCountBySubCate" resultType="int"> 
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id) 
+  		where cate_id = #{cate_id} and member_id is not null
+  </select>
+
+<!-- 메인 카테고리를 눌렀을때 불러오는 메인 재능들 / 페이징 시 필요 -->
+	<select id="readTalentAllForPagingByMainCate" resultType="com.spring.jj9.dto.TalentAll"> 
+    <![CDATA[
+       select * from
+       	(select rownum rn, tal.* from 
+       		(select * from talent_list 
+       		 inner join member using(member_id) 
+       		 inner join category using(cate_id) 
+       		 where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
+       	where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+	</select>
+
+
+<!-- 서브 카테고리를 눌렀을때 불러오는 서브 재능들 / 페이징 시 필요-->
+      <select id="readTalentAllForPagingBySubCate" resultType="com.spring.jj9.dto.TalentAll"> 
+    <![CDATA[
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list
+        inner join member using(member_id) 
+        inner join category using(cate_id) 
+        where cate_id = #{cate_id} and member_id is not null order by talent_id desc) tal 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+    </select>
+    
+    <!-- 검색했을때 제목에서 찾아오는 재능들 -->
+    <select id="readTalentAllBySearch" resultType="com.spring.jj9.dto.TalentAll"> 
+   
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list 
+       inner join member using(member_id) 
+       inner join category using(cate_id) 
+       where member_id is not null
+       
+       <if test="cri.keyword != null">
+       		 and talent_title like '%'||#{cri.keyword}||'%'  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+    	</if> 
+       
+         order by talent_id desc) tal
+        <![CDATA[ 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+	</select>
+	
+	
+<!-- 제목으로 검색 시 뽑아낼 재능들의 총 개수 -->
+	<select  id="readTalentCountBySearch" resultType="int"> 
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where member_id is not null
+  		 <if test="keyword != null">
+       		and talent_title like '%'||#{keyword}||'%' <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       </if>
+  		
+    </select>
+    
+    <!-- 주제별 검색 시 필요한 조건문 -->
+	<sql id="criteria">
+		<trim prefix="OR">
+			<choose>
+				<when test="cri.type == 'title'.toString()">
+					talent_title like '%'||#{cri.keyword}||'%'
+				</when>
+				<when test="cri.type == 'content'.toString()">
+					talent_service_exp like '%'||#{cri.keyword}||'%'
+				</when>
+				<when test="cri.type == 'writer'.toString()">
+					member_name like '%'||#{cri.keyword}||'%'
+				</when>
+			</choose>
+		</trim>
+
+
+
+	</sql>
+    	
+    	
+<!-- 검색했을때 제목에서 찾아오는 재능들 -->
+    <select id="readTalentAllBySearch2" resultType="com.spring.jj9.dto.TalentAll"> 
+   
+       select * from
+       (select rownum rn, tal.* from 
+       (select * from talent_list 
+       inner join member using(member_id) 
+       inner join category using(cate_id) 
+       where member_id is not null
+       
+       <if test="cri.keyword != null">
+       		<!--  and talent_title like '%'||#{cri.keyword}||'%' -->  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		 <include refid="criteria"></include> 
+    	</if> 
+       
+         order by talent_id desc) tal
+        <![CDATA[ 
+       where rownum <= #{cri.pageNum} * #{cri.amount})
+       where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+    
+    ]]>
+	</select>
+	
+	
+<!-- 제목으로 검색 시 뽑아낼 재능들의 총 개수 -->
+	<select  id="readTalentCountBySearch2" resultType="int"> 
+  		select count(*) from talent_list 
+  		inner join category using(cate_id) 
+  		inner join member using(member_id)  
+  		where member_id is not null
+  		 <if test="cri.keyword != null">
+       		<!-- and talent_title like '%'||#{keyword}||'%' --> <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		 <include refid="criteria"></include>
+       </if>
+  		
+  		 
+  </select>
+</mapper>

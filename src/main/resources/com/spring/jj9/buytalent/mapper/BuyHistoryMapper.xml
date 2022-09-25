@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.jj9.buytalent.mapper.BuyHistoryMapper">
+	<select id="getPayTalNull" resultType="com.spring.jj9.dto.Pay_talentList">
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IS NULL OR p.refund_request = '구매확정'
+	</select>
+	
+	<select id="getPayTalRequest" resultType="com.spring.jj9.dto.Pay_talentList">
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id as "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불요청')
+	</select>
+	
+	<select id="getPayTalRefund" resultType="com.spring.jj9.dto.Pay_talentList">
+		SELECT p.pay_id, p.pay_money, p.refund_request, t.talent_title, t.member_id AS "seller_member_id" 
+			FROM pay p INNER JOIN talent_list t USING (talent_id) 
+			WHERE p.member_id = #{member_id} AND p.refund_request IN ('환불완료')
+	</select>
+	
+	<insert id="addRefundRequest" parameterType="com.spring.jj9.dto.Refund_request">
+		INSERT INTO refund_request VALUES(refund_id_seq.nextval, #{pay_id}, '환불요청')
+	</insert>
+	
+	<update id="updatePayRefundRequest">
+	    UPDATE pay SET refund_request = '환불요청' WHERE pay_id = #{pay_id}
+  	</update>
+  	
+	<update id="updatePayRefundSetNull">
+	    UPDATE pay SET refund_request = null WHERE pay_id = #{pay_id}
+  	</update>
+  	
+  	<update id="updateBuyFix">
+	    UPDATE pay SET refund_request = '구매확정' WHERE pay_id = #{pay_id}
+  	</update>
+  	
+  	<delete id="deleteRefundRequest">
+		DELETE FROM refund_request WHERE pay_id = #{pay_id}
+	</delete>
+	
+	
+</mapper>

@@ -184,10 +184,10 @@
 	border: none;
 }
 
-.container__faqAnswer > div > textarea {
+.container__faqAnswer > div > p {
 	width: 800px;
-	height: 80px;
 	resize: none;
 	font-size: 18px;
 	border: none;
+	background-color: #fafafa;
 }

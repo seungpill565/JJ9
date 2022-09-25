@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.purchase.mapper.PurchaseMapper">
+  <select id="get" resultType="com.spring.jj9.dto.TalentAll">
+  SELECT * from talent_list inner join category using(cate_id) inner join member  Using(member_id)
+  where talent_id = #{id}
+  </select>
+  
+  <select id="getreview" resultType="com.spring.jj9.dto.TalentAll">
+	SELECT * from review inner join member Using (member_id) inner join talent_list Using(talent_id)
+	where talent_id = #{id}
+  </select>
+  
+   <select id="getgardelist" resultType="com.spring.jj9.dto.TalentAll">
+	SELECT review_grade from review where talent_id = #{id}
+  </select>
+  
+  <select id="getCouponList" resultType="com.spring.jj9.dto.Coupon">
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  </select>
+  
+</mapper>

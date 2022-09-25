@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,26 +20,15 @@
 		<div class="category__container">
 			<ul class="cate-container__ul">
 				<li><h2>1:1문의</h2></li>
-				<c:choose>
-					<c:when test="${faqId == null }">
-						<li><a href="./sell-talent">판매재능관리</a></li>
-						<li><a href="./purchase-history">구매재능내역</a></li>
-						<li><a href="./note">쪽지관리</a></li>
-						<li><a href="./add-coupon">쿠폰등록</a></li>
-						<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="./inquiry">1:1 문의</a></li>
-						<li><a href="./member-modify">회원정보수정</a></li>
-						<li><a href="./secession">회원탈퇴</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="../sell-talent">판매재능관리</a></li>
-						<li><a href="../purchase-history">구매재능내역</a></li>
-						<li><a href="../note">쪽지관리</a></li>
-						<li><a href="../add-coupon">쿠폰등록</a></li>
-						<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="../inquiry">1:1 문의</a></li>
-						<li><a href="../member-modify">회원정보수정</a></li>
-						<li><a href="../secession">회원탈퇴</a></li>
-					</c:otherwise>
-				</c:choose>
+				<li><a href="/jj9/account/sell-talent">판매재능관리</a></li>
+				<li><a href="/jj9/account/purchase-history">구매재능내역</a></li>
+				<li><a href="/jj9/insert">재능등록하기</a></li>
+				<li><a href="/jj9/insertRequest">재능의뢰등록</a></li>
+				<li><a href="/jj9/account/note">쪽지관리</a></li>
+				<li><a href="/jj9/account/add-coupon">쿠폰등록</a></li>
+				<li style="background-color: rgb(230, 70, 70);"><a style="color: white;" href="/jj9/account/inquiry">1:1 문의</a></li>
+				<li><a href="/jj9/account/member-modify">회원정보수정</a></li>
+				<li><a href="/jj9/account/secession">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="thispage__main">
@@ -146,49 +138,31 @@
 									<div class="container__faqAnswer">
 										<div>
 											<label for="faqAnswer--faq_cate">분류기준</label><br>
-											<input 
-												id="faqAnswer--faq_cate" 
-												value="${faqAnswer.faq_cate }" 
-												disabled
-											/>
+											<p id="faqAnswer--faq_cate">${faqAnswer.faq_cate}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_date">작성일</label><br>
-											<input
-												id="faqAnswer--faq_date"
-												value="${faqAnswer.faq_date }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_date">${faqAnswer.faq_date}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_title">제목</label><br>
-											<input
-												id="faqAnswer--faq_title"
-												value="${faqAnswer.faq_title }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_title">${faqAnswer.faq_title}</p>
 											<hr>
 										</div>
 										
 										<div>
 											<label for="faqAnswer--faq_content">문의내용</label><br>
-											<textarea 
-												id="faqAnswer--faq_content"
-												disabled>${faqAnswer.faq_content }</textarea>
+											<p id="faqAnswer--faq_content">${faqAnswer.faq_content}</p>
 											<hr>
 										</div>
 
 										<div>
 											<label for="faqAnswer--faq_answer">답변</label><br>
-											<input
-												id="faqAnswer--faq_answer"
-												value="${faqAnswer.faq_answer }"
-												disabled
-											/>
+											<p id="faqAnswer--faq_answer">${faqAnswer.faq_answer }</p>
 										</div>
 									</div>
 								</c:otherwise>
@@ -260,6 +234,8 @@
 			});
 			
 		})
+		
+		
 	</script>
 	
 </body>

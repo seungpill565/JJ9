@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mapper.NoticeMapper">	
+		
+	<select id="getNoticeList1" resultType="com.spring.jj9.dto.Notice">
+		SELECT * FROM notice WHERE notice_importance = '1 특별공지' ORDER BY notice_date DESC
+	</select>
+	
+	<select id="getNoticeList2" resultType="com.spring.jj9.dto.Notice">
+		SELECT * FROM notice WHERE notice_importance = '2 중요공지' ORDER BY notice_date DESC
+	</select>
+	
+	<select id="getNoticeList3" resultType="com.spring.jj9.dto.Notice">
+		SELECT * FROM notice WHERE notice_importance = '3 일반공지' ORDER BY notice_date DESC
+	</select>
+	
+	<update id="updateNotice">
+		UPDATE notice 
+		SET notice_title = #{notice_title}, notice_content = #{notice_content}, notice_date = #{notice_date}, notice_importance = #{notice_importance}	
+		WHERE notice_id = #{notice_id}			
+	</update>
+	
+	<insert id="newNotice">
+		INSERT into notice values(notice_id_seq.nextval, #{notice_title}, #{notice_content}, #{notice_date}, #{notice_importance})		
+	</insert>
+	
+	<delete id="deleteNotice">
+		DELETE FROM notice Where notice_id = #{notice_id}
+	</delete>
+	
+</mapper>
