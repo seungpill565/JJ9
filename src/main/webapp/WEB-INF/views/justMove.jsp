@@ -11,7 +11,7 @@
 	modelAndView를 잘 알지 못하고 그냥 사용해서... 실수를 커버하기 위해 만들어진 임시 땜빵 페이지 입니다.
 	단순 main 페이지로 이동하는 기능을 담은 페이지이니 무시하셔도 됩니다. -->
 	<script type="text/javascript">
-		location.href = 'main';
+		location.href = 'mainpage';
 	</script>
 </body>
 </html>

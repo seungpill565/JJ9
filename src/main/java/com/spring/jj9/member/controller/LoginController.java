@@ -1,6 +1,7 @@
 package com.spring.jj9.member.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,19 @@ public class LoginController {
 	LoginService loginService;
 	
 	@GetMapping(value = "login")
-	public String loginPage() {
-		return "login";
+	public String loginPage(HttpSession session, HttpServletRequest request) {
+		
+		// 로그인 시 session에 로그인 정보가 있으면 로그인 페이지로 이동시키지 않음
+		try {
+			String member_id = session.getAttribute("member_id").toString();	
+			request.setAttribute("msg", "이미 로그인이 되었습니다. 메인페이지로 이동합니다.");
+			request.setAttribute("url", "/jj9/mainpage");
+			return "alert";			
+		} catch (NullPointerException e) {
+			return "login";
+		}
+		
+		
 	}
 	
 	@RequestMapping("login_check")
