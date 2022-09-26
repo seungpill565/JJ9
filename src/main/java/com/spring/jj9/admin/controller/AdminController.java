@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -90,13 +91,26 @@ public class AdminController {
 	
 	
 	@GetMapping("/admin")
-	public String goToAdmin(Model model , HttpSession session) {
+	public String goToAdmin(Model model , HttpSession session, HttpServletRequest request) {
 		log.info("접속완료");
 		log.info(memberService.getMember("admin1"));
 		Member currUser= memberService.getMember("admin1");
 		
 		//접속한 아이디 정보를 세션에 저장
 		session.setAttribute("currUser", currUser);	
+		
+		try {
+			String member_id = session.getAttribute("member_id").toString();
+			if (!member_id.equals("admin")) {
+				request.setAttribute("msg", "허용되지 않은 권한입니다. 메인페이지로 이동합니다.");
+				request.setAttribute("url", "/jj9/mainpage");
+				return "alert";
+			}
+		} catch (NullPointerException e) {
+			request.setAttribute("msg", "잘못된 접근입니다. 메인페이지로 이동합니다.");
+			request.setAttribute("url", "/jj9/mainpage");
+			return "alert";			
+		}
 		
 		// 관리자 메인 페이지로 이동
 		return "/admin/adminMain";

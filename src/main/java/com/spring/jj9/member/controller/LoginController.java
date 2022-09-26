@@ -53,11 +53,10 @@ public class LoginController {
 			if (member_id.equals("admin")) {
 				request.setAttribute("msg", "이미 로그인 + 관리자 페이지로 이동");
 				request.setAttribute("url", "/jj9/admin");
-				return "alert";
-			}
-			request.setAttribute("msg", "이미 로그인이 되었습니다. 메인페이지로 이동합니다.");
-			request.setAttribute("url", "/jj9/mainpage");
-			return "alert";			
+			} else {
+				request.setAttribute("msg", "이미 로그인이 되었습니다. 메인페이지로 이동합니다.");
+				request.setAttribute("url", "/jj9/mainpage");				
+			}			
 		} catch (NullPointerException e) {
 			
 			// ----- 카테고리 갖고오는 코드 시작
@@ -85,6 +84,8 @@ public class LoginController {
 		}
 		
 		
+		return "alert";
+		
 	}
 	
 	@RequestMapping("login_check")
@@ -92,13 +93,9 @@ public class LoginController {
 			HttpSession session, ModelAndView mav) {
 		log.info("id " + member.getMember_id() + " pw: " + member.getMember_password());
 		
-		if (member.getMember_id().toString().equals("admin")) {
-			
-		}
-		
 		String name = loginService.login(member);
 		
-		if (name != null) {
+		if (name != null) { // 아이디가 있는경우 세션에 아이디와 이름을 담음
 			session.setAttribute("member_id", member.getMember_id());
 			session.setAttribute("member_name", name);
 			
@@ -109,9 +106,16 @@ public class LoginController {
 			  
 			  justMove 페이지는 main 페이지로 바로 이동하게 만드는 페이지이기 때문에 이건 무시하셔도 됩니다.
 			*/
-			mav.setViewName("justMove");
-			mav.addObject("message", "success");
-		} else {
+			
+			if (member.getMember_id().equals("admin")) { // 아이디가 admin일 경우
+				mav.setViewName("goAdmin");
+				mav.addObject("message", "success");
+			} else {
+				mav.setViewName("justMove"); // justMove -> 바로 main페이지로 이동
+				mav.addObject("message", "success");				
+			}
+			
+		} else { // 아이디가 없는경우 로그인페이지로 가야함
 			mav.setViewName("login");
 			mav.addObject("message", "error");
 		}
