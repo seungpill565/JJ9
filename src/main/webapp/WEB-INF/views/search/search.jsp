@@ -18,8 +18,41 @@
 	<!-- header -->
 <%@ include file="../header.jsp" %>
 
+<section class="category-section1">
+	
 
-		<div class="category-div1">
+<!-- category list -->
+	<div class="category-div1">
+	<div class="purchase-count-div">
+		<span class="purchase-count-span">※ ${page.total }개의 재능이 있습니다.</span>
+	
+	</div>
+	<c:choose>
+		<c:when test="${page.total==0 }">
+			<div class="purchase-total-zero">
+				<div class="purchase-total-zero-div1">
+					<span>찾으시는 결과가 없나요?</span>
+					<span>필요한 재능을 알려주세요. 전문가를 찾아드릴게요!</span>
+				</div>
+				<div class="purchase-total-zero-div2">
+					<c:choose>
+						<c:when test="${sessionScope.member_id==null }">
+							<a href="/jj9/login">
+								<div class="purchase-total-zero-req">
+									<span class="purchase-total-zero-req-span">재능 의뢰하기</span>
+								</div>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a href="/jj9/login">
+								<div class="purchase-total-zero-req">재능 의뢰하기</div>
+							</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
 		<div class="category-div2">
 			<c:forEach items="${purchases}" var="purchase">
 
@@ -34,9 +67,11 @@
 			</c:forEach>
 			
 		</div>
+<!-- category list -->
 		
 		<!-- paging -->
-		<div class="pagInfo-wrap">
+		<div class="paging-div"> 
+		<div class="paging-wrap">
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">
 
@@ -64,12 +99,19 @@
 			</div>
 		</div>
 		<form id="moveForm" method="get">
-		    <input type="hidden" name="keyword" value=${page.cri.keyword } />
 			<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
         	<input type="hidden" name="amount" value="${page.cri.amount }">
         </form> 
 	</div>
-	
+	</c:otherwise>
+	</c:choose>
+	<!-- paging -->
+		
+		</div>
+</section>
+<!-- body -->
+
+
 
 
 

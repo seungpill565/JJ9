@@ -22,9 +22,15 @@
 
 <!-- body -->
 <section class="category-section1">
+	
 
 <!-- category list -->
 	<div class="category-div1">
+	<div class="purchase-count-div">
+		<span class="purchase-count-span">※ ${page.total }개의 재능이 있습니다.</span>
+	
+	</div>
+
 		<div class="category-div2">
 			<c:forEach items="${purchases}" var="purchase">
 
@@ -42,8 +48,8 @@
 <!-- category list -->
 		
 		<!-- paging -->
-		<div class="category-paging-div"> 
-		<div class="pagInfo-wrap">
+		<div class="paging-div"> 
+		<div class="paging-wrap">
 			<div class="pageInfo-area">
 				<ul id="pageInfo" class="pageInfo">
 
@@ -75,6 +81,7 @@
         	<input type="hidden" name="amount" value="${page.cri.amount }">
         </form> 
 	</div>
+
 	<!-- paging -->
 		
 		</div>
