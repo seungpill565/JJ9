@@ -48,6 +48,16 @@ public class NoticeServiceImpl implements NoticeService{
 		mapper.deleteNotice(notice_id);	
 	}
 
+	@Override
+	public Integer getNoticeCount() {
+		return mapper.getNoticeCount();
+	}
+
+	@Override
+	public Notice getNoticeById(Integer id) {
+		return mapper.getNoticeById(id);
+	}
+
 	
 
 

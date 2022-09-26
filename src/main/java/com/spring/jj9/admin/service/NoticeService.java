@@ -18,6 +18,10 @@ public interface NoticeService {
 
 	public void deleteNotice(Integer notice_id);
 
+	public Integer getNoticeCount();
+
+	public Notice getNoticeById(Integer id);
+
 	
 
 }

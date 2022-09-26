@@ -22,6 +22,10 @@ public interface NoticeMapper {
 	public void newNotice(Notice notice);
 	
 	public void deleteNotice(Integer notice_id);
+	
+	public Integer getNoticeCount();
+	
+	public Notice getNoticeById(Integer id);
 
 		
 }

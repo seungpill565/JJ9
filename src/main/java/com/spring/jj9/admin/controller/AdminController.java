@@ -2,6 +2,7 @@ package com.spring.jj9.admin.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,6 +32,10 @@ import com.spring.jj9.dto.Member;
 import com.spring.jj9.dto.Notice;
 import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.dto.Talent_request;
+import com.spring.jj9.mainpage.service.MainpageService;
+import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -58,7 +63,13 @@ public class AdminController {
         AlertPopup.alertAndBackPage(response, "유효하지 않은 값이 있습니다.");
         
     }
-
+    
+    @ExceptionHandler(org.springframework.jdbc.UncategorizedSQLException.class)
+    public void textLengthViolatoin(Exception e, HttpServletResponse response) throws IOException {
+        System.err.println(e.getClass());
+        AlertPopup.alertAndBackPage(response, "글자 수 범위를 초과한 항목이 있습니다.");
+        
+    }
     
     
 	@Autowired
@@ -66,6 +77,9 @@ public class AdminController {
 	
 	@Autowired
 	CategoryService cateService;
+	
+	@Autowired
+	com.spring.jj9.category.service.CategoryService cateService2;	
 	
 	@Autowired
 	TalentService talentService;
@@ -88,6 +102,12 @@ public class AdminController {
 	@Autowired
 	RequestTalentService requestTalentService;
 	
+    @Autowired
+    private MainpageService service;    
+
+    @Autowired
+    RequestService reqservice;
+	
 	
 	@GetMapping("/admin")
 	public String goToAdmin(Model model , HttpSession session) {
@@ -98,8 +118,11 @@ public class AdminController {
 		//접속한 아이디 정보를 세션에 저장
 		session.setAttribute("currUser", currUser);	
 		
+		//카테고리 리스트를 categories에 담음
+		model.addAttribute("categories", cateService.getCateList());
+		
 		// 관리자 메인 페이지로 이동
-		return "/admin/adminMain";
+		return "/admin/categoryManage";
 	}
 	
 	////////////////////////////// 카테고리 관리 ///////////////////////////////////
@@ -292,7 +315,7 @@ public class AdminController {
 		//환불요청 리스트를 refundRequests에 담음
 		model.addAttribute("refundRequests", refundService.getRefundList());
 		
-		//환불 완료 리스트를 refundCompleted에 담음
+		//환불완료 리스트를 refundCompleted에 담음
 		model.addAttribute("refundCompleted", refundService.getRefundCompletedList());
 		
 		//refundManage 페이지로 이동
@@ -360,6 +383,11 @@ public class AdminController {
 	
 	@PostMapping("/createNewCoupon")
 	public void createNewCoupon(HttpServletResponse response, Model model, Coupon coupon) throws IOException {
+		
+		if(coupon.getDiscount_percent().equals(0)) {
+			AlertPopup.alertAndBackPage(response, "쿠폰 종류를 선택해주세요.");
+			return;
+		}
 		
 		//새 쿠폰 생성
 		couponService.createCoupon(coupon);
@@ -442,6 +470,75 @@ public class AdminController {
 		noticeService.deleteNotice(notice_id);		
 		//noticeManage 페이지로 이동
 		return "redirect:/noticeManage"; 
+	}	
+	
+	@GetMapping("/notice")
+	public String notice(Model model, Criteria cri) {
+		
+		model.addAttribute("noticesCount", noticeService.getNoticeCount());	//공지 수
+		
+		model.addAttribute("notices1", noticeService.getNoticeList1());	//1 특별공지
+		model.addAttribute("notices2", noticeService.getNoticeList2()); //2 중요공지
+		model.addAttribute("notices3", noticeService.getNoticeList3()); //3 일반공지
+		
+        model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+        model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+        model.addAttribute("bestpurchases", service.readBestPurchase());
+        model.addAttribute("newpurchases", service.readNewPurchase());
+
+        
+        
+        PageMake page = new PageMake(cri, cateService2.readTalentCountBySearch(cri.getKeyword()));
+        model.addAttribute("page", page);
+        
+
+        // 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }      
+		
+				
+		//notice 페이지로 이동
+		return "notice/notice"; 
+	}	
+	
+	@GetMapping("/noticeContent")
+	public String noticeContent(Model model, Integer id, Criteria cri) {				
+				
+		model.addAttribute("notice", noticeService.getNoticeById(id));	
+		
+        model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+        model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+        model.addAttribute("bestpurchases", service.readBestPurchase());
+        model.addAttribute("newpurchases", service.readNewPurchase());
+
+        
+        
+        PageMake page = new PageMake(cri, cateService2.readTalentCountBySearch(cri.getKeyword()));
+        model.addAttribute("page", page);
+        
+
+        // 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+		
+		//notice 상세 페이지로 이동
+		return "notice/noticeContent"; 
 	}	
 	
 }

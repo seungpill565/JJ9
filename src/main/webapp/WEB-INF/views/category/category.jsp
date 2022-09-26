@@ -39,7 +39,7 @@
 		<section class="header-section2">
 		<!-- 카테고리 -->
 
-				<div class="mainPage-mainCategory-div">
+		<div class="mainPage-mainCategory-div">
             <button class="category-button">
                 <div class="category-menu-img"></div>
                 <span style="font-size:20px;">메인 카테고리</span>
