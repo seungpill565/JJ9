@@ -383,6 +383,8 @@ a:visited{
 .best-new-talent-image{
     width: 250px;
     height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .purchase-a:hover{
@@ -431,6 +433,8 @@ a:visited{
 .purchase-image{
     width: 250px;
     height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .purchase-total-zero{
