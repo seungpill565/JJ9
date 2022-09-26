@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
+<link rel="stylesheet" href="/jj9/resources/css/posi_header.css" />
 <link rel="stylesheet" href="/jj9/resources/css/OrderComplecss.css">
-<link rel="stylesheet" href="/jj9/resources/css/footer.css">
+<link rel="stylesheet" href="/jj9/resources/css/posi_footer.css">
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -29,7 +29,9 @@
 			<button id="a-button"><a  href="../account/purchase-history">마이페이지</a></button>
 		</div>
 	</div>
+<div class="footer__position--ordercompleted">
 <%@ include file="include/footer.jsp" %>
+</div>
 
 </body>
 </html>

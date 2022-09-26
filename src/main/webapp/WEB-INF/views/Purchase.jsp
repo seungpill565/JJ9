@@ -7,19 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
+<link rel="stylesheet" href="/jj9/resources/css/posi_header.css" />
 <link rel="stylesheet" href="/jj9/resources/css/Purchasecss.css">
-<link rel="stylesheet" href="/jj9/resources/css/footer.css">
+<link rel="stylesheet" href="/jj9/resources/css/posi_footer.css">
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
+<div class="total">
+<div class="total2">
 <c:forEach items="${purchase }" var="purchase">
-	 
+
 	<div id="main_img">
 		<div id="cate">${purchase.cate_main } > ${purchase.cate_sub }</div>
 		
 		<div id="img">
-			<img id="purchase_img" alt="" src="/jj9/resources/images/${purchase.talent_image }">
+			<img id="purchase_img" alt="" src="/tomcatImg/${purchase.talent_image }">
 		</div>
 		<br>
 		<div id="avg">
@@ -42,6 +44,9 @@
 		</div>
 		
 		<div id="main-content">
+		<br>
+		<br>
+		<br>
 			<h3 id="exp">서비스 설명</h3>
 				<div>${purchase.talent_service_exp }</div>
 			
@@ -122,9 +127,9 @@
 	
 
 </c:forEach>
-
-<%@ include file="include/footer.jsp" %>
+</div>
 <script type="text/javascript" src="/jj9/resources/js/Purchasejs.js"></script>
+</div>
 
 
 </body>

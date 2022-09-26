@@ -20,8 +20,10 @@
 }
 #complete-all{
 	position: absolute;
-	top:15%;
+	top:29%;
 	left:36%;
+	border: 1px solid #c0c0c0;
+	padding: 30px;
 }
 #coment-comment{
 
@@ -53,9 +55,13 @@
 	color: white;
 }
 #a-button{
-	
+	margin-left: 55px;
 }
 
+.footer__position--ordercompleted {
+	position: relative;
+	bottom: -700px;
+}
 
 
 

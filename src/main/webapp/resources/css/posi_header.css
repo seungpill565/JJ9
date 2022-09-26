@@ -1,0 +1,475 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+
+
+*{
+	font-family: 'Jua', sans-serif;
+	font-size : 17px;
+	box-sizing: border-box;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+
+a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
+	color: black;
+	text-decoration: underline;
+}
+
+a:visited{
+    color: black;
+}
+
+.active{ /* 보고있는 페이지 번호에 색상 주기 */
+      background-color: #e64646;
+      border-radius: 20px;
+  }
+
+
+/* mainpage */
+.jj9-mainpage{
+	font-family: "210-supersize";
+    font-size: 50px;
+    text-decoration: none;
+    color: #e64646;
+    text-decoration: none;
+}
+.jj9-mainpage:visited{
+    color: #e64646;
+}
+/* /mainpage */
+
+/* header */
+.main-header{
+    border-bottom: #9a9ba7;
+    position: relative;
+    top: 0px;
+}
+
+/* section1 */
+.header-section1{
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* login, register*/
+.login-register-div{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    /*-webkit-box-align: center;*/
+    align-items: center;
+}
+
+.login-register-div-login{
+    border-style: solid;
+    border-color: transparent;
+    padding: 0 35px;
+}
+
+.login-register-div-register{
+    height: 50%;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 4px;
+    padding: 30px 15px;
+    display: flex;
+}
+
+.member-login:hover{
+    text-decoration: underline;
+}
+
+.member-register{
+    width: 80px;
+    height: 35px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #e64646;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-mypage-logout:hover{
+    text-decoration: underline;
+}
+
+.member-register:hover{
+    background-color: #f5a8a8;
+}
+
+
+.login-register-div-name{
+    color: #927474;
+    text-decoration: underline;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-register-div-mypage{
+    width: 25%;
+    border-style: solid;
+    border-color: transparent;
+    padding: 22px 0;
+}
+
+.login-register-div-logout{
+    width: 25%;
+    border-style: solid;
+    border-color: transparent;
+    padding: 22px 0;
+}
+
+/* section2 */
+
+.header-section2{
+    width: 1200px;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 16px;
+
+}
+
+/* category */
+.category-menu-img{
+    width: 40px;
+    height: 40px;
+    background-image: url('/jj9/resources/image/category_menu_icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: center;
+}
+
+.mainPage-mainCategory-div{
+    width: 250px;
+    position : relative;
+    display : inline-block;
+}
+
+.category-button{
+    border : 1px solid rgb(37, 37, 37);
+    border-radius : 4px;
+    border-style: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 400;
+    color : rgb(37, 37, 37);
+    padding : 12px;
+    width :200px;
+    text-align: center;
+    cursor : pointer;
+    font-size : 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mainCategory-div{
+  display : none;
+  border-radius: 5px;
+  position : absolute;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+  font-weight: 400;
+  background-color: #e64646;
+  min-width : 200px;
+}
+
+.mainCategory-div a:hover{
+    background-color: #e67878;
+}
+
+.mainCategory-div a{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 17px;
+  padding : 12px 20px;
+  
+}
+
+.subCategory-div{
+    display: none;
+}
+.mainPage-mainCategory-div:hover .mainCategory-div{
+    display: block;
+}
+
+.mainCategory-div2:hover .subCategory-div{
+    display: block;
+    background-color: #f5a8a8;
+
+}
+
+.subCategory-div a:hover{
+    background-color: #e67878;
+}
+
+/* paging */
+
+.paging-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+    margin: 50px 0 0 0;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+
+/* search */
+#searchKeyword{
+    border-radius: 20px;
+    width: 300px;
+}
+
+.show-page>li {
+	list-style: none;
+	float: left;
+	padding: 6px;
+}
+
+.searchButton{
+    width: 80px;
+    border-radius: 20px;
+    background-color: #e64646;
+}
+
+.searchButton:hover{
+    background-color: #e67878;
+}
+
+/* insert, register */
+
+.insert-register-div{
+    width: 240px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.insert-register-a{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insert-register-a:hover{
+    background-color: #d2d3d8;
+    border-radius: 4px;
+}
+/* /header */
+
+/* body */
+
+.body-div{
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.howToUsejj9-div{
+    height: 180px;
+    width: 1200px;
+    background-image: url('/jj9/resources/image/howtousejj9.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.best-new-div1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 1200px;
+    height: 1000px;
+    background-color: #f7c7c7;
+    border-radius: 5px;
+}
+
+.best-new-div2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 600px;
+    height: 100%;
+}
+
+
+.best-new-talent-title{
+    display: flex;
+    height: 10%;
+    align-items: center;
+    justify-items: start;
+}
+
+.best-new-talent-title > #best-new{
+    font-size: 40px;
+    font-style: italic;
+    color: #e64646;
+    font-weight: 100;
+}
+
+.best-new-talent-title > #talent{
+    
+    font-style: italic;
+    color: #927474;
+    font-size: 38px;
+    font-weight: 100;
+}
+
+.best-new-div3{
+    height: 90%;
+    display: grid;
+    grid-template-columns: 250px 250px;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.best-new-talent-div{ /* grid*/
+    display: block;
+}
+
+.best-new-talent{
+    display: block;
+}
+
+.best-new-talent-image{
+    width: 250px;
+    height: 250px;
+}
+
+.purchase-a:hover{
+    text-decoration: underline;
+}
+
+/*///////////////////////////////////////////////*/
+
+/* category.jsp*/
+
+/* body */
+.category-div1{
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 16px;
+    background-color: #f7c7c7;
+    border-radius: 4px;
+}
+
+.purchase-count-div{
+    width: 1200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #e67878;
+    border-radius: 4px;
+}
+
+.purchase-count-span{
+    margin: 20px;
+}
+
+.category-div2{
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    row-gap: 40px;
+    column-gap: 40px;
+    margin-top: 40px;
+
+}
+
+.purchase-image{
+    width: 250px;
+    height: 250px;
+}
+
+.purchase-total-zero{
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.purchase-total-zero-div1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.purchase-total-zero-div2{
+    margin-top: 20px;
+}
+
+.purchase-total-zero-req{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #e64646;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-total-zero-req:hover{
+    background-color: #b35858;
+}
+
+.purchase-total-zero-req-span{
+    font-size: 20px;
+}

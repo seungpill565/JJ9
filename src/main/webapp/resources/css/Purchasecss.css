@@ -7,13 +7,15 @@
 }
 #main_img{
 	position: absolute;
-	top: 4%;
+	top: 22%;
 	left: 11%;
 }
 #purchase_img{
     border: solid black 1px;
     padding : 5px;
     margin: 3px;
+    width: 500px;
+    height: 350px;
 }
 #gradeAvg{
 	position: absolute;
@@ -21,7 +23,7 @@
 }
 #title{
 	position: absolute;
-	top :8%;
+	top : 24%;
 	right: 17%;
 	border: solid gray 1px;
 	margin: 3px;
@@ -57,7 +59,7 @@ background-color: #E84646;
 
 #explanation{
 	position: absolute;
-	top :90%;
+	top :100%;
 	left: 11%;
 	
 	
@@ -65,8 +67,8 @@ background-color: #E84646;
 
 #seller-info{
 	position: absolute;
-	top :55%;
-	right: 15%;
+	top :74%;
+	right: 16.5%;
 	border: solid gray 1px;
 	
 }
@@ -80,14 +82,15 @@ background-color: #E84646;
 #main-content{
 	position : absolute;
 	width: 150%;
+	top : 50%;
 	
 	
 }
 
 #pay-content{
 	position: absolute;
-	top :45%;
-	right: 12.5%;
+	top :62%;
+	right: 14%;
 }
 #avg-grid{
 	
@@ -120,6 +123,10 @@ background-color: #E84646;
 }
 #a-button>a:hover {
 	color: white;
+}
+.total{
+	display: flex;
+	flex-direction: column;
 }
 
 

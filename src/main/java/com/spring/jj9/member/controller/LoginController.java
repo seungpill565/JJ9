@@ -43,16 +43,23 @@ public class LoginController {
     RequestService reqservice;
 	// 카테고리 갖고오는 서비스 끝
 	
+	
 	@GetMapping(value = "login")
 	public String loginPage(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		
 		// 로그인 시 session에 로그인 정보가 있으면 로그인 페이지로 이동시키지 않음
 		try {
-			String member_id = session.getAttribute("member_id").toString();	
+			String member_id = session.getAttribute("member_id").toString();
+			if (member_id.equals("admin")) {
+				request.setAttribute("msg", "이미 로그인 + 관리자 페이지로 이동");
+				request.setAttribute("url", "/jj9/admin");
+				return "alert";
+			}
 			request.setAttribute("msg", "이미 로그인이 되었습니다. 메인페이지로 이동합니다.");
 			request.setAttribute("url", "/jj9/mainpage");
 			return "alert";			
 		} catch (NullPointerException e) {
+			
 			// ----- 카테고리 갖고오는 코드 시작
 			model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
 			model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
@@ -84,6 +91,10 @@ public class LoginController {
 	public ModelAndView login_check(@ModelAttribute Member member, 
 			HttpSession session, ModelAndView mav) {
 		log.info("id " + member.getMember_id() + " pw: " + member.getMember_password());
+		
+		if (member.getMember_id().toString().equals("admin")) {
+			
+		}
 		
 		String name = loginService.login(member);
 		

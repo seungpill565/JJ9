@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<footer>
+<footer class="main-footer">
 		<hr /> 
 		<div class="footer1-wrap">
 			<nav class="footer1-menu">
