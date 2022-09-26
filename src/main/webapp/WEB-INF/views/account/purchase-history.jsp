@@ -11,7 +11,6 @@
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
-	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
