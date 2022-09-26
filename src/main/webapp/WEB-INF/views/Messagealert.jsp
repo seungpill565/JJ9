@@ -15,8 +15,12 @@
     alert(msg)
     if(msg == "쪽지를 보내셨습니다."){
     	self.close();	
-    }else{
-    	location.href = url;	
+    }else if(msg == "쿠폰이 등록 되었습니다."){
+         window.opener.parent.location.reload(); 
+        self.close();
+    }
+    else{
+        location.href = url;
     }
     
     

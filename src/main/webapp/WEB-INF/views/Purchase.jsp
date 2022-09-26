@@ -48,10 +48,10 @@
 		<br>
 		<br>
 			<h3 id="exp">서비스 설명</h3>
-				<div>${purchase.talent_service_exp }</div>
-			
-			<h3 id="curriculum">서비스 커리큘럼</h3>
-				<div>${purchase.talent_curriculum }</div>	
+                <div style="white-space:pre-wrap;">${purchase.talent_service_exp }</div>
+
+            <h3 id="curriculum">서비스 커리큘럼</h3>
+                <div style="white-space:pre-wrap;">${purchase.talent_curriculum }</div>	
 			
 			<div id="refund">
 				<h3>취소 및 환불 규정</h3>

@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/header.jsp" %>
 	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
 	<div class="mypage">
 		<div class="category__container">

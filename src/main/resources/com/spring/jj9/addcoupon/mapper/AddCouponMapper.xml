@@ -7,7 +7,7 @@
 <mapper namespace="com.spring.jj9.addcoupon.mapper.AddCouponMapper">
 
   <select id="getCouponList" resultType="com.spring.jj9.dto.Coupon">
-  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate and coupon_unused = '사용전'
   </select>
 
   <update id="addCoupon">
