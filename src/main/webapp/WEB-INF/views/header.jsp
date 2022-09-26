@@ -90,11 +90,11 @@
 			</div>
 			<!-- /검색 기능 -->
 			<div class="insert-register-div">
-				<a href="insert">
+				<a href="/jj9/insert">
 					<div class="talent-insert insert-register-a">
 						<span>재능 등록하기</span>
 					</div>
-				</a> <a href="req/1">
+				</a> <a href="/jj9/req/1">
 					<div class="talent-request insert-register-a">
 						<span>재능 의뢰하기</span>
 					</div>
