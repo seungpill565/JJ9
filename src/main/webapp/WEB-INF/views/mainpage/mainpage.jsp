@@ -39,7 +39,7 @@
 									
 										<img class="best-new-talent-image" src=""></img>
 										<div class="best-new-talent-title2">${newpurchase.talent_title }</div>
-										<div class="best-new-talent-price">가격 : ${newpurchase.talent_price }</div>
+										<div class="best-new-talent-price">￦ <fmt:formatNumber value="${newpurchase.talent_price }" groupingUsed="true" /></div>
 										<div class="best-new-talent-seller">판매자 :	${newpurchase.member_id }</div>
 										</a>
 									</div>
@@ -66,7 +66,7 @@
 									
 										<img class="best-new-talent-image" src=""></img>
 										<div class="best-new-talent-title2">${bestpurchase.talent_title }</div>
-										<div class="best-new-talent-price">가격 : ${bestpurchase.talent_price }</div>
+										<div class="best-new-talent-price">￦ <fmt:formatNumber value="${bestpurchase.talent_price }" groupingUsed="true" /></div>
 										<div class="best-new-talent-seller">판매자 :	${bestpurchase.member_id }</div>
 										</a>
 									</div>
