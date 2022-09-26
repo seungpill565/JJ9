@@ -22,7 +22,7 @@
 		
 		<h3>주문내역</h5>
 		
-		<img id="purchase_img" alt="" src="/jj9/resources/images/${order.talent_image }">
+		<img id="purchase_img"src="/tomcatImg/${purchase.talent_image }"/>
 		<br>
 		<br>
 		

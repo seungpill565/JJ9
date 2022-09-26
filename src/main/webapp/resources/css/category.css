@@ -152,8 +152,8 @@ a:visited{
     height: 75px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin: 0 auto;
     padding: 0 16px;
 
@@ -170,7 +170,7 @@ a:visited{
 }
 
 .mainPage-mainCategory-div{
-    width: 250px;
+    width: 400px;
     position : relative;
     display : inline-block;
 }
@@ -281,11 +281,11 @@ a:visited{
 /* insert, register */
 
 .insert-register-div{
-    width: 240px;
+    width: 360px;
     height: 30px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 
@@ -383,6 +383,8 @@ a:visited{
 .best-new-talent-image{
     width: 250px;
     height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .purchase-a:hover{
@@ -431,6 +433,8 @@ a:visited{
 .purchase-image{
     width: 250px;
     height: 250px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .purchase-total-zero{

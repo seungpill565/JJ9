@@ -56,23 +56,25 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-		<div class="category-div2">
-			<c:forEach items="${purchases}" var="purchase">
+					<div class="category-div2">
+						<c:forEach items="${purchases}" var="purchase">
 
-					<a href="purchase/${purchase.talent_id }" class="purchase-a">
-									
-										<img class="purchase-image" src=""></img>
-										<div class="purchase-title2">${purchase.talent_title }</div>
-										<div class="purchase-price">가격 : ${purchase.talent_price }</div>
-										<div class="purchase-seller">판매자 :	${purchase.member_id }</div>
-										</a>
-				
-			</c:forEach>
-			
-		</div>
-<!-- category list -->
-		
-		<!-- paging -->
+							<a href="/jj9/purchase/${purchase.talent_id }" class="purchase-a">
+
+								<img class="purchase-image" src=""></img>
+								<div class="purchase-title2">${purchase.talent_title }</div>
+								<div class="purchase-price">
+									￦ <fmt:formatNumber value="${purchase.talent_price }" groupingUsed="true" />
+								</div>
+								<div class="purchase-seller">판매자 : ${purchase.member_id }</div>
+							</a>
+
+						</c:forEach>
+
+					</div>
+					<!-- category list -->
+
+					<!-- paging -->
 		<div class="paging-div"> 
 		<div class="paging-wrap">
 			<div class="pageInfo-area">

@@ -6,14 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
-<link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <link rel="stylesheet" href="/jj9/resources/css/buyinfo.css">
-<link rel="stylesheet" href="/jj9/resources/css/footer.css">
+<link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/menu.jsp" %>
+	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
@@ -46,7 +45,7 @@
 							<th>판매자 이메일</th>
 							<th>쪽지 보내기</th>
 						</thead>
-						<tbody>
+						<tbody id="table">
 							<tr>
 								<td>${payTal.pay_id }</td>
 								<td>${payTal.talent_title }</td>
@@ -56,14 +55,23 @@
 								<td>${member.member_nickName }</td>
 								<td>${member.member_phoneNum }</td>
 								<td>${member.member_email }</td>
-								<td><button id="window-button">쪽지 보내기</button></td>
+								<td>
+					  	  						<button id="button">
+					  	  							<a href="../../message/${payTal.talent_id }"
+					  	  					onclick="window.open(this.href,'팝업창','width = 490, height = 500, top = 100, left = 450, location = no,tatus=no,toolbar=no,scrollbars=no');return false;">
+					  	  					쪽지 보내기</a>
+					  	  						</button>
+					  	  					</td>			
 								<div id="pop-url" style="display: none;">
 									<c:url value="/message/" />
 								</div>
 							</tr>
 						</tbody>
 					</table>
+					<br>
 					<hr>
+					<br>
+					
 					<c:choose>
 						<c:when test="${payTal.refund_request eq '구매확정' and exist eq '0'}">
 							<div>
@@ -150,7 +158,7 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../footer.jsp" %>
 	<script src="/jj9/resources/js/buyInfo.js"></script>
 	<script>
 	if(document.getElementById('deleteBtn')){

@@ -33,14 +33,16 @@ public class InsertTalentController {
 	
 	@PostMapping(value = "/insert")
 	public String insertTalent(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-	
 		
 		try {
 			session_id = session.getAttribute("member_id").toString();
 		} catch (NullPointerException e) {
-			session_id = "1";
+			try {
+				ScriptAlertUtils.alertAndMovePage(response ,"로그인이 필요합니다. 로그인 페이지로 이동합니다.","/jj9/login");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
-		
 		
 		// 파일 경로
 		String savePath = Paths.get("target/images").toString();

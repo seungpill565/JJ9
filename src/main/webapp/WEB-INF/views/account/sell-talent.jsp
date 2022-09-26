@@ -48,7 +48,7 @@
 					  	  				<tr>
 					  	  					<td>${talent.talent_id }</td>
 					  	  					<td><a href="../purchase/${talent.talent_id }">${talent.talent_title }</a></td>
-					  	  					<td><img id="purchase_img" alt="" src="/jj9/resources/images/${talent.talent_image }"></td>					  	  				
+					  	  					<td><img id="purchase_img" alt="" src="/tomcatImg/${talent.talent_image }"></td>					  	  				
 					  	  					<td>${talent.talent_date }</td>
 					  	  					<td><button id="button"><a href="../sell-talent/${talent.talent_id }">구매자 확인 하기</a></button></td>
 					  	  					<td><button id="del-button" value="${talent.talent_id }">삭제 요청하기</button></td>

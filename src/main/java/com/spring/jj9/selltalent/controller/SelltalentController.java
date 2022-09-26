@@ -43,7 +43,7 @@ public class SelltalentController {
 			HttpServletRequest request
 			) {
 		service.delTalent(id);
-		return "account/sell-talentMember";
+		return "account/sell-talent";
 		
 	}
 
