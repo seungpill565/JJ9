@@ -44,7 +44,7 @@
 							</a>
 						</c:when>
 						<c:otherwise>
-							<a href="/jj9/login">
+							<a href="/jj9/req/1">
 								<div class="purchase-total-zero-req">재능 의뢰하기</div>
 							</a>
 						</c:otherwise>

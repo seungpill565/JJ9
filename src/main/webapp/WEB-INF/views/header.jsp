@@ -22,18 +22,22 @@
 						<div class="login-register-div-login">
 							<a href="/jj9/login" class="member-login">로그인</a>
 						</div>
-						<div class="login-register-div-register">
-							<a href="/jj9/register" class="member-register">회원가입</a>
-						</div>
+						<a href="/jj9/register" class="member-register">
+							<span class="member-register-span">회원가입</span>
+						</a>
 					</c:when>
 					<c:otherwise>
 						<div class="login-register-div-name">
-							${sessionScope.member_name }님, 반갑습니다!</div>
+								<span>${sessionScope.member_name }님,</span>
+								<span>반갑습니다!</span>
+							</div>
 						<div class="login-register-div-mypage">
-							<a href="/jj9/mypage" class="member-login">마이페이지</a>
+							<a href="/jj9/account/mypage" class="member-mypage member-mypage-logout">마이페이지</a>
 						</div>
 						<div class="login-register-div-logout">
-							<a href="/jj9/logout" class="member-register">로그아웃</a>
+							<a href="/jj9/logout" class="member-logout member-mypage-logout">
+								<span>로그아웃</span>
+							</a>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -80,12 +84,16 @@
 		</div>
 		<!-- /검색 기능 -->
 		<div class="insert-register-div">
-			<div class="talent-insert">
-				 <a href="insert">재능 등록하기 </a> <br />
-			</div>
+			
+				 <a href="insert">
+				 	<div class="talent-insert insert-register-a">
+				 		<span>재능 등록하기</span>
+				 	</div>
+				 </a> 
+			
 
-			<div class="talent-request">
-				 <a href="req/1">재능 의뢰하기 </a> <br />
+			<div class="talent-request insert-register-a">
+				 <a href="req/1">재능 의뢰하기 </a> 
 			</div>
 		</div>
 
