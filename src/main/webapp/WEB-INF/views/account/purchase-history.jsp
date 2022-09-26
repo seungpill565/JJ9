@@ -37,7 +37,7 @@
 							<h2>구매한 재능이 없습니다.</h2>
 						</c:when>
 						<c:otherwise>
-							<table border=1>
+							<table id="table" border=1>
 								<thead>
 									<th>결제번호</th>
 									<th>제목</th>
@@ -48,16 +48,16 @@
 								<tbody>
 									<c:forEach items="${payTalNull }" var="payTal">
 										<tr>
-											<td>${payTal.pay_id }</td>
-											<td><a href="buyInfo/${payTal.pay_id }">${payTal.talent_title }</a></td>
-											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
-											<td>${payTal.seller_member_id }</td>
+											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';">${payTal.pay_id }</td>
+											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';"><a href="buyInfo/${payTal.pay_id }">${payTal.talent_title }</a></td>
+											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';"><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
+											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';">${payTal.seller_member_id }</td>
 											<c:choose>
 												<c:when test="${payTal.refund_request eq '구매확정' }">
-													<td style="color : green">구매확정</td>
+													<td style="cursor: pointer; color:green;" onclick="location.href='buyInfo/${payTal.pay_id}';">구매확정</td>
 												</c:when>
 												<c:otherwise>
-													<td><button id="refundBtn" value="${payTal.pay_id }">환불하기</button> / <button id="confirmBtn" value=${payTal.pay_id }>구매확정</a></td>
+													<td><button id="refundBtn" value="${payTal.pay_id }">환불하기</button> / <button id="confirmBtn" value=${payTal.pay_id }>구매확정</button></td>
 												</c:otherwise>
 											</c:choose>
 										</tr>
@@ -66,7 +66,7 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
-					<hr>
+					<br>
 					<c:choose>
 						<c:when test="${payTalRequest eq '1' }">
 						</c:when>
@@ -94,7 +94,7 @@
 							</table>
 						</c:otherwise>
 					</c:choose>
-					<hr>
+					<br>
 					<c:choose>
 						<c:when test="${payTalRefund eq '1' }">
 						</c:when>
