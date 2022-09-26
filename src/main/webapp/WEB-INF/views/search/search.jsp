@@ -16,155 +16,118 @@
 </head>
 <body>
 	<!-- header -->
-	<div class="main-header">
-		<!-- section1 -->
-		<section class="header-section1">
-			<div class="logo-div">	
-				<a href="/jj9/mainpage" class="jj9-mainpage">jj9</a>
-			</div>
-			<div class="login-register-div">
-				<div class="login-register-div-login">
-			 		<a href="login" class="member-login">로그인</a>
-			 	</div>
-			 	<div class="login-register-div-register">  
-			 		<a href="register" class="member-register">회원가입</a>
-			 	</div>
-			</div>
-		</section>
-		<!-- section1 -->
-		
-		<!-- section2 -->
-		<section class="header-section2">
-		<!-- 카테고리 -->
+<%@ include file="../header.jsp" %>
 
-				<div class="mainPage-mainCategory-div">
-            <button class="category-button">
-                <div class="category-menu-img"></div>
-                <span style="font-size:20px;">메인 카테고리</span>
-            </button>
-            <div class="mainCategory-div">
-                <c:forEach items="${mainCates }" var="maincategory" varStatus="status">
-                    <div id="mainCategory-div${status.count }" class="mainCategory-div2"> 
-                        <a href="/jj9/category/${maincategory.cate_id }" id="mainCategory-a"> ${maincategory.cate_main } ▼</a>
-                    <div class="subCategory-div">
-                        <c:set var="sub" value="sub${status.count}" />
-                        <c:forEach items="${requestScope[sub] }" var="sub" varStatus="status2">
-                            <a href="/jj9/category/${sub.cate_id }" id="subCategory-a${status2.count }" class="subCategory-a">${sub.cate_sub }</a>
-                        </c:forEach>
-                    </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-		
-		<!-- 카테고리 -->
-		
-		<!-- 검색 기능 -->
-		<div class="search_wrap">
-			<div class="search_area">
-				<form id="mainSearchForm" name="searchForm" method="get">
-					<input type="text" id="searchKeyword" name="keyword" value="${page.cri.keyword }" placeholder="재능을 검색하세요.">
-						<button class="searchButton">검색</button>
-					<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
-					<input type="hidden" name="amount" value="${page.cri.amount }">
-				</form>
+	<section class="category-section1">
+
+
+		<!-- category list -->
+		<div class="category-div1">
+			<div class="purchase-count-div">
+				<span class="purchase-count-span">※ ${page.total }개의 재능이
+					있습니다.</span>
+
 			</div>
+			<c:choose>
+				<c:when test="${page.total==0 }">
+					<div class="purchase-total-zero">
+						<div class="purchase-total-zero-div1">
+							<span>찾으시는 결과가 없나요?</span> <span>필요한 재능을 알려주세요. 전문가를
+								찾아드릴게요!</span>
+						</div>
+						<div class="purchase-total-zero-div2">
+							<c:choose>
+								<c:when test="${sessionScope.member_id==null }">
+									<a href="/jj9/login">
+										<div class="purchase-total-zero-req">
+											<span class="purchase-total-zero-req-span">재능 의뢰하기</span>
+										</div>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="/jj9/req/1">
+										<div class="purchase-total-zero-req">재능 의뢰하기</div>
+									</a>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="category-div2">
+						<c:forEach items="${purchases}" var="purchase">
+
+							<a href="/jj9/purchase/${purchase.talent_id }" class="purchase-a">
+
+								<img class="purchase-image" src=""></img>
+								<div class="purchase-title2">${purchase.talent_title }</div>
+								<div class="purchase-price">
+									￦
+									<fmt:formatNumber value="${purchase.talent_price }"
+										groupingUsed="true" />
+								</div>
+								<div class="purchase-seller">판매자 : ${purchase.member_id }</div>
+							</a>
+
+						</c:forEach>
+
+					</div>
+					<!-- category list -->
+
+					<!-- paging -->
+					<div class="paging-div">
+						<div class="paging-wrap">
+							<div class="pageInfo-area">
+								<ul id="pageInfo" class="pageInfo">
+
+									<!-- 이전페이지 버튼 -->
+									<c:if test="${page.prev}">
+										<li class="pageInfo_btn previous"><a
+											href="${page.startPage-1}">이전</a> <!-- 11~20 페이지를 보고있다면 이전 버튼 클릭 시 11-1 페이지로 이동 -->
+										</li>
+									</c:if>
+									<!-- 각 번호 페이지 버튼 -->
+									<c:forEach var="num" begin="${page.startPage}"
+										end="${page.endPage}">
+										<li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }">
+											<!-- 내가 클릭한 페이지 번호에 음영 넣기 --> <a href="${num }">${num}</a>
+										</li>
+
+									</c:forEach>
+
+									<!-- 다음페이지 버튼 -->
+									<c:if test="${page.next}">
+										<li class="pageInfo_btn next"><a
+											href="${page.endPage + 1 }">다음</a> <!--  11~20 페이지를 보고있다면 다음 버튼 클릭 시 20+1 페이지로 이동 -->
+										</li>
+									</c:if>
+
+								</ul>
+							</div>
+						</div>
+						<form id="moveForm" method="get">
+							<input type="hidden" name="keyword" value="${page.cri.keyword }">
+							<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
+							<input type="hidden" name="amount" value="${page.cri.amount }">
+						</form>
+					</div>
+				</c:otherwise>
+			</c:choose>
+			<!-- paging -->
+
 		</div>
-		<!-- /검색 기능 -->
-		<div class="insert-register-div">
-			<div class="talent-insert">
-				 <a href="insert">재능 등록하기 </a> <br />
-			</div>
-
-			<div class="talent-request">
-				 <a href="req/1">재능 의뢰하기 </a> <br />
-			</div>
-		</div>
-
-		</section>
-
-
-	</div>
-	<!-- header -->
-
-	<br /><br />
-	
-
-	<div>
-		<table>
-			<tr>
-				<th>번호</th>
-				<th>재능번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>등록일</th>
-			</tr>
-
-			<c:forEach items="${purchases}" var="list">
-				<tr>
-					<td><c:out value="${list.rn}" /></td>
-					<td><c:out value="${list.talent_id}" /></td>
-					<td><a href="../jj9/purchase/${list.talent_id}"><c:out
-								value="${list.talent_title}" /></a></td>
-					<td><c:out value="${list.member_id}" /></td>
-					<td><fmt:formatDate value="${list.talent_date}"
-							pattern="yy-MM-dd" /></td>
-				</tr>
-			</c:forEach>
-		</table>
-		<div class="pagInfo-wrap">
-			<div class="pageInfo-area">
-				<ul id="pageInfo" class="pageInfo">
-
-					<!-- 이전페이지 버튼 -->
-					<c:if test="${page.prev}">
-						<li class="pageInfo_btn previous">
-							<a href="${page.startPage-1}">이전</a> <!-- 11~20 페이지를 보고있다면 이전 버튼 클릭 시 11-1 페이지로 이동 -->
-						</li>
-					</c:if>
-					<!-- 각 번호 페이지 버튼 -->
-					<c:forEach var="num" begin="${page.startPage}" end="${page.endPage}">
-                    <li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }"> <!-- 내가 클릭한 페이지 번호에 음영 넣기 -->
-                             		<a href="${num }">${num}</a></li>
-
-                </c:forEach>
-
-					<!-- 다음페이지 버튼 -->
-					<c:if test="${page.next}">
-						<li class="pageInfo_btn next">
-							<a href="${page.endPage + 1 }">다음</a> <!--  11~20 페이지를 보고있다면 다음 버튼 클릭 시 20+1 페이지로 이동 -->
-						</li>
-					</c:if>
-
-				</ul>
-			</div>
-		</div>
-		<form id="moveForm" method="get">
-		    <input type="hidden" name="keyword" value=${page.cri.keyword } />
-			<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
-        	<input type="hidden" name="amount" value="${page.cri.amount }">
-        </form> 
-	</div>
-	
+	</section>
+	<!-- body -->
 
 
 
-	<br />
-	<br />
-	<div>
-		재능 등록 테스트 용<br />
-		<a href="">재능 등록 </a> <br />
-	</div>
-	
-	<div>
-		재능 의뢰 테스트 용<br />
-		<a href="">재능 의뢰 </a> <br />
-	</div>
-	
-	<br />
-	
+
 
 	<script src="/jj9/resources/js/category.js?ver=1"></script>
+			<!-- footer -->
+<%@ include file="../footer.jsp" %>
+	
+	
 
 </body>
 </html>

@@ -39,51 +39,6 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 }
 /* /mainpage */
 
-/* header */
-.main-header {
-	border-bottom: #9a9ba7;
-}
-
-.main-header>a {
-	color: black;
-	text-decoration: none;
-}
-
-/* section1 */
-.header-section1 {
-	height: 75px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	-webkit-box-align: center;
-	align-items: center;
-	width: 1200px;
-	margin: 0 auto;
-	padding: 0 16px;
-}
-
-/* login, register*/
-.login-register-div {
-	width: 200px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	/*-webkit-box-align: center;*/
-	align-items: center;
-}
-
-.login-register-div-login {
-	border-style: solid;
-	border-color: transparent;
-	padding: 0 22px;
-}
-
-.login-register-div-register {
-	border-style: solid;
-	border-color: transparent;
-	padding: 22px 0;
-}
-
 /* section2 */
 .header-section2 {
 	width: 1200px;
@@ -214,7 +169,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 }
 
 /* body */
-.body-div {
+.body-div2 {
 	display: grid;
 	grid-template-columns: 30% 70%;
 	grid-template-rows: 5% 95%;

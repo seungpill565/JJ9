@@ -141,8 +141,8 @@
        where member_id is not null
        
        <if test="cri.keyword != null">
-       		<!--  and talent_title like '%'||#{cri.keyword}||'%' -->  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
-       		 <include refid="criteria"></include> 
+       		  and talent_title like '%'||#{cri.keyword}||'%'   <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       		
     	</if> 
        
          order by talent_id desc) tal
@@ -161,8 +161,8 @@
   		inner join member using(member_id)  
   		where member_id is not null
   		 <if test="cri.keyword != null">
-       		<!-- and talent_title like '%'||#{keyword}||'%' --> <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
-       		 <include refid="criteria"></include>
+       		and talent_title like '%'||#{keyword}||'%' <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
+       	
        </if>
   		
   		 
