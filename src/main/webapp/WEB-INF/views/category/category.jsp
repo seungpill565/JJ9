@@ -16,9 +16,9 @@
 
 </head>
 <body>
+
 <!-- header -->
 <%@ include file="../header.jsp" %>
-	
 
 <!-- body -->
 <section class="category-section1">

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@font-face {
+    font-family: "210-supersize";
+    src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
+}
+
+
+
+table { 
+    border-collapse: collapse;   
+    width: 90%;
+    margin-left: 45px;
+}
+
+.notice1-part{
+  
+    align-items: center;
+}
+
+table td {
+    height: 70px;    
+}
+
+button{
+    border: 0;
+    background-color: fff;
+}
+
+button:hover{
+    cursor: pointer;
+
+}

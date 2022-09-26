@@ -30,4 +30,12 @@
 		DELETE FROM notice Where notice_id = #{notice_id}
 	</delete>
 	
+	<select id="getNoticeCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<select id="getNoticeById" resultType="com.spring.jj9.dto.Notice">
+		SELECT * FROM notice WHERE notice_id = ${id}
+	</select>
+	
 </mapper>
