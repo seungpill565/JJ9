@@ -334,21 +334,28 @@ public class AdminController {
 		return "admin/refundManage"; 
 	}	
 	@PostMapping("/refund")
-	public String refund(Model model, int refund_id, String buyer_member_id, String seller_member_id, Integer pay_money, Integer pay_original_money) {
-		
-		//refund_id로 환불처리
-		refundService.refund(refund_id);
-		
-		// 구매자 포인트 + 		
-		memberService.updatePoint(buyer_member_id, pay_money);
-		
-		// 판매자 포인트 - 		
-		memberService.updatePoint(seller_member_id, -pay_original_money);
-		// 사용한 쿠폰도 조회후 돌려줘여함.
-		
-		//refundManage 페이지로 이동
-		return "redirect:/refundManage"; 
-	}
+    public String refund(Model model, int refund_id, int pay_id, String buyer_member_id, String seller_member_id, Integer pay_money, Integer pay_original_money) {
+
+        //refund_id로 환불처리
+        refundService.refund(refund_id);
+
+        //pay table에 환불완료로 기록
+        payService.refund(pay_id);
+
+
+        // 구매자 포인트 +
+        memberService.updatePoint(buyer_member_id, pay_money);
+
+        // 판매자 포인트 -
+        memberService.updatePoint(seller_member_id, -pay_original_money);
+
+
+
+        // 사용한 쿠폰도 조회후 돌려줘여함.
+
+        //refundManage 페이지로 이동
+        return "redirect:/refundManage"; 
+    }
 	
 	@GetMapping("/confirmDeleteRefundRequest")
 	public void confirmDeleteRefundRequest(HttpServletResponse response, int refund_id) throws IOException {

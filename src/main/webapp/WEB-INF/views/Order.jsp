@@ -35,13 +35,13 @@
 		</div>
 		<table border="1">
 			<thead  >
-				<th id="nomal">기본항목</th>
+				<th id="nomal" style="width: 400px;">기본항목</th>
 				<th id="select">수량선택</th>
 				<th id="day">작업일</th>
 				<th id="th-price">가격</th>
 			</thead>
 			<tbody>
-			<td><div>${order.talent_summary }</div></td>
+			<td><div style="white-space: pre-wrap;">${order.talent_summary }</div></td>
 			<td>
 				<div id="select-grid">
 					<input id="minus-button" type='button'onclick='count("minus")' value='-' disabled/>

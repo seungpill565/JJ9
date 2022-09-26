@@ -7,4 +7,6 @@ import com.spring.jj9.dto.Pay_talentList;
 public interface PayMapper {
 
 	public List<Pay_talentList> getPayList();
+
+	public void refund(int pay_id);
 }

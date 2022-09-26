@@ -89,7 +89,7 @@
 						</div>
 						<div class="list-second-row">
 							<div class="content-div">
-							<c:out value="${list.trequest_content }"></c:out>
+								<textarea style="resize: none; font-size:13px; font-family:'돋움체'; border: 0;" rows="8" cols="110" readonly><c:out value="${list.trequest_content }"/></textarea> 
 							</div>
 						</div>
 						

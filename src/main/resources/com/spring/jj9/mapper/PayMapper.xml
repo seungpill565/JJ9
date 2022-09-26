@@ -10,5 +10,11 @@
 		ORDER BY p.pay_id DESC
 	</select>	
 
+	<update id="refund">
+		UPDATE pay 
+		SET refund_request = '환불완료'	
+		WHERE pay_id = #{pay_id} AND refund_request = '환불요청'			
+	</update>
+	
 	
 </mapper>

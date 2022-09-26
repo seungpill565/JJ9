@@ -76,7 +76,7 @@
 							
 							<div>
 								<label for="detail-contents">상세내용</label><br> 
-								<textarea name="" id="detail-contents" cols="30" rows="10"></textarea>
+								<textarea name="trequest_content" id="detail-contents" cols="30" rows="10"></textarea>
 								<!-- <input type="text" name="trequest_content"/>  --><br>
 								<input type="hidden" value="1" name="member_id"/>
 							</div>

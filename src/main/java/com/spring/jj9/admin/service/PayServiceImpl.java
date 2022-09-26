@@ -20,4 +20,10 @@ public class PayServiceImpl implements PayService{
 		return mapper.getPayList();
 	}
 
+	@Override
+	public void refund(int pay_id) {
+		mapper.refund(pay_id);
+		
+	}
+
 }

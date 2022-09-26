@@ -73,6 +73,7 @@
 											<input type="hidden" name="pay_money" value=${refundRequest.pay_money} />
 											<input type="hidden" name="seller_member_id" value=${refundRequest.seller_member_id} />
 											<input type="hidden" name="pay_original_money" value=${refundRequest.pay_original_money} />
+											<input type="hidden" name="pay_id" value=${refundRequest.pay_id} />
 											<button type="submit">환불처리</button>
 										</form>			
 										<a href="confirmDeleteRefundRequest?refund_id=${refundRequest.refund_id }"><button style="margin: 0px 10px">요청 삭제</button></a>

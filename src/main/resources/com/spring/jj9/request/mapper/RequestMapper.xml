@@ -25,6 +25,6 @@
     
 	<insert id="insertRequest" parameterType="com.spring.jj9.dto.Talent_request">
 		INSERT INTO talent_request VALUES(request_id_seq.nextval, #{member_id}, #{trequest_title}, #{trequest_content},
-									 #{trequest_date}, #{trequest_deadline}, #{trequest_budget}, #{cate_id})
+									 #{trequest_date},#{trequest_budget} , #{trequest_deadline}, #{cate_id})
 	</insert>
 </mapper>

@@ -31,7 +31,7 @@
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id)  
-  		where cate_main = #{cate_main} and member_id is not null
+  		where cate_main = #{cate_main} and member_id is not null and talent_permission = '승인'
   </select>
   
   
@@ -40,7 +40,7 @@
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id) 
-  		where cate_id = #{cate_id} and member_id is not null
+  		where cate_id = #{cate_id} and member_id is not null and talent_permission = '승인'
   </select>
 
 <!-- 메인 카테고리를 눌렀을때 불러오는 메인 재능들 / 페이징 시 필요 -->
@@ -51,7 +51,7 @@
        		(select * from talent_list 
        		 inner join member using(member_id) 
        		 inner join category using(cate_id) 
-       		 where cate_main = #{cate_main} and member_id is not null  order by talent_id desc) tal 
+       		 where cate_main = #{cate_main} and member_id is not null and talent_permission = '승인'  order by talent_id desc) tal 
        	where rownum <= #{cri.pageNum} * #{cri.amount})
        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
@@ -67,7 +67,7 @@
        (select * from talent_list
         inner join member using(member_id) 
         inner join category using(cate_id) 
-        where cate_id = #{cate_id} and member_id is not null order by talent_id desc) tal 
+        where cate_id = #{cate_id} and member_id is not null and talent_permission = '승인' order by talent_id desc) tal 
        where rownum <= #{cri.pageNum} * #{cri.amount})
        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
     
@@ -82,7 +82,7 @@
        (select * from talent_list 
        inner join member using(member_id) 
        inner join category using(cate_id) 
-       where member_id is not null
+       where member_id is not null and talent_permission = '승인'
        
        <if test="cri.keyword != null">
        		 and talent_title like '%'||#{cri.keyword}||'%'  <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
@@ -102,7 +102,7 @@
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id)  
-  		where member_id is not null
+  		where member_id is not null and talent_permission = '승인'
   		 <if test="keyword != null">
        		and talent_title like '%'||#{keyword}||'%' <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
        </if>
@@ -138,7 +138,7 @@
        (select * from talent_list 
        inner join member using(member_id) 
        inner join category using(cate_id) 
-       where member_id is not null
+       where member_id is not null and talent_permission = '승인'
        
        <if test="cri.keyword != null">
        		  and talent_title like '%'||#{cri.keyword}||'%'   <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
@@ -159,7 +159,7 @@
   		select count(*) from talent_list 
   		inner join category using(cate_id) 
   		inner join member using(member_id)  
-  		where member_id is not null
+  		where member_id is not null and talent_permission = '승인'
   		 <if test="cri.keyword != null">
        		and talent_title like '%'||#{keyword}||'%' <!-- like 패턴 적용 시 이렇게 적어야 한다 -->
        	

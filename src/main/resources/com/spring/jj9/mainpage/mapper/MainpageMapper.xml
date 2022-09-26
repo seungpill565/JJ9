@@ -14,11 +14,11 @@
   </select>
   
   <select id="readBestPurchase" resultType="com.spring.jj9.dto.TalentAll">
-  		select * from (select * from talent_list order by talent_paycount desc, talent_id asc) where <![CDATA[rownum < 5]]> and member_id is not null<!-- 판매횟수가 많은 것중 4개만 읽기 -->
+  		select * from (select * from talent_list order by talent_paycount desc, talent_id asc) where <![CDATA[rownum < 5]]> and member_id is not null and talent_permission = '승인'<!-- 판매횟수가 많은 것중 4개만 읽기 -->
   </select>
   
   <select id="readNewPurchase" resultType="com.spring.jj9.dto.TalentAll">
-  		select * from (select * from talent_list order by talent_id desc) where <![CDATA[rownum < 5]]> and member_id is not null<!-- 가장 최신 등록된 재능 4개만 읽기 -->
+  		select * from (select * from talent_list order by talent_id desc) where <![CDATA[rownum < 5]]> and member_id is not null and talent_permission = '승인'<!-- 가장 최신 등록된 재능 4개만 읽기 -->
   </select>
   
 
