@@ -100,7 +100,7 @@
 	</div>
 	
 	
-	<div id="title">
+	<div id="title" style="max-width: 400px">
 		<h3 id="title-name">${purchase.talent_title }</h3>
 		<div id="description">정보</div>
 		<div id="description">${purchase.talent_summary }</div>
@@ -114,7 +114,7 @@
 	</div>
 	<img id="pay-content" alt="" src="/jj9/resources/images/payContent.jpg">
 	
-	<div id ="seller-info">
+	<div id ="seller-info" style="max-width: 400px">
 		<h3 id="title-name">판매자 정보</h3>
 		<div id="description">닉네임 : ${purchase.member_nickName }</div>
 		<div id="description">아이디 : ${purchase.member_id }</div>

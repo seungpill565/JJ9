@@ -33,17 +33,17 @@
 			<div class="main__container">
 				<h2 class="main-container__title">구매재능내역</h2>
 				<div class="container__card">
-					<table border="1">
+					<table id="table" border="1">
 						<thead>
-							<th>결제번호</th>
-							<th>재능이름</th>
-							<th>가격(할인 미적용)</th>
-							<th>가격(할인 적용)</th>
-							<th>판매자 이름</th>
-							<th>판매자 닉네임</th>
-							<th>판매자 전화번호</th>
-							<th>판매자 이메일</th>
-							<th>쪽지 보내기</th>
+							<th width="150" style="background-color: #E84646;color: white;">결제번호</th>
+							<th width="150" style="background-color: #E84646;color: white;">재능이름</th>
+							<th width="150" style="background-color: #E84646;color: white;">가격(할인 미적용)</th>
+							<th width="150" style="background-color: #E84646;color: white;">가격(할인 적용)</th>
+							<th width="150" style="background-color: #E84646;color: white;">판매자 이름</th>
+							<th width="150" style="background-color: #E84646;color: white;">판매자 닉네임</th>
+							<th width="150" style="background-color: #E84646;color: white;">판매자 전화번호</th>
+							<th width="150" style="background-color: #E84646;color: white;">판매자 이메일</th>
+							<th width="150" style="background-color: #E84646;color: white;">쪽지 보내기</th>
 						</thead>
 						<tbody id="table">
 							<tr>

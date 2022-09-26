@@ -87,7 +87,7 @@ public class MyPageController {
             i++;
         }
         // ----- 카테고리 갖고오는 코드 끝
-		return "account/mypage";
+		return "account/sell-talent";
 	}
 	
 	@GetMapping("/account/sell-talent")

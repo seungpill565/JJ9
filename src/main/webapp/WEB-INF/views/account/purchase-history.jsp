@@ -7,12 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 - 구매내역</title>
-<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
-<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
+	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
@@ -40,14 +39,14 @@
 						<c:otherwise>
 							<table id="table" border=1>
 								<thead>
-									<th>결제번호</th>
-									<th>제목</th>
-									<th>결제금액</th>
-									<th>판매자</th>
-									<th>환불</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제번호</th>
+									<th width="350" style="background-color: #E84646;color: white;">제목</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제금액</th>
+									<th width="150" style="background-color: #E84646;color: white;">판매자</th>
+									<th width="250" style="background-color: #E84646;color: white;">환불</th>
 								</thead>
 								<tbody>
-									<c:forEach items="${payTalNull }" var="payTal">
+									<c:forEach items="${payTalNull }" var="payTal" varStatus="status">
 										<tr>
 											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';">${payTal.pay_id }</td>
 											<td style=" cursor: pointer;" onclick="location.href='buyInfo/${payTal.pay_id}';"><a href="buyInfo/${payTal.pay_id }">${payTal.talent_title }</a></td>
@@ -58,7 +57,7 @@
 													<td style="cursor: pointer; color:green;" onclick="location.href='buyInfo/${payTal.pay_id}';">구매확정</td>
 												</c:when>
 												<c:otherwise>
-													<td><button id="refundBtn" value="${payTal.pay_id }">환불하기</button> / <button id="confirmBtn" value=${payTal.pay_id }>구매확정</button></td>
+													<td><button class="button" id="refundBtn${status.index }" value="${payTal.pay_id }">환불하기</button> / <button class="button" id="confirmBtn${status.index }" value=${payTal.pay_id }>구매확정</button></td>
 												</c:otherwise>
 											</c:choose>
 										</tr>
@@ -73,22 +72,22 @@
 						</c:when>
 						<c:otherwise>
 							<h2 class="main-container__title">환불요청 중인 상품</h2>
-							<table border=1>
+							<table id="table" border=1>
 								<thead>
-									<th>결제번호</th>
-									<th>제목</th>
-									<th>결제금액</th>
-									<th>판매자</th>
-									<th>환불</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제번호</th>
+									<th width="350" style="background-color: #E84646;color: white;">제목</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제금액</th>
+									<th width="150" style="background-color: #E84646;color: white;">판매자</th>
+									<th width="250" style="background-color: #E84646;color: white;">환불</th>
 								</thead>
 								<tbody>
-									<c:forEach items="${payTalRequest }" var="payTal">
+									<c:forEach items="${payTalRequest }" var="payTal" varStatus="status">
 										<tr>
 											<td>${payTal.pay_id }</td>
 											<td>${payTal.talent_title }</td>
 											<td><fmt:formatNumber value="${payTal.pay_money }" groupingUsed="true" /></td>
 											<td>${payTal.seller_member_id }</td>
-											<td><button id="cancelBtn" value="${payTal.pay_id }">취소하기</button></td>
+											<td><button class="button" id="cancelBtn${status.index }" value="${payTal.pay_id }">취소하기</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -103,11 +102,11 @@
 							<h2 class="main-container__title">환불이 완료 된 상품</h2>
 							<table border=1>
 								<thead>
-									<th>결제번호</th>
-									<th>제목</th>
-									<th>결제금액</th>
-									<th>판매자</th>
-									<th>환불</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제번호</th>
+									<th width="150" style="background-color: #E84646;color: white;">제목</th>
+									<th width="150" style="background-color: #E84646;color: white;">결제금액</th>
+									<th width="150" style="background-color: #E84646;color: white;">판매자</th>
+									<th width="150" style="background-color: #E84646;color: white;">환불</th>
 								</thead>
 								<tbody>
 									<c:forEach items="${payTalRefund }" var="payTal">
@@ -127,42 +126,68 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../include/footer.jsp" %>
 	<script>
-	if(document.getElementById('refundBtn')){
-		const refundBtn = document.getElementById('refundBtn');
-		
-		refundBtn.addEventListener('click', (e) => {
-			var result = confirm("환불신청 하시겠습니까?");
-		        
-		        if(result) {
-		            location.href='refund/' + refundBtn.value;
-		        }
-		});
+	var btnArr = new Array();
+	
+	var sections = document.querySelectorAll("button[id^='refundBtn']");
+	console.log(sections);
+	
+	for (i = 0; i < sections.length; i++) {
+		btnArr.push(sections.item(i));
 	}
 	
-	if(document.getElementById('confirmBtn')){
-		const confirmBtn = document.getElementById('confirmBtn');
-		
-		confirmBtn.addEventListener('click', (e) => {
-			var result = confirm("구매확정 하시겠습니까?");
-			
-		        if(result) {
-		            location.href='fix/' + refundBtn.value;
-		        }
-		});
+	for (i = 0; i < btnArr.length; i++){
+		if(btnArr[i]){
+			btnArr[i].addEventListener('click', (e) => {
+
+				var result = confirm("환불신청 하시겠습니까?");
+			        if(result) {
+			            location.href='refund/' + e.target.value;
+			        }
+			});
+		}	
 	}
 	
-	if(document.getElementById('cancelBtn')){
-		const cancelBtn = document.getElementById('cancelBtn');
-		
-		cancelBtn.addEventListener('click', (e) => {
-			var result = confirm("환불요청을 취소하시겠습니까?");
+	var btnArr2 = new Array();
+	
+	var btns = document.querySelectorAll("button[id^=confirmBtn]");
+	
+	for (i = 0; i < btns.length; i++) {
+		btnArr2.push(btns.item(i));
+	}
+	
+	for (i =0; i < btnArr2.length; i++) {
+		if(btnArr2[i]){
 			
-		        if(result) {
-		            location.href='cancel/' + cancelBtn.value;
-		        }
-		});
+			btnArr2[i].addEventListener('click', (e) => {
+				var result = confirm("구매확정 하시겠습니까?");
+				
+			        if(result) {
+			            location.href='fix/' + e.target.value;
+			        }
+			});
+		}
+	}
+	
+	var btnArr3 = new Array();
+	
+	var btns2 = document.querySelectorAll("button[id^='cancelBtn']");
+	
+	for (i = 0; i < sections.length; i++) {
+		btnArr3.push(btns2.item(i));
+	}
+	
+	for (i =0; i < btnArr3.length; i++) {
+		
+		if(btnArr3[i]){
+			btnArr3[i].addEventListener('click', (e) => {
+				var result = confirm("환불요청을 취소하시겠습니까?");
+				
+			        if(result) {
+			            location.href='cancel/' + e.target.value;
+			        }
+			});
+		}
 	}
 	
 	</script>

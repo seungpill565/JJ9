@@ -174,6 +174,11 @@ public class OrderController {
 		member.setMember_id(talentMember); //판매자 아이디로 설정
 		service.updatePoint(member); // 포인트 업테이트
 		
+		//count update
+		int count = service.getTalnetCount(talentId);//현재 가운트
+		int plusCount = (count+1); // 카운트 1증가 해주기
+		service.updateTalentCount(plusCount, talentId); // 카운트 업데이트 
+		
 		//coupon update
 		int couponName = Integer.parseInt(name);
 		
@@ -183,6 +188,13 @@ public class OrderController {
 		if(couponName != 0 || couponName != 5){
 			service.updateCoupon(coupon);
 		}
+		
+		
+		
+		
+		
+		
+		//
 		///
 		// ----- 카테고리 갖고오는 코드 시작
 		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다

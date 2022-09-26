@@ -72,4 +72,14 @@ public class OrderServiceImpl implements OrderService {
 		return mapper.getTalnetTitle(id);
 	}
 
+	@Override
+	public int getTalnetCount(int id) {
+		return mapper.getTalnetCount(id);
+	}
+
+	@Override
+	public int updateTalentCount(int plusCount, int talentId) {
+		return mapper.updateTalentCount(plusCount, talentId);
+	}
+
 }

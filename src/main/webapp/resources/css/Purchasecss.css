@@ -27,6 +27,7 @@
 	right: 17%;
 	border: solid gray 1px;
 	margin: 3px;
+	padding: 15px;
 	
 	
 	
@@ -67,9 +68,10 @@ background-color: #E84646;
 
 #seller-info{
 	position: absolute;
-	top :74%;
+	top :84%;
 	right: 16.5%;
 	border: solid gray 1px;
+	margin: 15px;
 	
 }
 #description{
@@ -89,7 +91,7 @@ background-color: #E84646;
 
 #pay-content{
 	position: absolute;
-	top :62%;
+	top :74%;
 	right: 14%;
 }
 #avg-grid{

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
+</head>
+<body>
+
 	<!-- header -->
 	<div class="main-header">
 		<!-- section1 -->
@@ -19,6 +26,9 @@
 						</a>
 					</c:when>
 					<c:otherwise>
+						<div class="login-register-div-name">
+							<span>${sessionScope.member_name }님,</span> <span>반갑습니다!</span>
+						</div>
 						<div class="login-register-div-mypage">
 							<a href="/jj9/account/mypage"
 								class="member-mypage member-mypage-logout">마이페이지</a>
@@ -79,11 +89,17 @@
 			</div>
 			<!-- /검색 기능 -->
 			<div class="insert-register-div">
-				<a href="insert">
+				<a href="/jj9/notice">
+					<div class="talent-insert insert-register-a">
+						<span>공지사항</span>
+					</div>
+				</a>
+				<a href="/jj9/insert">
 					<div class="talent-insert insert-register-a">
 						<span>재능 등록하기</span>
 					</div>
-				</a> <a href="req/1">
+				</a> 
+				<a href="/jj9/req/1">
 					<div class="talent-request insert-register-a">
 						<span>재능 의뢰하기</span>
 					</div>
@@ -93,3 +109,5 @@
 	</div>
 	<hr />
 	<!-- header -->
+</body>
+</html>

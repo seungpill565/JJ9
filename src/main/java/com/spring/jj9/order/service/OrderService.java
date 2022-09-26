@@ -2,6 +2,8 @@ package com.spring.jj9.order.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.spring.jj9.dto.Coupon;
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.dto.Pay;
@@ -20,6 +22,8 @@ public interface OrderService {
 	public int updateCoupon(Coupon coupon);
 	public Member getMember(String id);
 	public String getTalnetTitle(int id);
+	public int getTalnetCount(int id);
+	public int updateTalentCount(@Param("plusCount")int plusCount, @Param("talentId")int talentId);
 	
 
 }

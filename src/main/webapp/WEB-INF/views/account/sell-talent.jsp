@@ -40,7 +40,7 @@
 				  	  				<th width="200" style="background-color: #E84646;color: white;"> 재능 이름 </th>
 				  	  				<th width="150" style="background-color: #E84646;color: white;"> 이미지 </th>
 				  	  				<th width="100" style="background-color: #E84646;color: white;"> 재능 등록 날짜 </th>
-				  	  				<th width="130" style="background-color: #E84646;color: white;"> 구매자 확인하기 </th>				  	  				
+				  	  				<th width="150" style="background-color: #E84646;color: white;"> 구매자 확인하기 </th>				  	  				
 				  	  				<th width="130" style="background-color: #E84646;color: white;"> 삭제 하기 </th>
 				  	  			</thead>
 				  	  			<tbody>
@@ -51,7 +51,7 @@
 					  	  					<td><img id="purchase_img" alt="" src="/tomcatImg/${talent.talent_image }"></td>					  	  				
 					  	  					<td>${talent.talent_date }</td>
 					  	  					<td><button id="button"><a href="../sell-talent/${talent.talent_id }">구매자 확인 하기</a></button></td>
-					  	  					<td><button id="del-button" value="${talent.talent_id }">삭제 요청하기</button></td>
+					  	  					<td><button id="del-button" ><a href="../del-a/${talent.talent_id }">탈렌트 삭제하기</a></button></td>
 					  	  				</tr>	
 				  	  				</c:forEach>
 				  	  			</tbody>
@@ -65,19 +65,6 @@
 		</div>
 	</div>
 	<%@ include file="../include/footer.jsp" %>
-	 <script>
-	 const delbutton = document.getElementById('del-button');
-	 delbutton.addEventListener('click',(e)=>{
-		 var result = confirm("판매중인 재능을 삭제 하시겠습니까?(복구 불가능 합니다.)");
-	        
-	        if(result)
-	        {
-	            location.href = "../del-talent/"+delbutton.value;
-	        }
-	        
-
-	 });
-       
-    </script>
+	 
 </body>
 </html>

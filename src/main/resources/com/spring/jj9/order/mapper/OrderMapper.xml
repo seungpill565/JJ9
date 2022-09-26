@@ -49,5 +49,10 @@
   <select id="getTalnetTitle" resultType="String">
   select talent_title from talent_list where talent_id = #{id}
   </select>
-  
+  <select id="getTalnetCount" resultType="int">
+  	SELECT TALENT_paycount from talent_list where talent_id = #{id}
+  </select>
+  <update id="updateTalentCount">
+  	update talent_list set TALENT_paycount = #{plusCount} where talent_id = #{talentId}
+  </update>
 </mapper>
