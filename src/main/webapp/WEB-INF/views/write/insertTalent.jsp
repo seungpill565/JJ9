@@ -56,10 +56,10 @@
 								<div class="col-name">제목</div> <input type="text" name="talent_title"/>
 							</div> <br>
 							<div class="colcol">
-								<div class="col-name">가격</div> <input type="number" name="talent_price"/>
+								<div class="col-name">가격</div> <input type="number"  min="5000" max="100000000" name="talent_price"/>
 							</div> <br>
 							<div class="colcol">
-								<div class="col-name">작업기간(일)</div> <input type="number" name="talent_workday"/>
+								<div class="col-name">작업기간(일)</div> <input type="number" min="1" max="500" name="talent_workday"/>
 							</div> <br>
 							<div class="colcol">
 								<div class="col-name">이미지</div> <input type="file" name="image_file"/> (최대 15MB) 

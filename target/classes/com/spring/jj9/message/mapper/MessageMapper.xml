@@ -14,4 +14,7 @@
   ,#{resiver },#{message_date})
   </insert>
   
+  <select id="getId2" resultType="com.spring.jj9.dto.Talent_request_all">
+  SELECT member_id from talent_request where trequest_id= #{id}
+  </select>
 </mapper>

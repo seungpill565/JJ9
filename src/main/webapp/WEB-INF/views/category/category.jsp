@@ -60,8 +60,7 @@
 						<c:forEach items="${purchases}" var="purchase">
 
 							<a href="/jj9/purchase/${purchase.talent_id }" class="purchase-a">
-
-								<img class="purchase-image" src=""></img>
+								<img class="purchase-image" src="/tomcatImg/${purchase.talent_image }"/>
 								<div class="purchase-title2">${purchase.talent_title }</div>
 								<div class="purchase-price">
 									￦ <fmt:formatNumber value="${purchase.talent_price }" groupingUsed="true" />

@@ -66,7 +66,7 @@
 							
 							<div>
 								<label for="trequest_budget">예산</label><br>
-								<input type="number" name="trequest_budget"/>
+								<input type="number" min="5000" max="100000000" name="trequest_budget"/>
 							</div>
 							
 							<div>

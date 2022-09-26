@@ -41,12 +41,12 @@ public class AddCouponcontroller {
 			req.setAttribute("url", "../coupon/registration");
 			return "Messagealert";
 		}
-		if(service.selectCoupon(code).size() != 0) {
+		if(service.selectCoupon(code).size() == 0) {
 			req.setAttribute("msg", "이미 사용된 쿠폰입니다.");
 			req.setAttribute("url", "../coupon/registration");
 			return "Messagealert";
 		}
-			update =	service.addCoupon(member_id,code);
+			update = service.addCoupon(member_id,code);
 			log.info(update);
 			if(update == 0) {
 				req.setAttribute("msg", "옳은 쿠폰 번호가 아닙니다.");

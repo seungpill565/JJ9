@@ -46,7 +46,7 @@
 <%@ include file="../header.jsp" %>
 <br>
 	<!-- body -->
-	
+	<div class="req-btn"><button id="req-btnn" onclick="location.href='../insertRequest';">의뢰 신청</button></div>
 	<section class="body-section2">
 		<div class="body-div2">
 			<div class="prodiv">프로젝트 리스트</div>
@@ -74,11 +74,10 @@
 			<div class="reqList">
 				
 				<c:forEach items="${purchases}" var="list">
-					<div onclick="location.href='../request/${list.trequest_id}';" class="list-div">
+					<div class="list-div">
 						<div class="list-first-row">
 							<div class="title-div">
-								<a href="../request/${list.trequest_id}"
-								class="req-title-a"><c:out value="${list.trequest_title}" /></a> <br>
+								<c:out value="${list.trequest_title}" /> <br>
 								
 								<div class="category-div">
 								<c:out value="${list.cate_main} · ${list.cate_sub }" />
@@ -89,6 +88,12 @@
 							</div>
 						</div>
 						<div class="list-second-row">
+							<div class="content-div">
+							<c:out value="${list.trequest_content }"></c:out>
+							</div>
+						</div>
+						
+						<div class="list-third-row">
 							<div class="budget-div">
 								<div class="left">
 									예산
@@ -119,9 +124,17 @@
 								</div>
 							</div>
 						</div>
+						<div class="message-div"><button id="message-btn">
+					  	  							<a href="../rmessage/${list.trequest_id }"
+					  	  					onclick="window.open(this.href,'팝업창','width = 490, height = 500, top = 100, left = 450, location = no,tatus=no,toolbar=no,scrollbars=no');return false;">
+					  	  					제안하기</a>
+					  	  						</button>
+					  	  					</td>			
+								<div id="pop-url" style="display: none;">
+									<c:url value="/message/" />
+								</div></div>
 					</div>
 					<hr>
-					<br>
 					<!-- 
 						<tr>
 							<td><c:out value="${list.rn}" /></td>

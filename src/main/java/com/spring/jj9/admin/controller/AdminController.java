@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -109,21 +110,32 @@ public class AdminController {
     RequestService reqservice;
 	
 	
-	@GetMapping("/admin")
-	public String goToAdmin(Model model , HttpSession session) {
-		log.info("접속완료");
-		log.info(memberService.getMember("admin1"));
-		Member currUser= memberService.getMember("admin1");
-		
-		//접속한 아이디 정보를 세션에 저장
-		session.setAttribute("currUser", currUser);	
-		
-		//카테고리 리스트를 categories에 담음
-		model.addAttribute("categories", cateService.getCateList());
-		
-		// 관리자 메인 페이지로 이동
-		return "/admin/categoryManage";
-	}
+    @GetMapping("/admin")
+    public String goToAdmin(Model model , HttpSession session, HttpServletRequest request) {
+
+        try {
+            String member_id = session.getAttribute("member_id").toString();
+            if (!member_id.equals("admin")) {
+                request.setAttribute("msg", "허용되지 않은 권한입니다. 메인페이지로 이동합니다.");
+                request.setAttribute("url", "/jj9/mainpage");
+                return "alert";
+            }
+        } catch (NullPointerException e) {
+            request.setAttribute("msg", "잘못된 접근입니다. 메인페이지로 이동합니다.");
+            request.setAttribute("url", "/jj9/mainpage");
+            return "alert";
+        }
+        Member currUser= memberService.getMember("admin");
+
+        //접속한 아이디 정보를 세션에 저장
+        session.setAttribute("currUser", currUser);
+
+        //카테고리 리스트를 categories에 담음
+        model.addAttribute("categories", cateService.getCateList());
+
+        // 관리자 메인 페이지로 이동
+        return "/admin/categoryManage";
+    }
 	
 	////////////////////////////// 카테고리 관리 ///////////////////////////////////
 	@GetMapping("/categoryManage")

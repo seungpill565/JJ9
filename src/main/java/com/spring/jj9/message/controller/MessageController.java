@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.spring.jj9.dto.Message;
 import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.dto.Talent_request_all;
 import com.spring.jj9.message.service.MessageService;
 
 import lombok.extern.log4j.Log4j2;
@@ -44,6 +44,27 @@ public class MessageController {
 		}
 		
 		TalentAll getid = service.getMemberId(id);
+		model.addAttribute("id",getid);
+		
+		this.talentid = id;
+		
+		return "Message";
+		
+	}
+	
+	@GetMapping(value = "/rmessage/{id}")
+	public String rmessageView (
+			@PathVariable("id") int id, Model model,
+			HttpSession session,HttpServletRequest req) {
+		try {
+			sessionId = session.getAttribute("member_id").toString();
+		}catch(NullPointerException e) {
+			req.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
+			req.setAttribute("url", "/jj9/login");
+			return "Messagealert";
+		}
+		
+		Talent_request_all getid = service.getMemberId2(id);
 		model.addAttribute("id",getid);
 		
 		this.talentid = id;

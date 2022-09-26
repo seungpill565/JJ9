@@ -95,7 +95,7 @@
 			<div class="insert-register-div">
 				<a href="/jj9/notice">
 					<div class="talent-insert insert-register-a">
-						<span>공지사항</span>
+						<span>jj9 공지사항</span>
 					</div>
 				</a>
 				<a href="/jj9/insert">

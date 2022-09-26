@@ -168,15 +168,24 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	align-items: center;
 }
 
+.req-btn {
+	margin-left: 72%;
+}
+
 /* body */
 .body-div2 {
 	display: grid;
 	grid-template-columns: 30% 70%;
-	grid-template-rows: 5% 95%;
+	grid-template-rows: 50px auto;
 	width: 1200px;
 	margin: 0 auto;
 	margin-top: 20px;
 	padding: 0 16px;
+}
+
+.body-div2:nth-last-child(2){
+	
+	margin-top: 20px;
 }
 
 .subCate-div {
@@ -193,6 +202,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	height: 50px;
 	width: 180px;
 	border-bottom: solid #e64646 3px;
+	margin-top: 20px;
 	margin-bottom: 10px;
 	grid-row-satrt: 1;
 	grid-column-start: 1;
@@ -245,11 +255,10 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 /* list부분 */
 .list-div {
 	display: grid;
-	grid-template-rows: 70% 30%;
-	height: 120px;
+	grid-template-rows: 20% 56% 16% 8%;
+	height: 280px;
 	margin: 0px;
 	padding: 0px;
-	cursor: pointer;
 }
 
 .req-title-a{
@@ -259,13 +268,13 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 .category-div {
 	font-family: sans-serif;
 	font-size: 13px;
-	color: #bdbdbd;
+	color: #b9b9b9;
 }
 
 .list-first-row {
 	display: grid;
 	grid-row-start: 1;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 80% 20%;
 	margin: 0;
 	grid-row-start: 1;
 	width: 815px;
@@ -285,9 +294,32 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	padding-right : 10px;
 }
 
-.list-second-row {
-	display: grid;
+.list-second-row{
 	grid-row-start: 2;
+	margin: 0;
+	padding-top: 10px;
+	padding-right: 10px;
+	width: 815px;
+}
+
+.content-div {
+	font-family: '돋움체';
+	font-size: 13px;
+	grid-column-start: 1;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.message-div {
+	text-align: right;
+	grid-row-start: 4;
+	margin-top: 0;
+	padding-right : 10px;
+}
+
+.list-third-row {
+	display: grid;
+	grid-row-start: 3;
 	grid-template-columns: 33% 33% 33%;
 	margin: 0;
 	padding-top: 7px;
@@ -323,4 +355,23 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	padding-right: 12px;
 }
 
+#message-btn {
+	border: black solid 1px;
+	background: #e64646;
+}
 
+#message-btn:hover {
+    background-color: #db6f6f;
+    cursor : pointer;
+}
+
+#req-btnn {
+	width: 160px;
+	border: black solid 1px;
+	background: #e64646;
+}
+
+#req-btnn:hover {
+    background-color: #db6f6f;
+    cursor : pointer;
+}

@@ -16,6 +16,7 @@ import com.spring.jj9.category.service.CategoryService;
 import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Coupon;
 import com.spring.jj9.dto.Message;
+import com.spring.jj9.dto.PayMember;
 import com.spring.jj9.dto.Pay_talentList;
 import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.mainpage.service.MainpageService;
@@ -53,13 +54,16 @@ public class MyPageController {
     RequestService reqservice;
 	// 카테고리 갖고오는 서비스 끝
 	
+	@Autowired
+	SellTalentService SellTalnetservice; 
+	
 	String member_id;
 
 	
 	@GetMapping("/account/mypage")
 	public String mypage(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		try {
-			String member_id = session.getAttribute("member_id").toString();			
+			 member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
 			request.setAttribute("msg", "로그인 후 사용할 수 있는 페이지입니다.");
 			request.setAttribute("url", "/jj9/login");
@@ -87,6 +91,14 @@ public class MyPageController {
             i++;
         }
         // ----- 카테고리 갖고오는 코드 끝
+        
+        List<Talent_list> talent_list = sellTalentService.getTalentList(member_id);
+		if(talent_list.size() == 0) {
+			model.addAttribute("talent","1");
+		}else {
+			model.addAttribute("talent",talent_list);
+		}
+		
 		return "account/sell-talent";
 	}
 	

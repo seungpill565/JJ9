@@ -12,11 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.spring.jj9.add.service.CateService;
+import com.spring.jj9.admin.alert.AlertPopup;
 import com.spring.jj9.dto.Talent_list;
 import com.spring.jj9.util.ScriptAlertUtils;
 
@@ -25,6 +27,13 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Controller
 public class InsertTalentController {
+	
+	@ExceptionHandler(java.io.IOException.class)
+    public void pKConstraintViolation (Exception e, HttpServletResponse response) throws IOException {
+        System.err.println(e.getClass());
+        AlertPopup.alertAndBackPage(response, "이미지를 넣어주세요");
+
+    }
 	
 	@Autowired
 	CateService cateService;
@@ -76,11 +85,12 @@ public class InsertTalentController {
 			log.info("확장자 : " + extension);
 			
 			// jpg도 아니고 png도 아니고 jpeg도 아니면 빠꾸
-			if(extension.equals("jpg") || extension.equals("png") || extension.equals("jpeg") || extension.equals("")) {
+			if(!extension.equals("jpg") && !extension.equals("png") && !extension.equals("jpeg") && !extension.equals("")) {
+				ScriptAlertUtils.alertAndBackPage(response, "이미지 파일만 등록이 가능합니다!");
 				
 			} else {
-				ScriptAlertUtils.alertAndBackPage(response, "이미지 파일만 등록이 가능합니다!");
-			}
+				
+			
 			
 			if (
 					multi.getParameter("cate-sub") == null || multi.getParameter("cate-sub").equals("null") ||
@@ -145,16 +155,17 @@ public class InsertTalentController {
 			
 			// Talent_list 테이블에 insert
 			if (cateService.insertTalent(tl) == 1) {
-				ScriptAlertUtils.alertAndBackPage(response, "등록이 완료되었습니다!");
-				return "redirect:/mainpage";
+				ScriptAlertUtils.alertAndMovePage(response, "등록이 완료되었습니다!", "mainpage");
 			} else {
 				ScriptAlertUtils.alertAndBackPage(response, "등록에 실패했습니다!");
+			}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		return "redirect:/insert";
+		
 	
 	}
 	
