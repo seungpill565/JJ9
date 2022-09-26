@@ -24,8 +24,12 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	text-decoration: underline;
 }
 
+a:visited{
+    color: black;
+}
+
 .active{ /* 보고있는 페이지 번호에 색상 주기 */
-      background-color: #cdd5ec;
+      background-color: #e64646;
       border-radius: 20px;
   }
 
@@ -37,6 +41,9 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     text-decoration: none;
     color: #e64646;
     text-decoration: none;
+}
+.jj9-mainpage:visited{
+    color: #e64646;
 }
 /* /mainpage */
 
@@ -60,10 +67,10 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 
 /* login, register*/
 .login-register-div{
-    width: 200px;
+    width: 30%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: end;
     /*-webkit-box-align: center;*/
     align-items: center;
 }
@@ -71,10 +78,68 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 .login-register-div-login{
     border-style: solid;
     border-color: transparent;
-    padding: 0 22px;
+    padding: 0 35px;
 }
 
 .login-register-div-register{
+    height: 50%;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 4px;
+    padding: 30px 15px;
+    display: flex;
+}
+
+.member-login:hover{
+    text-decoration: underline;
+}
+
+.member-register{
+    width: 80px;
+    height: 35px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: #e64646;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-mypage-logout:hover{
+    text-decoration: underline;
+}
+
+.member-register:hover{
+    background-color: #f5a8a8;
+}
+
+
+.login-register-div-name{
+    color: #927474;
+    text-decoration: underline;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-register-div-mypage{
+    width: 25%;
+    border-style: solid;
+    border-color: transparent;
+    padding: 22px 0;
+}
+
+.login-register-div-logout{
+    width: 25%;
     border-style: solid;
     border-color: transparent;
     padding: 22px 0;
@@ -105,6 +170,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 }
 
 .mainPage-mainCategory-div{
+    width: 250px;
     position : relative;
     display : inline-block;
 }
@@ -167,6 +233,29 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     background-color: #e67878;
 }
 
+/* paging */
+
+.paging-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+    margin: 50px 0 0 0;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+
+
 /* search */
 #searchKeyword{
     border-radius: 20px;
@@ -177,20 +266,6 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	list-style: none;
 	float: left;
 	padding: 6px;
-}
-
-.pageInfo {
-	list-style: none;
-	display: inline-block;
-	margin: 50px 0 0 100px;
-}
-
-.pageInfo li {
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
 }
 
 .searchButton{
@@ -206,12 +281,26 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 /* insert, register */
 
 .insert-register-div{
-    width: 200px;
+    width: 240px;
+    height: 30px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
+
+.insert-register-a{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insert-register-a:hover{
+    background-color: #d2d3d8;
+    border-radius: 4px;
+}
+/* /header */
 
 /* body */
 
@@ -296,9 +385,89 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
     height: 250px;
 }
 
+.purchase-a:hover{
+    text-decoration: underline;
+}
+
+/*///////////////////////////////////////////////*/
+
+/* category.jsp*/
+
+/* body */
 .category-div1{
     display: flex;
     flex-direction: column;
     width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 16px;
+    background-color: #f7c7c7;
+    border-radius: 4px;
 }
 
+.purchase-count-div{
+    width: 1200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #e67878;
+    border-radius: 4px;
+}
+
+.purchase-count-span{
+    margin: 20px;
+}
+
+.category-div2{
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    row-gap: 40px;
+    column-gap: 40px;
+    margin-top: 40px;
+
+}
+
+.purchase-image{
+    width: 250px;
+    height: 250px;
+}
+
+.purchase-total-zero{
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.purchase-total-zero-div1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.purchase-total-zero-div2{
+    margin-top: 20px;
+}
+
+.purchase-total-zero-req{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #e64646;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-total-zero-req:hover{
+    background-color: #b35858;
+}
+
+.purchase-total-zero-req-span{
+    font-size: 20px;
+}
