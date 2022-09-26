@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디/비밀번호 찾기</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/find-user.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/header.jsp" %>
 	<div class="container">
 		<h2 class="title">ID/PW 찾기</h2>
 		<p class="description">
@@ -82,9 +84,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+	<%@ include file="../include/footer.jsp" %>
 	
 	<script type="text/javascript">
 		function search_chk(num) {

@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 로그인 페이지</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/login.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 <!-- mongwoon font-awesome free-kit -->
 <script src="https://kit.fontawesome.com/d7134871a2.js" crossorigin="anonymous"></script>
 <!-- jquery -->
@@ -34,7 +36,7 @@ $(function() {
 </script>
 </head>
 <body>
-<%@ include file="./include/menu.jsp" %>
+<%@ include file="./include/header.jsp" %>
 	<div class="form__container">
 		<div class="container__image">
 			<h1 class="container__image--title">Welcome!</h1>
@@ -108,6 +110,6 @@ $(function() {
 			</form>
 		</div>
 	</div>
-	
+	<%@ include file="include/footer.jsp" %>
 </body>
 </html>

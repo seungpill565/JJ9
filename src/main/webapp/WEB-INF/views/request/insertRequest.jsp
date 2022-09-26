@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 - 재능의뢰등록</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <link rel="stylesheet" href="/jj9/resources/css/insertRequest.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
-	<h1 class="mypage-name">${sessionScope.member_name }님의 마이페이지</h1>
-	
+<%@ include file="../include/header.jsp" %>	
 	<div class="mypage">
 		<div class="mypage__category">
 			<div class="category__container">
@@ -89,7 +89,7 @@
 		</div>
 	</div>
 	
-<%@ include file="../footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 	<script src="/jj9/resources/js/insertRequest.js"></script>
 	
 	<script>

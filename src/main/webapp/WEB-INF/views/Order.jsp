@@ -1,40 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/Ordercss.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 </head>
 <body>
+<%@ include file="include/header.jsp" %>
+
 <c:forEach items="${order }" var="order">
 	
 	
 	<div id="order-details">
-		<h1>°áÁ¦ÇÏ±â</h3>
+		<h1>ê²°ì œí•˜ê¸°</h3>
 		
-		<h3>ÁÖ¹®³»¿ª</h5>
+		<h3>ì£¼ë¬¸ë‚´ì—­</h5>
 		
 		<img id="purchase_img" alt="" src="/jj9/resources/images/${order.talent_image }">
 		<br>
 		<br>
 		
 		<div id="title-nickName-id">
-			<h3>Àç´É ÀÌ¸§ : ${order.talent_title }</h3>
+			<h3>ì¬ëŠ¥ ì´ë¦„ : ${order.talent_title }</h3>
 			<hr>
-			<div>ÆÇ¸ÅÀÚ ´Ğ³×ÀÓ: ${order.member_nickName }</div>
-			<div>ÆÇ¸ÅÀÚ ¾ÆÀÌµğ: ${order.member_id }</div>
+			<div>íŒë§¤ì ë‹‰ë„¤ì„: ${order.member_nickName }</div>
+			<div>íŒë§¤ì ì•„ì´ë””: ${order.member_id }</div>
 			<hr>
 		</div>
 		<table border="1">
 			<thead  >
-				<th id="nomal">±âº»Ç×¸ñ</th>
-				<th id="select">¼ö·®¼±ÅÃ</th>
-				<th id="day">ÀÛ¾÷ÀÏ</th>
-				<th id="th-price">°¡°İ</th>
+				<th id="nomal">ê¸°ë³¸í•­ëª©</th>
+				<th id="select">ìˆ˜ëŸ‰ì„ íƒ</th>
+				<th id="day">ì‘ì—…ì¼</th>
+				<th id="th-price">ê°€ê²©</th>
 			</thead>
 			<tbody>
 			<td><div>${order.talent_summary }</div></td>
@@ -45,7 +49,7 @@
 					<input id = "plus-button" type='button' onclick='count("plus")'value='+'/>
 				</div>
 			</td>
-			<td>${order.talent_workday }ÀÏ</td>
+			<td>${order.talent_workday }ì¼</td>
 			<td><div id="price"><fmt:formatNumber value="${order.talent_price }" groupingUsed="true" /></div></td>
 			
 			</tbody>
@@ -58,11 +62,11 @@
 	
 	
 	<div id="coupon-order-all">
-			<h3>ÇÒÀÎ</h3>
+			<h3>í• ì¸</h3>
 			<form action="<c:url value="/order/completed"/>" method="POST">
-				<div>»ç¿ë °¡´ÉÇÑ ÄíÆù</div>
+				<div>ì‚¬ìš© ê°€ëŠ¥í•œ ì¿ í°</div>
 				<select id="select-cupon-name" name="name" style="font-size:18px;">
-					<option value="0">ÄíÆù ¸ñ·Ï</option>
+					<option value="0">ì¿ í° ëª©ë¡</option>
 				
 				<c:forEach items="${coupon }" var="cou">
 					<option  value="${cou.coupon_id }">${cou.coupon_name }</option>
@@ -72,22 +76,24 @@
 		 <hr>
 		 
 		
-		<h3>°áÁ¦ </h3>
+		<h3>ê²°ì œ </h3>
 			
-				<div>ÃÑ¼­ºñ½º ±İ¾× <input id="total-service" name="original-money" value = "<fmt:formatNumber value="${order.talent_price }" groupingUsed="true" />" type="text" readonly style="border: none;font-size:20px; text-align: right">¿ø</div> 
-				<div >ÄíÆù ÇÒÀÎ<input id="input-cupon-value" type = "text" placeholder="¼±ÅÃÇÏ½Å ÄíÆùÀÌ ¾ø½À´Ï´Ù." readonly style="border: none;font-size:20px;"></div>
-				<div id="dis-pay" style="font-size:25px;">0¿ø</div>
+				<div>ì´ì„œë¹„ìŠ¤ ê¸ˆì•¡ <input id="total-service" name="original-money" value = "<fmt:formatNumber value="${order.talent_price }" groupingUsed="true" />" type="text" readonly style="border: none;font-size:20px; text-align: right">ì›</div> 
+				<div >ì¿ í° í• ì¸<input id="input-cupon-value" type = "text" placeholder="ì„ íƒí•˜ì‹  ì¿ í°ì´ ì—†ìŠµë‹ˆë‹¤." readonly style="border: none;font-size:20px;"></div>
+				<div id="dis-pay" style="font-size:25px;">0ì›</div>
 			
 			<hr>
 			<div>
-				ÃÑ°áÁ¦ ±İ¾× <input id="total-pay" name="money" value="<fmt:formatNumber value="${order.talent_price }" groupingUsed="true" />" type="text" readonly style="border: none; font-size:20px; text-align: right">¿ø
+				ì´ê²°ì œ ê¸ˆì•¡ <input id="total-pay" name="money" value="<fmt:formatNumber value="${order.talent_price }" groupingUsed="true" />" type="text" readonly style="border: none; font-size:20px; text-align: right">ì›
 			</div>
 			<br>
-			<input id="order-button" type="submit" value="°áÁ¦ÇÏ±â">
+			<input id="order-button" type="submit" value="ê²°ì œí•˜ê¸°">
 		</form>
 		<br>
 	</div>
 </c:forEach>
+<%@ include file="include/footer.jsp" %>
+
 <script type="text/javascript" src="/jj9/resources/js/Orderjs.js"></script>
 </body>
 </html>

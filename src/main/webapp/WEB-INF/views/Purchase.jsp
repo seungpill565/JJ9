@@ -7,9 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/Purchasecss.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 </head>
 <body>
+<%@ include file="include/header.jsp" %>
 <c:forEach items="${purchase }" var="purchase">
 	 
 	<div id="main_img">
@@ -120,6 +123,7 @@
 
 </c:forEach>
 
+<%@ include file="include/footer.jsp" %>
 <script type="text/javascript" src="/jj9/resources/js/Purchasejs.js"></script>
 
 

@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 - 회원정보수정</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <link rel="stylesheet" href="/jj9/resources/css/member-modify.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
-	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
+<%@ include file="../include/header.jsp" %>
 	<div class="mypage">
 		<div class="category__container">
 			<ul class="cate-container__ul">
@@ -103,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<%@ include file="../include/footer.jsp" %>
 	<script type="text/javascript">
 		function modify_chk(num) {
 			if (num == '1') {

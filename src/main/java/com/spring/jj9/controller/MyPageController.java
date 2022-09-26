@@ -12,12 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.spring.jj9.addcoupon.service.AddCouponService;
 import com.spring.jj9.buytalent.service.BuyHistoryService;
+import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Coupon;
 import com.spring.jj9.dto.Message;
 import com.spring.jj9.dto.Pay_talentList;
 import com.spring.jj9.dto.Talent_list;
+import com.spring.jj9.mainpage.service.MainpageService;
 import com.spring.jj9.note.service.NoteService;
+import com.spring.jj9.request.service.RequestService;
 import com.spring.jj9.selltalent.service.SellTalentService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -36,12 +42,22 @@ public class MyPageController {
 	
 	@Autowired
 	SellTalentService sellTalentService;
+	// 카테고리 갖고오는 서비스들~
+	@Autowired
+	private MainpageService service;
+	
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+    RequestService reqservice;
+	// 카테고리 갖고오는 서비스 끝
 	
 	String member_id;
 
 	
 	@GetMapping("/account/mypage")
-	public String mypage(HttpSession session, HttpServletRequest request) {
+	public String mypage(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -50,6 +66,27 @@ public class MyPageController {
 			return "alert";			
 		}
 		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", service.readBestPurchase());
+		model.addAttribute("newpurchases", service.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		return "account/mypage";
 	}
 	
@@ -57,7 +94,7 @@ public class MyPageController {
 	public String shoppingCart(HttpSession session, 
 			HttpServletRequest request,
 			Talent_list taleList,
-			Model model) {
+			Model model, Criteria cri) {
 		try {
 			 member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -73,13 +110,35 @@ public class MyPageController {
 			}else {
 				model.addAttribute("talent",talent_list);
 			}
+			
+			// ----- 카테고리 갖고오는 코드 시작
+			model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+			model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+			model.addAttribute("bestpurchases", service.readBestPurchase());
+			model.addAttribute("newpurchases", service.readNewPurchase());
+		
+			PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+			model.addAttribute("page", page);
+			
+			// 메인 카테고리들을 Attribute에 실어준다
+	        List<Category> categories = reqservice.getMainCategories();
+	        model.addAttribute("mainCates", categories);
+
+	        int i = 1;
+	        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+	        for (Category cate : categories) {
+	            String key = "sub" + i;
+	            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+	            i++;
+	        }
+	        // ----- 카테고리 갖고오는 코드 끝
 		return "account/sell-talent";
 	}
 
 
 	
 	@GetMapping("/account/purchase-history")
-	public String purchaseHistory(HttpSession session, HttpServletRequest request, Model model) {
+	public String purchaseHistory(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		String member_id = null;
 		try {
 			member_id = session.getAttribute("member_id").toString();			
@@ -116,11 +175,33 @@ public class MyPageController {
 			model.addAttribute("payTalRefund", payRefundList);
 		}
 		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", service.readBestPurchase());
+		model.addAttribute("newpurchases", service.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
+		
 		return "account/purchase-history";
 	}
 	
 	@GetMapping("/account/note")
-	public String note(HttpSession session, HttpServletRequest request,Model model) {
+	public String note(HttpSession session, HttpServletRequest request,Model model, Criteria cri) {
 		try {
 			member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -143,14 +224,34 @@ public class MyPageController {
 		}else {
 			model.addAttribute("sender",sender);
 		}
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", service.readBestPurchase());
+		model.addAttribute("newpurchases", service.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
 		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		
 		
 		return "account/note";
 	}
 	
 	@GetMapping("/account/add-coupon")
-	public String addCoupon(HttpSession session, HttpServletRequest request,Model model) {
+	public String addCoupon(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		try {
 			member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -167,7 +268,27 @@ public class MyPageController {
 			model.addAttribute("coupon",coupon);
 		}
 		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", service.readBestPurchase());
+		model.addAttribute("newpurchases", service.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
 		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		
 		return "account/add-coupon";
 	}

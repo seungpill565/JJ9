@@ -13,11 +13,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Coupon;
 import com.spring.jj9.dto.Member;
 import com.spring.jj9.dto.Pay;
 import com.spring.jj9.dto.TalentAll;
+import com.spring.jj9.mainpage.service.MainpageService;
 import com.spring.jj9.order.service.OrderService;
+import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -31,11 +37,22 @@ public class OrderController {
 	@Autowired
 	OrderService service;
 	
+	// 카테고리 갖고오는 서비스들~
+	@Autowired
+	private MainpageService mainservice;
+	
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+    RequestService reqservice;
+	// 카테고리 갖고오는 서비스 끝
+	
 	@GetMapping(value = "/order/{id}")
 	public String OrderView(
 			@PathVariable("id") int id,
 			Model model,
-			HttpSession session) {
+			HttpSession session, Criteria cri) {
 		try {
 			sessionId = session.getAttribute("member_id").toString();
 		}catch(NullPointerException e) {
@@ -48,7 +65,30 @@ public class OrderController {
 		
 		model.addAttribute("coupon",coupon);
 		model.addAttribute("order",talentAll);
-		 
+		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", mainservice.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", mainservice.readBestPurchase());
+		model.addAttribute("newpurchases", mainservice.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
+		
+		
 		return "Order";
 	}
 	
@@ -99,7 +139,7 @@ public class OrderController {
 	public String OderSuccess(
 			HttpServletRequest request,
 			Model model , Pay pay,
-			Coupon coupon, Member member) {
+			Coupon coupon, Member member, Criteria cri) {
 		String talentMember = service.getTalentId(talentId); // 판매자 아이디
 		String talentTitle = service.getTalnetTitle(talentId); // 재능 이름
 	
@@ -143,6 +183,28 @@ public class OrderController {
 		if(couponName != 0 || couponName != 5){
 			service.updateCoupon(coupon);
 		}
+		///
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", mainservice.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", mainservice.readBestPurchase());
+		model.addAttribute("newpurchases", mainservice.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		
 		return "OrderCompleted";
 		

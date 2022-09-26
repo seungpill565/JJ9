@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 - 재능구조대</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css"> 
 <body>
-<%@ include file="../include/menu.jsp" %>
-	<h1 class="mypage-name">${sessionScope.member_name }님의 마이페이지</h1>
-	
+<%@ include file="../include/header.jsp" %>
 	<div class="mypage">
 		<div class="mypage__category">
 			<div class="category__container">
@@ -38,5 +38,6 @@
 			</div>
 		</div>
 	</div>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

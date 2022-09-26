@@ -1,17 +1,27 @@
 package com.spring.jj9.member.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Member;
+import com.spring.jj9.mainpage.service.MainpageService;
 import com.spring.jj9.member.service.LoginService;
+import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -22,8 +32,19 @@ public class LoginController {
 	@Inject
 	LoginService loginService;
 	
+	// 카테고리 갖고오는 서비스들~
+	@Autowired
+	private MainpageService service;
+	
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+    RequestService reqservice;
+	// 카테고리 갖고오는 서비스 끝
+	
 	@GetMapping(value = "login")
-	public String loginPage(HttpSession session, HttpServletRequest request) {
+	public String loginPage(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		
 		// 로그인 시 session에 로그인 정보가 있으면 로그인 페이지로 이동시키지 않음
 		try {
@@ -32,6 +53,27 @@ public class LoginController {
 			request.setAttribute("url", "/jj9/mainpage");
 			return "alert";			
 		} catch (NullPointerException e) {
+			// ----- 카테고리 갖고오는 코드 시작
+			model.addAttribute("subcategorys", service.readAllSubCategory()); // 서브카테고리만 실어준다
+			model.addAttribute("maincategorys", service.readMainCategory());  // 메인카테고리만 실어준다
+			model.addAttribute("bestpurchases", service.readBestPurchase());
+			model.addAttribute("newpurchases", service.readNewPurchase());
+		
+			PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+			model.addAttribute("page", page);
+			
+			// 메인 카테고리들을 Attribute에 실어준다
+	        List<Category> categories = reqservice.getMainCategories();
+	        model.addAttribute("mainCates", categories);
+
+	        int i = 1;
+	        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+	        for (Category cate : categories) {
+	            String key = "sub" + i;
+	            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+	            i++;
+	        }
+	        // ----- 카테고리 갖고오는 코드 끝
 			return "login";
 		}
 		

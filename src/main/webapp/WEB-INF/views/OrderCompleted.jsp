@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
+<link rel="stylesheet" href="/jj9/resources/css/OrderComplecss.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 </head>
- <link rel="stylesheet" href="/jj9/resources/css/OrderComplecss.css">
 <body>
-
+<%@ include file="include/header.jsp" %>
 
 	<div id="complete-all">
 		<center id="order">결제가 완료되었습니다</center>
@@ -24,9 +26,10 @@
 			<div>주문하신 분 :${id }</div>
 			<div>결제금액 : ${money } 원</div>
 			<div>구매하신 재능 :${talentTitle }</div>
-			<button id="a-button"><a  href="../mypage">마이페이지</a></button>
+			<button id="a-button"><a  href="../account/purchase-history">마이페이지</a></button>
 		</div>
 	</div>
+<%@ include file="include/footer.jsp" %>
 
 </body>
 </html>

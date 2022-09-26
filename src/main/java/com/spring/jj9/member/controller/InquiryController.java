@@ -16,24 +16,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Faq;
+import com.spring.jj9.mainpage.service.MainpageService;
 import com.spring.jj9.member.service.InquiryService;
+import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Controller
 public class InquiryController {
-
-	InquiryService service;
 	
 	@Autowired
-	public InquiryController(InquiryService service) {
-		this.service = service;
-	}
+	InquiryService service;
+	
+	// 카테고리 갖고오는 서비스들~
+	@Autowired
+	private MainpageService mainservice;
+	
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+    RequestService reqservice;
+	// 카테고리 갖고오는 서비스 끝
+	
 	
 	@GetMapping("/account/inquiry")
-	public String inquiry(HttpSession session, HttpServletRequest request, Model model) {
+	public String inquiry(HttpSession session, HttpServletRequest request, Model model, Criteria cri) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
 		} catch (NullPointerException e) {
@@ -44,9 +58,29 @@ public class InquiryController {
 		
 		List<Faq> faq = service.getFaqList(session.getAttribute("member_id").toString());
 		
-		log.info("이 컨트롤러에서의 faq는 어떻게 되고있나...? : " + faq);
-		
 		model.addAttribute("faqs", service.getFaqList(session.getAttribute("member_id").toString()));
+		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", mainservice.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", mainservice.readBestPurchase());
+		model.addAttribute("newpurchases", mainservice.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		
 		return "account/inquiry";
 	}
@@ -106,7 +140,7 @@ public class InquiryController {
 	public String inquiryAnswer(
 			HttpSession session, 
 			HttpServletRequest request, 
-			Model model, Faq faq,
+			Model model, Faq faq,  Criteria cri,
 			@PathVariable("faq_id") String faq_id) {
 		try {
 			String member_id = session.getAttribute("member_id").toString();			
@@ -126,6 +160,28 @@ public class InquiryController {
 		
 		log.info("service로 돌아온 faq : " + faq);
 		model.addAttribute("faqAnswer", faq);
+		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", mainservice.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", mainservice.readBestPurchase());
+		model.addAttribute("newpurchases", mainservice.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
 		
 		return "account/inquiry";
 	}

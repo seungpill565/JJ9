@@ -1,6 +1,7 @@
 package com.spring.jj9.member.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,8 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.jj9.category.service.CategoryService;
+import com.spring.jj9.dto.Category;
 import com.spring.jj9.dto.Member;
+import com.spring.jj9.mainpage.service.MainpageService;
 import com.spring.jj9.member.service.RegisterService;
+import com.spring.jj9.request.service.RequestService;
+import com.spring.jj9.util.Criteria;
+import com.spring.jj9.util.PageMake;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -39,6 +46,17 @@ public class RegisterController {
 	
 	// 이메일이 인증 되었는지 체크해주는 불리언
 	private boolean isEmailAuth = false;
+	
+	// 카테고리 갖고오는 서비스들~
+	@Autowired
+	private MainpageService mainservice;
+	
+	@Autowired
+	private CategoryService cateService;
+	
+	@Autowired
+    RequestService reqservice;
+	// 카테고리 갖고오는 서비스 끝
 	
 	@RequestMapping(value = "/sendMailTest", method = RequestMethod.GET)
     public String sendMailTest() throws Exception{
@@ -90,7 +108,30 @@ public class RegisterController {
 	}
 	
 	@GetMapping("/register")
-	public String registerPage() {
+	public String registerPage(Model model,  Criteria cri) {
+		
+		// ----- 카테고리 갖고오는 코드 시작
+		model.addAttribute("subcategorys", mainservice.readAllSubCategory()); // 서브카테고리만 실어준다
+		model.addAttribute("maincategorys", mainservice.readMainCategory());  // 메인카테고리만 실어준다
+		model.addAttribute("bestpurchases", mainservice.readBestPurchase());
+		model.addAttribute("newpurchases", mainservice.readNewPurchase());
+	
+		PageMake page = new PageMake(cri, cateService.readTalentCountBySearch(cri.getKeyword()));
+		model.addAttribute("page", page);
+		
+		// 메인 카테고리들을 Attribute에 실어준다
+        List<Category> categories = reqservice.getMainCategories();
+        model.addAttribute("mainCates", categories);
+
+        int i = 1;
+        // 메인 카테고리에 따른 서브카테고리들을 Attribute에 실어준다.
+        for (Category cate : categories) {
+            String key = "sub" + i;
+            model.addAttribute(key, reqservice.getSubCateByMain(cate.getCate_main()));
+            i++;
+        }
+        // ----- 카테고리 갖고오는 코드 끝
+		
 		return "register";
 	}
 	

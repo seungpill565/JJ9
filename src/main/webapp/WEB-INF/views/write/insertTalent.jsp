@@ -4,17 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/mypage-category.css">
 <link rel="stylesheet" href="/jj9/resources/css/insertTalent.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 <meta charset="UTF-8">
 <title>jj9 - 재능 등록하기</title>
 </head>
 <body>
-	<div class="top-menu">
-		<div class="top-row">
-			<div><a href="mainpage" class="local-font">jj9</a></div>
-		</div>
-	</div>
+<%@ include file="../include/header.jsp" %>
 	<div class="mypage">
 		<div class="mypage__category insertTalent__category">
 			<div class="category__container inca">
@@ -87,7 +85,7 @@
 		</div>
 	</div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 	
 	
 	<script src="/jj9/resources/js/insertTalent.js"></script>

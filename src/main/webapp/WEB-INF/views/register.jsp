@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>jj9 회원가입 페이지</title>
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
 <link rel="stylesheet" href="/jj9/resources/css/register.css">
+<link rel="stylesheet" href="/jj9/resources/css/footer.css">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
@@ -42,10 +44,11 @@ $(function() {
 </script>
 </head>
 <body>
-<%@ include file="./include/menu.jsp" %>
+
 	<!-- 이름, 별명, 아이디, 비번, 재입력, 이메일, 전화번호, 생년월일, 자기소개 -->
 	<form id="register-form" class="sign-up__form" action="register" method="POST">
-			<h1 class="sign-up__title"> sign up </h1>
+			<h2 class="sign-up__title" style="margin-bottom: 0px;">jj9</h2>
+			<h1 class="sign-up__title" style="margin-top: 10px;"> sign up </h1>
 		<div class="form__container">
 				<div class="container__left">
 					<div class="container__input--name sign-up__container">
