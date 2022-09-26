@@ -99,6 +99,7 @@
 			</div>
 		</div>
 		<form id="moveForm" method="get">
+			<input type="hidden" name="keyword" value="${page.cri.keyword }">
 			<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
         	<input type="hidden" name="amount" value="${page.cri.amount }">
         </form> 
