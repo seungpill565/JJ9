@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 	<h1 class="mypage-name">${sessionScope.member_name }님 반갑습니다.</h1>
 	<div class="mypage">
 		<div class="category__container">
@@ -33,17 +33,17 @@
 			<div class="main__container">
 				<h2 class="main-container__title">구매재능내역</h2>
 				<div class="container__card">
-					<table id="table" border="1">
+					<table border="1">
 						<thead>
-							<th width="150" style="background-color: #E84646;color: white;">결제번호</th>
-							<th width="150" style="background-color: #E84646;color: white;">재능이름</th>
-							<th width="150" style="background-color: #E84646;color: white;">가격(할인 미적용)</th>
-							<th width="150" style="background-color: #E84646;color: white;">가격(할인 적용)</th>
-							<th width="150" style="background-color: #E84646;color: white;">판매자 이름</th>
-							<th width="150" style="background-color: #E84646;color: white;">판매자 닉네임</th>
-							<th width="150" style="background-color: #E84646;color: white;">판매자 전화번호</th>
-							<th width="150" style="background-color: #E84646;color: white;">판매자 이메일</th>
-							<th width="150" style="background-color: #E84646;color: white;">쪽지 보내기</th>
+							<th>결제번호</th>
+							<th>재능이름</th>
+							<th>가격(할인 미적용)</th>
+							<th>가격(할인 적용)</th>
+							<th>판매자 이름</th>
+							<th>판매자 닉네임</th>
+							<th>판매자 전화번호</th>
+							<th>판매자 이메일</th>
+							<th>쪽지 보내기</th>
 						</thead>
 						<tbody id="table">
 							<tr>
@@ -103,7 +103,7 @@
 						</c:when>
 						<c:when test="${payTal.refund_request eq '구매확정'}">
 							<div>
-								<form action="../modifyReview/${review.review_id }" class="mb-3" name="myform" id="myform" method="POST">
+								<form style="display:inline;" action="../modifyReview/${review.review_id }" class="mb-3" name="myform" id="myform" method="POST">
 									<fieldset>
 										<input type="hidden" value="${review.review_grade }" id="grade"/>
 										<span class="text-bold">내 리뷰</span> 
@@ -118,16 +118,20 @@
 										<input type="radio" name="review_grade" value="1" id="rate1">
 										<label for="rate1">★</label>
 									</fieldset>
-									<div>
+									<div style="display:inline">
 										<textarea class="col-auto form-control" type="text"
 											id="reviewContents"
 											name="review_content"
 											placeholder="${review.review_content }">${review.review_content }</textarea>
 										<input type="hidden" name="pay_id" value="${review.review_id }"/>
-										<input id="submit" type="submit" value="수정하기"/> 
+										<div style="float:right">
+										<input id="submit" type="submit" value="수정하기"/>
+										</div>
 									</div>			
 								</form>
+								<div style="float:right; margin-right:15px">
 								<button id="deleteBtn" value="${review.review_id }">삭제하기</button>
+								</div> 
 							</div>
 						</c:when>
 						<c:otherwise>
@@ -165,7 +169,7 @@
 		const deleteBtn = document.getElementById('deleteBtn');
 		
 		deleteBtn.addEventListener('click', (e) => {
-			var result = confirm("환불요청을 취소하시겠습니까?");
+			var result = confirm("리뷰를 삭제하겠습니까?");
 			
 		        if(result) {
 		            location.href='../deleteReview/' + deleteBtn.value;

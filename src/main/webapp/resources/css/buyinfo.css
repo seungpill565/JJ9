@@ -62,3 +62,17 @@ div > * {
     cursor : pointer;
 }
 
+#deleteBtn {
+	font-family: 'Jua', sans-serif;
+    width: 100px;
+    height: 40px;
+    background-color: #e64646;
+    color: white;
+    border-radius: 10px;
+}
+
+#deleteBtn:hover {
+    background-color: #c83232;
+    cursor : pointer;
+}
+
