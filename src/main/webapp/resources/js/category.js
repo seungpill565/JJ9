@@ -31,15 +31,21 @@ $(".search_area button").on("click", function(e){
 	const keyword = $("#searchKeyword")
 	const type = $(".search")
 
+	if(!keyword){
+		alert("검색어를 입력하세요");
+		return false;
+	}else if(!type){
+		alert("검색어 분류를 선택하세요")
+		return false;
+	}
 	
-	
-	
+	else{
 		console.log('keyword : '+keyword);
 		e.preventDefault(); // 일단 버튼의 기능을 막고
 		mainSearchForm.find("input[name='pageNum']").val(1); // 페이징 번호를  1로 지정
 		mainSearchForm.attr("action", "/jj9/search");
 		mainSearchForm.submit();
-	
+	}
 	
 });
 
