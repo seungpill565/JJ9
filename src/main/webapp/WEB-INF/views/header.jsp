@@ -113,6 +113,6 @@
 	</div>
 	<hr />
 	<!-- header -->
-	<script src="/jj9/resources/js/category.js"></script>
+	<script src="/jj9/resources/js/category.js?ver=1"></script>
 </body>
 </html>

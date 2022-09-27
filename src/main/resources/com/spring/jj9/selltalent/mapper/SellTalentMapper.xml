@@ -6,7 +6,7 @@
   
 <mapper namespace="com.spring.jj9.selltalent.mapper.SellTalentMapper">
   <select id="getTalentList" resultType="com.spring.jj9.dto.Talent_list">
-  	select * from talent_list where member_id = #{id}
+      select * from talent_list where member_id = #{id} and talent_permission = '승인'
   </select>
   
   <select id="getMemberInfo" resultType ="com.spring.jj9.dto.PayMember">
