@@ -43,6 +43,7 @@ $(".search_area button").on("click", function(e){
 		console.log('keyword : '+keyword);
 		e.preventDefault(); // 일단 버튼의 기능을 막고
 		mainSearchForm.find("input[name='pageNum']").val(1); // 페이징 번호를  1로 지정
+		mainSearchForm.find("input[name='amount']").val(24);
 		mainSearchForm.attr("action", "/jj9/search");
 		mainSearchForm.submit();
 	}

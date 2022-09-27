@@ -59,7 +59,7 @@
 
 							<a href="/jj9/purchase/${purchase.talent_id }" class="purchase-a">
 
-								<img class="purchase-image"src="/tomcatImg/${purchase.talent_image }"/>
+								<img class="purchase-image" src=""></img>
 								<div class="purchase-title2">${purchase.talent_title }</div>
 								<div class="purchase-price">
 									￦
@@ -90,7 +90,8 @@
 									<c:forEach var="num" begin="${page.startPage}"
 										end="${page.endPage}">
 										<li class="pageInfo_btn ${page.cri.pageNum == num ? "active":"" }">
-											<!-- 내가 클릭한 페이지 번호에 음영 넣기 --> <a href="${num }">${num}</a>
+											<!-- 내가 클릭한 페이지 번호에 음영 넣기 --> 
+											<a href="/jj9/search?keyword=${page.cri.keyword }&pageNum=${num }&amount=24">${num}</a>
 										</li>
 
 									</c:forEach>
