@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.jj9.addcoupon.mapper.AddCouponMapper">
+
+  <select id="getCouponList" resultType="com.spring.jj9.dto.Coupon">
+  	select * from coupon where member_id = #{id} and  coupon_period &gt; sysdate
+  </select>
+
+  <update id="addCoupon">
+  	update coupon set member_id=#{id} where coupon_code = #{code} and member_id is null
+  </update>
+  
+  <select id="selectCoupon" resultType="com.spring.jj9.dto.Coupon">
+  	select * from coupon where coupon_code = #{code}
+  </select>
+  
+ </mapper>

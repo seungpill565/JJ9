@@ -39,7 +39,7 @@
 				  	  				<th width="150" style="background-color: #E84646;color: white;"> 판매번호 </th>
 				  	  				<th width="200" style="background-color: #E84646;color: white;"> 재능 이름 </th>
 				  	  				<th width="150" style="background-color: #E84646;color: white;"> 이미지 </th>
-				  	  				<th width="100" style="background-color: #E84646;color: white;"> 재능 등록 날짜 </th>
+				  	  				<th width="200" style="background-color: #E84646;color: white;"> 재능 등록 날짜 </th>
 				  	  				<th width="150" style="background-color: #E84646;color: white;"> 구매자 확인하기 </th>				  	  				
 				  	  				<th width="130" style="background-color: #E84646;color: white;"> 삭제 하기 </th>
 				  	  			</thead>

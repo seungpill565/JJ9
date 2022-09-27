@@ -123,7 +123,7 @@
 
 
 
-	<script src="/jj9/resources/js/category.js?ver=1"></script>
+	<script src="/jj9/resources/js/category.js"></script>
 			<!-- footer -->
 <%@ include file="../footer.jsp" %>
 	

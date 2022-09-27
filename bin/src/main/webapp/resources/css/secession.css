@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.notify__container {
+	display: flex;
+	justify-content: center;
+}
+
+.notify__container > div {
+	padding: 0 40px 20px 40px;
+}
+
+.secession__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.secession__password {
+	width: 600px;
+	height: 35px;
+	font-size: 18px;
+	background-color: light-grey;
+	border: 1px solid #c0c0c0;
+}
+
+.secession-btn {
+	border: none;
+	color: white;
+	background-color: rgb(230, 70, 70);
+	margin: 30px;
+	padding: 10px 50px;
+	font-size: 18px;
+	border-radius: 5px;
+}
+
+.secession-btn:hover {
+	background-color: rgb(200, 50, 50);
+	cursor: pointer;
+}

@@ -1,0 +1,235 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+
+/* 카테고리까지 공통 부분 시작 */
+body {
+	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.mypage {
+	display: flex;
+}
+
+.mypage-name {
+	padding-left: 110px;
+}
+
+.cate-container__ul {
+	list-style: none;
+	margin: 20px;
+	width: 200px;
+}
+
+.cate-container__ul > li {
+	text-align: center;
+}
+
+.cate-container__ul > li:not(:first-child) {
+	border-right: 1px solid #c0c0c0;
+	border-left: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	padding: 10px 0;
+}
+
+.cate-container__ul > li:not(:first-child):hover {
+	background-color: #c0c0c0;
+}
+
+.cate-container__ul > li:first-child {
+	border-bottom: 2px solid black;
+	margin-bottom: 50px;
+	color: black;
+}
+
+.cate-container__ul > li:nth-child(2) {
+	border-top: 1px solid #c0c0c0;
+}
+/* 카테고리까지 공통 부분 끝 */
+
+
+
+/* mypage-main 에만 해당하는 영역 */
+.thispage__main {
+	width: 1200px;
+	margin-left: 100px;
+}
+
+.main-container__title {
+	padding: 10px 20px;
+	background-color: rgb(230, 70, 70);
+	color: white;
+	border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------*/
+#purchase_img{
+  width: 250px;
+  height:180px;
+}
+#table>thead>th{
+	text-align: center;	
+}
+#table>tbody>tr>td{
+	text-align: center;
+}
+#button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+#button>a:link{
+	color:white;	
+}
+#button>a:visited{
+	color:white;	
+}
+#button>a:hover {
+	color: black;
+}
+#window-button{
+	background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+#window-button>a{
+	font-size: 25px;
+	text-decoration-line: none;
+	
+}
+#window-button>a:link{
+	color:white;	
+}
+#window-button>a:visited{
+	color:white;	
+}
+#window-button>a:hover {
+	color: black;
+}
+#del-button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+
+
+
+/* ----------------------------------------*/
+#purchase_img{
+  width: 250px;
+  height:180px;
+}
+#table>thead>th{
+	text-align: center;	
+}
+#table>tbody>tr>td{
+	text-align: center;
+}
+#button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+#button>a:link{
+	color:white;	
+}
+#button>a:visited{
+	color:white;	
+}
+#button>a:hover {
+	color: black;
+}
+#window-button{
+	background-color: #E84646;
+	font-weight: bold;
+	font-size : 25px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+#window-button>a{
+	font-size: 25px;
+	text-decoration-line: none;
+	
+}
+#window-button>a:link{
+	color:white;	
+}
+#window-button>a:visited{
+	color:white;	
+}
+#window-button>a:hover {
+	color: black;
+}
+#del-button{
+	background-color: #E84646;
+	font-family: 'Jua', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+

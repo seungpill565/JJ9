@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
+
+body {
+	box-sizing: border-box;
+	font-family: 'Jua', sans-serif;
+}
+
+input, select, textarea, button {
+	font-family: inherit;
+}
+
+.form__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form__container > div {
+	padding: 10px;
+}
+
+.form__container > div > label {
+	font-size: 18px;
+}
+
+.form__container > div > input {
+	width: 900px;
+	height: 30px;
+	font-size: 18px;
+	border: 1px solid #c0c0c0;
+}
+
+.form__container > div > textarea {
+	width: 900px;
+	resize: none;
+	border: 1px solid #c0c0c0;
+}
+
+.select-cate-main, .select-cate-sub {
+	width: 450px;
+	height: 30px;
+	font-size: 18px;
+	border: 1px solid #c0c0c0;
+}
+
+.submit-btn {
+	margin-top: 20px;
+	padding: 10px 40px;
+	color: white;
+	background-color: rgb(230, 70, 70);
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.submit-btn:hover {
+	background-color: rgb(200, 50, 50);
+	cursor: pointer;
+}

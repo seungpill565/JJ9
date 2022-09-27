@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.jj9.mainpage.mapper.MainpageMapper">
+  <select id="readMainCate" resultType="com.spring.jj9.dto.Category">
+    	 select * from category where <![CDATA[cate_id < 10]]>   <!-- 따로 넣어준 메인카테고리랑 id 값 읽기 / 부등호라 CDATA 사용 -->
+    	<!-- select cate_id, cate_main from category where cate_id &lt; 10 -->
+  </select>
+  
+    <!-- 서브카테고리들만 뽑기 -->
+  <select  id="readAllSubCategorys" resultType="com.spring.jj9.dto.Category">
+  		select * from category where cate_sub is not null 
+  </select>
+  
+  <select id="readBestPurchase" resultType="com.spring.jj9.dto.TalentAll">
+  		select * from (select * from talent_list order by talent_paycount desc, talent_id asc) where <![CDATA[rownum < 5]]> and member_id is not null<!-- 판매횟수가 많은 것중 4개만 읽기 -->
+  </select>
+  
+  <select id="readNewPurchase" resultType="com.spring.jj9.dto.TalentAll">
+  		select * from (select * from talent_list order by talent_id desc) where <![CDATA[rownum < 5]]> and member_id is not null<!-- 가장 최신 등록된 재능 4개만 읽기 -->
+  </select>
+  
+
+</mapper>

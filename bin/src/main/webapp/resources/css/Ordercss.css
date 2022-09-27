@@ -1,0 +1,81 @@
+@charset "EUC-KR";
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+*{
+	font-family: 'Jua', sans-serif;
+}
+
+
+#purchase_img{
+	width: 250px;
+	height:180px;
+	border: solid gray 1px;
+}
+#plus-button{
+	background-color: #E84646;
+}
+
+#minus-button{
+	background-color: #E84646;
+}
+#nomal{
+	padding-right : 300px;
+}
+#select{
+	padding-right : 100px;	 
+}
+#day{
+	padding-right : 100px;
+}
+#th-price{
+	padding-right : 100px;
+}
+#select-grid{
+	place-items: center;
+	display :grid;
+	grid-template-columns: 80px 50px 80px;
+}
+#price{
+	text-align: center;
+}
+#title-nickName-id{
+	position: absolute;
+	top: 25%;
+	left:30%;
+}
+#coupon-grid{
+	place-items: center;
+	display :grid;
+	grid-template-columns: 150px  250px;
+	
+}
+#coupon-order-all{
+	border: solid gray 1px;
+	position: absolute;
+	top:30%;
+	left:60%;
+	font-size : 20px;
+}
+#order-details{
+	border: solid gray 1px;
+	position: absolute;
+	top:30%;
+	left:15%;
+	font-size: : 40px;
+}
+#order-button{
+	background-color: #E84646;
+	font-size : 20px;
+	padding-left : 135px;
+	padding-right : 135px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+    margin: 15px;
+}
+
+
+
+
+
+	

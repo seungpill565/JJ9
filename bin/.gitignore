@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+.classpath
+.settings
+.springBeans
+.project
+/target/
+*.properties
+*.MF
+=======
+.classpath
+.settings
+.springBeans
+.project
+/target/
+>>>>>>> refs/remotes/origin/hong
+=======
+.classpath
+.project
+.settings
+.springBeans
+*/target/*
+pom.properties
+MANIFEST.MF
+>>>>>>> refs/remotes/origin/dohyun
