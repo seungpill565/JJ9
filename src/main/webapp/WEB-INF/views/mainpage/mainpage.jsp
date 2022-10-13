@@ -11,7 +11,7 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> <!--  jquery -->
-<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=1" />
+<link rel="stylesheet" href="/jj9/resources/css/category.css?ver=2" />
 
 </head>
 <body>

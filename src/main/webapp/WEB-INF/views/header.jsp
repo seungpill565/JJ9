@@ -63,7 +63,7 @@
 						<div id="mainCategory-div${status.count }"
 							class="mainCategory-div2">
 							<a href="/jj9/category/${maincategory.cate_id }"
-								id="mainCategory-a"> ${maincategory.cate_main } ▼</a>
+								id="mainCategory-a"> ${maincategory.cate_main } </a>
 							<div class="subCategory-div">
 								<c:set var="sub" value="sub${status.count}" />
 								<c:forEach items="${requestScope[sub] }" var="sub"

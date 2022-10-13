@@ -60,8 +60,15 @@
 			  	  </c:choose>			  	 
 				</div>
 			</div>
-			<div>*판매 재능의 수정은 1:1 문의를 의용해 주시기 바랍니다.*</div>
-				  <div>*판매 재능을 삭제 할시 데이터 복구가 어렵습니다.*</div>
+			<br />
+			<br />
+			<br />
+			<div style="margin-left: 40%">
+				<div> - 판매 재능의 수정은 1:1 문의를 이용해 주시기 바랍니다. </div>
+				<div> - 판매 재능을 삭제 할시 데이터 복구가 어렵습니다. </div>
+				<br />
+				<br />
+			</div>
 		</div>
 	</div>
 	<%@ include file="../include/footer.jsp" %>

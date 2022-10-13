@@ -15,9 +15,11 @@
 		<h1 id="logo">
 			<a href="./admin" class="jj9-logo">JJ9</a>
 		</h1>
-		<h3 id="logo-sub">관리자용</h3>
+		<h3 id="logo-sub" class="inline" style="margin-right: 5px">관리자 </h3>
+		<div id="welcome" class="inline">
+			${currUser.member_id } 님 안녕하세요
+		</div>
 	</div>
-	${currUser.member_id } 님 안녕하세요
 	<br />
 
 
@@ -43,10 +45,11 @@
 				<div class="flex-column page-content">
 					<div>
 						<h1> 새 카테고리 등록 </h1>
-						<form action="./addCategory" method="POST">
-							새로운 id : <input type="number" name="cate_id" /> 메인 카테고리 : <input
-								type="text" name="cate_main" /> 세부 카테고리 : <input type="text"
-								name="cate_sub" /> <input type="submit" value="등록하기 " />
+						<form action="./addCategory" method="POST" style="margin-top: 20px;">
+							새로운 id  <input type="number" name="cate_id" style="width: 100px; margin-right: 15px; margin-left: 5px;"/> 
+							메인 카테고리  <input type="text" name="cate_main" style="margin-right: 15px; margin-left: 5px;"/> 
+							세부 카테고리  <input type="text" name="cate_sub" style="margin-right: 15px; margin-left: 5px;" /> 
+							<input type="submit" value="등록하기 " />
 						</form>
 					</div>
 					<div>

@@ -15,9 +15,11 @@
 		<h1 id="logo">
 			<a href="./admin" class="jj9-logo">JJ9</a>
 		</h1>
-		<h3 id="logo-sub">관리자용</h3>
+		<h3 id="logo-sub" class="inline" style="margin-right: 5px">관리자 </h3>
+		<div id="welcome" class="inline">
+			${currUser.member_id } 님 안녕하세요
+		</div>
 	</div>
-	${currUser.member_id } 님 안녕하세요
 	<br />
 
 

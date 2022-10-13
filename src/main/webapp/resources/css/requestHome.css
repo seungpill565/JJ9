@@ -9,7 +9,7 @@
 }
 
 * {
-	font-family: 'Jua', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 17px;
 	box-sizing: border-box;
 }
@@ -204,14 +204,16 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	border-bottom: solid #e64646 3px;
 	margin-top: 20px;
 	margin-bottom: 10px;
-	grid-row-satrt: 1;
+	grid-row-start: 1;
 	grid-column-start: 1;
 }
 
 .reqList {
+	border: rgba(82, 82, 82, 0.604) solid 1px;
 	grid-row-start: 1;
 	grid-row: span 2;
 	grid-column-start: 2;
+	
 }
 
 #mainCategory-a {
@@ -257,6 +259,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	display: grid;
 	grid-template-rows: 20% 56% 16% 8%;
 	height: 280px;
+	grid-template-areas: 10%;
 	margin: 0px;
 	padding: 0px;
 }
@@ -278,6 +281,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	margin: 0;
 	grid-row-start: 1;
 	width: 815px;
+	padding: 10px;
 }
 
 .title-div {
@@ -300,6 +304,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	padding-top: 10px;
 	padding-right: 10px;
 	width: 815px;
+	padding: 10px;
 }
 
 .content-div {
@@ -315,6 +320,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	grid-row-start: 4;
 	margin-top: 0;
 	padding-right : 10px;
+	
 }
 
 .list-third-row {
@@ -326,6 +332,7 @@ a:hover { /* a링크에 마우스 올릴 시 밑줄 추가 */
 	width: 815px;
 	height: 40px;
 	background-color: #f7f7f7;
+	padding: 10px;
 }
 
 

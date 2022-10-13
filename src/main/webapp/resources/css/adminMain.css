@@ -1,15 +1,75 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 @font-face {
     font-family: "210-supersize";
     src:url(../fonts/210-Supersize-Black-3D.ttf) format("truetype");
 }
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*{
+	font-family: 'Pretendard-Regular', sans-serif;
+	font-size : 18px;
+	box-sizing: border-box;
+	
+}
+
+button {
+	border-radius: 3px;
+	border-color: rgba(16, 16, 16, 0.63);
+}
+
+h1 {
+	font-family: 'Pretendard-Regular', sans-serif;
+	font-size : 40px;
+	box-sizing: border-box;
+	
+}
+
+h2 {
+	font-family: 'Pretendard-Regular', sans-serif;
+	font-size : 23px;
+	box-sizing: border-box;
+	
+}
+
+h3 {
+	font-family: 'Pretendard-Regular', sans-serif;
+	font-size : 25px;
+	box-sizing: border-box;
+	
+}
+
+#welcome{
+	font-family: 'Pretendard-Regular', sans-serif;
+	font-size : 23px;
+	box-sizing: border-box;
+	
+}
 
 /* 공통 부분 시작 */
 body {
     box-sizing: border-box;
-	font-family: 'Jua', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
     font-size: 22px;
     margin: 30px;
 }
@@ -67,12 +127,19 @@ ul{
 
 .adminMenu-container__ul {
 	list-style: none;	
-	width: 200px;
+	width: 217px;
 	padding-inline-start: 0px;
 }
 
 .adminMenu-container__ul > li {
 	text-align: center;
+	
+}
+
+.adminMenu-container__ul > li>a {
+	font-family: 'Pretendard-Medium', '210-supersize';
+	font-size: 25px;
+	
 }
 .adminMenu__container{
     margin-top: 20px;
@@ -83,7 +150,7 @@ ul{
 	border-right: 1px solid #c0c0c0;
 	border-left: 1px solid #c0c0c0;
 	border-bottom: 1px solid #c0c0c0;
-	padding: 10px 0;
+	padding: 10px 10px;
 }
 
 .adminMenu-container__ul > li:hover {
@@ -111,8 +178,8 @@ ul{
 }
 
 .flex-column {
-	margin-top: 30px;
-	margin-left: 50px;
+	margin-top: 40px;
+	margin-left: 75px;
 }
 
 

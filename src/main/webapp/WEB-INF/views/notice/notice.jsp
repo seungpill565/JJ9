@@ -29,7 +29,7 @@
 		
 			<h1 style="font-size: 50px;">공지사항</h1>
 			<h1 style="font-size: 20px;">총 ${noticesCount} 개의 공지사항</h1>
-			<div class="notice-list" style="background-color: #f7c7c7;">
+			<div class="notice-list" style="background-color: #e8e6e691;">
 			
 				<table  class="content-table" style="border:none; margin: 20px; margin-left: 5%">
 					

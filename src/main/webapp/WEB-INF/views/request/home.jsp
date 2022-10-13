@@ -55,7 +55,7 @@
 					varStatus="status">
 					<div id="mainCate-div${status.count }" class="mainCate-div2">
 						<a href="/jj9/req/${maincategory.cate_id }" id="mainCategory-a">
-							${maincategory.cate_main } ▼</a>
+							${maincategory.cate_main } </a>
 						<div class="subCate-div">
 							<c:set var="sub" value="sub${status.count}" />
 							<c:forEach items="${requestScope[sub] }" var="sub"

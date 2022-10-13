@@ -8,12 +8,14 @@
 #main_img{
 	position: absolute;
 	top: 22%;
-	left: 16%;
+	left: 19%;
 }
 #purchase_img{
     border: solid black 1px;
     padding : 5px;
     margin: 3px;
+	margin-top: 20px;
+	margin-bottom: 30px;
     width: 500px;
     height: 350px;
 }
@@ -24,7 +26,7 @@
 #title{
 	position: absolute;
 	top : 24%;
-	right: 17%;
+	right: 12%;
 	border: solid gray 1px;
 	margin: 3px;
 	padding: 15px;
@@ -35,10 +37,11 @@
 #title-name{
 	font-size: 30px;
 	font-weight: bold;
+	width: 400px;
 }
 
 #order-button{
-background-color: #E84646;
+background-color: #e9e8e2dd;
 	font-weight: bold;
 	font-size : 25px;
 	padding-left : 135px;
@@ -46,21 +49,32 @@ background-color: #E84646;
 	padding-top : 10px;
 	padding-bottom : 10px;
     margin: 15px;
+	margin-left: 5px;
+	border-radius: 15px;
 }
+#order-button:hover{
+	cursor: pointer;
+}
+
+
 #window-button{
-	background-color: #E84646;
+	background-color: #e9e8e2dd;
 	font-weight: bold;
 	font-size : 25px;
-	padding-left : 135px;
-	padding-right : 135px;
+	padding-left : 80px;
+	padding-right : 80px;
 	padding-top : 10px;
 	padding-bottom : 10px;
     margin: 15px;
+	border-radius: 15px;
+}
+#window-button:hover{
+	cursor: pointer;
 }
 
 #explanation{
 	position: absolute;
-	top :100%;
+	top :70%;
 	left: 11%;
 	
 	
@@ -68,10 +82,12 @@ background-color: #E84646;
 
 #seller-info{
 	position: absolute;
-	top :84%;
-	right: 16.5%;
+	top :88%;
+	right: 11.4%;
 	border: solid gray 1px;
 	margin: 15px;
+	padding: 25px;
+	padding-left: 46px;
 	
 }
 #description{
@@ -83,48 +99,55 @@ background-color: #E84646;
 }
 #main-content{
 	position : absolute;
-	width: 150%;
+	margin-top: 50px;
+	margin-left: -30px;
+	width: 136%;
 	top : 50%;
-	
+	background-color: #e8e6e691;
+
+	padding: 35px;
 	
 }
 
 #pay-content{
 	position: absolute;
 	top :74%;
-	right: 14%;
+	right: 15%;
 }
 #avg-grid{
 	
 	display: grid;
 	grid-template-columns: 40px 50px 150px;
 	font-size: 20px;
+	margin-left: 40px;
 }
 #avg-img{
-	width: 250px;
-	height:180px;
+	width: 90%;	
 }
+
 #avg{
-	position: absolute;
-	left: 32%
-	
+	margin-left: 50px;
 }
+
 #a-button{
-	background-color: #E84646;
+	background-color: #e9e8e2dd;
 }
 #a-button>a{
 	font-size: 25px;
 	text-decoration-line: none;
-	
+		
 }
-#a-button>a:link{
+
+
+#a-button:link{
 	color:black;	
 }
-#a-button>a:visited{
+#a-button:visited{
 	color:black;	
 }
-#a-button>a:hover {
+#a-button:hover {
 	color: white;
+	cursor: pointer;
 }
 .total{
 	display: flex;

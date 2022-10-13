@@ -24,37 +24,30 @@
 			<img id="purchase_img" alt="" src="/tomcatImg/${purchase.talent_image }">
 		</div>
 		<br>
-		<div id="avg">
-			<img id="avg-img" alt="" src="">
-			<div id="avg-grid">
-				  평점:<div id="avg-num">${RradeAvg }</div>
-				<div>(${CountGrade }개의평가)</div>
-			</div>
-		</div>
+
 	</div>
 
 	
 
 	<div id="explanation">
 		<div id="alink">
-			<button id="a-button"><a  href="#exp">서비스 설명</a></button> 
-			<button id="a-button"><a  href="#curriculum">서비스 커리큘럼</a></button> 
-			<button id="a-button"><a  href="#refund">취소 및 환불</a></button> 
-			<button id="a-button"><a  href="#reivew">서비스 평점</a></button> 
+			<button id="a-button" style="margin-left: 100px"><a href="#exp">서비스 설명</a></button> 
+			<button id="a-button"><a href="#curriculum">서비스 커리큘럼</a></button> 
+			<button id="a-button"><a href="#refund">취소 및 환불</a></button> 
+			<button id="a-button"><a href="#reivew">서비스 평점</a></button> 
 		</div>
 		
 		<div id="main-content">
-		<br>
-		<br>
-		<br>
-			<h3 id="exp">서비스 설명</h3>
+		<br>		
+			<h3 id="exp">서비스 설명</h3><hr />
                 <div style="white-space:pre-wrap;">${purchase.talent_service_exp }</div>
 
-            <h3 id="curriculum">서비스 커리큘럼</h3>
+		<br />
+            <h3 id="curriculum">서비스 커리큘럼</h3><hr />
                 <div style="white-space:pre-wrap;">${purchase.talent_curriculum }</div>	
-			
+			<br />
 			<div id="refund">
-				<h3>취소 및 환불 규정</h3>
+				<h3>취소 및 환불 규정</h3><hr />
 				
 				<div>
 					가. 기본 환불 규정<br>
@@ -77,13 +70,13 @@
 				</div>
 			</div>
 		
-			<hr>
+			<br />
 		
 			<div id="reivew">
 				<h3>서비스 평가</h3>
-				
-				<div>실제 jj9을 통해 구매한 이용자들이 남긴 평가입니다.</div>
 				<hr>
+				<div>실제 jj9을 통해 구매한 이용자들이 남긴 평가입니다.</div>
+				
 				<br>
 				<c:forEach items="${Reivew }" var="reivew">	
 				<div>아이디 : ${reivew.member_id }</div>
@@ -93,12 +86,12 @@
 				<div>${reivew.review_date } 작성</div></div>
 				<br>
 				<br>
-				<hr>
+				
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-	
+	</div>	
+
 	
 	<div id="title" style="max-width: 400px">
 		<h3 id="title-name">${purchase.talent_title }</h3>
@@ -108,11 +101,20 @@
 		<div id="description">가격 : <fmt:formatNumber value="${purchase.talent_price }" groupingUsed="true" />원</div>
 		<div id="description">작업일수 : ${purchase.talent_workday }일</div>
 		<form action="<c:url value="/order/${purchase.talent_id }"/>" method="GET">
+		<hr />
+		<div id="avg">
+			<img id="avg-img" alt="" src="">
+			<div id="avg-grid">
+				  평점:<div id="avg-num">${RradeAvg }</div>
+				<div>(${CountGrade }개의평가)</div>
+			</div>
+		</div>
+		<br />
 			<input id="order-button" type="submit" value="구매하기">
 			<br>
 		</form>
 	</div>
-	<img id="pay-content" alt="" src="/jj9/resources/images/payContent.jpg">
+	
 	
 	<div id ="seller-info" style="max-width: 400px">
 		<h3 id="title-name">판매자 정보</h3>
@@ -127,6 +129,10 @@
 	
 
 </c:forEach>
+
+
+
+
 </div>
 <script type="text/javascript" src="/jj9/resources/js/Purchasejs.js"></script>
 </div>
